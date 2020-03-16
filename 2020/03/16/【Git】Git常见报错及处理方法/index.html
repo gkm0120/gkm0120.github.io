@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="【Git】Git常见报错及处理方法, Hexo">
+    <meta name="description" content="Git常见报错及处理方法一、如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git提示出错信息：fatal: remote origin ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>【Git】Git常见报错及处理方法 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -283,13 +283,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        【Git】Git常见报错及处理方法
                     </div>
                 </div>
             </div>
@@ -392,7 +392,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-03-15
+                    2020-03-16
                 </div>
 
                 
@@ -408,19 +408,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="Git常见报错及处理方法"><a href="#Git常见报错及处理方法" class="headerlink" title="Git常见报错及处理方法"></a>Git常见报错及处理方法</h2><h5 id="一、如果输入-git-remote-add-origin-git-github-com-gkm0120（github帐号名）-gitdemo（项目名）-git"><a href="#一、如果输入-git-remote-add-origin-git-github-com-gkm0120（github帐号名）-gitdemo（项目名）-git" class="headerlink" title="一、如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git"></a>一、如果输入$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120（github帐号名）/gitdemo（项目名）.git</h5><p>提示出错信息：fatal: remote origin already exists.<br>解决办法如下：<br>1、先输入$ git remote rm origin<br>2、再输入$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git 就不会报错了！<br>3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容<br>4、找到你的github的安装路径，我的是C:/Users/gkm0120/.git<br>5、找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！</p>
+<h5 id="二、如果输入-ssh-T-git-github-com"><a href="#二、如果输入-ssh-T-git-github-com" class="headerlink" title="二、如果输入$ ssh -T git@github.com"></a>二、如果输入$ ssh -T <a href="mailto:git@github.com">git@github.com</a></h5><p>出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。<br>解决办法如下：<br>1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。<br>2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。<br>3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。</p>
+<h5 id="三、如果输入-git-push-origin-master"><a href="#三、如果输入-git-push-origin-master" class="headerlink" title="三、如果输入$ git push origin master"></a>三、如果输入$ git push origin master</h5><p>提示出错信息：error: failed to push some refs to ‘git@github.com:gkm0120/-.git’<br>错误分析：本地没有update到最新版本的项目（git上有README.md文件没下载下来）、本地直接push所以会出错。</p>
+<p>解决办法如下（两种）：<br>第一种：<br>$ git pull –rebase origin master<br>……显示一串拉代码的英文，此时已经把github上最新的文件<br>然后在输入git push origin master,即可成功把本地的文件都上传到github上面去了<br>$ git push origin master</p>
+<p>第二种：<br>1、先输入$ git pull origin master //先把远程服务器github上面的文件拉下来<br>2、再输入$ git push origin master<br>3、如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.<br>4、则需要重新输入$ git remote add <a href="mailto:origingit@github.com">origingit@github.com</a>:gkm0120/gkm0120.github.io.git<br>使用git在本地创建一个项目的过程<br>$ makdir ~/hello-world //创建一个项目hello-world<br>$ cd ~/hello-world //打开这个项目<br>$ git init //初始化<br>$ touch README<br>$ git add README//更新README文件<br>$ git commit -m ‘first commit’ //提交更新，并注释信息“first commit”<br>$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git //连接远程github项目<br>$ git push -u origin master //将本地项目更新到github项目上去</p>
+<h5 id="四、场景：当我新建了一个项目时，使用git-clone之后，此时git-remote-v查看远程仓库为"><a href="#四、场景：当我新建了一个项目时，使用git-clone之后，此时git-remote-v查看远程仓库为" class="headerlink" title="四、场景：当我新建了一个项目时，使用git clone之后，此时git remote -v查看远程仓库为"></a>四、场景：当我新建了一个项目时，使用git clone之后，此时git remote -v查看远程仓库为</h5><p>$ git remote -v<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (fetch)<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (push)<br>然后给这个仓库起个新名字叫 gkm_git，此时我在git Bash提交代码时 git add .之前需要将 git remote -v的远程代码改成当前远程仓库的ssh地址；<br>解决方法（3种）：</p>
+<ol>
+<li>修改命令<br>git remte origin set-url URL </li>
+<li>先删后加<br>git remote rm origin<br>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm_git.git </li>
+<li>直接修改config文件<br>此时 git remote -v就知道该过来了<br>$ git remote -v<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (fetch)<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (push)</li>
+</ol>
+<p>参考链接：<a href="https://blog.csdn.net/Umbrella_Um/article/details/97271486" target="_blank" rel="noopener">https://blog.csdn.net/Umbrella_Um/article/details/97271486</a></p>
 
             </div>
             <hr/>
@@ -561,7 +560,7 @@
                     </span>
                     <a href="https://gkm0120.github.io" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/03/15/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2020/03/16/%E3%80%90Git%E3%80%91Git%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/" class="b-link-green">【Git】Git常见报错及处理方法</a>
                 </p>
             </div>
         </div>
@@ -582,9 +581,44 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2020/03/16/%E3%80%90Git%E3%80%91Git%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【Git】Git常见报错及处理方法">
+                        
+                        <span class="card-title">【Git】Git常见报错及处理方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Git常见报错及处理方法一、如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git提示出错信息：fatal: remote origin </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            gkm0120
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/03/15/%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84hexo+github%E5%8D%9A%E5%AE%A2/">
                     <div class="card-image">
@@ -609,39 +643,6 @@ bilibili链接https://www.bilibili.com/video/av24897960/
 
 bilibili链接https://www.bilibili.com/vide</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            gkm0120
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/15/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
-                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-15
                             </span>
@@ -653,7 +654,6 @@ bilibili链接https://www.bilibili.com/vide</div>
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
