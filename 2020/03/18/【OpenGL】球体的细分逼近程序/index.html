@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【Git】Git常见报错及处理方法, fighting">
-    <meta name="description" content="Git常见报错及处理方法一、如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git提示出错信息：fatal: remote origin ">
+    <meta name="keywords" content="【OpenGL】球体的细分逼近程序, fighting">
+    <meta name="description" content="
+/* 通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色 */
+/* 该程序在init()函数中还定义了材质和光源 */
+/* mode 0 = 线性框, mode 1 = 均与着色,
+mode 3 = 插值着色 */
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【Git】Git常见报错及处理方法 | 个人博客</title>
+    <title>【OpenGL】球体的细分逼近程序 | 个人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -305,13 +310,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【Git】Git常见报错及处理方法
+                        【OpenGL】球体的细分逼近程序
                     </div>
                 </div>
             </div>
@@ -414,21 +419,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-03-18
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        862
+                        787
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        4 分
                     </div>
                     
                 
@@ -444,19 +449,145 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Git常见报错及处理方法"><a href="#Git常见报错及处理方法" class="headerlink" title="Git常见报错及处理方法"></a>Git常见报错及处理方法</h2><h5 id="一、如果输入-git-remote-add-origin-git-github-com-gkm0120（github帐号名）-gitdemo（项目名）-git"><a href="#一、如果输入-git-remote-add-origin-git-github-com-gkm0120（github帐号名）-gitdemo（项目名）-git" class="headerlink" title="一、如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git"></a>一、如果输入$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120（github帐号名）/gitdemo（项目名）.git</h5><p>提示出错信息：fatal: remote origin already exists.<br>解决办法如下：<br>1、先输入$ git remote rm origin<br>2、再输入$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git 就不会报错了！<br>3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容<br>4、找到你的github的安装路径，我的是C:/Users/gkm0120/.git<br>5、找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！</p>
-<h5 id="二、如果输入-ssh-T-git-github-com"><a href="#二、如果输入-ssh-T-git-github-com" class="headerlink" title="二、如果输入$ ssh -T git@github.com"></a>二、如果输入$ ssh -T <a href="mailto:git@github.com">git@github.com</a></h5><p>出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。<br>解决办法如下：<br>1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。<br>2、如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。<br>3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。</p>
-<h5 id="三、如果输入-git-push-origin-master"><a href="#三、如果输入-git-push-origin-master" class="headerlink" title="三、如果输入$ git push origin master"></a>三、如果输入$ git push origin master</h5><p>提示出错信息：error: failed to push some refs to ‘git@github.com:gkm0120/-.git’<br>错误分析：本地没有update到最新版本的项目（git上有README.md文件没下载下来）、本地直接push所以会出错。</p>
-<p>解决办法如下（两种）：<br>第一种：<br>$ git pull –rebase origin master<br>……显示一串拉代码的英文，此时已经把github上最新的文件<br>然后在输入git push origin master,即可成功把本地的文件都上传到github上面去了<br>$ git push origin master</p>
-<p>第二种：<br>1、先输入$ git pull origin master //先把远程服务器github上面的文件拉下来<br>2、再输入$ git push origin master<br>3、如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.<br>4、则需要重新输入$ git remote add <a href="mailto:origingit@github.com">origingit@github.com</a>:gkm0120/gkm0120.github.io.git<br>使用git在本地创建一个项目的过程<br>$ makdir ~/hello-world //创建一个项目hello-world<br>$ cd ~/hello-world //打开这个项目<br>$ git init //初始化<br>$ touch README<br>$ git add README//更新README文件<br>$ git commit -m ‘first commit’ //提交更新，并注释信息“first commit”<br>$ git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git //连接远程github项目<br>$ git push -u origin master //将本地项目更新到github项目上去</p>
-<h5 id="四、场景：当我新建了一个项目时，使用git-clone之后，此时git-remote-v查看远程仓库为"><a href="#四、场景：当我新建了一个项目时，使用git-clone之后，此时git-remote-v查看远程仓库为" class="headerlink" title="四、场景：当我新建了一个项目时，使用git clone之后，此时git remote -v查看远程仓库为"></a>四、场景：当我新建了一个项目时，使用git clone之后，此时git remote -v查看远程仓库为</h5><p>$ git remote -v<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (fetch)<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (push)<br>然后给这个仓库起个新名字叫 gkm_git，此时我在git Bash提交代码时 git add .之前需要将 git remote -v的远程代码改成当前远程仓库的ssh地址；<br>解决方法（3种）：</p>
-<ol>
-<li>修改命令<br>git remte origin set-url URL </li>
-<li>先删后加<br>git remote rm origin<br>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm_git.git </li>
-<li>直接修改config文件<br>此时 git remote -v就知道该过来了<br>$ git remote -v<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (fetch)<br>origin  <a href="mailto:git@github.com">git@github.com</a>:gkm0120/gkm0120.github.io.git (push)</li>
-</ol>
-<p>参考链接：<a href="https://blog.csdn.net/Umbrella_Um/article/details/97271486" target="_blank" rel="noopener">https://blog.csdn.net/Umbrella_Um/article/details/97271486</a></p>
+                <pre><code>
+/* 通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色 */
+/* 该程序在init()函数中还定义了材质和光源 */
+/* mode 0 = 线性框, mode 1 = 均与着色,
+mode 3 = 插值着色 */
+#include &lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+#include &lt;GL/glut.h&gt;
+typedef float point[4];
+/* 初始化四面体 */
+point v[]={{0.0, 0.0, 1.0}, {0.0, 0.942809, -0.33333},
+    {-0.816497, -0.471405, -0.333333}, {0.816497, -0.471405, -0.333333}};
 
+GLfloat theta[] = {0.0,0.0,0.0};
+
+int n;
+int mode;
+void triangle( point a, point b, point c)
+/*利用GL_LINR_LOOP模式显示一个三角形的线性图，定义一个法向量用于均匀着色，定义三个法向量用于插值着色*/
+{
+ if (mode==0)  glBegin(GL_LINE_LOOP);
+ else  glBegin(GL_POLYGON);
+    if(mode==1) glNormal3fv(a);
+    if(mode==2) glNormal3fv(a);
+     glVertex3fv(a);
+    if(mode==2) glNormal3fv(b);
+    glVertex3fv(b);
+    if(mode==2) glNormal3fv(c);
+    glVertex3fv(c);
+ glEnd();
+}
+void normal(point p)
+{
+/* 矢量归一化 */
+double sqrt(double d);
+float d = 0.0;
+int i;
+for (i = 0; i &lt; 3; i++) d += p[i] * p[i];
+d = sqrt(d);
+if (d &gt; 0.0)
+    for (i = 0; i &lt; 3; i++) p[i] /= d;
+}
+void divide_triangle(point a, point b, point c, int m)
+{
+/* 基于顶点数目细分三角形，应用右手规则生成对象的外向表面 */
+ point v1, v2, v3;
+ int j;
+ if(m&gt;0)
+ {
+    for(j=0; j&lt;3; j++) v1[j]=a[j]+b[j];
+    normal(v1);
+    for(j=0; j&lt;3; j++) v2[j]=a[j]+c[j];
+    normal(v2);
+    for(j=0; j&lt;3; j++) v3[j]=b[j]+c[j];
+    normal(v3);
+    divide_triangle(a, v1, v2, m-1);
+    divide_triangle(c, v2, v3, m-1);
+    divide_triangle(b, v3, v1, m-1);
+    divide_triangle(v1, v3, v2, m-1);
+ }
+ else triangle(a,b,c); /* 递归结束时绘制三角形 */
+}
+
+void tetrahedron(int m)
+{
+/* 对四面体的表面应用三角细分 */
+ divide_triangle(v[0], v[1], v[2], m);
+ divide_triangle(v[3], v[2], v[1], m);
+ divide_triangle(v[0], v[3], v[1], m);
+ divide_triangle(v[0], v[2], v[3], m);
+}
+void display()
+{
+/* 逐一显示这三种模式下的四面体 */
+ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ glLoadIdentity();
+ mode=0;
+ tetrahedron(n);
+ mode=1;
+ glTranslatef(-2.0, 0.0, 0.0);
+ tetrahedron(n);
+ mode=2;
+ glTranslatef(4.0, 0.0, 0.0);
+ tetrahedron(n);
+ glFlush();
+}
+
+void myReshape(int w, int h)
+{
+ glViewport(0, 0, w, h);
+ glMatrixMode(GL_PROJECTION);
+ glLoadIdentity();
+ if (w &lt;= h)
+    glOrtho(-4.0, 4.0, -4.0 * (GLfloat) h / (GLfloat) w,
+        4.0 * (GLfloat) h / (GLfloat) w, -10.0, 10.0);
+ else
+    glOrtho(-4.0 * (GLfloat) w / (GLfloat) h,
+        4.0 * (GLfloat) w / (GLfloat) h, -4.0, 4.0, -10.0, 10.0);
+ glMatrixMode(GL_MODELVIEW);
+ display();
+}
+void myinit()
+{
+    GLfloat mat_specular[]={1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_diffuse[]={1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_ambient[]={1.0, 1.0, 1.0, 1.0};
+    GLfloat mat_shininess={100.0};
+    GLfloat light_ambient[]={0.0, 0.0, 0.0, 1.0};
+    GLfloat light_diffuse[]={1.0, 1.0, 1.0, 1.0};
+    GLfloat light_specular[]={1.0, 1.0, 1.0, 1.0};
+/* 为光源0分别设置环境光、漫反射光和镜面反射光的参数 */
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+/* 为所有三角形正面定义材质属性 */
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);
+    glShadeModel(GL_SMOOTH); /* 开启平滑着色 */
+    glEnable(GL_LIGHTING); /* 开启光照 */
+    glEnable(GL_LIGHT0); /* 开启光源0 */
+    glEnable(GL_DEPTH_TEST); /* 开启z-buffer */
+    glClearColor (1.0, 1.0, 1.0, 1.0);
+    glColor3f (0.0, 0.0, 0.0);
+}
+main(int argc, char **argv)
+{
+    n=4;//n=1,2,3,4,5,6……
+  //n=atoi(argv[1]);//直接运行会出错，具体参照BookCode的此处源码处理方案
+    glutInit(&amp;argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(500, 500);
+    glutCreateWindow(&quot;sphere&quot;);
+    myinit();
+    glutReshapeFunc(myReshape);
+    glutDisplayFunc(display);
+    glutMainLoop();
+}</code></pre>
             </div>
             <hr/>
 
@@ -596,7 +727,7 @@
                     </span>
                     <a href="https://gkm0120.github.io" class="b-link-green">个人博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/03/16/%E3%80%90Git%E3%80%91Git%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/" class="b-link-green">【Git】Git常见报错及处理方法</a>
+                    <a href="/2020/03/18/%E3%80%90OpenGL%E3%80%91%E7%90%83%E4%BD%93%E7%9A%84%E7%BB%86%E5%88%86%E9%80%BC%E8%BF%91%E7%A8%8B%E5%BA%8F/" class="b-link-green">【OpenGL】球体的细分逼近程序</a>
                 </p>
             </div>
         </div>
@@ -618,7 +749,7 @@
         repo: 'gkm0120.github.io',
         owner: 'gkm0120',
         admin: "gkm0120",
-        id: '2020-03-16T14-03-03',
+        id: '2020-03-18T16-42-54',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -898,9 +1029,49 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/18/%E3%80%90OpenGL%E3%80%91%E7%90%83%E4%BD%93%E7%9A%84%E7%BB%86%E5%88%86%E9%80%BC%E8%BF%91%E7%A8%8B%E5%BA%8F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="【OpenGL】球体的细分逼近程序">
+                        
+                        <span class="card-title">【OpenGL】球体的细分逼近程序</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+/* 通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色 */
+/* 该程序在init()函数中还定义了材质和光源 */
+/* mode 0 = 线性框, mode 1 = 均与着色,
+mode 3 = 插值着色 */
+</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            戈孔明
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/03/17/%E3%80%90Git%E3%80%91Git%E5%92%8CNode-js%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85/">
                     <div class="card-image">
@@ -914,52 +1085,8 @@
                 <div class="card-content article-content">
                     <div class="summary">一、Git安装教程下载地址：https://git-scm.com/downloads1、点击next2、根据自己想安装软件的位置来选者路径(我这里选择的是D:\blog)3、安装配置文件，自己需要选择4、不创建启动文件夹（勾选Don’t </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            戈孔明
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/15/%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84hexo+github%E5%8D%9A%E5%AE%A2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="搭建属于自己的hexo+github博客">
-                        
-                        <span class="card-title">搭建属于自己的hexo+github博客</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">一、node安装
-
-
-
-
-bilibili链接https://www.bilibili.com/video/av24897960/
-二、github注册
-
-
-
-
-bilibili链接https://www.bilibili.com/vide</div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
                             </span>
                         <span class="publish-author">
                             

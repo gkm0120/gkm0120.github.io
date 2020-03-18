@@ -1067,6 +1067,7 @@ table tr:nth-child(2n), thead {
     word-wrap: break-word;
     cursor: pointer;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
+    z-index: 0
 }
 
 .chip-container .chip:hover {
