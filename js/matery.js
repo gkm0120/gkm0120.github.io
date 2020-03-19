@@ -1,4 +1,4 @@
-$(function () {
+(function () {
     /**
      * 添加文章卡片hover效果.
      */
