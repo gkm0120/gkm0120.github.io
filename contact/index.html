@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类, fighting">
+    <meta name="keywords" content="contact, fighting">
     <meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>分类 | 个人博客</title>
+    <title>contact | 个人博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -356,26 +356,53 @@
 </div>
 
 <main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                你目前还没有对文章进行分类.
+    <div id="contact" class="container chip-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-comments"></i>&nbsp;&nbsp;留言板
+                </div>
                 
             </div>
         </div>
+        <div class="card">
+            
+            <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
     </div>
+    <div id="gitalk-container" class="card-content"></div>
 </div>
 
-    
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'gkm0120.github.io',
+        owner: 'gkm0120',
+        admin: null,
+        id: '2020-03-20T11-21-30',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
 
+    gitalk.render('gitalk-container');
+</script>
+            
+
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>
 </main>
 
 
