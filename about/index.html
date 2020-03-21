@@ -41,7 +41,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
     
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="个人博客" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -164,79 +164,79 @@
     <ul class="menu-list mobile-menu-list">
         
         <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
+      
+        <a href="/" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-home"></i>
+            
+            首页
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
+      
+        <a href="/tags" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-tags"></i>
+            
+            标签
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
+      
+        <a href="/categories" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-bookmark"></i>
+            
+            分类
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
+      
+        <a href="/archives" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-archive"></i>
+            
+            归档
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
+      
+        <a href="/about" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-user-circle"></i>
+            
+            关于
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
+      
+        <a href="/contact" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-comments"></i>
+            
+            留言板
+        </a>
           
         </li>
         
         <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
+      
+        <a href="/friends" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-address-book"></i>
+            
+            友情链接
+        </a>
           
         </li>
         
@@ -367,6 +367,12 @@
     <div id="aboutme" class="container about-container">
         <div class="card">
             <div class="card-content">
+                <div class="title center-align" data-aos="zoom-in-up">
+                <i class="fa fa-address-book"></i>&nbsp;&nbsp;myCV
+                </div>
+                <div id="articleContent" data-aos="fade-up">
+                    
+                </div>
                 <div class="row">
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
@@ -377,7 +383,17 @@
 
 
 
+<div class="statis">
+    <span class="count"><a href="/categories">5</a></span>
+    <span class="name">分类</span>
+</div>
 
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">6</a></span>
+    <span class="name">标签</span>
+</div>
 
 
                     </div>
@@ -397,7 +413,17 @@
 
 
 
+<div class="statis">
+    <span class="count"><a href="/categories">5</a></span>
+    <span class="name">分类</span>
+</div>
 
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">6</a></span>
+    <span class="name">标签</span>
+</div>
 
 
                                 </div>
@@ -581,7 +607,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [],
+                data: [{"name":"nodejs","value":1},{"name":"Git","value":1},{"name":"Hill","value":1},{"name":"OpengL","value":2},{"name":"Hexo","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -605,7 +631,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: []
+                data: ["git","opengl","hill","hexo","github","nodejs"]
             }
         ],
         yAxis: [
@@ -618,7 +644,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [],
+                data: [2,2,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -734,6 +760,42 @@
         <div class="sub-title center-align"><i class="fa fa-book"></i>&nbsp;&nbsp;其他技能</div>
         <div class="tag-chips center-align">
             
+            
+            <a href="/tags/git/">
+                <span class="chip center-align waves-effect waves-light chip-default">git</span>
+            </a>
+            
+            
+            
+            <a href="/tags/hill/">
+                <span class="chip center-align waves-effect waves-light chip-default">hill</span>
+            </a>
+            
+            
+            
+            <a href="/tags/opengl/">
+                <span class="chip center-align waves-effect waves-light chip-default">opengl</span>
+            </a>
+            
+            
+            
+            <a href="/tags/hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
+            </a>
+            
+            
+            
+            <a href="/tags/github/">
+                <span class="chip center-align waves-effect waves-light chip-default">github</span>
+            </a>
+            
+            
+            
+            <a href="/tags/nodejs/">
+                <span class="chip center-align waves-effect waves-light chip-default">nodejs</span>
+            </a>
+            
+            
         </div>
     </div>
     
@@ -839,10 +901,10 @@
 <script src="/libs/aplayer/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="https://gkm0120.github.io" target="_blank">戈孔明</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -868,6 +930,50 @@
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "3";
+                    var startDate = "15";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
@@ -945,21 +1051,17 @@ $(function () {
 
     <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
-
 <script>
+    var _hmt = _hmt || [];
     (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?";
         var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
+        s.parentNode.insertBefore(hm, s);
     })();
 </script>
+
+    <!-- Baidu Push -->
 
     
     <script src="/libs/others/clicklove.js" async="async"></script>
@@ -1002,8 +1104,27 @@ $(function () {
 <!-- 雪花特效 -->
  <script type="text/javascript" src="\js\snow.js"></script>
 
+<!-- 天气接口控件-戈孔明 -->
+
+  <!-- 天气接口控件-戈孔明 -->
+<script type="text/javascript">
+WIDGET = {FID: 'AadigmRNOG'}
+</script>
+<!--<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>-->
+
+<script type="text/javascript">
+//只在桌面版网页启用特效
+var windowWidth = $(window).width();
+if (windowWidth > 768){
+  document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+}
+</script>
+
+
 <!-- 数字雨
 <canvas id="canvas" width="1440" height="900" ></canvas>
 <script type="text/javascript" src="/js/DigitalRain.js"></script>
 -->
+
+
 
