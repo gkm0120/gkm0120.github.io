@@ -422,9 +422,9 @@ header .go-back i {
 
 .bg-cover:after {
     -webkit-animation: rainbow 30s infinite;
-    /* 原值 60s, 孔明 modify 2020.03*/
+    /* 原值 60s, 洪卫 modify 2019.08*/
     animation: rainbow 30s infinite;
-    /* 原值 60s, 孔明 modify 2020.03*/
+    /* 原值 60s, 洪卫 modify 2019.08*/
 }
 
 .bg-cover:before,

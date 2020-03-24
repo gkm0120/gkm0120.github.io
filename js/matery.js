@@ -107,7 +107,7 @@ $(function () {
             selector: '.img-item',
             // 启用字幕
             subHtmlSelectorRelative: true,
-            showThumbByDefault: false  //2018.08.14
+            showThumbByDefault: false  //
         });
 
         /*网站加载逻辑问题 网站加载逻辑问题：图片最后加载 洪卫 shw2018 modify 修改时间：2019.08.14*/
@@ -154,12 +154,12 @@ $(function () {
     $(".nav-menu>li").hover(function(){
 		$(this).children('ul').stop(true,true).show();
 		$(this).addClass('nav-show').siblings('li').removeClass('nav-show');
-		
+
 	},function(){
 		$(this).children('ul').stop(true,true).hide();
 		$('.nav-item.nav-show').removeClass('nav-show');
 	})
-	
+
     $('.m-nav-item>a').on('click',function(){
             if ($(this).next('ul').css('display') == "none") {
                 $('.m-nav-item').children('ul').slideUp(300);
