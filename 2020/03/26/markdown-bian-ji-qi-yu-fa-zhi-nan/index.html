@@ -6,10 +6,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="留言板, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
+    <meta name="keywords" content="Markdown 编辑器语法指南, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="留言板 | 孔明の博客">
+    <meta name="description" content="Markdown 编辑器语法指南基本技巧代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言
+$(docum">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>留言板 | 孔明の博客</title>
+    <title>Markdown 编辑器语法指南 | 孔明の博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -598,54 +599,296 @@
 
 </header>
 
-        <!-- shw2018 洪卫  modify 2019.08.15-->
-<div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                <!-- 
-                    孔明の博客
-                 -->
-                
-                    留言板
-                
-            </div>
-
-            <div class="description center-align">
-                
-                    <!-- 湖南师范大学 | 计算数学 | 计算机视觉 -->
-                    <span id="jinrishici-sentence">正在加载今日诗词...</span>
-                
-            </div>
-            
-            
-        </div>
-    </div>
-</div>
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
-// 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
 </script>
 
 
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Markdown 编辑器语法指南
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<main class="content">
-    <div id="aboutme" class="container contact-container">
-            <div class="card">
-                    <div class="card-content">
-                            <div id="articleContent" data-aos="fade-up">
-                                    <h2 id="畅所欲言"><a href="#畅所欲言" class="headerlink" title="畅所欲言"></a>畅所欲言</h2><hr>
-<p>在这里可以留下你的足迹，欢迎在下方留言，欢迎交换友链，一起交流学习！</p>
-<h2 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h2><hr>
-<p>孔明の友链信息</p>
-<p>博客名称: 孔明の博客</p>
-<p>博客网址: <a href="https://gkm0120.cn">https://gkm0120.cn</a></p>
-<p>博客头像: <a href="http://gkm0120.cn/kmge.jpg">http://gkm0120.cn/kmge.jpg</a></p>
-<p>博客介绍: HPCSIP  CVer！</p>
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- shw2018 洪卫  modify 2019.08.15-->
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Markdown/" target="_blank">
+                                <span class="chip bg-color">Markdown</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/文本编辑器/" class="post-category" target="_blank">
+                                文本编辑器
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-26
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                        戈孔明
+                    
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
+                
+                
+                
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv" ></span>
+    
+                
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Markdown-编辑器语法指南"><a href="#Markdown-编辑器语法指南" class="headerlink" title="Markdown 编辑器语法指南"></a>Markdown 编辑器语法指南</h1><h2 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>如果你只想高亮语句中的某个函数名或关键字，可以使用 <code>function_name()</code> 实现<br>通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre><code>$(document).ready(function () {
+    alert('hello world');
+});</code></pre><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>文章内容较多时，可以用标题分段：</p>
+<pre><code>标题1
+======
+
+标题2
+-----
+
+## 大标题 ##
+### 小标题 ###</code></pre><h3 id="粗斜体"><a href="#粗斜体" class="headerlink" title="粗斜体"></a>粗斜体</h3><p><code>*斜体文本*    _斜体文本_</code><br><code>**粗体文本**    __粗体文本__</code><br><code>***粗斜体文本***    ___粗斜体文本___</code></p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><h4 id="常用链接方法"><a href="#常用链接方法" class="headerlink" title="常用链接方法"></a>常用链接方法</h4><p><code>文字链接 [链接名称](http://链接网址)</code><br><code>网址链接 &lt;http://链接网址&gt;</code></p>
+<h4 id="高级链接技巧"><a href="#高级链接技巧" class="headerlink" title="高级链接技巧"></a>高级链接技巧</h4><p>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量.<br>这个链接用<a href="http://www.yahoo.com/" target="_blank" rel="noopener">yahoo</a>作为网址变量 <a href="http://www.yahoo.com/" target="_blank" rel="noopener">Yahoo!</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><h4 id="普通无序列表"><a href="#普通无序列表" class="headerlink" title="普通无序列表"></a>普通无序列表</h4><ul>
+<li>列表文本前使用 [减号+空格]</li>
+</ul>
+<ul>
+<li>列表文本前使用 [加号+空格]</li>
+</ul>
+<ul>
+<li>列表文本前使用 [星号+空格]</li>
+</ul>
+<h4 id="普通有序列表"><a href="#普通有序列表" class="headerlink" title="普通有序列表"></a>普通有序列表</h4><ol>
+<li>列表前使用 [数字+空格]</li>
+<li>我们会自动帮你添加数字</li>
+<li>不用担心数字不对，显示的时候我们会自动把这行的 4 纠正为 3</li>
+</ol>
+<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><ol>
+<li><p>列出所有元素：</p>
+<ul>
+<li>无序列表元素 A<ol>
+<li>元素 A 的有序子列表</li>
+</ol>
+</li>
+<li>前面加四个空格</li>
+</ul>
+</li>
+<li><p>列表里的多段换行：<br> 前面必须加四个空格，<br> 这样换行，整体的格式不会乱</p>
+</li>
+<li><p>列表里引用：</p>
+<blockquote>
+<p>前面空一行<br>仍然需要在 &gt;  前面加四个空格</p>
+</blockquote>
+</li>
+<li><p>列表里代码段：<br> 前面四个空格，之后按代码语法 ``` 书写</p>
+</li>
+</ol>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><h4 id="普通引用"><a href="#普通引用" class="headerlink" title="普通引用"></a>普通引用</h4><blockquote>
+<p>引用文本前使用 [大于号+空格]<br>折行可以不加，新起一行都要加上哦</p>
+</blockquote>
+<h4 id="引用里嵌套引用"><a href="#引用里嵌套引用" class="headerlink" title="引用里嵌套引用"></a>引用里嵌套引用</h4><blockquote>
+<p>最外层引用</p>
+<blockquote>
+<p>多一个 &gt; 嵌套一层引用</p>
+<blockquote>
+<p>可以嵌套很多层</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="引用里嵌套列表"><a href="#引用里嵌套列表" class="headerlink" title="引用里嵌套列表"></a>引用里嵌套列表</h4><blockquote>
+<ul>
+<li>这是引用里嵌套的一个列表</li>
+<li>还可以有子列表<ul>
+<li>子列表需要从 - 之后延后四个空格开始</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="引用里嵌套代码块"><a href="#引用里嵌套代码块" class="headerlink" title="引用里嵌套代码块"></a>引用里嵌套代码块</h4><blockquote>
+<pre><code>同样的，在前面加四个空格形成代码块</code></pre><pre><code>或者使用 ``` 形成代码块</code></pre></blockquote>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>跟链接的方法区别在于前面加了个感叹号 !<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/timg.jpg" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1585213994621&amp;di=2d6e986837fe3e00628807799adef217&amp;imgtype=0&amp;src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D3204887199%2C3790688592%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D4610%26h%3D2968" alt="图片名称"><br>也可以像网址那样对图片网址使用变量<br>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>如果是要起一个新段落，只需要空出一行即可。</p>
+<h3 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h3><p>可以新起一行输入三个减号-。当前后都有段落时，请空出一行：<br>前面的段落</p>
+<hr>
+<p>后面的段落</p>
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><h3 id="行内-HTML-元素"><a href="#行内-HTML-元素" class="headerlink" title="行内 HTML 元素"></a>行内 HTML 元素</h3><p>目前只支持部分段内 HTML 元素效果，包括<code>&lt;kdb&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code></p>
+<h4 id="键位显示"><a href="#键位显示" class="headerlink" title="键位显示"></a>键位显示</h4><p>使用 <code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;</code> 重启电脑</p>
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p><code>&lt;pre&gt;&lt;/pre&gt;</code></p>
+<h4 id="粗斜体-1"><a href="#粗斜体-1" class="headerlink" title="粗斜体"></a>粗斜体</h4><p><code>&lt;b&gt; Markdown*加粗* &lt;/b&gt;</code></p>
+<h4 id="符号转义"><a href="#符号转义" class="headerlink" title="符号转义"></a>符号转义</h4><p>如果你的描述中需要用到 markdown 的符号，比如 _ # * 等，但又不想它被转义，这时候可以在这些符号前加反斜杠，如 _ # * 进行避免。<br><code>\_不想这里的文本变斜体\_</code><br><code>\*\*不想这里的文本被加粗\*\*</code></p>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>支持 jsfiddle、gist、runjs、优酷视频，直接填写 url，在其之后会自动添加预览点击会展开相关内容。</p>
+<p>http://{url_of_the_fiddle}/embedded/[{tabs}/[{style}]]/<br><a href="https://gist.github.com/{gist_id}" target="_blank" rel="noopener">https://gist.github.com/{gist_id}</a><br><a href="http://runjs.cn/detail/{id}" target="_blank" rel="noopener">http://runjs.cn/detail/{id}</a><br><a href="http://v.youku.com/v_show/id_{video_id}.html" target="_blank" rel="noopener">http://v.youku.com/v_show/id_{video_id}.html</a></p>
+<p>公式<br>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
+<p>$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $$</p>
+<p>$$<br>x \href{why-equal.html}{=} y^2 + 1<br>$$<br>同时也支持 HTML 属性，如：<br>$$ (x+1)^2 = \class{hidden}{(x+1)(x+1)} $$</p>
+<p>$$<br>(x+1)^2 = \cssId{step1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>$$</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://segmentfault.com/markdown" target="_blank" rel="noopener">https://segmentfault.com/markdown</a></li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -665,20 +908,172 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             document.body.appendChild(img);
           });
       </script>
-                                </div>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">客官能否打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.bmp" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.bmp" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
-                   
-                        
-        
-                        
-        
-                        
-        
-                        
-        
-                        
-                        <style>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+            
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://gkm0120.cn" class="b-link-green">孔明の博客</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/" class="b-link-green">Markdown 编辑器语法指南</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -975,10 +1370,257 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 //   }, 800)
 
 </script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/">
+                    <div class="card-image">
                         
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Markdown 编辑器语法指南">
+                        
+                        <span class="card-title">Markdown 编辑器语法指南</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Markdown 编辑器语法指南基本技巧代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言
+$(docum
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/文本编辑器/" class="post-category" target="_blank">
+                                    文本编辑器
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/25/bian-ma-cai-jian-suan-fa-shi-xian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="编码裁剪算法实现">
+                        
+                        <span class="card-title">编码裁剪算法实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Cohen-Sutherland编码裁剪算法算法的基本思想是对每条直线段分三种情况处理：
+若点p1和p2完全在裁剪窗口内，则保留该直线
+若点p1(x1,y1)和 p2(x2,y2) 均在窗口外，且满足下列四个条件之一，就可以舍弃这条直线了：
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/计算机图形学/" class="post-category" target="_blank">
+                                    计算机图形学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OpenGL/" target="_blank">
+                        <span class="chip bg-color">OpenGL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 孔明の博客<br />'
+            + '作者: 戈孔明<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
 
     </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
 </main>
+
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
