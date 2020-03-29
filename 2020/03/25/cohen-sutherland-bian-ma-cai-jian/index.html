@@ -6,15 +6,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【OpenGL】球体的细分逼近程序, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
+    <meta name="keywords" content="Cohen-Sutherland编码裁剪, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="球体的细分逼近程序
-通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色
-
-/* 该程序在init()函数中还定义了材质和光源 */
-/* mode 0 = 线性框, mode 1 = 均与着色,
-mode 3 = 插值着色">
+    <meta name="description" content="Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示！二">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@ mode 3 = 插值着色">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【OpenGL】球体的细分逼近程序 | 孔明の博客</title>
+    <title>Cohen-Sutherland编码裁剪 | 孔明の博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -620,13 +615,13 @@ mode 3 = 插值着色">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【OpenGL】球体的细分逼近程序
+                        Cohen-Sutherland编码裁剪
                     </div>
                 </div>
             </div>
@@ -742,6 +737,10 @@ mode 3 = 插值着色">
                                 <span class="chip bg-color">OpenGL</span>
                             </a>
                         
+                            <a href="/tags/Cohen-Sutherland/" target="_blank">
+                                <span class="chip bg-color">Cohen-Sutherland</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -762,7 +761,7 @@ mode 3 = 插值着色">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-18
+                    2020-03-25
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -776,7 +775,7 @@ mode 3 = 插值着色">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        841
+                        1k
                     </div>
                     
 
@@ -800,146 +799,175 @@ mode 3 = 插值着色">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="球体的细分逼近程序"><a href="#球体的细分逼近程序" class="headerlink" title="球体的细分逼近程序"></a>球体的细分逼近程序</h2><ol>
-<li>通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色</li>
+                <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-1.jpg" target="_blank" rel="noopener">二维裁剪</a></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-2.jpg" target="_blank" rel="noopener">空间分割与区块编码</a></p>
+<p><strong>考虑线段o1,o2,对两端点的编码情况进行讨论，有四种情况：</strong></p>
+<ol>
+<li>若点o1和o2完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
+<li>若点o1和o2有一个端点在裁剪窗口内，如线段CD，非零的端点编码说明线段与剪裁窗口的哪条边或拿两条边相交判断是否要进行两次求交运算</li>
+<li>若o1和o2均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
+<li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-3.jpg" target="_blank" rel="noopener">Cohen-Sutherland编码裁剪</a><blockquote>
+<p>当要处理的线段很多，而实际显示的线段很少时，Cohen-Sutherland算法非常有效</p>
+</blockquote>
+</li>
 </ol>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 该程序在init()函数中还定义了材质和光源 */</span>
-<span class="token comment" spellcheck="true">/* mode 0 = 线性框, mode 1 = 均与着色,
-mode 3 = 插值着色 */</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;math.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glut.h></span></span>
-<span class="token keyword">typedef</span> <span class="token keyword">float</span> point<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/* 初始化四面体 */</span>
-point v<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.942809</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.33333</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span><span class="token operator">-</span><span class="token number">0.816497</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.471405</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.333333</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">0.816497</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.471405</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.333333</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*cohen-surtherland.cpp*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;gl/glut.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
 
-GLfloat theta<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.0</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> LEFT_EDGE 1</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> RIGHT_EDGE 2</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> BOTTOM_EDGE 4</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> TOP_EDGE 8</span>
 
-<span class="token keyword">int</span> n<span class="token punctuation">;</span>
-<span class="token keyword">int</span> mode<span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">triangle</span><span class="token punctuation">(</span> point a<span class="token punctuation">,</span> point b<span class="token punctuation">,</span> point c<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">/*利用GL_LINR_LOOP模式显示一个三角形的线性图，定义一个法向量用于均匀着色，
-定义三个法向量用于插值着色*/</span>
-<span class="token punctuation">{</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span>mode<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_LINE_LOOP<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">else</span>  <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_POLYGON<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>mode<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">glNormal3fv</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>mode<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token function">glNormal3fv</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token function">glVertex3fv</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>mode<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token function">glNormal3fv</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glVertex3fv</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>mode<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token function">glNormal3fv</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glVertex3fv</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">normal</span><span class="token punctuation">(</span>point p<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/* 矢量归一化 */</span>
-<span class="token keyword">double</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token keyword">double</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">float</span> d <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> i<span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> d <span class="token operator">+</span><span class="token operator">=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-d <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>d <span class="token operator">></span> <span class="token number">0.0</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/</span><span class="token operator">=</span> d<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">divide_triangle</span><span class="token punctuation">(</span>point a<span class="token punctuation">,</span> point b<span class="token punctuation">,</span> point c<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/* 基于顶点数目细分三角形，应用右手规则生成对象的外向表面 */</span>
- point v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> v3<span class="token punctuation">;</span>
- <span class="token keyword">int</span> j<span class="token punctuation">;</span>
- <span class="token keyword">if</span><span class="token punctuation">(</span>m<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span>
- <span class="token punctuation">{</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> v1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">normal</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> v2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>c<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">normal</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> v3<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>c<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">normal</span><span class="token punctuation">(</span>v3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">divide_triangle</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> m<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">divide_triangle</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> v3<span class="token punctuation">,</span> m<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">divide_triangle</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> v3<span class="token punctuation">,</span> v1<span class="token punctuation">,</span> m<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">divide_triangle</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v3<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> m<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
- <span class="token keyword">else</span> <span class="token function">triangle</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 递归结束时绘制三角形 */</span>
+<span class="token keyword">void</span> <span class="token function">LineGL</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span> <span class="token keyword">int</span> y0<span class="token punctuation">,</span> <span class="token keyword">int</span> x1<span class="token punctuation">,</span> <span class="token keyword">int</span> y1<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_LINES<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">glVertex2f</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">glVertex2f</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">void</span> <span class="token function">tetrahedron</span><span class="token punctuation">(</span><span class="token keyword">int</span> m<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/* 对四面体的表面应用三角细分 */</span>
- <span class="token function">divide_triangle</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">divide_triangle</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">divide_triangle</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">divide_triangle</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> Rectangle<span class="token punctuation">{</span>
+  <span class="token keyword">float</span> xmin<span class="token punctuation">,</span> xmax<span class="token punctuation">,</span> ymin<span class="token punctuation">,</span> ymax<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Rectangle rect<span class="token punctuation">;</span>
+<span class="token keyword">int</span> x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">CompCode</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> Rectangle rect<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> code <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token operator">&lt;</span> rect<span class="token punctuation">.</span>ymin<span class="token punctuation">)</span>
+    code <span class="token operator">=</span> code <span class="token operator">|</span> <span class="token number">4</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>y<span class="token operator">></span>rect<span class="token punctuation">.</span>ymax<span class="token punctuation">)</span>
+    code <span class="token operator">=</span> code <span class="token operator">|</span> <span class="token number">8</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token operator">></span>rect<span class="token punctuation">.</span>xmax<span class="token punctuation">)</span>
+    code <span class="token operator">=</span> code <span class="token operator">|</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token operator">&lt;</span>rect<span class="token punctuation">.</span>xmin<span class="token punctuation">)</span>
+    code <span class="token operator">=</span> code <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> code<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">cohensutherlandlineclip</span><span class="token punctuation">(</span>Rectangle rect<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>x0<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y0<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>x1<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y1<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/* 逐一显示这三种模式下的四面体 */</span>
- <span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT <span class="token operator">|</span> GL_DEPTH_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glLoadIdentity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- mode<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
- <span class="token function">tetrahedron</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
- mode<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
- <span class="token function">glTranslatef</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">tetrahedron</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
- mode<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
- <span class="token function">glTranslatef</span><span class="token punctuation">(</span><span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">tetrahedron</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> accept<span class="token punctuation">,</span> done<span class="token punctuation">;</span>
+  <span class="token keyword">float</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+  accept <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  done <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> code0<span class="token punctuation">,</span> code1<span class="token punctuation">,</span> codeout<span class="token punctuation">;</span>
+  code0 <span class="token operator">=</span> <span class="token function">CompCode</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  code1 <span class="token operator">=</span> <span class="token function">CompCode</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">do</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>code0 <span class="token operator">|</span> code1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//整条线段在窗口内</span>
+      accept <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//取之</span>
+      done <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>code0 <span class="token operator">&amp;</span> code1<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//两个端点同在窗口一侧，弃之</span>
+      done <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//线段与窗口存在交点</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>code0 <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        codeout <span class="token operator">=</span> code0<span class="token punctuation">;</span>
+      <span class="token keyword">else</span>
+        codeout <span class="token operator">=</span> code1<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//求交点</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>codeout<span class="token operator">&amp;</span>LEFT_EDGE<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        y <span class="token operator">=</span> y0 <span class="token operator">+</span> <span class="token punctuation">(</span>y1 <span class="token operator">-</span> y0<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>xmin <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>rect<span class="token punctuation">.</span>xmin<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>codeout<span class="token operator">&amp;</span>RIGHT_EDGE<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        y <span class="token operator">=</span> y0 <span class="token operator">+</span> <span class="token punctuation">(</span>y1 <span class="token operator">-</span> y0<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>xmax <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>rect<span class="token punctuation">.</span>xmax<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>codeout<span class="token operator">&amp;</span>BOTTOM_EDGE<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        x <span class="token operator">=</span> x0 <span class="token operator">+</span> <span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>ymin <span class="token operator">-</span> y0<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>y1 <span class="token operator">-</span> y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>rect<span class="token punctuation">.</span>ymin<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>codeout<span class="token operator">&amp;</span>TOP_EDGE<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        x <span class="token operator">=</span> x0 <span class="token operator">+</span> <span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>ymax <span class="token operator">-</span> y0<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>y1 <span class="token operator">-</span> y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        y <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>rect<span class="token punctuation">.</span>ymax<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">//舍弃在窗口外的部分线段</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>codeout <span class="token operator">==</span> code0<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        x0 <span class="token operator">=</span> x<span class="token punctuation">;</span> y0 <span class="token operator">=</span> y<span class="token punctuation">;</span>
+        code0 <span class="token operator">=</span> <span class="token function">CompCode</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">else</span>
+      <span class="token punctuation">{</span>
+        x1 <span class="token operator">=</span> x<span class="token punctuation">;</span> y1 <span class="token operator">=</span> y<span class="token punctuation">;</span>
+        code1 <span class="token operator">=</span> <span class="token function">CompCode</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>done<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>accept<span class="token punctuation">)</span>
+    <span class="token function">LineGL</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span><span class="token punctuation">{</span>
+    x0 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> x1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> y1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">LineGL</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> accept<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">void</span> <span class="token function">myReshape</span><span class="token punctuation">(</span><span class="token keyword">int</span> w<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
- <span class="token function">glViewport</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glMatrixMode</span><span class="token punctuation">(</span>GL_PROJECTION<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glLoadIdentity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">if</span> <span class="token punctuation">(</span>w <span class="token operator">&lt;=</span> h<span class="token punctuation">)</span>
-    <span class="token function">glOrtho</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> h <span class="token operator">/</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> w<span class="token punctuation">,</span>
-        <span class="token number">4.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> h <span class="token operator">/</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> w<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">10.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">else</span>
-    <span class="token function">glOrtho</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">4.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> w <span class="token operator">/</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> h<span class="token punctuation">,</span>
-        <span class="token number">4.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> w <span class="token operator">/</span> <span class="token punctuation">(</span>GLfloat<span class="token punctuation">)</span> h<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">10.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">glMatrixMode</span><span class="token punctuation">(</span>GL_MODELVIEW<span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">myDisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glRectf</span><span class="token punctuation">(</span>rect<span class="token punctuation">.</span>xmin<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>ymin<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>xmax<span class="token punctuation">,</span> rect<span class="token punctuation">.</span>ymax<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">LineGL</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token keyword">void</span> <span class="token function">myinit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    GLfloat mat_specular<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat mat_diffuse<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat mat_ambient<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat mat_shininess<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">100.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat light_ambient<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat light_diffuse<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    GLfloat light_specular<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/* 为光源0分别设置环境光、漫反射光和镜面反射光的参数 */</span>
-    <span class="token function">glLightfv</span><span class="token punctuation">(</span>GL_LIGHT0<span class="token punctuation">,</span> GL_AMBIENT<span class="token punctuation">,</span> light_ambient<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glLightfv</span><span class="token punctuation">(</span>GL_LIGHT0<span class="token punctuation">,</span> GL_DIFFUSE<span class="token punctuation">,</span> light_diffuse<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glLightfv</span><span class="token punctuation">(</span>GL_LIGHT0<span class="token punctuation">,</span> GL_SPECULAR<span class="token punctuation">,</span> light_specular<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">/* 为所有三角形正面定义材质属性 */</span>
-    <span class="token function">glMaterialfv</span><span class="token punctuation">(</span>GL_FRONT<span class="token punctuation">,</span> GL_SPECULAR<span class="token punctuation">,</span> mat_specular<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glMaterialfv</span><span class="token punctuation">(</span>GL_FRONT<span class="token punctuation">,</span> GL_AMBIENT<span class="token punctuation">,</span> mat_ambient<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glMaterialfv</span><span class="token punctuation">(</span>GL_FRONT<span class="token punctuation">,</span> GL_DIFFUSE<span class="token punctuation">,</span> mat_diffuse<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glMaterialf</span><span class="token punctuation">(</span>GL_FRONT<span class="token punctuation">,</span> GL_SHININESS<span class="token punctuation">,</span> mat_shininess<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glShadeModel</span><span class="token punctuation">(</span>GL_SMOOTH<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开启平滑着色 */</span>
-    <span class="token function">glEnable</span><span class="token punctuation">(</span>GL_LIGHTING<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开启光照 */</span>
-    <span class="token function">glEnable</span><span class="token punctuation">(</span>GL_LIGHT0<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开启光源0 */</span>
-    <span class="token function">glEnable</span><span class="token punctuation">(</span>GL_DEPTH_TEST<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 开启z-buffer */</span>
-    <span class="token function">glClearColor</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glColor3f</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">glClearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glShadeModel</span><span class="token punctuation">(</span>GL_FLAT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  rect<span class="token punctuation">.</span>xmin <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+  rect<span class="token punctuation">.</span>xmax <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span>
+  rect<span class="token punctuation">.</span>ymin <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+  rect<span class="token punctuation">.</span>ymax <span class="token operator">=</span> <span class="token number">300</span><span class="token punctuation">;</span>
+
+  x0 <span class="token operator">=</span> <span class="token number">450</span><span class="token punctuation">,</span> y0 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> x1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> y1 <span class="token operator">=</span> <span class="token number">450</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Press key 'c' to Clip!\nPress key 'r' to Restore!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
 <span class="token punctuation">}</span>
-<span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    n<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//n=1,2,3,4,5,6……</span>
-  <span class="token comment" spellcheck="true">//n=atoi(argv[1]);//直接运行会出错，具体参照BookCode的此处源码处理方案</span>
-    <span class="token function">glutInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutInitDisplayMode</span><span class="token punctuation">(</span>GLUT_SINGLE <span class="token operator">|</span> GLUT_RGB <span class="token operator">|</span> GLUT_DEPTH<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutInitWindowSize</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutCreateWindow</span><span class="token punctuation">(</span><span class="token string">"sphere"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">myinit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutReshapeFunc</span><span class="token punctuation">(</span>myReshape<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutDisplayFunc</span><span class="token punctuation">(</span>display<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">Reshape</span><span class="token punctuation">(</span><span class="token keyword">int</span> w<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">glViewport</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>GLsizei<span class="token punctuation">)</span> w<span class="token punctuation">,</span> <span class="token punctuation">(</span>GLsizei<span class="token punctuation">)</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glMatrixMode</span><span class="token punctuation">(</span>GL_PROJECTION<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glLoadIdentity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">gluOrtho2D</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>GLdouble<span class="token punctuation">)</span>w<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>GLdouble<span class="token punctuation">)</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">keyboard</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token string">'c'</span><span class="token punctuation">:</span>
+    <span class="token function">cohensutherlandlineclip</span><span class="token punctuation">(</span>rect<span class="token punctuation">,</span> x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">glutPostRedisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string">'r'</span><span class="token punctuation">:</span>
+    <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">glutPostRedisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string">'x'</span><span class="token punctuation">:</span>
+    <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">default</span><span class="token punctuation">:</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">glutInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutInitDisplayMode</span><span class="token punctuation">(</span>GLUT_RGB <span class="token operator">|</span> GLUT_SINGLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutInitWindowPosition</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutInitWindowSize</span><span class="token punctuation">(</span><span class="token number">640</span><span class="token punctuation">,</span><span class="token number">480</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutCreateWindow</span><span class="token punctuation">(</span><span class="token string">"Cohen-Sutherland"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutDisplayFunc</span><span class="token punctuation">(</span>myDisplay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutReshapeFunc</span><span class="token punctuation">(</span>Reshape<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutKeyboardFunc</span><span class="token punctuation">(</span>keyboard<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1109,7 +1137,7 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
                     </span>
                     <a href="https://gkm0120.cn" class="b-link-green">孔明の博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/03/18/opengl-qiu-ti-de-xi-fen-bi-jin-cheng-xu/" class="b-link-green">【OpenGL】球体的细分逼近程序</a>
+                    <a href="/2020/03/25/cohen-sutherland-bian-ma-cai-jian/" class="b-link-green">Cohen-Sutherland编码裁剪</a>
                 </p>
             </div>
 
@@ -1385,8 +1413,8 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
 <script>
     new Valine({
         el: '#vcomments',
-        appId: 'XXXXXXXXXXXXXXXXXXXXXXXX',
-        appKey: 'XXXXXXXXXXXXXXXXXXXXXX',
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
         notify: 'true' === 'true',
         verify: 'true' === 'true',
         visitor: 'true' === 'true',
@@ -1433,31 +1461,32 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/19/opengl-sierpinski-lou-dian-cheng-xu/">
+                <a href="/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【OpenGL】Sierpinski 镂垫程序">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Markdown 编辑器语法指南">
                         
-                        <span class="card-title">【OpenGL】Sierpinski 镂垫程序</span>
+                        <span class="card-title">Markdown 编辑器语法指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                              Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。生成算法如下：  第一步：在三角形内部随机选取一个点作为初始点；  第二步：在三角形的3个顶点
+                            Markdown 编辑器语法指南1. 基本技巧1.1 代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言
+
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-19
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/计算机图形学/" class="post-category" target="_blank">
-                                    计算机图形学
+                            <a href="/categories/编辑器/" class="post-category" target="_blank">
+                                    编辑器
                                 </a>
                             
                             
@@ -1467,8 +1496,8 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/OpenGL/" target="_blank">
-                        <span class="chip bg-color">OpenGL</span>
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>
@@ -1482,27 +1511,23 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/17/git-git-he-node-js-chong-xin-an-zhuang/">
+                <a href="/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/">
                     <div class="card-image">
                         
+                        <img src="/medias/banner/5.jpg" class="responsive-img" alt="Hexo+GitHub博客美化教程">
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="【Git】Git和Node.js重新安装">
-                        
-                        <span class="card-title">【Git】Git和Node.js重新安装</span>
+                        <span class="card-title">Hexo+GitHub博客美化教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git和Node.js重新安装1、Git安装教程1.1下载地址：https://git-scm.com/downloads1.2安装步骤：
-点击next
-根据自己想安装软件的位置来选择路径(我这里选择的是D:\blog)
-安装配置文件，自己
+                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-21
                             </span>
                         <span class="publish-author">
                             
@@ -1519,12 +1544,12 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/" target="_blank">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
-                    <a href="/tags/Nodejs/" target="_blank">
-                        <span class="chip bg-color">Nodejs</span>
+                    <a href="/tags/GitHub/" target="_blank">
+                        <span class="chip bg-color">GitHub</span>
                     </a>
                     
                 </div>
@@ -1701,7 +1726,7 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">8.4k</span> 字
+                <span class="white-color">20k</span> 字
             
 
             

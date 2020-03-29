@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.cn/"/>
-  <updated>2020-03-26T06:27:02.598Z</updated>
+  <updated>2020-03-29T14:07:33.929Z</updated>
   <id>https://gkm0120.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Markdown 编辑器语法指南</title>
-    <link href="https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
-    <id>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
-    <published>2020-03-26T01:24:52.000Z</published>
-    <updated>2020-03-26T06:27:02.598Z</updated>
+    <title>Liang-Barsky裁剪算法</title>
+    <link href="https://gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/"/>
+    <id>https://gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/</id>
+    <published>2020-03-29T13:38:16.000Z</published>
+    <updated>2020-03-29T14:07:33.929Z</updated>
     
     <summary type="html">
     
@@ -29,13 +29,70 @@
       
         
         
-          &lt;h1 id=&quot;Markdown-编辑器语法指南&quot;&gt;&lt;a href=&quot;#Markdown-编辑器语法指南&quot; class=&quot;headerlink&quot; title=&quot;Markdown 编辑器语法指南&quot;&gt;&lt;/a&gt;Markdown 编辑器语法指南&lt;/h1&gt;&lt;h2 id=&quot;基本技巧&quot;&gt;&lt;a
+          &lt;h2 id=&quot;Liang-Barsky裁剪算法&quot;&gt;&lt;a href=&quot;#Liang-Barsky裁剪算法&quot; class=&quot;headerlink&quot; title=&quot;Liang-Barsky裁剪算法&quot;&gt;&lt;/a&gt;Liang-Barsky裁剪算法&lt;/h2&gt;&lt;h3 id=&quot;原理&quot;&gt;&lt;a
         
       
     
     </summary>
     
-      <category term="文本编辑器" scheme="https://gkm0120.cn/categories/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+    
+      <category term="Liang-Barsky" scheme="https://gkm0120.cn/tags/Liang-Barsky/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Git批量上传图片</title>
+    <link href="https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/"/>
+    <id>https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/</id>
+    <published>2020-03-27T03:06:17.000Z</published>
+    <updated>2020-03-27T03:53:23.811Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;使用方法&quot;&gt;&lt;a href=&quot;#使用方法&quot; class=&quot;headerlink&quot; title=&quot;使用方法&quot;&gt;&lt;/a&gt;使用方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md
+        
+      
+    
+    </summary>
+    
+      <category term="批量上传图片" scheme="https://gkm0120.cn/categories/%E6%89%B9%E9%87%8F%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+    
+    
+      <category term="jsDelivr" scheme="https://gkm0120.cn/tags/jsDelivr/"/>
+    
+      <category term="CDN" scheme="https://gkm0120.cn/tags/CDN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown 编辑器语法指南</title>
+    <link href="https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
+    <id>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
+    <published>2020-03-26T01:24:52.000Z</published>
+    <updated>2020-03-29T03:04:05.990Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Markdown-编辑器语法指南&quot;&gt;&lt;a href=&quot;#Markdown-编辑器语法指南&quot; class=&quot;headerlink&quot; title=&quot;Markdown 编辑器语法指南&quot;&gt;&lt;/a&gt;Markdown 编辑器语法指南&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="编辑器" scheme="https://gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
     
       <category term="Markdown" scheme="https://gkm0120.cn/tags/Markdown/"/>
@@ -43,11 +100,11 @@
   </entry>
   
   <entry>
-    <title>编码裁剪算法实现</title>
-    <link href="https://gkm0120.cn/2020/03/25/bian-ma-cai-jian-suan-fa-shi-xian/"/>
-    <id>https://gkm0120.cn/2020/03/25/bian-ma-cai-jian-suan-fa-shi-xian/</id>
+    <title>Cohen-Sutherland编码裁剪</title>
+    <link href="https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/"/>
+    <id>https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</id>
     <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-03-26T13:08:28.310Z</updated>
+    <updated>2020-03-29T13:36:28.893Z</updated>
     
     <summary type="html">
     
@@ -66,14 +123,16 @@
     
       <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
     
+      <category term="Cohen-Sutherland" scheme="https://gkm0120.cn/tags/Cohen-Sutherland/"/>
+    
   </entry>
   
   <entry>
-    <title>Hexo+GitHub博客搭建完全教程</title>
-    <link href="https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-da-jian-wan-quan-jiao-cheng/"/>
-    <id>https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-da-jian-wan-quan-jiao-cheng/</id>
+    <title>Hexo+GitHub博客美化教程</title>
+    <link href="https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/"/>
+    <id>https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/</id>
     <published>2020-03-21T15:48:07.000Z</published>
-    <updated>2020-03-26T13:53:16.487Z</updated>
+    <updated>2020-03-28T13:46:27.806Z</updated>
     
     <summary type="html">
     
@@ -81,11 +140,7 @@
       
         
         
-          &lt;p&gt;$y = f(x)$&lt;br&gt;\[y = {f_{ {g_1}}}(x)\]&lt;/p&gt;
-&lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-       
+          &lt;h2 id=&quot;定制&quot;&gt;&lt;a href=&quot;#定制&quot; class=&quot;headerlink&quot;
         
       
     
@@ -127,11 +182,11 @@
   </entry>
   
   <entry>
-    <title>【OpenGL】Sierpinski 镂垫程序</title>
-    <link href="https://gkm0120.cn/2020/03/19/opengl-sierpinski-lou-dian-cheng-xu/"/>
-    <id>https://gkm0120.cn/2020/03/19/opengl-sierpinski-lou-dian-cheng-xu/</id>
+    <title>Sierpinski 镂垫程序</title>
+    <link href="https://gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/"/>
+    <id>https://gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/</id>
     <published>2020-03-19T10:12:31.000Z</published>
-    <updated>2020-03-26T13:06:38.788Z</updated>
+    <updated>2020-03-29T02:59:41.363Z</updated>
     
     <summary type="html">
     
@@ -153,11 +208,11 @@
   </entry>
   
   <entry>
-    <title>【OpenGL】球体的细分逼近程序</title>
-    <link href="https://gkm0120.cn/2020/03/18/opengl-qiu-ti-de-xi-fen-bi-jin-cheng-xu/"/>
-    <id>https://gkm0120.cn/2020/03/18/opengl-qiu-ti-de-xi-fen-bi-jin-cheng-xu/</id>
+    <title>球体的细分逼近程序</title>
+    <link href="https://gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/"/>
+    <id>https://gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/</id>
     <published>2020-03-18T08:42:54.000Z</published>
-    <updated>2020-03-26T13:06:18.400Z</updated>
+    <updated>2020-03-29T02:59:49.896Z</updated>
     
     <summary type="html">
     
@@ -179,11 +234,11 @@
   </entry>
   
   <entry>
-    <title>【Git】Git和Node.js重新安装</title>
-    <link href="https://gkm0120.cn/2020/03/17/git-git-he-node-js-chong-xin-an-zhuang/"/>
-    <id>https://gkm0120.cn/2020/03/17/git-git-he-node-js-chong-xin-an-zhuang/</id>
+    <title>Git和Node.js重新安装</title>
+    <link href="https://gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/"/>
+    <id>https://gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/</id>
     <published>2020-03-17T05:07:25.000Z</published>
-    <updated>2020-03-26T13:09:49.340Z</updated>
+    <updated>2020-03-29T02:58:56.413Z</updated>
     
     <summary type="html">
     
@@ -191,7 +246,7 @@
       
         
         
-          &lt;h1 id=&quot;Git和Node-js重新安装&quot;&gt;&lt;a href=&quot;#Git和Node-js重新安装&quot; class=&quot;headerlink&quot; title=&quot;Git和Node.js重新安装&quot;&gt;&lt;/a&gt;Git和Node.js重新安装&lt;/h1&gt;&lt;h2
+          &lt;h2 id=&quot;Git和Node-js重新安装&quot;&gt;&lt;a href=&quot;#Git和Node-js重新安装&quot; class=&quot;headerlink&quot; title=&quot;Git和Node.js重新安装&quot;&gt;&lt;/a&gt;Git和Node.js重新安装&lt;/h2&gt;&lt;h3
         
       
     
@@ -207,11 +262,11 @@
   </entry>
   
   <entry>
-    <title>【Git】Git常见报错及处理方法</title>
-    <link href="https://gkm0120.cn/2020/03/16/git-git-chang-jian-bao-cuo-ji-chu-li-fang-fa/"/>
-    <id>https://gkm0120.cn/2020/03/16/git-git-chang-jian-bao-cuo-ji-chu-li-fang-fa/</id>
+    <title>Git常见报错及处理方法</title>
+    <link href="https://gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/"/>
+    <id>https://gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/</id>
     <published>2020-03-16T06:03:03.000Z</published>
-    <updated>2020-03-26T13:40:48.862Z</updated>
+    <updated>2020-03-29T02:59:22.632Z</updated>
     
     <summary type="html">
     
@@ -219,7 +274,7 @@
       
         
         
-          &lt;h2 id=&quot;Git常见报错及处理方法&quot;&gt;&lt;a href=&quot;#Git常见报错及处理方法&quot; class=&quot;headerlink&quot; title=&quot;Git常见报错及处理方法&quot;&gt;&lt;/a&gt;Git常见报错及处理方法&lt;/h2&gt;&lt;h3
+          &lt;h2 id=&quot;Git常见报错及处理方法&quot;&gt;&lt;a href=&quot;#Git常见报错及处理方法&quot; class=&quot;headerlink&quot; title=&quot;Git常见报错及处理方法&quot;&gt;&lt;/a&gt;Git常见报错及处理方法&lt;/h2&gt;&lt;h3 id=&quot;Error-1&quot;&gt;&lt;a
         
       
     
@@ -233,11 +288,11 @@
   </entry>
   
   <entry>
-    <title>搭建属于自己的Hexo+GitHub博客</title>
-    <link href="https://gkm0120.cn/2020/03/15/da-jian-shu-yu-zi-ji-de-hexo-github-bo-ke/"/>
-    <id>https://gkm0120.cn/2020/03/15/da-jian-shu-yu-zi-ji-de-hexo-github-bo-ke/</id>
+    <title>搭建Hexo+GitHub博客</title>
+    <link href="https://gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/"/>
+    <id>https://gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/</id>
     <published>2020-03-15T06:24:06.000Z</published>
-    <updated>2020-03-26T13:09:31.664Z</updated>
+    <updated>2020-03-29T03:03:48.995Z</updated>
     
     <summary type="html">
     
@@ -245,8 +300,7 @@
       
         
         
-          &lt;h2 id=&quot;一、node安装&quot;&gt;&lt;a href=&quot;#一、node安装&quot; class=&quot;headerlink&quot; title=&quot;一、node安装&quot;&gt;&lt;/a&gt;一、node安装&lt;/h2&gt;
-&lt;div style=&quot;position: relative; width: 100%;
+          &lt;h2 id=&quot;博客搭建步骤&quot;&gt;&lt;a href=&quot;#博客搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;博客搭建步骤&quot;&gt;&lt;/a&gt;博客搭建步骤&lt;/h2&gt;&lt;h3 id=&quot;1-node安装&quot;&gt;&lt;a href=&quot;#1-node安装&quot; class=&quot;headerlink&quot;
         
       
     

@@ -6,21 +6,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建属于自己的Hexo+GitHub博客, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
+    <meta name="keywords" content="Liang-Barsky裁剪算法, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="一、node安装
-
-
-
-
-bilibili链接https://www.bilibili.com/video/av24897960/
-二、github注册
-
-
-
-
-bilibili链接https://www.bilibili.com/vide">
+    <meta name="description" content="Liang-Barsky裁剪算法原理
+用参数方程表示一条直线
+把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：入边：左边界和下边界——从裁剪框外向裁剪框内出边：右边界和上边界——从裁剪框内向裁剪框外！出边与入边
+分情况讨">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +20,7 @@ bilibili链接https://www.bilibili.com/vide">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>搭建属于自己的Hexo+GitHub博客 | 孔明の博客</title>
+    <title>Liang-Barsky裁剪算法 | 孔明の博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -626,13 +618,13 @@ bilibili链接https://www.bilibili.com/vide">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        搭建属于自己的Hexo+GitHub博客
+                        Liang-Barsky裁剪算法
                     </div>
                 </div>
             </div>
@@ -744,12 +736,12 @@ bilibili链接https://www.bilibili.com/vide">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hexo/" target="_blank">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/OpenGL/" target="_blank">
+                                <span class="chip bg-color">OpenGL</span>
                             </a>
                         
-                            <a href="/tags/GitHub/" target="_blank">
-                                <span class="chip bg-color">GitHub</span>
+                            <a href="/tags/Liang-Barsky/" target="_blank">
+                                <span class="chip bg-color">Liang-Barsky</span>
                             </a>
                         
                     </div>
@@ -760,8 +752,8 @@ bilibili链接https://www.bilibili.com/vide">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/博客搭建/" class="post-category" target="_blank">
-                                博客搭建
+                            <a href="/categories/计算机图形学/" class="post-category" target="_blank">
+                                计算机图形学
                             </a>
                         
                     </div>
@@ -772,7 +764,7 @@ bilibili链接https://www.bilibili.com/vide">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-15
+                    2020-03-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -786,14 +778,14 @@ bilibili链接https://www.bilibili.com/vide">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        183
+                        1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -810,60 +802,153 @@ bilibili链接https://www.bilibili.com/vide">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、node安装"><a href="#一、node安装" class="headerlink" title="一、node安装"></a>一、node安装</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007944&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+                <h2 id="Liang-Barsky裁剪算法"><a href="#Liang-Barsky裁剪算法" class="headerlink" title="Liang-Barsky裁剪算法"></a>Liang-Barsky裁剪算法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>用参数方程表示一条直线</li>
+<li>把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：<br>入边：左边界和下边界——从裁剪框外向裁剪框内<br>出边：右边界和上边界——从裁剪框内向裁剪框外<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-1.png" target="_blank" rel="noopener">出边与入边</a></li>
+<li>分情况讨论</li>
+</ol>
+<ul>
+<li>d=0，q&lt;0,  说明直线与裁剪框平行，并且位于裁剪框的外面，直线为不可见，可抛弃，直接结束；q&gt;=0，说明直线在它所平行的窗口边界的内部，还需进一步计算确定直线是否在窗口内、外、或者相交</li>
+<li>d&lt;0，说明直线是从裁剪边界的外部延伸到内部</li>
+<li>d&gt;0, 说明直线是从裁剪边界的内部延伸到外部<br>对于d≠0，可以利用式子计算直线与边界k的交点的参数u。对于每条直线，可以计算直线位于裁剪窗口内线段的参数d1和d2</li>
+<li>d1的值是由那些使得直线是从外部延伸到内部的窗口边界决定。对于这些边计算ri = qi/di，d1 = max(ri,0)</li>
+<li>d2的值是由那些使得直线是从内部延伸到窗口边界决定，d2 = min(ri,1)<br>如果d1&gt;d2,这条直线完全在窗口的外面，不可见，可抛弃，否则，根据参数u的两个值，计算出裁剪后线段的端点</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>  代码的思路：画一个矩形，来作为一个裁剪窗口，然后画一条黄色的直线。如果直线没有经过矩形区域，则为黄色，如果穿过矩形区域，则使用Liang-Barskey算法来进行裁剪，裁剪之后，再进行画一条黑色的直线来覆盖。</p>
+<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*liang-barsky.cpp*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;GL/glut.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;Windows.h></span></span>
+using namespace std<span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> ww 640   </span><span class="token comment" spellcheck="true">//屏幕的宽度</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> wh 480   </span><span class="token comment" spellcheck="true">//屏幕的高度</span>
+<span class="token keyword">int</span> xs<span class="token punctuation">,</span> ys<span class="token punctuation">,</span> xb<span class="token punctuation">,</span> yb<span class="token punctuation">;</span>
+<span class="token keyword">int</span> rl <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">,</span> rb <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> rr <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">,</span> rt <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">;</span>
+bool first<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//画线的方法</span>
+<span class="token keyword">void</span> <span class="token function">lineNew</span><span class="token punctuation">(</span><span class="token keyword">int</span> x0<span class="token punctuation">,</span> <span class="token keyword">int</span> y0<span class="token punctuation">,</span> <span class="token keyword">int</span> xEnd<span class="token punctuation">,</span> <span class="token keyword">int</span> yEnd<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//画黄色</span>
+  <span class="token function">glLineWidth</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_LINES<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glVertex2f</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glVertex2f</span><span class="token punctuation">(</span>xEnd<span class="token punctuation">,</span> yEnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<hr>
-<h3 id="bilibili链接"><a href="#bilibili链接" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/</a></p>
-<h2 id="二、github注册"><a href="#二、github注册" class="headerlink" title="二、github注册"></a>二、github注册</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007695&amp;page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+  <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<hr>
-<h3 id="bilibili链接-1"><a href="#bilibili链接-1" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=2</a></p>
-<h2 id="三、gitforwin安装"><a href="#三、gitforwin安装" class="headerlink" title="三、gitforwin安装"></a>三、gitforwin安装</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007693&amp;page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
 
-<hr>
-<h3 id="bilibili链接-2"><a href="#bilibili链接-2" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=3" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=3</a></p>
-<h2 id="四、githubSHH配置"><a href="#四、githubSHH配置" class="headerlink" title="四、githubSHH配置"></a>四、githubSHH配置</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007735&amp;page=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+<span class="token keyword">void</span> <span class="token function">myDisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<hr>
-<h3 id="bilibili链接-3"><a href="#bilibili链接-3" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=4" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=4</a></p>
-<h2 id="五、hexo本地使用"><a href="#五、hexo本地使用" class="headerlink" title="五、hexo本地使用"></a>五、hexo本地使用</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007773&amp;page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+  <span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//清空颜色缓冲池</span>
+  <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">,</span> <span class="token number">0.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置绘图颜色</span>
+  <span class="token function">glRectf</span><span class="token punctuation">(</span>rl<span class="token punctuation">,</span>rb<span class="token punctuation">,</span>rr<span class="token punctuation">,</span>rt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//绘制矩形</span>
+  <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//执行OpenGL指令列表中的指令</span>
+<span class="token punctuation">}</span>
+bool <span class="token function">ClipT</span><span class="token punctuation">(</span><span class="token keyword">float</span> p<span class="token punctuation">,</span> <span class="token keyword">float</span> q<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">*</span>u1<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">*</span>u2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">float</span> r<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    r <span class="token operator">=</span> q <span class="token operator">/</span> p<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token operator">*</span>u2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token operator">*</span>u1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token operator">*</span>u1 <span class="token operator">=</span> r<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    r <span class="token operator">=</span> q <span class="token operator">/</span> p<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;</span> <span class="token operator">*</span>u1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;</span> <span class="token operator">*</span>u2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token operator">*</span>u2 <span class="token operator">=</span> r<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> q <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> TRUE<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<hr>
-<h3 id="bilibili链接-4"><a href="#bilibili链接-4" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=5" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=5</a></p>
-<h2 id="六、sublime安装"><a href="#六、sublime安装" class="headerlink" title="六、sublime安装"></a>六、sublime安装</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42008078&amp;page=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+<span class="token keyword">void</span> <span class="token function">LB_LineClip</span><span class="token punctuation">(</span><span class="token keyword">float</span> x1<span class="token punctuation">,</span> <span class="token keyword">float</span> y1<span class="token punctuation">,</span> <span class="token keyword">float</span> x2<span class="token punctuation">,</span> <span class="token keyword">float</span> y2<span class="token punctuation">,</span> <span class="token keyword">float</span> XL<span class="token punctuation">,</span> <span class="token keyword">float</span> XR<span class="token punctuation">,</span> <span class="token keyword">float</span> YB<span class="token punctuation">,</span> <span class="token keyword">float</span> YT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">float</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">,</span> u1<span class="token punctuation">,</span> u2<span class="token punctuation">;</span>
+  u1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  u2 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  dx <span class="token operator">=</span> x2 <span class="token operator">-</span> x1<span class="token punctuation">;</span>
+  dy <span class="token operator">=</span> y2 <span class="token operator">-</span> y1<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">ClipT</span><span class="token punctuation">(</span><span class="token operator">-</span>dx<span class="token punctuation">,</span>x1<span class="token operator">-</span>XL<span class="token punctuation">,</span><span class="token operator">&amp;</span>u1<span class="token punctuation">,</span><span class="token operator">&amp;</span>u2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">ClipT</span><span class="token punctuation">(</span>dx<span class="token punctuation">,</span> XR <span class="token operator">-</span> x1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">ClipT</span><span class="token punctuation">(</span><span class="token operator">-</span>dy<span class="token punctuation">,</span> y1 <span class="token operator">-</span> YB<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">ClipT</span><span class="token punctuation">(</span>dy<span class="token punctuation">,</span> YT <span class="token operator">-</span> y1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>u2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">glLineWidth</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">glColor3f</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//黑色</span>
+          <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_LINES<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<hr>
-<h3 id="bilibili链接-5"><a href="#bilibili链接-5" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=6" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=6</a></p>
-<h2 id="七、hexo发布到github"><a href="#七、hexo发布到github" class="headerlink" title="七、hexo发布到github"></a>七、hexo发布到github</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007849&amp;page=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+          <span class="token function">glVertex2f</span><span class="token punctuation">(</span>x1 <span class="token operator">+</span> u1 <span class="token operator">*</span> dx<span class="token punctuation">,</span> y1 <span class="token operator">+</span> u1 <span class="token operator">*</span> dy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">glVertex2f</span><span class="token punctuation">(</span>x1 <span class="token operator">+</span> u2 <span class="token operator">*</span> dx<span class="token punctuation">,</span> y1 <span class="token operator">+</span> u2 <span class="token operator">*</span> dy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">glEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">glClearColor</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//即窗口的背景色</span>
+  <span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//清除颜色缓冲区，即窗口的背景色</span>
+  <span class="token function">glMatrixMode</span><span class="token punctuation">(</span>GL_MODELVIEW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glLoadIdentity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">gluOrtho2D</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span>ww<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<hr>
-<h3 id="bilibili链接-6"><a href="#bilibili链接-6" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=7" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=7</a></p>
-<h2 id="八、hexo主题预览"><a href="#八、hexo主题预览" class="headerlink" title="八、hexo主题预览"></a>八、hexo主题预览</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007872&amp;page=8" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">myMouse0</span><span class="token punctuation">(</span><span class="token keyword">int</span> button<span class="token punctuation">,</span> <span class="token keyword">int</span> state<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">glBegin</span><span class="token punctuation">(</span>GL_POINTS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>button <span class="token operator">==</span> GLUT_LEFT_BUTTON<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">==</span> GLUT_DOWN<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      xs <span class="token operator">=</span> x<span class="token punctuation">;</span>
+      ys <span class="token operator">=</span> wh <span class="token operator">-</span> y<span class="token punctuation">;</span>
+      <span class="token function">glVertex2i</span><span class="token punctuation">(</span>xs<span class="token punctuation">,</span> ys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      first <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      xb <span class="token operator">=</span> x<span class="token punctuation">;</span>
+      yb <span class="token operator">=</span> wh <span class="token operator">-</span> y<span class="token punctuation">;</span>
+      first <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>first<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">lineNew</span><span class="token punctuation">(</span>xs<span class="token punctuation">,</span> ys<span class="token punctuation">,</span> xb<span class="token punctuation">,</span> yb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">LB_LineClip</span><span class="token punctuation">(</span>xs<span class="token punctuation">,</span> ys<span class="token punctuation">,</span> xb<span class="token punctuation">,</span> yb<span class="token punctuation">,</span> rl<span class="token punctuation">,</span> rr<span class="token punctuation">,</span> rb<span class="token punctuation">,</span> rt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<hr>
-<h3 id="bilibili链接-7"><a href="#bilibili链接-7" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=8" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=8</a></p>
-<h2 id="九、hexo主题使用"><a href="#九、hexo主题使用" class="headerlink" title="九、hexo主题使用"></a>九、hexo主题使用</h2>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=24897960&amp;cid=42007766&amp;page=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;"></iframe></div>
+  <span class="token punctuation">}</span>
+  <span class="token function">glEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//glFlush()清空缓冲区，将指令送往缓硬件立即执行</span>
+<span class="token punctuation">}</span>
 
-<hr>
-<h3 id="bilibili链接-8"><a href="#bilibili链接-8" class="headerlink" title="bilibili链接"></a>bilibili链接</h3><p><a href="https://www.bilibili.com/video/av24897960/?p=9" target="_blank" rel="noopener">https://www.bilibili.com/video/av24897960/?p=9</a></p>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">glutInitDisplayMode</span><span class="token punctuation">(</span>GLUT_SINGLE <span class="token operator">|</span> GLUT_RGB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutInitWindowSize</span><span class="token punctuation">(</span>ww<span class="token punctuation">,</span> wh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutInitWindowPosition</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">150</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutCreateWindow</span><span class="token punctuation">(</span><span class="token string">"Liang-Barskey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutDisplayFunc</span><span class="token punctuation">(</span>myDisplay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">glutMouseFunc</span><span class="token punctuation">(</span>myMouse0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//持续显示，当窗口改变会重新绘制图形</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
+<li><a href="https://blog.csdn.net/weixin_34202952/article/details/94224985?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">Liang-Barsky算法</a></li>
+<li><a href="https://blog.csdn.net/pleasecallmewhy/article/details/8393445" target="_blank" rel="noopener">[OpenGL]计算机图形学：直线裁剪算法中Cohen-Sutherland算法和Liang-Barsky算法</a></li>
+<li><a href="https://blog.csdn.net/ding_programmer/article/details/90414243?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">Liang-Barskey算法以及代码实现</a></li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1032,7 +1117,7 @@ bilibili链接https://www.bilibili.com/vide">
                     </span>
                     <a href="https://gkm0120.cn" class="b-link-green">孔明の博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/03/15/da-jian-shu-yu-zi-ji-de-hexo-github-bo-ke/" class="b-link-green">搭建属于自己的Hexo+GitHub博客</a>
+                    <a href="/2020/03/29/liang-barsky-cai-jian-suan-fa/" class="b-link-green">Liang-Barsky裁剪算法</a>
                 </p>
             </div>
 
@@ -1308,8 +1393,8 @@ bilibili链接https://www.bilibili.com/vide">
 <script>
     new Valine({
         el: '#vcomments',
-        appId: 'XXXXXXXXXXXXXXXXXXXXXXXX',
-        appKey: 'XXXXXXXXXXXXXXXXXXXXXX',
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
         notify: 'true' === 'true',
         verify: 'true' === 'true',
         visitor: 'true' === 'true',
@@ -1352,46 +1437,55 @@ bilibili链接https://www.bilibili.com/vide">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/16/git-git-chang-jian-bao-cuo-ji-chu-li-fang-fa/">
+                <a href="/2020/03/29/liang-barsky-cai-jian-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="【Git】Git常见报错及处理方法">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Liang-Barsky裁剪算法">
                         
-                        <span class="card-title">【Git】Git常见报错及处理方法</span>
+                        <span class="card-title">Liang-Barsky裁剪算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git常见报错及处理方法Fatal:remote origin already exists.如果输入$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名
+                            Liang-Barsky裁剪算法原理
+用参数方程表示一条直线
+把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：入边：左边界和下边界——从裁剪框外向裁剪框内出边：右边界和上边界——从裁剪框内向裁剪框外！出边与入边
+分情况讨
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category" target="_blank">
-                                    Git
+                            <a href="/categories/计算机图形学/" class="post-category" target="_blank">
+                                    计算机图形学
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/" target="_blank">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/OpenGL/" target="_blank">
+                        <span class="chip bg-color">OpenGL</span>
+                    </a>
+                    
+                    <a href="/tags/Liang-Barsky/" target="_blank">
+                        <span class="chip bg-color">Liang-Barsky</span>
                     </a>
                     
                 </div>
@@ -1402,61 +1496,54 @@ bilibili链接https://www.bilibili.com/vide">
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/15/da-jian-shu-yu-zi-ji-de-hexo-github-bo-ke/">
+                <a href="/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="搭建属于自己的Hexo+GitHub博客">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="使用Git批量上传图片">
                         
-                        <span class="card-title">搭建属于自己的Hexo+GitHub博客</span>
+                        <span class="card-title">使用Git批量上传图片</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、node安装
-
-
-
-
-bilibili链接https://www.bilibili.com/video/av24897960/
-二、github注册
-
-
-
-
-bilibili链接https://www.bilibili.com/vide
+                            使用方法
+首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md 描述文件，如图所示：
+提交对应版本
+然后找到对应的SSH key
+利用git本地推送，默认在c盘，修改到d盘，初始化，克隆
+本地新建
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/博客搭建/" class="post-category" target="_blank">
-                                    博客搭建
+                            <a href="/categories/批量上传图片/" class="post-category" target="_blank">
+                                    批量上传图片
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/" target="_blank">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/jsDelivr/" target="_blank">
+                        <span class="chip bg-color">jsDelivr</span>
                     </a>
                     
-                    <a href="/tags/GitHub/" target="_blank">
-                        <span class="chip bg-color">GitHub</span>
+                    <a href="/tags/CDN/" target="_blank">
+                        <span class="chip bg-color">CDN</span>
                     </a>
                     
                 </div>
@@ -1633,7 +1720,7 @@ bilibili链接https://www.bilibili.com/vide
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">8.4k</span> 字
+                <span class="white-color">20k</span> 字
             
 
             
