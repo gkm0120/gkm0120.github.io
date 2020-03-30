@@ -32,10 +32,10 @@ mode 3 = 插值着色">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
+
     <style type="text/css">
         
-            
+
             code[class*="language-"],
             pre[class*="language-"] {
                 white-space: pre !important;
@@ -46,7 +46,7 @@ mode 3 = 插值着色">
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    
+
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -64,7 +64,7 @@ mode 3 = 插值着色">
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
                 }
                 else {
                     bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -75,7 +75,13 @@ mode 3 = 插值着色">
         </script>
     
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
     <body>
 
@@ -758,7 +764,7 @@ mode 3 = 插值着色">
                     
                 </div>
             </div>
-            
+
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
@@ -787,12 +793,12 @@ mode 3 = 插值着色">
                     </div>
                     
                 
-                
+
                 
                         <span id="busuanzi_container_site_pv" style='display:none'></span>
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv" ></span>
-    
+
                 
 
             </div>
@@ -803,7 +809,7 @@ mode 3 = 插值着色">
                 <h2 id="球体的细分逼近程序"><a href="#球体的细分逼近程序" class="headerlink" title="球体的细分逼近程序"></a>球体的细分逼近程序</h2><ol>
 <li>通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色</li>
 </ol>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* 该程序在init()函数中还定义了材质和光源 */</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 该程序在init()函数中还定义了材质和光源 */</span>
 <span class="token comment" spellcheck="true">/* mode 0 = 线性框, mode 1 = 均与着色,
 mode 3 = 插值着色 */</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -940,7 +946,7 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
     <span class="token function">glutReshapeFunc</span><span class="token punctuation">(</span>myReshape<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">glutDisplayFunc</span><span class="token punctuation">(</span>display<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1100,7 +1106,7 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
 <script src="/libs/share/js/social-share.min.js"></script>
 
             
-            
+
             
             <div class="reprint1">
                 <p>
@@ -1576,6 +1582,8 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
 </script>
 
 
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -1675,7 +1683,6 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
 
 
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1866,10 +1873,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -1918,6 +1921,13 @@ $(function () {
 
         <!-- 背景动态彩带-->
         
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

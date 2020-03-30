@@ -27,10 +27,10 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
+
     <style type="text/css">
         
-            
+
             code[class*="language-"],
             pre[class*="language-"] {
                 white-space: pre !important;
@@ -41,7 +41,7 @@
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    
+
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -59,7 +59,7 @@
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
                 }
                 else {
                     bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -70,7 +70,13 @@
         </script>
     
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
     <body>
 
@@ -753,7 +759,7 @@
                     
                 </div>
             </div>
-            
+
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
@@ -782,12 +788,12 @@
                     </div>
                     
                 
-                
+
                 
                         <span id="busuanzi_container_site_pv" style='display:none'></span>
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv" ></span>
-    
+
                 
 
             </div>
@@ -796,7 +802,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="希尔密码加密解密原理"><a href="#希尔密码加密解密原理" class="headerlink" title="希尔密码加密解密原理:"></a>希尔密码加密解密原理:</h4><p>  希尔密码是运用基本矩阵论原理的替换密码。每个字母当作26进制数字：A=0，B=1…一串字母当成n维向量，跟一个n×n的矩阵相乘，再将得出的结果MOD 26。注意用作加密的矩阵（即密钥）必须是可逆的，否则就不可能译码。只有矩阵的行列式和26互质，才是可逆的。</p>
-<h4 id="1、产生随机矩阵，输入明文，产生密文"><a href="#1、产生随机矩阵，输入明文，产生密文" class="headerlink" title="1、产生随机矩阵，输入明文，产生密文"></a>1、产生随机矩阵，输入明文，产生密文</h4><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*Hill密码/
+<h4 id="1、产生随机矩阵，输入明文，产生密文"><a href="#1、产生随机矩阵，输入明文，产生密文" class="headerlink" title="1、产生随机矩阵，输入明文，产生密文"></a>1、产生随机矩阵，输入明文，产生密文</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*Hill密码/
 /*理解算法最重要，最好自己动手实现试试看，可以使用MFC写一个简单的交互界面*/</span>
 
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -806,7 +812,7 @@
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;ctime></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cmath></span></span>
-using namespace std<span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/*定义一些常变量*/</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//定义集合{a,b,...,z}的26个英文字母</span>
@@ -833,9 +839,9 @@ using namespace std<span class="token punctuation">;</span>
     <span class="token keyword">int</span> d<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-class Hill_Cipher
+<span class="token keyword">class</span> <span class="token class-name">Hill_Cipher</span>
 <span class="token punctuation">{</span>
-public<span class="token punctuation">:</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token comment" spellcheck="true">//产生随机矩阵</span>
     <span class="token keyword">void</span> <span class="token function">random_Matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//求矩阵的行列式</span>
@@ -849,7 +855,7 @@ public<span class="token punctuation">:</span>
      *因为矩阵在模26的情形下存在可逆矩阵的充分必要条件是
      *gcd(det K,26) = 1
      */</span>
-    bool <span class="token function">Inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> <span class="token function">Inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">//矩阵相乘</span>
     <span class="token keyword">void</span> <span class="token function">multiphy</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -874,7 +880,7 @@ public<span class="token punctuation">:</span>
     <span class="token keyword">int</span> <span class="token function">Mod</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">void</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">random_Matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">void</span> Hill_Cipher<span class="token operator">::</span><span class="token function">random_Matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> ROW<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
@@ -888,7 +894,7 @@ public<span class="token punctuation">:</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//求矩阵的行列式</span>
-<span class="token keyword">int</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Det</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
+<span class="token keyword">int</span> Hill_Cipher<span class="token operator">::</span><span class="token function">Det</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
     <span class="token keyword">int</span> cofa<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//用于存放余子阵</span>
@@ -925,7 +931,7 @@ public<span class="token punctuation">:</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//求两个数的最大公约数</span>
-<span class="token keyword">int</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token keyword">int</span> Hill_Cipher<span class="token operator">::</span><span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> temp<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//交换两个数的大小,使得a为较大数</span>
@@ -949,15 +955,15 @@ public<span class="token punctuation">:</span>
  *因为矩阵在模26的情形下存在可逆矩阵的充分必要条件是
  *gcd(det K,26) = 1
  */</span>
-bool Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">bool</span> Hill_Cipher<span class="token operator">::</span><span class="token function">Inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">gcd</span><span class="token punctuation">(</span><span class="token function">Det</span><span class="token punctuation">(</span>matrix<span class="token punctuation">,</span>ROW<span class="token punctuation">)</span><span class="token punctuation">,</span>M<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
-        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">void</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">multiphy</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
+<span class="token keyword">void</span> Hill_Cipher<span class="token operator">::</span><span class="token function">multiphy</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//先将密文单元清零</span>
@@ -972,7 +978,7 @@ bool Hill_Cipher<span class="token punctuation">:</span><span class="token punct
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//将明文加密为密文</span>
-string Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">encryption</span><span class="token punctuation">(</span>string plaintext<span class="token punctuation">)</span>
+string Hill_Cipher<span class="token operator">::</span><span class="token function">encryption</span><span class="token punctuation">(</span>string plaintext<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> i<span class="token punctuation">;</span>
     string ciphertext<span class="token punctuation">;</span>
@@ -993,7 +999,7 @@ string Hill_Cipher<span class="token punctuation">:</span><span class="token pun
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//求出伴随矩阵</span>
-<span class="token keyword">void</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">adjoint_matrix</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
+<span class="token keyword">void</span> Hill_Cipher<span class="token operator">::</span><span class="token function">adjoint_matrix</span><span class="token punctuation">(</span><span class="token keyword">int</span> matrix<span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">[</span>ROW<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token keyword">int</span> row<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">int</span> i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token punctuation">,</span>l<span class="token punctuation">;</span>
     <span class="token keyword">int</span> p<span class="token punctuation">,</span>q<span class="token punctuation">;</span>
@@ -1025,7 +1031,7 @@ string Hill_Cipher<span class="token punctuation">:</span><span class="token pun
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">//将密文解密为明文(为了辨识清楚,我们统一以小写字母作为明文,大写字母作为密文)</span>
-string Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">deciphering</span><span class="token punctuation">(</span>string ciphertext<span class="token punctuation">)</span>
+string Hill_Cipher<span class="token operator">::</span><span class="token function">deciphering</span><span class="token punctuation">(</span>string ciphertext<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//求出矩阵的逆</span>
     string text<span class="token punctuation">;</span>
@@ -1049,7 +1055,7 @@ string Hill_Cipher<span class="token punctuation">:</span><span class="token pun
     <span class="token keyword">return</span> text<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-GCD Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">extended_Euclid</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+GCD Hill_Cipher<span class="token operator">::</span><span class="token function">extended_Euclid</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     GCD aa<span class="token punctuation">,</span>bb<span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -1069,16 +1075,16 @@ GCD Hill_Cipher<span class="token punctuation">:</span><span class="token punctu
     <span class="token keyword">return</span> aa<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">int</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> m<span class="token punctuation">)</span>
+<span class="token keyword">int</span> Hill_Cipher<span class="token operator">::</span><span class="token function">inverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> m<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     GCD aa<span class="token punctuation">;</span>
     aa <span class="token operator">=</span> <span class="token function">extended_Euclid</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> aa<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">int</span> Hill_Cipher<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Mod</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span>
+<span class="token keyword">int</span> Hill_Cipher<span class="token operator">::</span><span class="token function">Mod</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">?</span> a <span class="token operator">%</span> M <span class="token punctuation">:</span> <span class="token punctuation">(</span>M <span class="token operator">+</span> a <span class="token operator">%</span> M<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">?</span> a <span class="token operator">%</span> M <span class="token operator">:</span> <span class="token punctuation">(</span>M <span class="token operator">+</span> a <span class="token operator">%</span> M<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1181,12 +1187,12 @@ GCD Hill_Cipher<span class="token punctuation">:</span><span class="token punctu
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h4 id="2、输入密钥矩阵，输入明文，产生密文"><a href="#2、输入密钥矩阵，输入明文，产生密文" class="headerlink" title="2、输入密钥矩阵，输入明文，产生密文"></a>2、输入密钥矩阵，输入明文，产生密文</h4><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、输入密钥矩阵，输入明文，产生密文"><a href="#2、输入密钥矩阵，输入明文，产生密文" class="headerlink" title="2、输入密钥矩阵，输入明文，产生密文"></a>2、输入密钥矩阵，输入明文，产生密文</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdlib></span></span>
 <span class="token macro property">#<span class="token directive keyword">define</span> N 100</span>
-using namespace std<span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//按第一列展开，递归计算行列式值</span>
 <span class="token keyword">int</span> <span class="token function">caluDet</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>a<span class="token punctuation">)</span>
@@ -1228,7 +1234,7 @@ using namespace std<span class="token punctuation">;</span>
             p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    t <span class="token operator">=</span> len<span class="token operator">%</span>n<span class="token operator">></span><span class="token number">0</span> <span class="token operator">?</span> n<span class="token operator">-</span>len<span class="token operator">%</span>n <span class="token punctuation">:</span> len<span class="token operator">%</span>n<span class="token punctuation">;</span>
+    t <span class="token operator">=</span> len<span class="token operator">%</span>n<span class="token operator">></span><span class="token number">0</span> <span class="token operator">?</span> n<span class="token operator">-</span>len<span class="token operator">%</span>n <span class="token operator">:</span> len<span class="token operator">%</span>n<span class="token punctuation">;</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">//若最后一个明文对字母不足，则添加与最后一个明文相同的字母</span>
         p<span class="token punctuation">[</span><span class="token function">strlen</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> p<span class="token punctuation">[</span>len<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     p<span class="token punctuation">[</span><span class="token function">strlen</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span>
@@ -1288,7 +1294,7 @@ using namespace std<span class="token punctuation">;</span>
         <span class="token function">free</span><span class="token punctuation">(</span>key<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">free</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1448,7 +1454,7 @@ using namespace std<span class="token punctuation">;</span>
 <script src="/libs/share/js/social-share.min.js"></script>
 
             
-            
+
             
             <div class="reprint1">
                 <p>
@@ -1919,6 +1925,8 @@ using namespace std<span class="token punctuation">;</span>
 </script>
 
 
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -2018,7 +2026,6 @@ using namespace std<span class="token punctuation">;</span>
 
 
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -2209,10 +2216,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -2261,6 +2264,13 @@ $(function () {
 
         <!-- 背景动态彩带-->
         
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

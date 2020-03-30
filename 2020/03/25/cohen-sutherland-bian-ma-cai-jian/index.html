@@ -9,7 +9,8 @@
     <meta name="keywords" content="Cohen-Sutherland编码裁剪, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示！二">
+    <meta name="description" content="Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
+原">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,10 +28,10 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
+
     <style type="text/css">
         
-            
+
             code[class*="language-"],
             pre[class*="language-"] {
                 white-space: pre !important;
@@ -41,7 +42,7 @@
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    
+
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -59,7 +60,7 @@
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
                 }
                 else {
                     bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -70,7 +71,13 @@
         </script>
     
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
     <body>
 
@@ -757,7 +764,7 @@
                     
                 </div>
             </div>
-            
+
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
@@ -786,12 +793,12 @@
                     </div>
                     
                 
-                
+
                 
                         <span id="busuanzi_container_site_pv" style='display:none'></span>
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv" ></span>
-    
+
                 
 
             </div>
@@ -799,19 +806,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-1.jpg" target="_blank" rel="noopener">二维裁剪</a></p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-2.jpg" target="_blank" rel="noopener">空间分割与区块编码</a></p>
-<p><strong>考虑线段o1,o2,对两端点的编码情况进行讨论，有四种情况：</strong></p>
+                <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032901.jpg#pic_center=30x30" alt="二维裁剪"></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032902.jpg" alt="空间分割与区块编码"></p>
+<p><strong>考虑线段o<del>1</del>,o^2^,对两端点的编码情况进行讨论，有四种情况：</strong></p>
 <ol>
-<li>若点o1和o2完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
-<li>若点o1和o2有一个端点在裁剪窗口内，如线段CD，非零的端点编码说明线段与剪裁窗口的哪条边或拿两条边相交判断是否要进行两次求交运算</li>
-<li>若o1和o2均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
-<li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)<br>！<a href="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-29-3.jpg" target="_blank" rel="noopener">Cohen-Sutherland编码裁剪</a><blockquote>
+<li>若点 o<sub>1</sub> 和  o<sub>2</sub> 完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
+<li>若点 o<sub>1</sub> 和 o<sub>2</sub> 有一个端点在裁剪窗口内，如线段CD，非零的端点编码说明线段与剪裁窗口的哪条边或拿两条边相交判断是否要进行两次求交运算</li>
+<li>若 o<sub>1</sub> 和 o<sub>2</sub> 均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
+<li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032903.jpg" alt="Cohen-Sutherland编码裁剪"><blockquote>
 <p>当要处理的线段很多，而实际显示的线段很少时，Cohen-Sutherland算法非常有效</p>
 </blockquote>
 </li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*cohen-surtherland.cpp*/</span>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*cohen-surtherland.cpp*/</span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;gl/glut.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
@@ -939,18 +946,18 @@ Rectangle rect<span class="token punctuation">;</span>
 
 <span class="token keyword">void</span> <span class="token function">keyboard</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">switch</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">case</span> <span class="token string">'c'</span><span class="token punctuation">:</span>
+  <span class="token keyword">case</span> <span class="token string">'c'</span><span class="token operator">:</span>
     <span class="token function">cohensutherlandlineclip</span><span class="token punctuation">(</span>rect<span class="token punctuation">,</span> x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">glutPostRedisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string">'r'</span><span class="token punctuation">:</span>
+  <span class="token keyword">case</span> <span class="token string">'r'</span><span class="token operator">:</span>
     <span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">glutPostRedisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string">'x'</span><span class="token punctuation">:</span>
+  <span class="token keyword">case</span> <span class="token string">'x'</span><span class="token operator">:</span>
     <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">default</span><span class="token punctuation">:</span>
+  <span class="token keyword">default</span><span class="token operator">:</span>
     <span class="token keyword">break</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -968,7 +975,7 @@ Rectangle rect<span class="token punctuation">;</span>
   <span class="token function">glutKeyboardFunc</span><span class="token punctuation">(</span>keyboard<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1128,7 +1135,7 @@ Rectangle rect<span class="token punctuation">;</span>
 <script src="/libs/share/js/social-share.min.js"></script>
 
             
-            
+
             
             <div class="reprint1">
                 <p>
@@ -1600,6 +1607,8 @@ Rectangle rect<span class="token punctuation">;</span>
 </script>
 
 
+
+
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -1699,7 +1708,6 @@ Rectangle rect<span class="token punctuation">;</span>
 
 
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1890,10 +1898,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -1942,6 +1946,13 @@ $(function () {
 
         <!-- 背景动态彩带-->
         
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

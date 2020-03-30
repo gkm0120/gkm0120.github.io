@@ -28,10 +28,10 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
+
     <style type="text/css">
         
-            
+
             code[class*="language-"],
             pre[class*="language-"] {
                 white-space: pre !important;
@@ -42,7 +42,7 @@
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    
+
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -60,7 +60,7 @@
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
                 }
                 else {
                     bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -71,7 +71,13 @@
         </script>
     
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
     <body>
 
@@ -754,7 +760,7 @@
                     
                 </div>
             </div>
-            
+
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
@@ -783,12 +789,12 @@
                     </div>
                     
                 
-                
+
                 
                         <span id="busuanzi_container_site_pv" style='display:none'></span>
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv" ></span>
-    
+
                 
 
             </div>
@@ -797,9 +803,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Markdown-编辑器语法指南"><a href="#Markdown-编辑器语法指南" class="headerlink" title="Markdown 编辑器语法指南"></a>Markdown 编辑器语法指南</h1><h2 id="1-基本技巧"><a href="#1-基本技巧" class="headerlink" title="1. 基本技巧"></a>1. 基本技巧</h2><h3 id="1-1-代码"><a href="#1-1-代码" class="headerlink" title="1.1 代码"></a>1.1 代码</h3><p>如果你只想高亮语句中的某个函数名或关键字，可以使用 <code>function_name()</code> 实现<br>通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token function">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>$(document).ready(function () {
     alert('hello world');
 });</code></pre><h3 id="1-2-标题"><a href="#1-2-标题" class="headerlink" title="1.2 标题"></a>1.2 标题</h3><p>文章内容较多时，可以用标题分段：</p>
@@ -870,7 +876,7 @@
 </blockquote>
 <h4 id="1-7-4-引用里嵌套代码块"><a href="#1-7-4-引用里嵌套代码块" class="headerlink" title="1.7.4 引用里嵌套代码块"></a>1.7.4 引用里嵌套代码块</h4><blockquote>
 <pre><code>同样的，在前面加四个空格形成代码块</code></pre><pre><code>或者使用 ``` 形成代码块</code></pre></blockquote>
-<h3 id="1-8-图片"><a href="#1-8-图片" class="headerlink" title="1.8 图片"></a>1.8 图片</h3><p>跟链接的方法区别在于前面加了个感叹号 !<br><img src="：https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020-03-27-8.jpg" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1585213994621&amp;di=2d6e986837fe3e00628807799adef217&amp;imgtype=0&amp;src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D3204887199%2C3790688592%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D4610%26h%3D2968" alt="图片名称"><br>也可以像网址那样对图片网址使用变量<br>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
+<h3 id="1-8-图片"><a href="#1-8-图片" class="headerlink" title="1.8 图片"></a>1.8 图片</h3><p>跟链接的方法区别在于前面加了个感叹号 !<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1585213994621&amp;di=2d6e986837fe3e00628807799adef217&amp;imgtype=0&amp;src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D3204887199%2C3790688592%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D4610%26h%3D2968" alt="图片名称"><br>也可以像网址那样对图片网址使用变量<br>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
 <h3 id="1-9-换行"><a href="#1-9-换行" class="headerlink" title="1.9 换行"></a>1.9 换行</h3><p>如果是要起一个新段落，只需要空出一行即可。</p>
 <h3 id="1-10-分隔符"><a href="#1-10-分隔符" class="headerlink" title="1.10 分隔符"></a>1.10 分隔符</h3><p>可以新起一行输入三个减号-。当前后都有段落时，请空出一行：<br>前面的段落</p>
 <hr>
@@ -1048,7 +1054,7 @@
 <script src="/libs/share/js/social-share.min.js"></script>
 
             
-            
+
             
             <div class="reprint1">
                 <p>
@@ -1395,10 +1401,18 @@
                         
                             使用方法
 首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md 描述文件，如图所示：
+
+
+
 提交对应版本
+
+
+
 然后找到对应的SSH key
-利用git本地推送，默认在c盘，修改到d盘，初始化，克隆
-本地新建
+
+
+
+利用git本地推送，默认在c盘，修改到d盘，初始
                         
                     </div>
                     <div class="publish-info">
@@ -1451,7 +1465,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示！二
+                            Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
+原
                         
                     </div>
                     <div class="publish-info">
@@ -1527,6 +1542,8 @@
         window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
     });
 </script>
+
+
 
 
     </div>
@@ -1628,7 +1645,6 @@
 
 
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1819,10 +1835,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -1871,6 +1883,13 @@ $(function () {
 
         <!-- 背景动态彩带-->
         
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

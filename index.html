@@ -27,10 +27,10 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
+
     <style type="text/css">
         
-            
+
             code[class*="language-"],
             pre[class*="language-"] {
                 white-space: pre !important;
@@ -41,7 +41,7 @@
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    
+
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -59,7 +59,7 @@
                 var bp = document.createElement('script');
                 var curProtocol = window.location.protocol.split(':')[0];
                 if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
                 }
                 else {
                     bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -70,7 +70,13 @@
         </script>
     
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
     <body>
 
@@ -902,8 +908,11 @@ $(function () {
                             
                             Liang-Barsky裁剪算法原理
 用参数方程表示一条直线
-把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：入边：左边界和下边界——从裁剪框外向裁剪框内出边：右边界和上边界——从裁剪框内向裁剪框外！出边与入边
-分情况讨
+把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：入边：左边界和下边界——从裁剪框外向裁剪框内出边：右边界和上边界——从裁剪框内向裁剪框外
+分情况讨论
+
+
+d=
                             
                         </div>
                         <div class="publish-info">
@@ -956,10 +965,18 @@ $(function () {
                             
                             使用方法
 首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md 描述文件，如图所示：
+
+
+
 提交对应版本
+
+
+
 然后找到对应的SSH key
-利用git本地推送，默认在c盘，修改到d盘，初始化，克隆
-本地新建
+
+
+
+利用git本地推送，默认在c盘，修改到d盘，初始
                             
                         </div>
                         <div class="publish-info">
@@ -1058,7 +1075,8 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示！二
+                            Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
+原
                             
                         </div>
                         <div class="publish-info">
@@ -1668,10 +1686,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -1720,6 +1734,13 @@ $(function () {
 
         <!-- 背景动态彩带-->
         
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
