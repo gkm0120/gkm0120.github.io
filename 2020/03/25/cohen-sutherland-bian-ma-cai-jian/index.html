@@ -10,7 +10,8 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
-原">
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -77,6 +78,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
 <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+
 
 
     <body>
@@ -806,18 +808,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032901.jpg#pic_center=30x30" alt="二维裁剪"></p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032902.jpg" alt="空间分割与区块编码"></p>
-<p><strong>考虑线段o<del>1</del>,o^2^,对两端点的编码情况进行讨论，有四种情况：</strong></p>
+                <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032908.jpg" alt="二维裁剪"></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032909.jpg" alt="空间分割与区块编码"></p>
+<p><strong>考虑线段$ o_1 $$ o_2 $,对两端点的编码情况进行讨论，有四种情况：</strong></p>
 <ol>
-<li>若点 o<sub>1</sub> 和  o<sub>2</sub> 完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
-<li>若点 o<sub>1</sub> 和 o<sub>2</sub> 有一个端点在裁剪窗口内，如线段CD，非零的端点编码说明线段与剪裁窗口的哪条边或拿两条边相交判断是否要进行两次求交运算</li>
-<li>若 o<sub>1</sub> 和 o<sub>2</sub> 均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
-<li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032903.jpg" alt="Cohen-Sutherland编码裁剪"><blockquote>
+<li>若点$ o_1 $和$ o_2 $完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
+<li>若点$ o_1 $和$ o_2 $有一个端点在裁剪窗口内，如线段CD，非零的端点编码说明线段与剪裁窗口的哪条边或拿两条边相交判断是否要进行两次求交运算</li>
+<li>若$ o_1 $和$ o_2 $均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
+<li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032903.jpg" alt="Cohen-Sutherland编码裁剪"></p>
+<blockquote>
 <p>当要处理的线段很多，而实际显示的线段很少时，Cohen-Sutherland算法非常有效</p>
 </blockquote>
-</li>
-</ol>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*cohen-surtherland.cpp*/</span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;gl/glut.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
@@ -1707,14 +1712,22 @@ Rectangle rect<span class="token punctuation">;</span>
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright&copy; 2019 戈孔明.
+            Copyright&copy; 2019 戈孔明 <img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/icp.png">
+            <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
 
             <br>
-            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <span id="sitetime"></span><span class="my-face" >ღゝ◡╹)ノ♡</span>
             <br>
 
             
@@ -1734,11 +1747,12 @@ Rectangle rect<span class="token punctuation">;</span>
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">20k</span> 字
+                <span class="white-color">21.7k</span> 字
             
 
             
             <br>
+            <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 
         </div>
 
@@ -1823,8 +1837,6 @@ Rectangle rect<span class="token punctuation">;</span>
     } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
     siteTime();
 </script>
-
-
 
 
 
@@ -1954,5 +1966,5 @@ $(function () {
             </script>
         
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>

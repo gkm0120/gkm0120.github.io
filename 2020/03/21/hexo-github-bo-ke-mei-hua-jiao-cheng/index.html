@@ -80,6 +80,7 @@
 <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
 
 
+
     <body>
 
         <header class="navbar-fixed">
@@ -813,8 +814,8 @@
 <span class="token operator">-</span> public
 <span class="token operator">-</span> scaffolds
 <span class="token operator">-</span> source
-  <span class="token operator">-</span> _data <span class="token operator">-</span>
-  _posts
+  <span class="token operator">-</span> _data
+  <span class="token operator">-</span> _posts
   <span class="token operator">-</span> about
   <span class="token operator">-</span> archives
   <span class="token operator">-</span> categories
@@ -854,23 +855,23 @@ categories<span class="token punctuation">:</span>
 <span class="token operator">-</span> 软件安装与配置
 <span class="token operator">--</span><span class="token operator">-</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="1-2-4-layout-布局"><a href="#1-2-4-layout-布局" class="headerlink" title="1.2.4 layout(布局)"></a>1.2.4 layout(布局)</h5><p><strong>1.2.4.1 post</strong><br>当你每一次使用代码</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo new XXX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo new XXX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>它其实默认使用的是<code>post</code>这个布局，也就是在<code>source</code>文件夹下的<code>_post</code>里面。</p>
 <p><code>Hexo</code>有三种默认布局：<code>post</code>、<code>page</code>和<code>draft</code>，它们分别对应不同的路径，而您自定义的其他布局和<code>post</code>相同，都将储存到<code>source/_posts</code>文件夹。</p>
 <p>而new这个命令其实是：</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo new <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>title<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo new <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>title<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>只不过这个layout默认是post罢了。</p>
 <p><strong>1.2.4.2 page</strong></p>
 <p>如果你想另起一页，那么可以使用</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo new page newpage<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo new page newpage<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>系统会自动给你在source文件夹下创建一个<code>newpage</code>文件夹，以及<code>newpage</code>文件夹中的<code>index.md</code>，这样你访问的<code>newpage</code>对应的链接就是<a href="http://xxx.xxx/newpage" target="_blank" rel="noopener">http://xxx.xxx/newpage</a></p>
 <p><strong>1.2.4.3 draft</strong></p>
 <p><code>draft</code>是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo new draft newdraft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo new draft newdraft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这样会在<code>source/_draft</code>中新建一个<code>newdraft.md</code>文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo server <span class="token operator">--</span>draft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo server --draft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在本地端口中开启服务预览。<br>如果你的草稿文件写完了，想要发表到<code>post</code>中，</p>
-<pre class="line-numbers language-c"><code class="language-c">hexo publish draft newdraft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hexo publish draft newdraft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>就会自动把<code>newdraft.md</code>发送到<code>post</code>中。</p>
 <h3 id="2-更换主题"><a href="#2-更换主题" class="headerlink" title="2. 更换主题"></a>2. 更换主题</h3><p>我们在了解<code>Hexo</code>博客文件基础之后，知道主题文件就放在<code>themes</code>文件下，那么我们就可以去<code>Hexo</code>官网下载喜欢的主题，复制进去然后修改参数即可。<br>网上大多数主题都是github排名第一的<code>Next</code>主题，网上看到一个主题感觉还不错：<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">hexo-theme-matery</a>，地址在<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">传送门</a>。这个主题看着比较漂亮，并且响应式比较友好，点起来很舒服，功能也比较很多。</p>
 <blockquote>
@@ -898,20 +899,20 @@ categories<span class="token punctuation">:</span>
 </ul>
 <p>首先先按照文档教程安装一遍主题，然后是可以正常打开的，如果你是一般使用的话，基本没啥问题了。不过有些地方有些地方可以根据你自己的习惯和喜好修改一下， 下面记录一下我这个博客修改了的一些地方。</p>
 <h4 id="2-1-新建文章模板修改"><a href="#2-1-新建文章模板修改" class="headerlink" title="2.1 新建文章模板修改"></a>2.1 新建文章模板修改</h4><p>首先为了新建文章方便，我们可以修改一下文章模板，建议将<code>/scaffolds/post.md</code>修改为如下代码：</p>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">-</span>
-title<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> title <span class="token punctuation">}</span><span class="token punctuation">}</span>
-date<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> date <span class="token punctuation">}</span><span class="token punctuation">}</span>
-author<span class="token punctuation">:</span>
-img<span class="token punctuation">:</span>
-coverImg<span class="token punctuation">:</span>
-top<span class="token punctuation">:</span> false
-cover<span class="token punctuation">:</span> false
-toc<span class="token punctuation">:</span> true
-mathjax<span class="token punctuation">:</span> false
-password<span class="token punctuation">:</span>
-summary<span class="token punctuation">:</span>
-tags<span class="token punctuation">:</span>
-categories<span class="token punctuation">:</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">--</span><span class="token operator">-</span>
+title<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> title <span class="token punctuation">}</span><span class="token punctuation">}</span>
+date<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> date <span class="token punctuation">}</span><span class="token punctuation">}</span>
+author<span class="token operator">:</span>
+img<span class="token operator">:</span>
+coverImg<span class="token operator">:</span>
+top<span class="token operator">:</span> <span class="token boolean">false</span>
+cover<span class="token operator">:</span> <span class="token boolean">false</span>
+toc<span class="token operator">:</span> <span class="token boolean">true</span>
+mathjax<span class="token operator">:</span> <span class="token boolean">false</span>
+password<span class="token operator">:</span>
+summary<span class="token operator">:</span>
+tags<span class="token operator">:</span>
+categories<span class="token operator">:</span>
 <span class="token operator">--</span><span class="token operator">-</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这样新建文章后 一些<code>Front-matter</code>参数不用你自己补充了，修改对应信息就可以了。</p>
 <h4 id="2-2-添加404页面"><a href="#2-2-添加404页面" class="headerlink" title="2.2 添加404页面"></a>2.2 添加404页面</h4><p>原来的主题没有<code>404</code>页面，我们加一个。首先在<code>/source/</code>目录下新建一个<code>404.md</code>，内容如下：</p>
@@ -2422,7 +2423,8 @@ weather:
                     <div class="summary block-with-text">
                         
                             Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
-原
+
+
                         
                     </div>
                     <div class="publish-info">
@@ -2660,10 +2662,11 @@ weather:
         <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright&copy; 2019 戈孔明.
+            Copyright&copy; 2019 戈孔明 <img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/icp.png">
+            <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
 
             <br>
-            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <span id="sitetime"></span><span class="my-face" >ღゝ◡╹)ノ♡</span>
             <br>
 
             
@@ -2683,11 +2686,12 @@ weather:
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">20k</span> 字
+                <span class="white-color">21.7k</span> 字
             
 
             
             <br>
+            <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 
         </div>
 
@@ -2772,8 +2776,6 @@ weather:
     } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
     siteTime();
 </script>
-
-
 
 
 
@@ -2903,5 +2905,5 @@ $(function () {
             </script>
         
 
-    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>
