@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.cn/"/>
-  <updated>2020-04-01T09:17:39.986Z</updated>
+  <updated>2020-04-01T15:00:28.987Z</updated>
   <id>https://gkm0120.cn/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markdown中Latex编写技巧</title>
+    <link href="https://gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/"/>
+    <id>https://gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/</id>
+    <published>2020-04-01T13:04:57.000Z</published>
+    <updated>2020-04-01T15:00:28.987Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Markdown中Latex常用语法&quot;&gt;&lt;a href=&quot;#Markdown中Latex常用语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown中Latex常用语法&quot;&gt;&lt;/a&gt;Markdown中Latex常用语法&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="编辑器" scheme="https://gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+    
+      <category term="Markdown" scheme="https://gkm0120.cn/tags/Markdown/"/>
+    
+      <category term="Latex" scheme="https://gkm0120.cn/tags/Latex/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DDA算法与Bresenham算法</title>
-    <link href="https://gkm0120.cn/2020/03/31/dda-suan-fa/"/>
-    <id>https://gkm0120.cn/2020/03/31/dda-suan-fa/</id>
+    <link href="https://gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/"/>
+    <id>https://gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2020-04-01T09:17:39.986Z</updated>
+    <updated>2020-04-02T06:51:39.465Z</updated>
     
     <summary type="html">
     
@@ -106,7 +134,7 @@
     <link href="https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
     <id>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
     <published>2020-03-26T01:24:52.000Z</published>
-    <updated>2020-03-30T07:01:31.720Z</updated>
+    <updated>2020-04-02T14:35:46.222Z</updated>
     
     <summary type="html">
     
@@ -132,7 +160,7 @@
     <link href="https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/"/>
     <id>https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</id>
     <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-04-01T08:12:21.665Z</updated>
+    <updated>2020-04-01T15:04:07.632Z</updated>
     
     <summary type="html">
     

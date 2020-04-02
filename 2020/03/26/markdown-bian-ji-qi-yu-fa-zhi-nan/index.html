@@ -9,8 +9,8 @@
     <meta name="keywords" content="Markdown 编辑器语法指南, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="Markdown 编辑器语法指南1. 基本技巧1.1 代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言
-">
+    <meta name="description" content="Markdown 编辑器语法指南1. 基本技巧1.1 代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现通常编辑器根据代码片段适配合适的高亮方法，但你也可以用```包裹一段代码，并指定一种语言
+$(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,17 +28,6 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-
-    <style type="text/css">
-        
-
-            code[class*="language-"],
-            pre[class*="language-"] {
-                white-space: pre !important;
-            }
-
-        
-    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
@@ -731,7 +720,7 @@
 </style>
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
-        <!-- shw2018 洪卫  modify 2019.08.15-->
+        
 <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -803,8 +792,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Markdown-编辑器语法指南"><a href="#Markdown-编辑器语法指南" class="headerlink" title="Markdown 编辑器语法指南"></a>Markdown 编辑器语法指南</h1><h2 id="1-基本技巧"><a href="#1-基本技巧" class="headerlink" title="1. 基本技巧"></a>1. 基本技巧</h2><h3 id="1-1-代码"><a href="#1-1-代码" class="headerlink" title="1.1 代码"></a>1.1 代码</h3><p>如果你只想高亮语句中的某个函数名或关键字，可以使用 <code>function_name()</code> 实现<br>通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言</p>
-<pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token function">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <h1 id="Markdown-编辑器语法指南"><a href="#Markdown-编辑器语法指南" class="headerlink" title="Markdown 编辑器语法指南"></a>Markdown 编辑器语法指南</h1><h2 id="1-基本技巧"><a href="#1-基本技巧" class="headerlink" title="1. 基本技巧"></a>1. 基本技巧</h2><h3 id="1-1-代码"><a href="#1-1-代码" class="headerlink" title="1.1 代码"></a>1.1 代码</h3><p>如果你只想高亮语句中的某个函数名或关键字，可以使用 <code>function_name()</code> 实现<br>通常编辑器根据代码片段适配合适的高亮方法，但你也可以用<code>```</code>包裹一段代码，并指定一种语言</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>$(document).ready(function () {
@@ -851,7 +840,7 @@
 <p>前面空一行<br>仍然需要在 &gt;  前面加四个空格</p>
 </blockquote>
 </li>
-<li><p>列表里代码段：<br> 前面四个空格，之后按代码语法 ``` 书写</p>
+<li><p>列表里代码段：<br> 前面四个空格，之后按代码语法<code>```</code>书写</p>
 </li>
 </ol>
 <h3 id="1-7-引用"><a href="#1-7-引用" class="headerlink" title="1.7 引用"></a>1.7 引用</h3><h4 id="1-7-1-普通引用"><a href="#1-7-1-普通引用" class="headerlink" title="1.7.1 普通引用"></a>1.7.1 普通引用</h4><blockquote>
@@ -876,8 +865,8 @@
 </ul>
 </blockquote>
 <h4 id="1-7-4-引用里嵌套代码块"><a href="#1-7-4-引用里嵌套代码块" class="headerlink" title="1.7.4 引用里嵌套代码块"></a>1.7.4 引用里嵌套代码块</h4><blockquote>
-<pre><code>同样的，在前面加四个空格形成代码块</code></pre><pre><code>或者使用 ``` 形成代码块</code></pre></blockquote>
-<h3 id="1-8-图片"><a href="#1-8-图片" class="headerlink" title="1.8 图片"></a>1.8 图片</h3><p>跟链接的方法区别在于前面加了个感叹号 !<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1585213994621&amp;di=2d6e986837fe3e00628807799adef217&amp;imgtype=0&amp;src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D3204887199%2C3790688592%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D4610%26h%3D2968" alt="图片名称"><br>也可以像网址那样对图片网址使用变量<br>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
+<pre><code>同样的，在前面加四个空格形成代码块</code></pre></blockquote>
+<h3 id="1-8-图片"><a href="#1-8-图片" class="headerlink" title="1.8 图片"></a>1.8 图片</h3><p>跟链接的方法区别在于前面加了个感叹号 !<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032709.jpg"><br>也可以像网址那样对图片网址使用变量<br>这个链接用<a href="http://www.google.com/" target="_blank" rel="noopener">1</a>作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
 <h3 id="1-9-换行"><a href="#1-9-换行" class="headerlink" title="1.9 换行"></a>1.9 换行</h3><p>如果是要起一个新段落，只需要空出一行即可。</p>
 <h3 id="1-10-分隔符"><a href="#1-10-分隔符" class="headerlink" title="1.10 分隔符"></a>1.10 分隔符</h3><p>可以新起一行输入三个减号-。当前后都有段落时，请空出一行：<br>前面的段落</p>
 <hr>
@@ -894,7 +883,7 @@
 <p>$$<br>x \href{why-equal.html}{=} y^2 + 1<br>$$<br>同时也支持 HTML 属性，如：<br>$$ (x+1)^2 = \class{hidden}{(x+1)(x+1)} $$</p>
 <p>$$<br>(x+1)^2 = \cssId{step1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>$$</p>
 <h2 id="3-参考链接"><a href="#3-参考链接" class="headerlink" title="3. 参考链接"></a>3. 参考链接</h2><ol>
-<li><a href="https://segmentfault.com/markdown" target="_blank" rel="noopener">https://segmentfault.com/markdown</a></li>
+<li><a href="https://segmentfault.com/markdown" target="_blank" rel="noopener">Markdown编辑器语法指南</a></li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1546,6 +1535,28 @@
 </script>
 
 
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
 
 
     </div>
@@ -1646,6 +1657,15 @@
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
 
         <footer class="page-footer bg-color">
     <div class="container row center-align">
@@ -1674,7 +1694,7 @@
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">21.7k</span> 字
+                <span class="white-color">22.9k</span> 字
             
 
             
@@ -1892,6 +1912,13 @@ $(function () {
             }
             </script>
         
+
+         
+            <script src="" type="module"></script>
+            
+
+            <!-- 代码块复制功能 -->
+            <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
     <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>

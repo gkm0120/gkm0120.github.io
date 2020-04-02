@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/</loc>
-    <lastmod>2020-04-01</lastmod>
+    <loc>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</loc>
+    <lastmod>2020-04-02</lastmod>
   </url>  <url>
-    <loc>https://gkm0120.cn/2020/03/31/dda-suan-fa/</loc>
-    <lastmod>2020-04-01</lastmod>
+    <loc>https://gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/</loc>
+    <lastmod>2020-04-02</lastmod>
   </url>  <url>
     <loc>https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</loc>
+    <lastmod>2020-04-01</lastmod>
+  </url>  <url>
+    <loc>https://gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/</loc>
+    <lastmod>2020-04-01</lastmod>
+  </url>  <url>
+    <loc>https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/</loc>
     <lastmod>2020-04-01</lastmod>
   </url>  <url>
     <loc>https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/</loc>
@@ -23,9 +29,6 @@
     <lastmod>2020-03-30</lastmod>
   </url>  <url>
     <loc>https://gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/</loc>
-    <lastmod>2020-03-30</lastmod>
-  </url>  <url>
-    <loc>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</loc>
     <lastmod>2020-03-30</lastmod>
   </url>  <url>
     <loc>https://gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/</loc>
