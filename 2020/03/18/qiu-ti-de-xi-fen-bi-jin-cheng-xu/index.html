@@ -12,9 +12,9 @@
     <meta name="description" content="球体的细分逼近程序
 通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色
 
-/* 该程序在init()函数中还定义了材质和光源 */
+代码/* 该程序在init()函数中还定义了材质和光源 */
 /* mode 0 = 线性框, mode 1 = 均与着色,
-mode 3 = 插值着色">
+mode 3 = 插值">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -772,7 +772,7 @@ mode 3 = 插值着色">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        841
+                        845
                     </div>
                     
 
@@ -796,10 +796,10 @@ mode 3 = 插值着色">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="球体的细分逼近程序"><a href="#球体的细分逼近程序" class="headerlink" title="球体的细分逼近程序"></a>球体的细分逼近程序</h2><ol>
-<li>通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色</li>
-</ol>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 该程序在init()函数中还定义了材质和光源 */</span>
+                <h3 id="球体的细分逼近程序"><a href="#球体的细分逼近程序" class="headerlink" title="球体的细分逼近程序"></a>球体的细分逼近程序</h3><blockquote>
+<p>通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色</p>
+</blockquote>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 该程序在init()函数中还定义了材质和光源 */</span>
 <span class="token comment" spellcheck="true">/* mode 0 = 线性框, mode 1 = 均与着色,
 mode 3 = 插值着色 */</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -937,6 +937,7 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
     <span class="token function">glutDisplayFunc</span><span class="token punctuation">(</span>display<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040311.jpg">
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1441,7 +1442,13 @@ d <span class="token operator">=</span> <span class="token function">sqrt</span>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                              Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。生成算法如下：  第一步：在三角形内部随机选取一个点作为初始点；  第二步：在三角形的3个顶点
+                            
+Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。
+
+生成算法如下：
+
+在三角形内部随机选取一个点作为初始点；
+在三角形的3个顶点中随机选取一个，
                         
                     </div>
                     <div class="publish-info">
@@ -1724,7 +1731,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">22.9k</span> 字
+                <span class="white-color">24.2k</span> 字
             
 
             
@@ -1950,5 +1957,5 @@ $(function () {
             <!-- 代码块复制功能 -->
             <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":100,"height":225},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

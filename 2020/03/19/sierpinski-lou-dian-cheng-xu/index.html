@@ -9,7 +9,13 @@
     <meta name="keywords" content="Sierpinski 镂垫程序, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="  Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。生成算法如下：  第一步：在三角形内部随机选取一个点作为初始点；  第二步：在三角形的3个顶点">
+    <meta name="description" content="
+Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。
+
+生成算法如下：
+
+在三角形内部随机选取一个点作为初始点；
+在三角形的3个顶点中随机选取一个，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -791,8 +797,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>  Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。生成算法如下：<br>  第一步：在三角形内部随机选取一个点作为初始点；<br>  第二步：在三角形的3个顶点中随机选取一个，求出该顶点与初始点连线的中点，画出该中点；<br>  第三步：将第二步中的中点作为初始点，循环第二步；</p>
-<h4 id="1、绘制二维Sierpinski镂垫"><a href="#1、绘制二维Sierpinski镂垫" class="headerlink" title="1、绘制二维Sierpinski镂垫"></a>1、绘制二维Sierpinski镂垫</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*使用随机选择的顶点和中点绘制二维Sierpinski镂垫*/</span>
+                <blockquote>
+<p>Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。</p>
+</blockquote>
+<p>生成算法如下：</p>
+<ol>
+<li>在三角形内部随机选取一个点作为初始点；</li>
+<li>在三角形的3个顶点中随机选取一个，求出该顶点与初始点连线的中点，画出该中点；</li>
+<li>将第二步中的中点作为初始点，循环第二步；</li>
+</ol>
+<h2 id="Sierpinski镂垫"><a href="#Sierpinski镂垫" class="headerlink" title="Sierpinski镂垫"></a>Sierpinski镂垫</h2><h3 id="二维Sierpinski镂垫"><a href="#二维Sierpinski镂垫" class="headerlink" title="二维Sierpinski镂垫"></a>二维Sierpinski镂垫</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*使用随机选择的顶点和中点绘制二维Sierpinski镂垫*/</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glut.h></span></span>
 
@@ -844,7 +858,9 @@
   <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/*进入事件循环*/</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2、生成-Sierpinski-镂垫的递归程序"><a href="#2、生成-Sierpinski-镂垫的递归程序" class="headerlink" title="2、生成 Sierpinski 镂垫的递归程序"></a>2、生成 Sierpinski 镂垫的递归程序</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 通过细分三角形的方法生成Sierpinski镂垫 */</span>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg">
+
+<h3 id="生成-Sierpinski-镂垫的递归程序"><a href="#生成-Sierpinski-镂垫的递归程序" class="headerlink" title="生成 Sierpinski 镂垫的递归程序"></a>生成 Sierpinski 镂垫的递归程序</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 通过细分三角形的方法生成Sierpinski镂垫 */</span>
 <span class="token comment" spellcheck="true">/* 通过命令行输入递归的次数 */</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glut.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
@@ -893,7 +909,7 @@ GLfloat v<span class="token punctuation">[</span><span class="token number">3</s
 <span class="token punctuation">}</span>
 <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-     n<span class="token operator">=</span><span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 或者在此输入三角形细分的步数 */</span>
+     n<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 或者在此输入三角形细分的步数 */</span>
      <span class="token function">glutInit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
      <span class="token function">glutInitDisplayMode</span><span class="token punctuation">(</span>GLUT_SINGLE <span class="token operator">|</span> GLUT_RGB<span class="token punctuation">)</span><span class="token punctuation">;</span>
      <span class="token function">glutInitWindowSize</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -902,7 +918,9 @@ GLfloat v<span class="token punctuation">[</span><span class="token number">3</s
          <span class="token function">myinit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
      <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="3、三维-Sierpinski-镂垫的递归程序"><a href="#3、三维-Sierpinski-镂垫的递归程序" class="headerlink" title="3、三维 Sierpinski 镂垫的递归程序"></a>3、三维 Sierpinski 镂垫的递归程序</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 通过递归细分四面体方法生成Sierpinski镂垫 */</span>
+<h4 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040312.jpg">
+
+<h3 id="三维-Sierpinski-镂垫的递归程序"><a href="#三维-Sierpinski-镂垫的递归程序" class="headerlink" title="三维 Sierpinski 镂垫的递归程序"></a>三维 Sierpinski 镂垫的递归程序</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* 通过递归细分四面体方法生成Sierpinski镂垫 */</span>
 <span class="token comment" spellcheck="true">/* 通过命令行递归的次数 */</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glut.h></span></span>
@@ -985,6 +1003,9 @@ GLfloat colors<span class="token punctuation">[</span><span class="token number"
  <span class="token function">glClearColor</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040313.jpg">
+
+
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1541,9 +1562,9 @@ GLfloat colors<span class="token punctuation">[</span><span class="token number"
                             球体的细分逼近程序
 通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色
 
-/* 该程序在init()函数中还定义了材质和光源 */
+代码/* 该程序在init()函数中还定义了材质和光源 */
 /* mode 0 = 线性框, mode 1 = 均与着色,
-mode 3 = 插值着色
+mode 3 = 插值
                         
                     </div>
                     <div class="publish-info">
@@ -1769,7 +1790,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">22.9k</span> 字
+                <span class="white-color">24.2k</span> 字
             
 
             
@@ -1995,5 +2016,5 @@ $(function () {
             <!-- 代码块复制功能 -->
             <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":100,"height":225},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

@@ -6,11 +6,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="DDA算法与Bresenham算法, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
+    <meta name="keywords" content="直线段的扫描转换算法, HPCSIP CV DeepLearning MachineLearning 孔明 GeKongming 计算机视觉 深度学习">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="DDA算法直线段的扫描转换算法在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。
-给出确定的两个端点$ \bigl(x_0,y_0\bigr) $和">
+    <meta name="description" content="DDA算法
+Digital Differential Analyer
+
+在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。
+给出确定的两个端点$ \">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>DDA算法与Bresenham算法 | 孔明の博客</title>
+    <title>直线段的扫描转换算法 | 孔明の博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -612,13 +615,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        DDA算法与Bresenham算法
+                        直线段的扫描转换算法
                     </div>
                 </div>
             </div>
@@ -772,14 +775,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        9 分
                     </div>
                     
                 
@@ -796,20 +799,32 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="DDA算法"><a href="#DDA算法" class="headerlink" title="DDA算法"></a>DDA算法</h2><h3 id="直线段的扫描转换算法"><a href="#直线段的扫描转换算法" class="headerlink" title="直线段的扫描转换算法"></a>直线段的扫描转换算法</h3><p>在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg"></p>
-<p>给出确定的两个端点$ \bigl(x_0,y_0\bigr) $和$ \bigl(x_1,y_1\bigr) $，即斜率$ k=\frac{y_1-y_0}{x_1-x_0} $<br>现假定$ x $已知，即从起点$ x_0 $开始，沿$ x $方向前进一个像素（步长=1），可以计算相应的$ y $值<br>注：因为像素的坐标是整数，而斜率$k$是浮点数，所以对于计算出的$ y $值需要进行取整处理</p>
-<h3 id="数值微分DDA法"><a href="#数值微分DDA法" class="headerlink" title="数值微分DDA法"></a>数值微分DDA法</h3><blockquote>
+                <h2 id="DDA算法"><a href="#DDA算法" class="headerlink" title="DDA算法"></a>DDA算法</h2><blockquote>
 <p>Digital Differential Analyer</p>
 </blockquote>
+<p>在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg"></p>
+<p>给出确定的两个端点$ \bigl(x_0,y_0\bigr) $和$ \bigl(x_1,y_1\bigr) $，即斜率$ k=\frac{y_1-y_0}{x_1-x_0} $<br>现假定$ x $已知，即从起点$ x_0 $开始，沿$ x $方向前进一个像素（步长=1），可以计算相应的$ y $值</p>
+<blockquote>
+<p>注：因为像素的坐标是整数，而斜率$k$是浮点数，所以对于计算出的$ y $值需要进行取整处理</p>
+</blockquote>
 <ol>
-<li>基本思想：<br> $ k\le1 $时，对$ x $值计算相应的$ y $值（对$ y $取整），从而确定需要给那些像素着色<br> $ k&gt;1 $时，对$ y $值计算相应的$ x $值（对$ x $取整），从而确定需要给那些像素着色</li>
+<li>基本思想：</li>
 </ol>
+<ul>
+<li>$ k\le1 $时，对$ x $值计算相应的$ y $值（对$ y $取整），从而确定需要给那些像素着色</li>
+<li>$ k&gt;1 $时，对$ y $值计算相应的$ x $值（对$ x $取整），从而确定需要给那些像素着色</li>
+</ul>
 <img width="200" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033102.jpg">
 
 <ol start="2">
-<li>优化计算思想：增量思想<br>$ y_i=kx_i+b $，$ y_{i+1}=kx_{i+1}+b=k(x_i+1)+b=y_i+k $，那么斜率$ k $即可看为前进一步的增量，这样就把将乘法运算变成了加法</li>
+<li>优化计算思想：增量思想</li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;GL\glut.h></span></span>
+<ul>
+<li>$ k\le1 $时,对于 $ y_i=kx_i+b $，$ y_{i+1}=kx_{i+1}+b=k(x_i+1)+b=y_i+k $，那么斜率$ k $即可看为前进一步的增量，这样就把将乘法运算变成了加法</li>
+<li>$ k&gt;1 $时，取$ x_{i+1}=x_i+\frac{1}{k} $即可</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*DDA.cpp*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;GL\glut.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cmath></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -832,7 +847,6 @@
     <span class="token comment" spellcheck="true">/*
         两点重合尚未判断
     */</span>
-
     <span class="token keyword">int</span> dm <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>x2 <span class="token operator">-</span> x1<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token function">abs</span><span class="token punctuation">(</span>y2 <span class="token operator">-</span> y1<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
@@ -914,7 +928,40 @@
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>DDA算法在编码实现比较容易，但是每生成一个像素都要用到一次浮点加法运算，Bresenham的线段光栅化算法可以避免浮点运算。</p>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040305.jpg">
+
+
+<h2 id="中点画线算法"><a href="#中点画线算法" class="headerlink" title="中点画线算法"></a>中点画线算法</h2><blockquote>
+<p>效率上最快</p>
+</blockquote>
+<p>基本思想：采用直线的一般式方程$ F(x,y)=Ax+By+C=0 $<br>$ F(x,y)=Ax+By+C=0\le\left|k\right|\le1 $,$ x_i+1\rightarrow y_i \rightarrow \begin{cases}y_i \\y_i +1\end{cases}$，把浮点运算改成整数加法。</p>
+<p>假定$ 0\le\left|k\right|\le1 $，沿$x$方向前进一个像素，$x_i \rightarrow x_i+1$，计算出$y_i \rightarrow \begin{cases}y_i \\y_i +1\end{cases} $.</p>
+<ul>
+<li>当中点$M$在$Q$下方时，则$P_u$离直线近一些，选择$P_u$作为下一个像素点</li>
+<li>当中点$M$在$Q$上方时，则$P_d$离直线近一些，选择$P_d$作为下一个像素点</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040301.jpg">
+
+<p>判断$M$与$Q$的位置关系：将$M$点坐标代入方程有$d_i=A(x_i+1)+B(y_i+0.5)+C$</p>
+<ul>
+<li>当$d_i\geq0$时选择$P_d$</li>
+<li>当$d_i&lt;0$时选择$P_u$</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040302.jpg">
+
+<p>优化计算：$p(x_i,y_i)$在直线上即$Ax_i+By_i+C=0$，初值$d_0=F\left(x_i+1,y_i+0.5\right)=A+0.5B$</p>
+<ul>
+<li><p>当选择了$P_u$作为像素点时，$d_0=F\left(x_i+1,y_i+0.5\right)$；$d_1=F\left(x_i+2,y_i+1.5\right)=d_0+A+B$</p>
+</li>
+<li><p>当选择了$P_d$作为像素点时，$d_0=F\left(x_i+1,y_i+0.5\right)$；$d_1=F\left(x_i+2,y_i+0.5\right)=d_0+A$</p>
+</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040303.jpg">
+
+<h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><blockquote>
+<p>适用范围扩大，与方程无关不仅限于画直线</p>
+</blockquote>
+<h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>DDA算法在编码实现比较容易，但是每生成一个像素都要用到一次浮点加法运算，Bresenham的线段光栅化算法可以避免浮点运算。</p>
 <ol>
 <li>假设线段的起点$ \bigl(x_0,y_0\bigr) $和终点$ \bigl(x_1,y_1\bigr) $的坐标值都是整数，且斜率满足$ 0\leq m\leq 1 $</li>
 <li>在线段扫描转换过程某一步中，假定已知$ (i+\frac{1}{2},j+\frac{1}{2}) $的像素。该线段所在的直线方程为$ y=mx+h $,当$ x=i+\frac{1}{2} $时，该直线与$ (i+\frac{1}{2},j+\frac{1}{2}) $处像素的垂直扫描线的实际交点是在垂直扫描线上位于该像素的半个像素内部的某一点（假定像素中心位置的坐标值位于两个整数之间），否则，对该实际交点进行四舍五入处理后不可能得到当前这个像素。</li>
@@ -1076,8 +1123,11 @@
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg">
+
+
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://blog.csdn.net/wodownload2/" target="_blank" rel="noopener">https://blog.csdn.net/wodownload2/</a></li>
+<li><a href="https://www.icourse163.org/learn/CAU-45006?tid=1450413503#/learn/content?type=detail&amp;id=1215011255" target="_blank" rel="noopener">https://www.icourse163.org/learn/CAU-45006?tid=1450413503#/learn/content?type=detail&amp;id=1215011255</a></li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1247,7 +1297,7 @@
                     </span>
                     <a href="https://gkm0120.cn" class="b-link-green">孔明の博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/03/31/dda-yu-bresenham-suan-fa/" class="b-link-green">DDA算法与Bresenham算法</a>
+                    <a href="/2020/03/31/dda-yu-bresenham-suan-fa/" class="b-link-green">直线段的扫描转换算法</a>
                 </p>
             </div>
 
@@ -1903,7 +1953,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">22.9k</span> 字
+                <span class="white-color">24.2k</span> 字
             
 
             
@@ -2129,5 +2179,5 @@ $(function () {
             <!-- 代码块复制功能 -->
             <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":100,"height":225},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

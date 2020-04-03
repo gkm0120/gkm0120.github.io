@@ -798,9 +798,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Cohen-Sutherland编码裁剪算法"><a href="#Cohen-Sutherland编码裁剪算法" class="headerlink" title="Cohen-Sutherland编码裁剪算法"></a>Cohen-Sutherland编码裁剪算法</h2><h3 id="二维剪裁"><a href="#二维剪裁" class="headerlink" title="二维剪裁"></a>二维剪裁</h3><p>二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032908.jpg" alt="二维裁剪"></p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032901.jpg">
+
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。<br>该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032909.jpg" alt="空间分割与区块编码"></p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032902.jpg">
+
 <p><strong>考虑线段$ o_1 $$ o_2 $,对两端点的编码情况进行讨论，有四种情况：</strong></p>
 <ol>
 <li>若点$ o_1 $和$ o_2 $完全在裁剪窗口内，则保留该直线，如线段AB，然后进行光栅化处理</li>
@@ -808,7 +810,8 @@
 <li>若$ o_1 $和$ o_2 $均不为0，对两个端点编码按位与运算，判断是否在同一侧，若是舍弃，如线段EF</li>
 <li>如果直线段既不满足保留的条件，也不满足舍弃的条件？那么需要对直线段按交点进行分段，分段后判断直线是保留还是舍弃。（如GH与IJ)</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032903.jpg" alt="Cohen-Sutherland编码裁剪"></p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032903.jpg">
+
 <blockquote>
 <p>当要处理的线段很多，而实际显示的线段很少时，Cohen-Sutherland算法非常有效</p>
 </blockquote>
@@ -970,8 +973,10 @@ Rectangle rect<span class="token punctuation">;</span>
   <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040307.jpg">
+
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://blog.csdn.net/yao1373446012/article/details/78375644" target="_blank" rel="noopener">计算机图形学-直线裁剪（Cohen-Sutherland编码裁剪算法）</a></li>
+<li><a href="https://blog.csdn.net/yao1373446012/article/details/78375644" target="_blank" rel="noopener">计算机图形学-直线裁剪(Cohen-Sutherland编码裁剪算法)</a></li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1515,30 +1520,33 @@ $(
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/">
+                <a href="/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/">
                     <div class="card-image">
                         
-                        <img src="/medias/banner/5.jpg" class="responsive-img" alt="Hexo+GitHub博客美化教程">
                         
-                        <span class="card-title">Hexo+GitHub博客美化教程</span>
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Cohen-Sutherland编码裁剪">
+                        
+                        <span class="card-title">Cohen-Sutherland编码裁剪</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                            Cohen-Sutherland编码裁剪算法二维剪裁二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
+
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/博客搭建/" class="post-category" target="_blank">
-                                    博客搭建
+                            <a href="/categories/计算机图形学/" class="post-category" target="_blank">
+                                    计算机图形学
                                 </a>
                             
                             
@@ -1548,12 +1556,12 @@ $(
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/" target="_blank">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/OpenGL/" target="_blank">
+                        <span class="chip bg-color">OpenGL</span>
                     </a>
                     
-                    <a href="/tags/GitHub/" target="_blank">
-                        <span class="chip bg-color">GitHub</span>
+                    <a href="/tags/Cohen-Sutherland/" target="_blank">
+                        <span class="chip bg-color">Cohen-Sutherland</span>
                     </a>
                     
                 </div>
@@ -1763,7 +1771,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">22.9k</span> 字
+                <span class="white-color">24.2k</span> 字
             
 
             
@@ -1989,5 +1997,5 @@ $(function () {
             <!-- 代码块复制功能 -->
             <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":100,"height":225},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

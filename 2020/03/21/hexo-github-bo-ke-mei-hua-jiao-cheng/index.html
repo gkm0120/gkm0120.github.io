@@ -773,7 +773,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        10.7k
+                        10.6k
                     </div>
                     
 
@@ -1108,22 +1108,24 @@ description<span class="token punctuation">:</span> <span class="token string">"
 
 <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-8-添加评论插件"><a href="#2-8-添加评论插件" class="headerlink" title="2.8 添加评论插件"></a>2.8 添加评论插件</h4><p>由于这个主题自带了<code>gittalk</code>、<code>gitment</code>、<code>valine</code>等评论插件，所以我们只需要对应插件参数就行了。</p>
-<h4 id="2-9-添加网易云音乐BGM"><a href="#2-9-添加网易云音乐BGM" class="headerlink" title="2.9 添加网易云音乐BGM"></a>2.9 添加网易云音乐BGM</h4><p>写文章的时候，想插入一段<code>BGM</code>怎么办？<br>其实我们可以借助一些在线音乐的外链播放方式，首先打开网易云网页版，找到想听的歌曲，然后点击生成外链：<br>https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="<img src="" alt=""><br>可能你会遇到问题，比如点击生成外链会提示你由于版权原因，不能生成，那么可以用下面办法目前还有效，不知道后面会不会失效</p>
+<h4 id="2-9-添加网易云音乐BGM"><a href="#2-9-添加网易云音乐BGM" class="headerlink" title="2.9 添加网易云音乐BGM"></a>2.9 添加网易云音乐BGM</h4><p>写文章的时候，想插入一段<code>BGM</code>怎么办？<br>其实我们可以借助一些在线音乐的外链播放方式，首先打开网易云网页版，找到想听的歌曲，然后点击生成外链：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/14.png" alt=""></p>
+<p>可能你会遇到问题，比如点击生成外链会提示你由于版权原因，不能生成，那么可以用下面办法目前还有效，不知道后面会不会失效</p>
 <ol>
-<li><p>(以 Chrome为例，其他浏览器类似) 打开歌单页面，在“生成外链播放器”上右击，点击审查元素（检查）<code>ctrl+shift+i</code>；</p>
-</li>
-<li><p>接着找到生成外链播放器这段文字直接双击复制前面的<code>/outchain/2/20707408/</code></p>
-</li>
-<li><p>然后在浏览器地址栏修改歌单链接，示例：<a href="http://music.163.com/#//outchain/2/20707408/" target="_blank" rel="noopener">http://music.163.com/#//outchain/2/20707408/</a></p>
-</li>
-<li><p>然后就转到外链设置页面了。<br>复制如下代码，粘贴到文章对应位置就行了，为了美观，设置一下居中，具体代码如下：<br><code>&lt;div align="middle"&gt;这里粘贴刚刚复制的代码&lt;/div&gt;</code></p>
-</li>
+<li>以Chrome为例，其他浏览器类似，打开歌单页面，在“生成外链播放器”上右击，点击审查元素（检查）<code>ctrl+shift+i</code>；</li>
+<li>接着找到生成外链播放器这段文字直接双击复制前面的<code>/outchain/2/20707408/</code></li>
 </ol>
+<p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/15.png" alt=""></p>
+<ol start="3">
+<li>然后在浏览器地址栏修改歌单链接，示例：<a href="http://music.163.com/#//outchain/2/20707408/" target="_blank" rel="noopener">http://music.163.com/#//outchain/2/20707408/</a></li>
+<li>然后就转到外链设置页面了。<br>复制如下代码，粘贴到文章对应位置就行了，为了美观，设置一下居中，具体代码如下：</li>
+</ol>
+<pre class="line-numbers language-css"><code class="language-css">&lt;div align=<span class="token string">"middle"</span>>这里粘贴刚刚复制的代码&lt;/div><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="2-10-博客音乐板块"><a href="#2-10-博客音乐板块" class="headerlink" title="2.10 博客音乐板块"></a>2.10 博客音乐板块</h4><p>如果我们自己写博客写疲劳了，想放松一下听听歌又不想切出博客主页，那么我们可以自己定制一个博客音乐播放界面，把自己喜欢的歌曲都放进来，这里用到是Aplayer插件，但是歌曲来源需要我们自己定义，但是，因为各大音乐平台，由于版权原因，很多歌曲是不支持外链播放的，难道我们就必须每首歌下载然后上传云空间，再获取词曲封面么？这就比较麻烦了。其实不然，研究了半个小时，我发现可以采取下面的办法，很方便：</p>
 <ul>
 <li>首先我们找到网易云在线平台，任意找到一首歌点进去播放，可以在地址栏拿到音乐<code>ID</code>号</li>
-<li>然后通过下面网址：<a href="http://music.163.com/song/media/outer/url?id=XXXXXX.mp3，" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=XXXXXX.mp3，</a> XXXXXX就是歌曲<code>ID</code>号，每一首歌我们只需要换掉这个<code>ID</code>号就行了,就相当于每一首的外链了</li>
-<li>最后封面图也可以按<code>F12</code>去找页面元素的链接，填到对应的<code>musics.jason</code>文件中就可以，批量填入，听到好听的歌曲随时更换随时新增，很方便。<br>操作如下图：<br>https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="<img src="" alt=""></li>
+<li>然后通过下面网址：<a href="http://music.163.com/song/media/outer/url?id=XXXXXX.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=XXXXXX.mp3</a> ， XXXXXX就是歌曲<code>ID</code>号，每一首歌我们只需要换掉这个<code>ID</code>号就行了,就相当于每一首的外链了</li>
+<li>最后封面图也可以按<code>F12</code>去找页面元素的链接，填到对应的<code>musics.jason</code>文件中就可以，批量填入，听到好听的歌曲随时更换随时新增，很方便。<br>操作如下图：<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/17.png" alt=""></li>
 </ul>
 <h4 id="2-11-Valine评论模块修改"><a href="#2-11-Valine评论模块修改" class="headerlink" title="2.11 Valine评论模块修改"></a>2.11 Valine评论模块修改</h4><p><code>matery</code>主题已经集成<code>Valine</code>评论模块，在主题配置文件<code>.yml</code>中配置相应的字段就行了。<code>nable: true</code>，<code>XXX</code>字段是需要自己注册登录<code>leancloud</code>官网，创建应用然后获取<code>appId</code>和<code>appKey</code>，其他参数根据自己的需求修改就是，如下：</p>
 <pre class="line-numbers language-c"><code class="language-c">valine<span class="token punctuation">:</span>
@@ -2399,7 +2401,7 @@ weather:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/25/cohen-sutherland-bian-ma-cai-jian/">
+                <a href="/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/">
                     <div class="card-image">
                         
                         
@@ -2699,7 +2701,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">22.9k</span> 字
+                <span class="white-color">24.2k</span> 字
             
 
             
@@ -2925,5 +2927,5 @@ $(function () {
             <!-- 代码块复制功能 -->
             <script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":100,"height":225},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
