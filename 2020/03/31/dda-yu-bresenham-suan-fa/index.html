@@ -1089,7 +1089,7 @@
 
     #vcomments textarea {
         box-sizing: border-box;
-        background: url("") 100% 100% no-repeat;
+        background: url("/medias/comment_bg.png ") 100% 100% no-repeat;
     }
 
     #vcomments p {
@@ -1336,7 +1336,7 @@
         avatar: 'mm',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go'
+        placeholder: '留下你的足迹呗'
     });
 </script>
 
@@ -1550,7 +1550,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </style>
 
 
-
 <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
 
 
@@ -1661,7 +1660,42 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </script>
 
 
-    <footer class="page-footer bg-color">
+    
+<!-- shw2018 洪卫  modify 2019.08.15-->
+
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="row">
+        
+        
+        <div class="col s12 ">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+    $(function () {
+        new APlayer({
+            container: document.getElementById('aplayer'),
+            fixed: 'true' === 'true',
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'all',
+            order: 'random',
+            preload: 'auto',
+            volume: Number('0.7'),
+            listFolded: 'true' === 'true',
+            audio: JSON.parse('[{"name":"Beautiful World","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=20707408.mp3","cover":"https://p2.music.126.net/MEWr-THANcYy-1jvx334_Q==/109951163167214019.jpg?param=130y130"},{"name":"Beautiful In White (Demo)","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=29539085.mp3","cover":"http://p1.music.126.net/jp5ggn-2y5b1cCsOoFpaHQ==/6635552674545050.jpg?param=130y130"},{"name":"My Love","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=572412968.mp3","cover":"http://p1.music.126.net/NvTrCHEfrlkJRZlUu8HBQw==/109951163909473682.jpg?param=130y130"},{"name":"Five hundred miles","artist":"The Journeymen ","url":"http://music.163.com/song/media/outer/url?id=1350232549.mp3","cover":"http://p2.music.126.net/2cD7BzJYcVmbGYjaGoZijQ==/109951163906691778.jpg?param=130y130"},{"name":"Wait For You","artist":"Elliott Yamin","url":"http://music.163.com/song/media/outer/url?id=1304257.mp3","cover":"https://p1.music.126.net/NpR4nUoJXsQmWunZWCz4OQ==/898300999944140.jpg?param=130y130"},{"name":"Here With You","artist":"Asher Monroe","url":"http://music.163.com/song/media/outer/url?id=27583305.mp3","cover":"https://p1.music.126.net/qqj_ClyLVRbZ-EBlmkHZrQ==/2788361488086447.jpg?param=130y130"},{"name":"Refrain","artist":"Anan Ryoko","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"//p1.music.126.net/HpNhvHFZXTLwrVXMT7WP8g==/109951163028848374.jpg?param=130y130"},{"name":"下完这场雨 ","artist":"后弦","url":"http://music.163.com/song/media/outer/url?id=434550534.mp3","cover":"http://p1.music.126.net/BanEqZaHg_xWU68mlgb-Fw==/109951163877302764.jpg?param=130y130"},{"name":"宠爱","artist":"王俊凯 / 周倩 / 林可欣 / 郭蓉","url":"http://music.163.com/song/media/outer/url?id=490595323.mp3","cover":"http://p2.music.126.net/Ou7tn3d31-uB3yD__ywb9w==/109951164219793180.jpg?param=130y130"},{"name":"城南花已开","artist":"三亩地","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"http://p1.music.126.net/i-7ktILRPImJ0NwiH8DABg==/109951162885959979.jpg?param=130y130"},{"name":"词不达意 (Live)","artist":"林忆莲","url":"http://music.163.com/song/media/outer/url?id=255644.mp3","cover":"http://p2.music.126.net/BA7E7hW81goaihFdv30z9w==/109951163062452313.jpg?param=130y130"},{"name":"我在诛仙逍遥涧","artist":"王俊凯","url":"http://music.163.com/song/media/outer/url?id=547971425.mp3","cover":"http://p2.music.126.net/HfPVoHtgyfPLTTgbAeuBfA==/109951163211975444.jpg?param=130y130"},{"name":"李白","artist":"李荣浩","url":"http://music.163.com/song/media/outer/url?id=27678655.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=130y130"},{"name":"Perfect","artist":"Boyce Avenue","url":"http://music.163.com/song/media/outer/url?id=1401710442.mp3","cover":"http://p1.music.126.net/-G3U6cU_HN3XnlXNHaSMGQ==/109951164473803295.jpg?param=130y130"},{"name":"遇见","artist":"孙燕姿","url":"http://music.163.com/song/media/outer/url?id=454828887.mp3","cover":"http://p2.music.126.net/KZ0VfIoFYsxpjz9sTQuLVQ==/17687843556430013.jpg?param=130y130"},{"name":"Lucky","artist":"Lenka","url":"http://music.163.com/song/media/outer/url?id=497463179.mp3","cover":"http://p1.music.126.net/C1NxAy5W1BNem4M8f7hqLQ==/18892908300363464.jpg?param=130y130"},{"name":"明天你好","artist":"牛奶咖啡","url":"http://music.163.com/song/media/outer/url?id=33756016.mp3","cover":"http://p1.music.126.net/1Al0vrBmm5-HtNXyJH953w==/7952767605403009.jpg?param=130y130"},{"name":"我的梦 (Live)","artist":"张靓颖/马臻","url":"http://music.163.com/song/media/outer/url?id=431853688.mp3","cover":"http://p1.music.126.net/jwlysHDFr7u8Et4XBvBDlw==/109951163064510445.jpg?param=130y130"},{"name":"勇气","artist":"梁静茹","url":"http://music.163.com/song/media/outer/url?id=254485.mp3","cover":"http://p2.music.126.net/PavIMxZq16K7-0fSF5n-yg==/109951163240604120.jpg?param=130y130"},{"name":"曾经的你","artist":"许巍","url":"http://music.163.com/song/media/outer/url?id=167975.mp3","cover":"http://p1.music.126.net/GoiTB6oG3vQWntnCjKRw0g==/109951163092691594.jpg?param=130y130"},{"name":"她说","artist":"林俊杰","url":"http://music.163.com/song/media/outer/url?id=108242.mp3","cover":"http://p2.music.126.net/peLODpaxX1Hl4RWYKR-34Q==/109951163071284933.jpg?param=130y130"}]')
+        });
+    });
+</script>
+
+<footer class="page-footer bg-color">
+
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1679,7 +1713,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             
-            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
             
              <span id="busuanzi_container_site_uv" style='display:none'></span> 人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
             
@@ -1719,11 +1753,11 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                         diffMinutes * minutes) / seconds);
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffDays + " 天 " + diffHours +
                             " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays +
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
                             " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
                 }
@@ -1737,6 +1771,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             <br>
             <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+            <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/gkm0120" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -1780,41 +1815,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </div>
     </div>
     <div class="progress-bar"></div>
-    <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
-    
-    <!-- shw2018 洪卫  modify 2019.08.15-->
-
-
-<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<div class="music-player">
-    
-    <div class="row">
-        
-        
-        <div class="col s12 ">
-            <div id="aplayer" class="music"></div>
-        </div>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script>
-    $(function () {
-        new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: 'true' === 'true',
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'all',
-            order: 'random',
-            preload: 'auto',
-            volume: Number('0.7'),
-            listFolded: 'true' === 'true',
-            audio: JSON.parse('[{"name":"Beautiful World","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=20707408.mp3","cover":"https://p2.music.126.net/MEWr-THANcYy-1jvx334_Q==/109951163167214019.jpg?param=130y130"},{"name":"Beautiful In White (Demo)","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=29539085.mp3","cover":"http://p1.music.126.net/jp5ggn-2y5b1cCsOoFpaHQ==/6635552674545050.jpg?param=130y130"},{"name":"My Love","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=572412968.mp3","cover":"http://p1.music.126.net/NvTrCHEfrlkJRZlUu8HBQw==/109951163909473682.jpg?param=130y130"},{"name":"Five hundred miles","artist":"The Journeymen ","url":"http://music.163.com/song/media/outer/url?id=1350232549.mp3","cover":"http://p2.music.126.net/2cD7BzJYcVmbGYjaGoZijQ==/109951163906691778.jpg?param=130y130"},{"name":"Wait For You","artist":"Elliott Yamin","url":"http://music.163.com/song/media/outer/url?id=1304257.mp3","cover":"https://p1.music.126.net/NpR4nUoJXsQmWunZWCz4OQ==/898300999944140.jpg?param=130y130"},{"name":"Here With You","artist":"Asher Monroe","url":"http://music.163.com/song/media/outer/url?id=27583305.mp3","cover":"https://p1.music.126.net/qqj_ClyLVRbZ-EBlmkHZrQ==/2788361488086447.jpg?param=130y130"},{"name":"Refrain","artist":"Anan Ryoko","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"//p1.music.126.net/HpNhvHFZXTLwrVXMT7WP8g==/109951163028848374.jpg?param=130y130"},{"name":"下完这场雨 ","artist":"后弦","url":"http://music.163.com/song/media/outer/url?id=434550534.mp3","cover":"http://p1.music.126.net/BanEqZaHg_xWU68mlgb-Fw==/109951163877302764.jpg?param=130y130"},{"name":"宠爱","artist":"王俊凯 / 周倩 / 林可欣 / 郭蓉","url":"http://music.163.com/song/media/outer/url?id=490595323.mp3","cover":"http://p2.music.126.net/Ou7tn3d31-uB3yD__ywb9w==/109951164219793180.jpg?param=130y130"},{"name":"城南花已开","artist":"三亩地","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"http://p1.music.126.net/i-7ktILRPImJ0NwiH8DABg==/109951162885959979.jpg?param=130y130"},{"name":"词不达意 (Live)","artist":"林忆莲","url":"http://music.163.com/song/media/outer/url?id=255644.mp3","cover":"http://p2.music.126.net/BA7E7hW81goaihFdv30z9w==/109951163062452313.jpg?param=130y130"},{"name":"我在诛仙逍遥涧","artist":"王俊凯","url":"http://music.163.com/song/media/outer/url?id=547971425.mp3","cover":"http://p2.music.126.net/HfPVoHtgyfPLTTgbAeuBfA==/109951163211975444.jpg?param=130y130"},{"name":"李白","artist":"李荣浩","url":"http://music.163.com/song/media/outer/url?id=27678655.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=130y130"},{"name":"Perfect","artist":"Boyce Avenue","url":"http://music.163.com/song/media/outer/url?id=1401710442.mp3","cover":"http://p1.music.126.net/-G3U6cU_HN3XnlXNHaSMGQ==/109951164473803295.jpg?param=130y130"},{"name":"遇见","artist":"孙燕姿","url":"http://music.163.com/song/media/outer/url?id=454828887.mp3","cover":"http://p2.music.126.net/KZ0VfIoFYsxpjz9sTQuLVQ==/17687843556430013.jpg?param=130y130"},{"name":"Lucky","artist":"Lenka","url":"http://music.163.com/song/media/outer/url?id=497463179.mp3","cover":"http://p1.music.126.net/C1NxAy5W1BNem4M8f7hqLQ==/18892908300363464.jpg?param=130y130"},{"name":"明天你好","artist":"牛奶咖啡","url":"http://music.163.com/song/media/outer/url?id=33756016.mp3","cover":"http://p1.music.126.net/1Al0vrBmm5-HtNXyJH953w==/7952767605403009.jpg?param=130y130"},{"name":"我的梦 (Live)","artist":"张靓颖/马臻","url":"http://music.163.com/song/media/outer/url?id=431853688.mp3","cover":"http://p1.music.126.net/jwlysHDFr7u8Et4XBvBDlw==/109951163064510445.jpg?param=130y130"},{"name":"勇气","artist":"梁静茹","url":"http://music.163.com/song/media/outer/url?id=254485.mp3","cover":"http://p2.music.126.net/PavIMxZq16K7-0fSF5n-yg==/109951163240604120.jpg?param=130y130"},{"name":"曾经的你","artist":"许巍","url":"http://music.163.com/song/media/outer/url?id=167975.mp3","cover":"http://p1.music.126.net/GoiTB6oG3vQWntnCjKRw0g==/109951163092691594.jpg?param=130y130"},{"name":"她说","artist":"林俊杰","url":"http://music.163.com/song/media/outer/url?id=108242.mp3","cover":"http://p2.music.126.net/peLODpaxX1Hl4RWYKR-34Q==/109951163071284933.jpg?param=130y130"}]')
-        });
-    });
-</script>
-    
 </footer>
 
 
@@ -1904,6 +1904,55 @@ $(function () {
     
 
     
+        <script src="//code.tidio.co/.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "6ab6f29b"
+        });
+        daovoice('update');
+    </script>
+    
 
     
          <!-- 天气接口  洪卫 shw2018 add 2019.09.09 -->
@@ -1919,8 +1968,6 @@ $(function () {
                 document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
             }
             </script>
-    
-
     
 
     
@@ -1956,6 +2003,6 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>

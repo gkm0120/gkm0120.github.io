@@ -300,405 +300,23 @@
 
 </header>
 
-    
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <style type="text/css">
+    /* don't remove. */
+    .about-cover {
+        height: 75vh;
+    }
+</style>
 
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
+<div class="bg-cover pd-header about-cover">
+    <div class="container">
         <div class="row">
-            <div class="col s12 m12 l12">
+            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
                 <div class="brand">
-                    <h1 class="description center-align post-title">404</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-10
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    52
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
-                </div>
-                
-
-                
-                <span id="busuanzi_container_site_pv" style='display:none'></span>
-                <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                <span id="busuanzi_value_page_pv" ></span>
-                
-
-            </div>
-
-        </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://www.gkm0120.cn" rel="external nofollow noreferrer">戈孔明</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://www.gkm0120.cn/404.html">https://www.gkm0120.cn/404.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://www.gkm0120.cn" target="_blank">戈孔明</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
-<div id="article-share">
-    
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
-    <div class="addthis_inline_share_toolbox"></div>
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">客官能否打赏一杯奶茶？</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.bmp" class="reward-img" alt="支付宝打赏二维码">
+                    <div class="title center-align">
+                        404
                     </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.bmp" class="reward-img" alt="微信打赏二维码">
+                    <div class="description center-align">
+                        Oops～，我崩溃了！找不到你想要的页面 :(     有可能博主优化了网站url，页面链接地址发生了变化，你可以尝试返回主页，查找对应博文页面！！！
                     </div>
                 </div>
             </div>
@@ -706,548 +324,47 @@
     </div>
 </div>
 
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+
+    
+<!-- shw2018 洪卫  modify 2019.08.15-->
+
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="row">
+        
+        
+        <div class="col s12 ">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
 <script>
     $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-        <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments textarea {
-        box-sizing: border-box;
-        background: url("") 100% 100% no-repeat;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
-</div>
-
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        notify: 'true' === 'true',
-        verify: 'true' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'mm',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: 'just go go'
+        new APlayer({
+            container: document.getElementById('aplayer'),
+            fixed: 'true' === 'true',
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'all',
+            order: 'random',
+            preload: 'auto',
+            volume: Number('0.7'),
+            listFolded: 'true' === 'true',
+            audio: JSON.parse('[{"name":"Beautiful World","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=20707408.mp3","cover":"https://p2.music.126.net/MEWr-THANcYy-1jvx334_Q==/109951163167214019.jpg?param=130y130"},{"name":"Beautiful In White (Demo)","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=29539085.mp3","cover":"http://p1.music.126.net/jp5ggn-2y5b1cCsOoFpaHQ==/6635552674545050.jpg?param=130y130"},{"name":"My Love","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=572412968.mp3","cover":"http://p1.music.126.net/NvTrCHEfrlkJRZlUu8HBQw==/109951163909473682.jpg?param=130y130"},{"name":"Five hundred miles","artist":"The Journeymen ","url":"http://music.163.com/song/media/outer/url?id=1350232549.mp3","cover":"http://p2.music.126.net/2cD7BzJYcVmbGYjaGoZijQ==/109951163906691778.jpg?param=130y130"},{"name":"Wait For You","artist":"Elliott Yamin","url":"http://music.163.com/song/media/outer/url?id=1304257.mp3","cover":"https://p1.music.126.net/NpR4nUoJXsQmWunZWCz4OQ==/898300999944140.jpg?param=130y130"},{"name":"Here With You","artist":"Asher Monroe","url":"http://music.163.com/song/media/outer/url?id=27583305.mp3","cover":"https://p1.music.126.net/qqj_ClyLVRbZ-EBlmkHZrQ==/2788361488086447.jpg?param=130y130"},{"name":"Refrain","artist":"Anan Ryoko","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"//p1.music.126.net/HpNhvHFZXTLwrVXMT7WP8g==/109951163028848374.jpg?param=130y130"},{"name":"下完这场雨 ","artist":"后弦","url":"http://music.163.com/song/media/outer/url?id=434550534.mp3","cover":"http://p1.music.126.net/BanEqZaHg_xWU68mlgb-Fw==/109951163877302764.jpg?param=130y130"},{"name":"宠爱","artist":"王俊凯 / 周倩 / 林可欣 / 郭蓉","url":"http://music.163.com/song/media/outer/url?id=490595323.mp3","cover":"http://p2.music.126.net/Ou7tn3d31-uB3yD__ywb9w==/109951164219793180.jpg?param=130y130"},{"name":"城南花已开","artist":"三亩地","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"http://p1.music.126.net/i-7ktILRPImJ0NwiH8DABg==/109951162885959979.jpg?param=130y130"},{"name":"词不达意 (Live)","artist":"林忆莲","url":"http://music.163.com/song/media/outer/url?id=255644.mp3","cover":"http://p2.music.126.net/BA7E7hW81goaihFdv30z9w==/109951163062452313.jpg?param=130y130"},{"name":"我在诛仙逍遥涧","artist":"王俊凯","url":"http://music.163.com/song/media/outer/url?id=547971425.mp3","cover":"http://p2.music.126.net/HfPVoHtgyfPLTTgbAeuBfA==/109951163211975444.jpg?param=130y130"},{"name":"李白","artist":"李荣浩","url":"http://music.163.com/song/media/outer/url?id=27678655.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=130y130"},{"name":"Perfect","artist":"Boyce Avenue","url":"http://music.163.com/song/media/outer/url?id=1401710442.mp3","cover":"http://p1.music.126.net/-G3U6cU_HN3XnlXNHaSMGQ==/109951164473803295.jpg?param=130y130"},{"name":"遇见","artist":"孙燕姿","url":"http://music.163.com/song/media/outer/url?id=454828887.mp3","cover":"http://p2.music.126.net/KZ0VfIoFYsxpjz9sTQuLVQ==/17687843556430013.jpg?param=130y130"},{"name":"Lucky","artist":"Lenka","url":"http://music.163.com/song/media/outer/url?id=497463179.mp3","cover":"http://p1.music.126.net/C1NxAy5W1BNem4M8f7hqLQ==/18892908300363464.jpg?param=130y130"},{"name":"明天你好","artist":"牛奶咖啡","url":"http://music.163.com/song/media/outer/url?id=33756016.mp3","cover":"http://p1.music.126.net/1Al0vrBmm5-HtNXyJH953w==/7952767605403009.jpg?param=130y130"},{"name":"我的梦 (Live)","artist":"张靓颖/马臻","url":"http://music.163.com/song/media/outer/url?id=431853688.mp3","cover":"http://p1.music.126.net/jwlysHDFr7u8Et4XBvBDlw==/109951163064510445.jpg?param=130y130"},{"name":"勇气","artist":"梁静茹","url":"http://music.163.com/song/media/outer/url?id=254485.mp3","cover":"http://p2.music.126.net/PavIMxZq16K7-0fSF5n-yg==/109951163240604120.jpg?param=130y130"},{"name":"曾经的你","artist":"许巍","url":"http://music.163.com/song/media/outer/url?id=167975.mp3","cover":"http://p1.music.126.net/GoiTB6oG3vQWntnCjKRw0g==/109951163092691594.jpg?param=130y130"},{"name":"她说","artist":"林俊杰","url":"http://music.163.com/song/media/outer/url?id=108242.mp3","cover":"http://p2.music.126.net/peLODpaxX1Hl4RWYKR-34Q==/109951163071284933.jpg?param=130y130"}]')
+        });
     });
 </script>
 
-    
+<footer class="page-footer bg-color">
 
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/404.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
-                        
-                        <span class="card-title">404</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            戈孔明
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/404.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
-                        
-                        <span class="card-title">404</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            戈孔明
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 孔明の博客<br />'
-            + '文章作者: 戈孔明<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-
-<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-    <footer class="page-footer bg-color">
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1265,7 +382,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             
-            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
             
              <span id="busuanzi_container_site_uv" style='display:none'></span> 人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
             
@@ -1305,11 +422,11 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                         diffMinutes * minutes) / seconds);
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffDays + " 天 " + diffHours +
                             " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays +
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
                             " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
                     }
                 }
@@ -1323,6 +440,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             <br>
             <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+            <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/gkm0120" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -1366,41 +484,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </div>
     </div>
     <div class="progress-bar"></div>
-    <script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
-    
-    <!-- shw2018 洪卫  modify 2019.08.15-->
-
-
-<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<div class="music-player">
-    
-    <div class="row">
-        
-        
-        <div class="col s12 ">
-            <div id="aplayer" class="music"></div>
-        </div>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script>
-    $(function () {
-        new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: 'true' === 'true',
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'all',
-            order: 'random',
-            preload: 'auto',
-            volume: Number('0.7'),
-            listFolded: 'true' === 'true',
-            audio: JSON.parse('[{"name":"Beautiful World","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=20707408.mp3","cover":"https://p2.music.126.net/MEWr-THANcYy-1jvx334_Q==/109951163167214019.jpg?param=130y130"},{"name":"Beautiful In White (Demo)","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=29539085.mp3","cover":"http://p1.music.126.net/jp5ggn-2y5b1cCsOoFpaHQ==/6635552674545050.jpg?param=130y130"},{"name":"My Love","artist":"Westlife","url":"http://music.163.com/song/media/outer/url?id=572412968.mp3","cover":"http://p1.music.126.net/NvTrCHEfrlkJRZlUu8HBQw==/109951163909473682.jpg?param=130y130"},{"name":"Five hundred miles","artist":"The Journeymen ","url":"http://music.163.com/song/media/outer/url?id=1350232549.mp3","cover":"http://p2.music.126.net/2cD7BzJYcVmbGYjaGoZijQ==/109951163906691778.jpg?param=130y130"},{"name":"Wait For You","artist":"Elliott Yamin","url":"http://music.163.com/song/media/outer/url?id=1304257.mp3","cover":"https://p1.music.126.net/NpR4nUoJXsQmWunZWCz4OQ==/898300999944140.jpg?param=130y130"},{"name":"Here With You","artist":"Asher Monroe","url":"http://music.163.com/song/media/outer/url?id=27583305.mp3","cover":"https://p1.music.126.net/qqj_ClyLVRbZ-EBlmkHZrQ==/2788361488086447.jpg?param=130y130"},{"name":"Refrain","artist":"Anan Ryoko","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"//p1.music.126.net/HpNhvHFZXTLwrVXMT7WP8g==/109951163028848374.jpg?param=130y130"},{"name":"下完这场雨 ","artist":"后弦","url":"http://music.163.com/song/media/outer/url?id=434550534.mp3","cover":"http://p1.music.126.net/BanEqZaHg_xWU68mlgb-Fw==/109951163877302764.jpg?param=130y130"},{"name":"宠爱","artist":"王俊凯 / 周倩 / 林可欣 / 郭蓉","url":"http://music.163.com/song/media/outer/url?id=490595323.mp3","cover":"http://p2.music.126.net/Ou7tn3d31-uB3yD__ywb9w==/109951164219793180.jpg?param=130y130"},{"name":"城南花已开","artist":"三亩地","url":"http://music.163.com/song/media/outer/url?id=468176711.mp3","cover":"http://p1.music.126.net/i-7ktILRPImJ0NwiH8DABg==/109951162885959979.jpg?param=130y130"},{"name":"词不达意 (Live)","artist":"林忆莲","url":"http://music.163.com/song/media/outer/url?id=255644.mp3","cover":"http://p2.music.126.net/BA7E7hW81goaihFdv30z9w==/109951163062452313.jpg?param=130y130"},{"name":"我在诛仙逍遥涧","artist":"王俊凯","url":"http://music.163.com/song/media/outer/url?id=547971425.mp3","cover":"http://p2.music.126.net/HfPVoHtgyfPLTTgbAeuBfA==/109951163211975444.jpg?param=130y130"},{"name":"李白","artist":"李荣浩","url":"http://music.163.com/song/media/outer/url?id=27678655.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=130y130"},{"name":"Perfect","artist":"Boyce Avenue","url":"http://music.163.com/song/media/outer/url?id=1401710442.mp3","cover":"http://p1.music.126.net/-G3U6cU_HN3XnlXNHaSMGQ==/109951164473803295.jpg?param=130y130"},{"name":"遇见","artist":"孙燕姿","url":"http://music.163.com/song/media/outer/url?id=454828887.mp3","cover":"http://p2.music.126.net/KZ0VfIoFYsxpjz9sTQuLVQ==/17687843556430013.jpg?param=130y130"},{"name":"Lucky","artist":"Lenka","url":"http://music.163.com/song/media/outer/url?id=497463179.mp3","cover":"http://p1.music.126.net/C1NxAy5W1BNem4M8f7hqLQ==/18892908300363464.jpg?param=130y130"},{"name":"明天你好","artist":"牛奶咖啡","url":"http://music.163.com/song/media/outer/url?id=33756016.mp3","cover":"http://p1.music.126.net/1Al0vrBmm5-HtNXyJH953w==/7952767605403009.jpg?param=130y130"},{"name":"我的梦 (Live)","artist":"张靓颖/马臻","url":"http://music.163.com/song/media/outer/url?id=431853688.mp3","cover":"http://p1.music.126.net/jwlysHDFr7u8Et4XBvBDlw==/109951163064510445.jpg?param=130y130"},{"name":"勇气","artist":"梁静茹","url":"http://music.163.com/song/media/outer/url?id=254485.mp3","cover":"http://p2.music.126.net/PavIMxZq16K7-0fSF5n-yg==/109951163240604120.jpg?param=130y130"},{"name":"曾经的你","artist":"许巍","url":"http://music.163.com/song/media/outer/url?id=167975.mp3","cover":"http://p1.music.126.net/GoiTB6oG3vQWntnCjKRw0g==/109951163092691594.jpg?param=130y130"},{"name":"她说","artist":"林俊杰","url":"http://music.163.com/song/media/outer/url?id=108242.mp3","cover":"http://p2.music.126.net/peLODpaxX1Hl4RWYKR-34Q==/109951163071284933.jpg?param=130y130"}]')
-        });
-    });
-</script>
-    
 </footer>
 
 
@@ -1490,6 +573,55 @@ $(function () {
     
 
     
+        <script src="//code.tidio.co/.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);
+                function change_Tidio() {
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                }
+            });
+        </script>
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "6ab6f29b"
+        });
+        daovoice('update');
+    </script>
+    
 
     
          <!-- 天气接口  洪卫 shw2018 add 2019.09.09 -->
@@ -1505,8 +637,6 @@ $(function () {
                 document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
             }
             </script>
-    
-
     
 
     
@@ -1542,6 +672,6 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>

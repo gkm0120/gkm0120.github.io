@@ -1006,7 +1006,7 @@ article .article-tags .chip {
     padding: 20px 30px 1px 40px;
     margin-bottom: -5px;
 } */
-/* 洪卫 shw2018 modify 2019.08.31 */
+
 #artDetail .article-info {
     padding: 20px 20px 1px 25px;
     margin-bottom: -5px;
@@ -1097,7 +1097,7 @@ article .article-tags .chip {
         padding: 0 50px 20px 50px;
     }
 } */
-/* 洪卫 shw2018 modify 2019.08.31 */
+
 @media only screen and (min-width: 993px) {
     #artDetail .article-card-content {
         padding: 0 25px 20px 25px;
@@ -1122,8 +1122,16 @@ article .article-tags .chip {
 }
 
 /*下面连着三段是reprint-statement样式*/
+#artDetail .reprint:hover {
+    box-shadow: 0 0 10px 0 rgba(232, 237, 250, .6), 0 4px 8px 0 rgba(232, 237, 250, .5);
+}
 #artDetail .reprint {
     margin: 15px 0 5px 0;
+    margin-bottom: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #eee;
+    line-height: 2;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #artDetail .reprint .reprint-tip {
@@ -1814,14 +1822,12 @@ footer {
     padding-bottom: 1px;
 }
 
-/* 洪卫 shw2018 modify 2019.09.11 */
 footer .social-statis {
     margin-top: 26px;
     /* 原值 10px; */
     position: relative;
 }
 
-/* 洪卫 shw2018 modify 2019.09.11 */
 footer a {
     /* color: #fff; */
     color: #dbdbdb;
@@ -1942,7 +1948,7 @@ footer .copy-right {
 /* .img-margin {
     margin: 25px auto 10px auto;
 } */
-/* 洪卫 shw2018 modify 2019.08.31 */
+
 .img-margin {
     margin: 2px auto 5px auto;
 }
@@ -1977,7 +1983,7 @@ footer .copy-right {
     line-height: 1.5em;
     /* max-height = line-height (1.2) * lines max number (3) */
     max-height: 3em;
-    /* 原值4.5em三行,改为固定两行显示为3em 洪卫  2019.08.31*/
+    /* 原值4.5em三行,改为固定两行显示为3em */
     /* fix problem when last visible word doesn't adjoin right side  */
     text-align: justify;
     /* place for '...' */
@@ -2012,7 +2018,6 @@ footer .copy-right {
     background: white;
 }
 
-/* 二级菜单样式定义 洪卫 shw2018 add 2019.09.17 */
 .nav-menu {}
 
 .nav-menu li .sub-nav {
