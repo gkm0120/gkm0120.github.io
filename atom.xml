@@ -5,9 +5,9 @@
   <subtitle>孔明の博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://gkm0120.cn/"/>
-  <updated>2020-04-03T01:04:42.624Z</updated>
-  <id>https://gkm0120.cn/</id>
+  <link href="https://www.gkm0120.cn/"/>
+  <updated>2020-04-06T05:36:37.675Z</updated>
+  <id>https://www.gkm0120.cn/</id>
   
   <author>
     <name>戈孔明</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Markdown中Latex编写技巧</title>
-    <link href="https://gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/"/>
-    <id>https://gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/</id>
+    <link href="https://www.gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/"/>
+    <id>https://www.gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/</id>
     <published>2020-04-01T13:04:57.000Z</published>
-    <updated>2020-04-03T01:04:42.624Z</updated>
+    <updated>2020-04-06T05:36:37.675Z</updated>
     
     <summary type="html">
     
@@ -35,21 +35,21 @@
     
     </summary>
     
-      <category term="编辑器" scheme="https://gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <category term="编辑器" scheme="https://www.gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
     
-      <category term="Markdown" scheme="https://gkm0120.cn/tags/Markdown/"/>
+      <category term="Markdown" scheme="https://www.gkm0120.cn/tags/Markdown/"/>
     
-      <category term="Latex" scheme="https://gkm0120.cn/tags/Latex/"/>
+      <category term="Latex" scheme="https://www.gkm0120.cn/tags/Latex/"/>
     
   </entry>
   
   <entry>
     <title>直线段的扫描转换算法</title>
-    <link href="https://gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/"/>
-    <id>https://gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/</id>
+    <link href="https://www.gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/"/>
+    <id>https://www.gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2020-04-03T14:38:37.983Z</updated>
+    <updated>2020-04-06T05:03:20.015Z</updated>
     
     <summary type="html">
     
@@ -64,19 +64,19 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
-      <category term="DDA" scheme="https://gkm0120.cn/tags/DDA/"/>
+      <category term="DDA" scheme="https://www.gkm0120.cn/tags/DDA/"/>
     
   </entry>
   
   <entry>
     <title>Liang-Barsky裁剪算法</title>
-    <link href="https://gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/"/>
-    <id>https://gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/</id>
+    <link href="https://www.gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/"/>
+    <id>https://www.gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/</id>
     <published>2020-03-29T13:38:16.000Z</published>
     <updated>2020-04-03T15:19:23.478Z</updated>
     
@@ -92,19 +92,19 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
-      <category term="Liang-Barsky" scheme="https://gkm0120.cn/tags/Liang-Barsky/"/>
+      <category term="Liang-Barsky" scheme="https://www.gkm0120.cn/tags/Liang-Barsky/"/>
     
   </entry>
   
   <entry>
     <title>使用Git批量上传图片</title>
-    <link href="https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/"/>
-    <id>https://gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/</id>
+    <link href="https://www.gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/"/>
+    <id>https://www.gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/</id>
     <published>2020-03-27T03:06:17.000Z</published>
     <updated>2020-04-01T09:20:32.027Z</updated>
     
@@ -121,19 +121,19 @@
     
     </summary>
     
-      <category term="批量上传图片" scheme="https://gkm0120.cn/categories/%E6%89%B9%E9%87%8F%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+      <category term="批量上传图片" scheme="https://www.gkm0120.cn/categories/%E6%89%B9%E9%87%8F%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
     
     
-      <category term="jsDelivr" scheme="https://gkm0120.cn/tags/jsDelivr/"/>
+      <category term="jsDelivr" scheme="https://www.gkm0120.cn/tags/jsDelivr/"/>
     
-      <category term="CDN" scheme="https://gkm0120.cn/tags/CDN/"/>
+      <category term="CDN" scheme="https://www.gkm0120.cn/tags/CDN/"/>
     
   </entry>
   
   <entry>
     <title>Markdown 编辑器语法指南</title>
-    <link href="https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
-    <id>https://gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
+    <link href="https://www.gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
+    <id>https://www.gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
     <published>2020-03-26T01:24:52.000Z</published>
     <updated>2020-04-02T14:35:46.222Z</updated>
     
@@ -149,19 +149,19 @@
     
     </summary>
     
-      <category term="编辑器" scheme="https://gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <category term="编辑器" scheme="https://www.gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
     
-      <category term="Markdown" scheme="https://gkm0120.cn/tags/Markdown/"/>
+      <category term="Markdown" scheme="https://www.gkm0120.cn/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>Cohen-Sutherland编码裁剪</title>
-    <link href="https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/"/>
-    <id>https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</id>
+    <link href="https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/"/>
+    <id>https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</id>
     <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-04-03T15:40:11.418Z</updated>
+    <updated>2020-04-06T05:03:00.284Z</updated>
     
     <summary type="html">
     
@@ -175,19 +175,19 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
-      <category term="Cohen-Sutherland" scheme="https://gkm0120.cn/tags/Cohen-Sutherland/"/>
+      <category term="Cohen-Sutherland" scheme="https://www.gkm0120.cn/tags/Cohen-Sutherland/"/>
     
   </entry>
   
   <entry>
     <title>Cohen-Sutherland编码裁剪</title>
-    <link href="https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/"/>
-    <id>https://gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/</id>
+    <link href="https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/"/>
+    <id>https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/</id>
     <published>2020-03-25T13:35:08.000Z</published>
     <updated>2020-04-03T01:40:08.284Z</updated>
     
@@ -203,21 +203,21 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
-      <category term="Cohen-Sutherland" scheme="https://gkm0120.cn/tags/Cohen-Sutherland/"/>
+      <category term="Cohen-Sutherland" scheme="https://www.gkm0120.cn/tags/Cohen-Sutherland/"/>
     
   </entry>
   
   <entry>
     <title>Hexo+GitHub博客美化教程</title>
-    <link href="https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/"/>
-    <id>https://gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/</id>
+    <link href="https://www.gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/"/>
+    <id>https://www.gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/</id>
     <published>2020-03-21T15:48:07.000Z</published>
-    <updated>2020-04-03T07:21:58.592Z</updated>
+    <updated>2020-04-06T05:33:30.333Z</updated>
     
     <summary type="html">
     
@@ -231,19 +231,19 @@
     
     </summary>
     
-      <category term="博客搭建" scheme="https://gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Hexo" scheme="https://gkm0120.cn/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://www.gkm0120.cn/tags/Hexo/"/>
     
-      <category term="GitHub" scheme="https://gkm0120.cn/tags/GitHub/"/>
+      <category term="GitHub" scheme="https://www.gkm0120.cn/tags/GitHub/"/>
     
   </entry>
   
   <entry>
     <title>Hill密码加密解密</title>
-    <link href="https://gkm0120.cn/2020/03/20/hill-mi-ma-jia-mi-jie-mi/"/>
-    <id>https://gkm0120.cn/2020/03/20/hill-mi-ma-jia-mi-jie-mi/</id>
+    <link href="https://www.gkm0120.cn/2020/03/20/hill-mi-ma-jia-mi-jie-mi/"/>
+    <id>https://www.gkm0120.cn/2020/03/20/hill-mi-ma-jia-mi-jie-mi/</id>
     <published>2020-03-20T14:39:30.000Z</published>
     <updated>2020-04-03T15:05:11.239Z</updated>
     
@@ -259,19 +259,19 @@
     
     </summary>
     
-      <category term="密码学" scheme="https://gkm0120.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+      <category term="密码学" scheme="https://www.gkm0120.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     
-      <category term="Hill" scheme="https://gkm0120.cn/tags/Hill/"/>
+      <category term="Hill" scheme="https://www.gkm0120.cn/tags/Hill/"/>
     
   </entry>
   
   <entry>
     <title>Sierpinski 镂垫程序</title>
-    <link href="https://gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/"/>
-    <id>https://gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/</id>
+    <link href="https://www.gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/"/>
+    <id>https://www.gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/</id>
     <published>2020-03-19T10:12:31.000Z</published>
-    <updated>2020-04-03T15:35:25.673Z</updated>
+    <updated>2020-04-05T14:08:12.020Z</updated>
     
     <summary type="html">
     
@@ -286,17 +286,17 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title>球体的细分逼近程序</title>
-    <link href="https://gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/"/>
-    <id>https://gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/</id>
+    <link href="https://www.gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/"/>
+    <id>https://www.gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/</id>
     <published>2020-03-18T08:42:54.000Z</published>
     <updated>2020-04-03T15:29:16.853Z</updated>
     
@@ -312,17 +312,17 @@
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
     
     
-      <category term="OpenGL" scheme="https://gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title>Git和Node.js重新安装</title>
-    <link href="https://gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/"/>
-    <id>https://gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/</id>
+    <link href="https://www.gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/"/>
+    <id>https://www.gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/</id>
     <published>2020-03-17T05:07:25.000Z</published>
     <updated>2020-03-29T02:58:56.413Z</updated>
     
@@ -338,19 +338,19 @@
     
     </summary>
     
-      <category term="博客搭建" scheme="https://gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Git" scheme="https://gkm0120.cn/tags/Git/"/>
+      <category term="Git" scheme="https://www.gkm0120.cn/tags/Git/"/>
     
-      <category term="Nodejs" scheme="https://gkm0120.cn/tags/Nodejs/"/>
+      <category term="Nodejs" scheme="https://www.gkm0120.cn/tags/Nodejs/"/>
     
   </entry>
   
   <entry>
     <title>Git常见报错及处理方法</title>
-    <link href="https://gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/"/>
-    <id>https://gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/</id>
+    <link href="https://www.gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/"/>
+    <id>https://www.gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/</id>
     <published>2020-03-16T06:03:03.000Z</published>
     <updated>2020-03-29T02:59:22.632Z</updated>
     
@@ -366,17 +366,17 @@
     
     </summary>
     
-      <category term="Git" scheme="https://gkm0120.cn/categories/Git/"/>
+      <category term="Git" scheme="https://www.gkm0120.cn/categories/Git/"/>
     
     
-      <category term="Git" scheme="https://gkm0120.cn/tags/Git/"/>
+      <category term="Git" scheme="https://www.gkm0120.cn/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>搭建Hexo+GitHub博客</title>
-    <link href="https://gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/"/>
-    <id>https://gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/</id>
+    <link href="https://www.gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/"/>
+    <id>https://www.gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/</id>
     <published>2020-03-15T06:24:06.000Z</published>
     <updated>2020-03-29T03:03:48.995Z</updated>
     
@@ -392,12 +392,12 @@
     
     </summary>
     
-      <category term="博客搭建" scheme="https://gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Hexo" scheme="https://gkm0120.cn/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://www.gkm0120.cn/tags/Hexo/"/>
     
-      <category term="GitHub" scheme="https://gkm0120.cn/tags/GitHub/"/>
+      <category term="GitHub" scheme="https://www.gkm0120.cn/tags/GitHub/"/>
     
   </entry>
   
