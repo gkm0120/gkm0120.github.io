@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.gkm0120.cn/"/>
-  <updated>2020-04-06T05:36:37.675Z</updated>
+  <updated>2020-04-10T12:22:58.746Z</updated>
   <id>https://www.gkm0120.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Markdown中Latex编写技巧</title>
+    <title>Markdown中LaTeX编写技巧</title>
     <link href="https://www.gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/"/>
     <id>https://www.gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/</id>
     <published>2020-04-01T13:04:57.000Z</published>
-    <updated>2020-04-06T05:36:37.675Z</updated>
+    <updated>2020-04-10T12:22:58.746Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h1 id=&quot;Markdown中Latex常用语法&quot;&gt;&lt;a href=&quot;#Markdown中Latex常用语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown中Latex常用语法&quot;&gt;&lt;/a&gt;Markdown中Latex常用语法&lt;/h1&gt;&lt;h2
+          &lt;h1 id=&quot;Markdown中LaTeX常用语法&quot;&gt;&lt;a href=&quot;#Markdown中LaTeX常用语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown中LaTeX常用语法&quot;&gt;&lt;/a&gt;Markdown中LaTeX常用语法&lt;/h1&gt;&lt;h2
         
       
     
@@ -40,16 +40,16 @@
     
       <category term="Markdown" scheme="https://www.gkm0120.cn/tags/Markdown/"/>
     
-      <category term="Latex" scheme="https://www.gkm0120.cn/tags/Latex/"/>
+      <category term="LaTeX" scheme="https://www.gkm0120.cn/tags/LaTeX/"/>
     
   </entry>
   
   <entry>
     <title>直线段的扫描转换算法</title>
-    <link href="https://www.gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/"/>
-    <id>https://www.gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/</id>
+    <link href="https://www.gkm0120.cn/2020/03/31/zhi-xian-duan-de-sao-miao-zhuan-huan-suan-fa/"/>
+    <id>https://www.gkm0120.cn/2020/03/31/zhi-xian-duan-de-sao-miao-zhuan-huan-suan-fa/</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2020-04-06T05:03:20.015Z</updated>
+    <updated>2020-04-10T09:55:43.083Z</updated>
     
     <summary type="html">
     
@@ -135,7 +135,7 @@
     <link href="https://www.gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/"/>
     <id>https://www.gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/</id>
     <published>2020-03-26T01:24:52.000Z</published>
-    <updated>2020-04-02T14:35:46.222Z</updated>
+    <updated>2020-04-10T12:22:48.008Z</updated>
     
     <summary type="html">
     
@@ -161,35 +161,7 @@
     <link href="https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/"/>
     <id>https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/</id>
     <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-04-06T05:03:00.284Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Cohen-Sutherland编码裁剪算法&quot;&gt;&lt;a href=&quot;#Cohen-Sutherland编码裁剪算法&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
-    
-    
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
-    
-      <category term="Cohen-Sutherland" scheme="https://www.gkm0120.cn/tags/Cohen-Sutherland/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cohen-Sutherland编码裁剪</title>
-    <link href="https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/"/>
-    <id>https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/</id>
-    <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-04-03T01:40:08.284Z</updated>
+    <updated>2020-04-10T12:22:41.008Z</updated>
     
     <summary type="html">
     
@@ -217,7 +189,7 @@
     <link href="https://www.gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/"/>
     <id>https://www.gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/</id>
     <published>2020-03-21T15:48:07.000Z</published>
-    <updated>2020-04-06T05:33:30.333Z</updated>
+    <updated>2020-04-09T02:47:05.033Z</updated>
     
     <summary type="html">
     
@@ -320,11 +292,11 @@
   </entry>
   
   <entry>
-    <title>Git和Node.js重新安装</title>
-    <link href="https://www.gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/"/>
-    <id>https://www.gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/</id>
+    <title>Git和Node.js安装</title>
+    <link href="https://www.gkm0120.cn/2020/03/17/git-he-node-js-an-zhuang/"/>
+    <id>https://www.gkm0120.cn/2020/03/17/git-he-node-js-an-zhuang/</id>
     <published>2020-03-17T05:07:25.000Z</published>
-    <updated>2020-03-29T02:58:56.413Z</updated>
+    <updated>2020-04-10T12:27:09.597Z</updated>
     
     <summary type="html">
     
@@ -352,7 +324,7 @@
     <link href="https://www.gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/"/>
     <id>https://www.gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/</id>
     <published>2020-03-16T06:03:03.000Z</published>
-    <updated>2020-03-29T02:59:22.632Z</updated>
+    <updated>2020-04-10T12:25:16.058Z</updated>
     
     <summary type="html">
     
@@ -378,7 +350,7 @@
     <link href="https://www.gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/"/>
     <id>https://www.gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/</id>
     <published>2020-03-15T06:24:06.000Z</published>
-    <updated>2020-03-29T03:03:48.995Z</updated>
+    <updated>2020-04-09T01:32:47.554Z</updated>
     
     <summary type="html">
     
@@ -386,7 +358,7 @@
       
         
         
-          &lt;h2 id=&quot;博客搭建步骤&quot;&gt;&lt;a href=&quot;#博客搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;博客搭建步骤&quot;&gt;&lt;/a&gt;博客搭建步骤&lt;/h2&gt;&lt;h3 id=&quot;1-node安装&quot;&gt;&lt;a href=&quot;#1-node安装&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;1-博客搭建步骤&quot;&gt;&lt;a href=&quot;#1-博客搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;1 博客搭建步骤&quot;&gt;&lt;/a&gt;1 博客搭建步骤&lt;/h2&gt;&lt;h3 id=&quot;1-1-node安装&quot;&gt;&lt;a href=&quot;#1-1-node安装&quot;
         
       
     

@@ -1,14 +1,13 @@
 https://www.gkm0120.cn/2020/04/01/markdown-zhong-latex-bian-xie-ji-qiao/
-https://www.gkm0120.cn/2020/03/31/dda-yu-bresenham-suan-fa/
+https://www.gkm0120.cn/2020/03/31/zhi-xian-duan-de-sao-miao-zhuan-huan-suan-fa/
 https://www.gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/
 https://www.gkm0120.cn/2020/03/27/shi-yong-git-pi-liang-shang-chuan-tu-pian/
 https://www.gkm0120.cn/2020/03/26/markdown-bian-ji-qi-yu-fa-zhi-nan/
 https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/
-https://www.gkm0120.cn/2020/03/25/cohen-sutherland-bian-ma-cai-jian/cohen-sutherland-bian-ma-cai-jian/
 https://www.gkm0120.cn/2020/03/21/hexo-github-bo-ke-mei-hua-jiao-cheng/
 https://www.gkm0120.cn/2020/03/20/hill-mi-ma-jia-mi-jie-mi/
 https://www.gkm0120.cn/2020/03/19/sierpinski-lou-dian-cheng-xu/
 https://www.gkm0120.cn/2020/03/18/qiu-ti-de-xi-fen-bi-jin-cheng-xu/
-https://www.gkm0120.cn/2020/03/17/git-he-node-js-chong-xin-an-zhuang/
+https://www.gkm0120.cn/2020/03/17/git-he-node-js-an-zhuang/
 https://www.gkm0120.cn/2020/03/16/git-chang-jian-bao-cuo-ji-chu-li-fang-fa/
 https://www.gkm0120.cn/2020/03/15/da-jian-hexo-github-bo-ke/
