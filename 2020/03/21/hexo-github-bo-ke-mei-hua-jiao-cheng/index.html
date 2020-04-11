@@ -744,7 +744,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-09
+                    2020-04-11
                 </div>
                 
 
@@ -793,7 +793,7 @@
 <h4 id="1-2-hexo基本配置"><a href="#1-2-hexo基本配置" class="headerlink" title="1.2 hexo基本配置"></a>1.2 hexo基本配置</h4><p>在文件根目录下的_config.yml，就是整个hexo框架的配置文件了。可以在里面修改大部分的配置。详细可参考官方的<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">配置描述</a>。</p>
 <h5 id="1-2-1-网站"><a href="#1-2-1-网站" class="headerlink" title="1.2.1 网站"></a>1.2.1 网站</h5><p>参数描述<code>title</code>网站标题<code>subtitle</code>网站副标题<code>description</code>网站描述<code>author</code>您的名字<code>language</code>网站使用的语言<code>timezone</code>网站时区。<code>Hexo</code>默认使用您电脑的时区。时区列表。比如说：<code>America/New_York</code>,<code>Japan</code>, 和<code>UTC</code>。</p>
 <p>其中，<code>description</code>主要用于<code>SEO</code>，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。<code>author</code>参数用于主题显示文章的作者。</p>
-<h5 id="1-2-2-网址"><a href="#1-2-2-网址" class="headerlink" title="1.2.2 网址"></a>1.2.2 网址</h5><p>参数描述<code>url</code>网址<code>root</code>网站根目录<code>permalink</code>文章的永久链接格式<code>permalink_defaults</code>永久链接中各部分的默认值<br>在这里，你需要把url改成你的网站域名。<br><code>permalink</code>，也就是你生成某个文章时的那个链接格式。<br>比如我新建一个文章叫<code>temp.md</code>，那么这个时候他自动生成的地址就是<a href="http://yoursite.com/2018/09/05/temp" target="_blank" rel="noopener">http://yoursite.com/2018/09/05/temp</a> 。<br>以下是官方给出的示例，关于链接的变量还有很多，需要的可以去官网上查找<a href="https://hexo.io/zh-cn/docs/permalinks" target="_blank" rel="noopener">永久链接</a>。</p>
+<h5 id="1-2-2-网址"><a href="#1-2-2-网址" class="headerlink" title="1.2.2 网址"></a>1.2.2 网址</h5><p>参数描述<code>url</code>网址<code>root</code>网站根目录<code>permalink</code>文章的永久链接格式<code>permalink_defaults</code>永久链接中各部分的默认值<br>在这里，你需要把url改成你的网站域名。<br><code>permalink</code>，也就是你生成某个文章时的那个链接格式。<br>比如我新建一个文章叫<code>temp.md</code>，那么这个时候他自动生成的地址就是<a href="https://yoursite.com/2018/09/05/temp" target="_blank" rel="noopener">https://yoursite.com/2018/09/05/temp</a> 。<br>以下是官方给出的示例，关于链接的变量还有很多，需要的可以去官网上查找<a href="https://hexo.io/zh-cn/docs/permalinks" target="_blank" rel="noopener">永久链接</a>。</p>
 <blockquote>
 <p>参数结果:year/:month/:day/:title/2019/08/10/hello-world :year-:month-:day-:title.html 2019-08-10-hello-world.html :category/:titlefoo/bar/hello-world<br>再往下翻，中间这些都默认就好了。</p>
 </blockquote>
@@ -832,7 +832,7 @@ categories:
 <p><strong>1.2.4.2 page</strong></p>
 <p>如果你想另起一页，那么可以使用</p>
 <pre class="line-numbers language-bash"><code class="language-bash">hexo new page newpage<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>系统会自动给你在source文件夹下创建一个<code>newpage</code>文件夹，以及<code>newpage</code>文件夹中的<code>index.md</code>，这样你访问的<code>newpage</code>对应的链接就是<a href="http://xxx.xxx/newpage" target="_blank" rel="noopener">http://xxx.xxx/newpage</a></p>
+<p>系统会自动给你在source文件夹下创建一个<code>newpage</code>文件夹，以及<code>newpage</code>文件夹中的<code>index.md</code>，这样你访问的<code>newpage</code>对应的链接就是<a href="https://xxx.xxx/newpage" target="_blank" rel="noopener">https://xxx.xxx/newpage</a></p>
 <p><strong>1.2.4.3 draft</strong></p>
 <p><code>draft</code>是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p>
 <pre class="line-numbers language-bash"><code class="language-bash">hexo new draft newdraft<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -931,7 +931,7 @@ description: "Oops～，我崩溃了！找不到你想要的页面 :("<span aria
 &lt;/div&gt;</code></pre><p>这样就会多出一张<code>card</code>，然后可以在<code>/source/about/index.md</code>下面写上你的简历了，当然这里的位置随你自己设置，你也可以把简历作为第一个<code>card</code>。</p>
 <h4 id="2-4-数学公式渲染和代码高亮"><a href="#2-4-数学公式渲染和代码高亮" class="headerlink" title="2.4 数学公式渲染和代码高亮"></a>2.4 数学公式渲染和代码高亮</h4><h5 id="2-4-1-解决mathjax与代码高亮的冲突"><a href="#2-4-1-解决mathjax与代码高亮的冲突" class="headerlink" title="2.4.1 解决mathjax与代码高亮的冲突"></a>2.4.1 解决mathjax与代码高亮的冲突</h5><p>如果你按照教程安装了代码高亮插件hexo-prism-plugin，单独使用是没有问题的，但如果你又使用了mathjax，并且按照网上教程，安装kramed插件并修改了js文件里的正则表达式（为了解决markdown和mathjax的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用kramed插件了，还用原来自带的marked插件，直接改它的正则表达式就行了。</p>
 <h5 id="2-4-2-加数学公式显示"><a href="#2-4-2-加数学公式显示" class="headerlink" title="2.4.2 加数学公式显示"></a>2.4.2 加数学公式显示</h5><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p>
-<pre class="line-numbers language-json"><code class="language-json">&lt;script type=<span class="token string">"text/javascript"</span> src=<span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span>>&lt;/script><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-json"><code class="language-json">&lt;script type=<span class="token string">"text/javascript"</span> src=<span class="token string">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"</span>>&lt;/script><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。<br>打开<code>/node_modules/marked/lib</code>中的<code>marked.js</code>文件，第539行的<code>escape:</code>处替换成：</p>
 <pre><code>escape: /^$[`*\[\]()#$+\-.!_&gt;])/</code></pre><p>第553行的em:处替换成：</p>
 <pre><code>em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</code></pre><p>这时在文章里写数学公式基本没有问题了，但是要注意：<br><strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
@@ -1094,14 +1094,14 @@ description: "Oops～，我崩溃了！找不到你想要的页面 :("<span aria
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/15.png" alt=""></p>
 <ol start="3">
-<li>然后在浏览器地址栏修改歌单链接，示例：<a href="http://music.163.com/#//outchain/2/20707408/" target="_blank" rel="noopener">http://music.163.com/#//outchain/2/20707408/</a></li>
+<li>然后在浏览器地址栏修改歌单链接，示例：<a href="https://music.163.com/#//outchain/2/20707408/" target="_blank" rel="noopener">https://music.163.com/#//outchain/2/20707408/</a></li>
 <li>然后就转到外链设置页面了。<br>复制如下代码，粘贴到文章对应位置就行了，为了美观，设置一下居中，具体代码如下：</li>
 </ol>
 <pre class="line-numbers language-css"><code class="language-css">&lt;div align=<span class="token string">"middle"</span>>这里粘贴刚刚复制的代码&lt;/div><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="2-10-博客音乐板块"><a href="#2-10-博客音乐板块" class="headerlink" title="2.10 博客音乐板块"></a>2.10 博客音乐板块</h4><p>如果我们自己写博客写疲劳了，想放松一下听听歌又不想切出博客主页，那么我们可以自己定制一个博客音乐播放界面，把自己喜欢的歌曲都放进来，这里用到是Aplayer插件，但是歌曲来源需要我们自己定义，但是，因为各大音乐平台，由于版权原因，很多歌曲是不支持外链播放的，难道我们就必须每首歌下载然后上传云空间，再获取词曲封面么？这就比较麻烦了。其实不然，研究了半个小时，我发现可以采取下面的办法，很方便：</p>
 <ul>
 <li>首先我们找到网易云在线平台，任意找到一首歌点进去播放，可以在地址栏拿到音乐<code>ID</code>号</li>
-<li>然后通过下面网址：<a href="http://music.163.com/song/media/outer/url?id=XXXXXX.mp3" target="_blank" rel="noopener">http://music.163.com/song/media/outer/url?id=XXXXXX.mp3</a> ， XXXXXX就是歌曲<code>ID</code>号，每一首歌我们只需要换掉这个<code>ID</code>号就行了,就相当于每一首的外链了</li>
+<li>然后通过下面网址：<a href="https://music.163.com/song/media/outer/url?id=XXXXXX.mp3" target="_blank" rel="noopener">https://music.163.com/song/media/outer/url?id=XXXXXX.mp3</a> ， XXXXXX就是歌曲<code>ID</code>号，每一首歌我们只需要换掉这个<code>ID</code>号就行了,就相当于每一首的外链了</li>
 <li>最后封面图也可以按<code>F12</code>去找页面元素的链接，填到对应的<code>musics.jason</code>文件中就可以，批量填入，听到好听的歌曲随时更换随时新增，很方便。<br>操作如下图：<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/blob/master/images/2020033001.gif" data-original="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/17.png" alt=""></li>
 </ul>
 <h4 id="2-11-Valine评论模块修改"><a href="#2-11-Valine评论模块修改" class="headerlink" title="2.11 Valine评论模块修改"></a>2.11 Valine评论模块修改</h4><p><code>matery</code>主题已经集成<code>Valine</code>评论模块，在主题配置文件<code>.yml</code>中配置相应的字段就行了。<code>nable: true</code>，<code>XXX</code>字段是需要自己注册登录<code>leancloud</code>官网，创建应用然后获取<code>appId</code>和<code>appKey</code>，其他参数根据自己的需求修改就是，如下：</p>
@@ -1568,7 +1568,7 @@ xuehuapiaoluo<span class="token punctuation">:</span>
 <p>在主题配置文件<code>.yml</code>中配置:</p>
 <pre><code># 天气接口插件
 weather:
-  enable: true</code></pre><p>展示效果可以参考我的<a href="http://gkm0120.gitee.io/" target="_blank" rel="noopener">主页</a></p>
+  enable: true</code></pre><p>展示效果可以参考我的<a href="https://gkm0120.gitee.io/" target="_blank" rel="noopener">主页</a></p>
 <p>当然,如果你不想搞这么复杂,可以直接将下面代码插入<code>/themes/matery/layout/_partial/layout.ejs</code>中即可使用:</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
     WIDGET <span class="token operator">=</span> <span class="token punctuation">{</span>FID<span class="token punctuation">:</span> <span class="token string">'1tFpFZ5Mtj'</span><span class="token punctuation">}</span>
@@ -2825,7 +2825,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
-                 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36100202000238" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/>赣公网安备 36100202000238号</p></a>
+                 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36100202000238" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">赣公网安备 36100202000238号</p></a>
                 <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
             </span>
             
@@ -3033,6 +3033,6 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>
