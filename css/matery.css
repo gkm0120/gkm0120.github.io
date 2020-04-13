@@ -486,9 +486,9 @@ header .go-back i {
 
 .bg-cover:after {
     -webkit-animation: rainbow 30s infinite;
-    /* 原值 60s, 洪卫 modify 2019.08*/
+    /* 原值 60s */
     animation: rainbow 30s infinite;
-    /* 原值 60s, 洪卫 modify 2019.08*/
+    /* 原值 60s */
 }
 
 .bg-cover:before,
@@ -656,7 +656,7 @@ header .go-back i {
 
 .dream {
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .dream .title,
@@ -691,7 +691,7 @@ header .go-back i {
 /* .index-card .card .card-content {
     padding: 20px 40px;
 } */
-/* 洪卫 shw2018 modify 2019.08.31 */
+
 .index-card .card .card-content {
     padding: 5px 5px;
 }
@@ -855,7 +855,7 @@ article .card {
     border-radius: 5px;
     /*原值 8px*/
     overflow: hidden;
-    /* 解决文章卡片上方border-radius失效的bug, 洪卫 shw2018 add 2019.08.31 */
+    /* 解决文章卡片上方border-radius失效的bug*/
 }
 
 article .card-image {
@@ -2139,4 +2139,9 @@ footer .copy-right {
 .nav-item li:hover a {
     color: #FFF;
     background: rgba(0, 0, 0, .1);
+}
+
+.daodream-container .daodream-launcher-enabled {
+    bottom: 140px !important;
+    right: 17px !important;
 }
