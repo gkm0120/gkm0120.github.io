@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.gkm0120.cn/"/>
-  <updated>2020-04-10T12:22:58.746Z</updated>
+  <updated>2020-04-14T03:00:10.883Z</updated>
   <id>https://www.gkm0120.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PDE Notes</title>
+    <link href="https://www.gkm0120.cn/2020/04/13/pde-notes/"/>
+    <id>https://www.gkm0120.cn/2020/04/13/pde-notes/</id>
+    <published>2020-04-13T08:31:08.000Z</published>
+    <updated>2020-04-14T03:00:10.883Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;3-热传导方程&quot;&gt;&lt;a href=&quot;#3-热传导方程&quot; class=&quot;headerlink&quot; title=&quot;3 热传导方程&quot;&gt;&lt;/a&gt;3 热传导方程&lt;/h2&gt;&lt;h3 id=&quot;3-1-热传导方程的-Cauchy-问题&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Personal notes" scheme="https://www.gkm0120.cn/categories/Personal-notes/"/>
+    
+    
+      <category term="PDE" scheme="https://www.gkm0120.cn/tags/PDE/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown中LaTeX编写技巧</title>
@@ -78,7 +104,7 @@
     <link href="https://www.gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/"/>
     <id>https://www.gkm0120.cn/2020/03/29/liang-barsky-cai-jian-suan-fa/</id>
     <published>2020-03-29T13:38:16.000Z</published>
-    <updated>2020-04-03T15:19:23.478Z</updated>
+    <updated>2020-04-13T08:59:15.054Z</updated>
     
     <summary type="html">
     

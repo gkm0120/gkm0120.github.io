@@ -736,21 +736,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-03
+                    2020-04-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -767,16 +767,23 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Liang-Barsky裁剪算法"><a href="#Liang-Barsky裁剪算法" class="headerlink" title="Liang-Barsky裁剪算法"></a>Liang-Barsky裁剪算法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
-<li>用参数方程表示一条直线</li>
+<li>用参数方程表示一条直线，用方程表示直线$P_{1}P_{2}$，其中$t$就是直线的斜率，$\mathrm{t} \in[0,1]:$</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>x(t)=x_{1}+\left(x_{2}-x_{1}\right) t&amp;=x_{1}+t \Delta x  \qquad 0&lt;t&lt;1 \\<br>y(t)=y_{1}+\left(y_{2}-y_{1}\right) t&amp;=y_{1}+t \Delta y  \qquad 0&lt;t&lt;1<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200413160753.png">
+裁剪区域内部可以表达为两个不等式：
+
+<p>$$\begin{aligned}<br>&amp;x_{L}&lt;x&lt;x_{R}\<br>&amp;y_{B}&lt;y&lt;y_{T}<br>\end{aligned}$$<br>把直线方程代入得到不等式：<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp; -t \Delta x&lt;x_{1}-x_{L} &amp; t \Delta x&lt;x_{R}-x_{1} \\<br>&amp; -t \Delta y&lt;y_{1}-y_{B} &amp; t \Delta y&lt;y_{T}-y_{1}<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>即<br>$$t d_{i}&lt;q_{i} \quad i=1,2,3,4$$</p>
+<p>$$\begin{array}{llll}<br>d_{1}=-\Delta x &amp; d_{2}=\Delta x &amp; d_{3}=-\Delta y &amp; d_{4}=\Delta y \\<br>q_{1}=x_{1}-x_{L} &amp; q_{2}=x_{R}-x_{1} &amp; q_{3}=y_{1}-y_{B} &amp; q_{4}=y_{T}-y_{1}<br>\end{array}$$</p>
+<ol start="2">
 <li>把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：<br>入边：左边界和下边界——从裁剪框外向裁剪框内<br>出边：右边界和上边界——从裁剪框内向裁剪框外<br><img src="/medias/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032905.png" alt="出边与入边"></li>
 <li>分情况讨论</li>
 </ol>
 <ul>
-<li>$ d=0 $，$ q&lt;0 $,  说明直线与裁剪框平行，并且位于裁剪框的外面，直线为不可见，可抛弃，直接结束；$ q\geq0 $，说明直线在它所平行的窗口边界的内部，还需进一步计算确定直线是否在窗口内、外、或者相交</li>
+<li>$ d=0 :$<br>$ q&lt;0 $,  说明直线与裁剪框平行，并且位于裁剪框的外面，直线为不可见，可抛弃，直接结束；<br>$ q\geq0 $，说明直线在它所平行的窗口边界的内部，还需进一步计算确定直线是否在窗口内、外、或者相交</li>
 <li>$ d&lt;0 $，说明直线是从裁剪边界的外部延伸到内部</li>
-<li>$ d&gt;0 $, 说明直线是从裁剪边界的内部延伸到外部<br>对于$ d\neq0 $，可以利用式子计算直线与边界k的交点的参数$ u $。对于每条直线，可以计算直线位于裁剪窗口内线段的参数$ d_1 $和$ d_2 $</li>
-<li>$ d_1 $的值是由那些使得直线是从外部延伸到内部的窗口边界决定。对于这些边计算$ r_i=q_i/d_i $，$ d_i= max(r_i,0) $</li>
-<li>$ d_2 $的值是由那些使得直线是从内部延伸到窗口边界决定，$ d_2=min(r_i,1) $<br>如果$ d_1 $$ d_2 $,这条直线完全在窗口的外面，不可见，可抛弃，否则，根据参数$ u $的两个值，计算出裁剪后线段的端点</li>
+<li>$ d&gt;0 $, 说明直线是从裁剪边界的内部延伸到外部<br>对于$ d\neq0 $，可以利用式子计算直线与边界k的交点的参数$ u $。对于每条直线，可以计算直线位于裁剪窗口内线段的参数$ d_1 $和$ d_2 $.<br>$ d_1 $的值是由那些使得直线是从外部延伸到内部的窗口边界决定。对于这些边计算$ r_i=q_i/d_i $，$ d_i= max(r_i,0) $.<br>$ d_2 $的值是由那些使得直线是从内部延伸到窗口边界决定，$ d_2=min(r_i,1) $.<br>如果$ d_1 $$ d_2 $这条直线完全在窗口的外面，不可见，可抛弃，否则，根据参数$ u $的两个值，计算出裁剪后线段的端点.</li>
 </ul>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
 <p>代码的思路：画一个矩形，来作为一个裁剪窗口，然后画一条黄色的直线。如果直线没有经过矩形区域，则为黄色，如果穿过矩形区域，则使用Liang-Barskey算法来进行裁剪，裁剪之后，再进行画一条黑色的直线来覆盖。</p>
@@ -1157,32 +1164,6 @@
         </div>
     </div>
 
-    
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
-
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitalk-container" class="card-content"></div>
-</div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '775ecfa73ed78105dcfb',
-        clientSecret: '0eeedf10cffad6da283aef6c9b9642898277637e',
-        repo: 'gkm0120.github.io',
-        owner: 'gkm0120',
-        admin: ["gkm0120"],
-        id: '2020-03-29T21-38-16',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
     
 
     
@@ -1651,7 +1632,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/gh/gkm0120/live2d-widget@latest/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 
 
     </div>
@@ -1851,7 +1832,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.1k</span>&nbsp;字
+                class="white-color">25k</span>&nbsp;字
             
             
             
@@ -2068,6 +2049,6 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>
