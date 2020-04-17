@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="直线段的扫描转换算法, HPCSIP CV DeepLearning MachineLearning 计算机视觉 深度学习">
+    <meta name="keywords" content="扫描转换算法, HPCSIP CV DeepLearning MachineLearning 计算机视觉 深度学习">
     <meta name="description" content="湖南师范大学 | 计算数学 | 计算机视觉">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>直线段的扫描转换算法 | 孔明の博客</title>
+    <title>扫描转换算法 | 孔明の博客</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -586,13 +586,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        直线段的扫描转换算法
+                        扫描转换算法
                     </div>
                 </div>
             </div>
@@ -736,21 +736,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-15
+                    2020-04-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    12 分
                 </div>
                 
 
@@ -766,7 +766,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="DDA算法"><a href="#DDA算法" class="headerlink" title="DDA算法"></a>DDA算法</h2><blockquote>
+                <h2 id="1-直线扫描转换算法"><a href="#1-直线扫描转换算法" class="headerlink" title="1 直线扫描转换算法"></a>1 直线扫描转换算法</h2><h3 id="1-1-DDA算法"><a href="#1-1-DDA算法" class="headerlink" title="1.1 DDA算法"></a>1.1 DDA算法</h3><blockquote>
 <p>Digital Differential Analyer</p>
 </blockquote>
 <p>在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg"></p>
@@ -790,7 +790,7 @@
 <li>$ k\le1 $时,对于 $ y_i=kx_i+b $，$ y_{i+1}=kx_{i+1}+b=k(x_i+1)+b=y_i+k $，那么斜率$ k $即可看为前进一步的增量，这样就把将乘法运算变成了加法</li>
 <li>$ k&gt;1 $时，取$ x_{i+1}=x_i+\frac{1}{k} $即可</li>
 </ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;GL\glut.h></span></span>
+<h4 id="1-1-1-代码"><a href="#1-1-1-代码" class="headerlink" title="1.1.1 代码"></a>1.1.1 代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;GL\glut.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cmath></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -894,10 +894,10 @@
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040305.jpg">
+<h4 id="1-1-2-运行结果"><a href="#1-1-2-运行结果" class="headerlink" title="1.1.2 运行结果"></a>1.1.2 运行结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040305.jpg">
 
 
-<h2 id="中点画线算法"><a href="#中点画线算法" class="headerlink" title="中点画线算法"></a>中点画线算法</h2><blockquote>
+<h3 id="1-2-中点画线算法"><a href="#1-2-中点画线算法" class="headerlink" title="1.2 中点画线算法"></a>1.2 中点画线算法</h3><blockquote>
 <p>效率上最快</p>
 </blockquote>
 <p>基本思想：采用直线的一般式方程$ F(x,y)=Ax+By+C=0 $<br>$ F(x,y)=Ax+By+C=0\le\left|k\right|\le1 $,$ x_i+1\rightarrow y_i \rightarrow \begin{cases}y_i \\y_i +1\end{cases}$，把浮点运算改成整数加法。</p>
@@ -927,7 +927,7 @@
 <h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><blockquote>
 <p>适用范围扩大，与方程无关不仅限于画直线</p>
 </blockquote>
-<h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>DDA算法在编码实现比较容易，但是每生成一个像素都要用到一次浮点加法运算，Bresenham的线段光栅化算法可以避免浮点运算。</p>
+<h3 id="1-3-理论"><a href="#1-3-理论" class="headerlink" title="1.3 理论"></a>1.3 理论</h3><p>DDA算法在编码实现比较容易，但是每生成一个像素都要用到一次浮点加法运算，Bresenham的线段光栅化算法可以避免浮点运算。</p>
 <ol>
 <li>假设线段的起点$ \bigl(x_0,y_0\bigr) $和终点$ \bigl(x_1,y_1\bigr) $的坐标值都是整数，且斜率满足$ 0\leq m\leq 1 $</li>
 <li>在线段扫描转换过程某一步中，假定已知$ (i+\frac{1}{2},j+\frac{1}{2}) $的像素。该线段所在的直线方程为$ y=mx+h $,当$ x=i+\frac{1}{2} $时，该直线与$ (i+\frac{1}{2},j+\frac{1}{2}) $处像素的垂直扫描线的实际交点是在垂直扫描线上位于该像素的半个像素内部的某一点（假定像素中心位置的坐标值位于两个整数之间），否则，对该实际交点进行四舍五入处理后不可能得到当前这个像素。</li>
@@ -939,7 +939,7 @@
 </ol>
 <img width="200" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033104.jpg">
 
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><blockquote>
+<h4 id="1-3-1-优化"><a href="#1-3-1-优化" class="headerlink" title="1.3.1 优化"></a>1.3.1 优化</h4><blockquote>
 <p>定点运算代替浮点运算</p>
 </blockquote>
 <p>令$ d=(x_2-x_1)(b-a)=\Delta x(b-a) $，用线段的方程将$ a $和$ b $的值代入，结合$ m=\frac{y_2-y_1}{x_2-x_1} $，$ h=y_2-mx_2 $，运算得$ d $为一整数（用到多次定点运算）</p>
@@ -951,7 +951,7 @@
 <img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033107.jpg">
 
 <p>其中：<br>        $$d_{k+1}=\begin{cases}<br>    d_k+2\Delta y \qquad &amp; d_k&lt;0\\<br>    2(\Delta y-\Delta x)\qquad &amp; d_k\geq0<br>    \end{cases} $$</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<h4 id="1-3-2-代码"><a href="#1-3-2-代码" class="headerlink" title="1.3.2 代码"></a>1.3.2 代码</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glu.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/gl.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;GL/glut.h></span></span>
@@ -1089,9 +1089,46 @@
     <span class="token function">glutMainLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg">
+<p>####1.3.3 运行结果<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg"></p>
+<h2 id="2-多边形扫描转化算法"><a href="#2-多边形扫描转化算法" class="headerlink" title="2 多边形扫描转化算法"></a>2 多边形扫描转化算法</h2><p>多边形分为凸多边形，凹多边形（任意两顶点间的连线有不在多边形内的部分）含内环的多边形</p>
+<h3 id="2-1-X扫描线算法"><a href="#2-1-X扫描线算法" class="headerlink" title="2.1 X扫描线算法"></a>2.1 X扫描线算法</h3><blockquote>
+<p>多边形扫描转换指的是把多边形的顶点表示转换为点阵表示</p>
+</blockquote>
+<ol>
+<li>基本思想：按扫描线的顺序，计算扫描线与多边形的相交区间，再用要求的颜色显示这些区间的像素，完成填充工作。端点即为扫描线与多边形边界线的交点。</li>
+<li>算法步骤：</li>
+</ol>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416202043.png">
 
+<p>（1） 确定多边形所占有的最大扫描数，得到多边形顶点的最小和最大值<br>（2） 从 $y=y_{min}$ 到 $y=y_{max}$ 每次用一条扫描线进行填充<br>（3） 扫描线的填充过程：求交排序（交点按递增顺序排）$\to$交点配对（偶数个）$\to$区间填色</p>
+<ol start="3">
+<li>当扫描线与某一顶点相交时，交点的取舍问题处理办法为：<br>共享顶点的两条边分别落在扫描线左右两边，交点只算1个<br>共享顶点的两条边的另外两个端点 值大于顶点 值，交点算2个，否则算0个<br>缺点：扫描线与多边形各边求交很麻烦</li>
+</ol>
+<h3 id="2-2-改进的X扫描线算法（不求交）"><a href="#2-2-改进的X扫描线算法（不求交）" class="headerlink" title="2.2 改进的X扫描线算法（不求交）"></a>2.2 改进的X扫描线算法（不求交）</h3><ol>
+<li><p>改进求交方法：<br>（1）只与有效边求交；<br>（2）扫描线的连贯性——当前扫描线与各边交点顺序与下条扫描线与各边交点顺序雷同;<br>（3）多边形的连贯性——某条边与当前扫描线相交时很可能也与下一条扫描线相交.</p>
+</li>
+<li><p>引进数据结构：<br>（1）活性边表——与当前扫描线相交的边叫做活性边，并把他们按与扫描线交点，坐标递增的顺序存放在一个链表中<br>（2）结点内容——$x$（交点坐标）；$\delta{x}$（相邻扫描线的增量）；$y_{max}$（最高扫描线的坐标值）</p>
+</li>
+</ol>
+<p>$$ x  \to \delta x \to y_{max} \to \text { Next } $$</p>
+<p> 扫描线一次向上移动1，即$y_{i+1}-y_{i}=1$ ，相交直线边斜率为$k$，即$x_{i+1}=x_{i}+\frac{1}{k}$<br>其中$\delta=\frac{1}{k}$ ，而$y_{max}$可以确定何时抛弃该有效边</p>
+<ol start="3">
+<li>构建新边表：构造纵向链表，链表长度为多边形所占有的最大扫描线数<br>对扫描线出现的位置构造</li>
+</ol>
+<p>$$ y_{max} \to x_{min} \to \frac{1}{k} \to \text { Next } $$</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416204239.png">
 
+<p>注：边是否被抛弃，未抛弃则要注意 ，还要看是否有新边进来</p>
+<h3 id="2-3-区域填充算法"><a href="#2-3-区域填充算法" class="headerlink" title="2.3 区域填充算法"></a>2.3 区域填充算法</h3><blockquote>
+<p>要求区域内连通</p>
+</blockquote>
+<p>区域可分4连通（左上右下）和8连通（斜方向）区域</p>
+<ol>
+<li><p>简单四连通种子填充算法（区域填充递归算法）：<br>使用栈结构来实现：栈顶像素出栈$\to$将出栈像素置成要填充色$\to$按左上右下顺序将不在边界且未填充的像素入栈填充$\to$对最后一个入栈的像素重复上述操作</p>
+</li>
+<li><p>多边形扫描转换算法与区域填充算法的区别<br>区域填充需要一个种子点，根据区域连通性进行颜色扩散<br>扫描线转换是从边界出发采用多种形式的连贯性进行填充</p>
+</li>
+</ol>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
 <li><a href="https://www.icourse163.org/learn/CAU-45006?tid=1450413503#/learn/content?type=detail&amp;id=1215011255" target="_blank" rel="noopener">中国大学MOOC</a></li>
 </ol>
@@ -1786,9 +1823,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </style>
 
 
+<div>
 <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
-
-
+</div>
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -1889,8 +1926,9 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </script>
 
 
+    <div>
     
-<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
 <style>
     .aplayer .aplayer-lrc p {
         font-size: 12px;
@@ -1925,7 +1963,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 <script src="/libs/aplayer/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
+    
+</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
@@ -1986,7 +2025,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.6k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             
@@ -2203,6 +2242,6 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 
 </html>

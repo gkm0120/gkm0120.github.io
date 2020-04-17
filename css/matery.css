@@ -340,6 +340,15 @@ header .brand-logo .logo-span {
     font-size: 2rem;
 }
 
+.brand-logo .logo-span {
+    background-image: linear-gradient(to right,red,orange,#ff0,green,#ff0,orange,red,orange,#ff0,green,#ff0,orange,red);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-background-size: 200% 100%;
+    -webkit-animation: masked-animation 4s linear infinite;
+    margin-bottom: 10px;
+}
+
 header .button-collapse i {
     font-size: 1.5rem;
 }

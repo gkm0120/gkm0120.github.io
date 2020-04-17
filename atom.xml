@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.gkm0120.cn/"/>
-  <updated>2020-04-15T06:39:52.813Z</updated>
+  <updated>2020-04-17T12:29:14.350Z</updated>
   <id>https://www.gkm0120.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DES数据加密标准</title>
+    <link href="https://www.gkm0120.cn/2020/04/16/des-shu-ju-jia-mi-biao-zhun/"/>
+    <id>https://www.gkm0120.cn/2020/04/16/des-shu-ju-jia-mi-biao-zhun/</id>
+    <published>2020-04-16T13:06:33.000Z</published>
+    <updated>2020-04-17T12:29:14.350Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-加密算法的分类&quot;&gt;&lt;a href=&quot;#1-加密算法的分类&quot; class=&quot;headerlink&quot; title=&quot;1 加密算法的分类&quot;&gt;&lt;/a&gt;1
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PDE Notes</title>
@@ -71,11 +93,11 @@
   </entry>
   
   <entry>
-    <title>直线段的扫描转换算法</title>
+    <title>扫描转换算法</title>
     <link href="https://www.gkm0120.cn/2020/03/31/zhi-xian-duan-de-sao-miao-zhuan-huan-suan-fa/"/>
     <id>https://www.gkm0120.cn/2020/03/31/zhi-xian-duan-de-sao-miao-zhuan-huan-suan-fa/</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2020-04-15T06:44:07.594Z</updated>
+    <updated>2020-04-16T12:59:25.364Z</updated>
     
     <summary type="html">
     
@@ -83,8 +105,7 @@
       
         
         
-          &lt;h2 id=&quot;DDA算法&quot;&gt;&lt;a href=&quot;#DDA算法&quot; class=&quot;headerlink&quot; title=&quot;DDA算法&quot;&gt;&lt;/a&gt;DDA算法&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Digital Differential
+          &lt;h2 id=&quot;1-直线扫描转换算法&quot;&gt;&lt;a href=&quot;#1-直线扫描转换算法&quot; class=&quot;headerlink&quot; title=&quot;1 直线扫描转换算法&quot;&gt;&lt;/a&gt;1 直线扫描转换算法&lt;/h2&gt;&lt;h3 id=&quot;1-1-DDA算法&quot;&gt;&lt;a href=&quot;#1-1-DDA算法&quot;
         
       
     
