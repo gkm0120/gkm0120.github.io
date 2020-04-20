@@ -1,0 +1,1946 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="PDE Notes, HPCSIP CV DeepLearning MachineLearning 计算机视觉 深度学习">
+    <meta name="description" content="湖南师范大学 | 计算数学 | 计算机视觉">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PDE Notes | 孔明の博客</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+<style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },1000);
+        },1000);//强制显示loading page 1s
+    };
+    loaded();
+})()
+ </script><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },1000);
+        },1000);//强制显示loading page 1s
+    };
+    loaded();
+})()
+ </script></head>
+
+
+
+
+ <div id="loading-container">
+     <p class="loading-text">玩命加载中 . . . </p>
+     <div class="loading-image">
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+     </div>
+ </div><body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">孔明の博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/loading.gif" data-original="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">孔明の博客</div>
+        <div class="logo-desc">
+            
+            湖南师范大学 | 计算数学 | 计算机视觉
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+      
+        <a href="/" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-home"></i>
+            
+            首页
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/tags" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-tags"></i>
+            
+            标签
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/categories" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-bookmark"></i>
+            
+            分类
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/archives" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-archive"></i>
+            
+            归档
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/about" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-user-circle"></i>
+            
+            关于
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/contact" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-comments"></i>
+            
+            留言板
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/friends" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-address-book"></i>
+            
+            友情链接
+        </a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/gkm0120/gkm0120.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/gkm0120/gkm0120.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        PDE Notes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    #articleContent :focus {
+        outline: none;
+    }
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PDE/">
+                                <span class="chip bg-color">PDE</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Personal-notes/" class="post-category">
+                                Personal notes
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-13
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-04-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                <span id="busuanzi_container_site_pv" style='display:none'></span>
+                <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                <span id="busuanzi_value_page_pv" ></span>
+                
+
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="3-热传导方程"><a href="#3-热传导方程" class="headerlink" title="3 热传导方程"></a>3 热传导方程</h2><h3 id="3-1-热传导方程的-Cauchy-问题"><a href="#3-1-热传导方程的-Cauchy-问题" class="headerlink" title="3.1 热传导方程的 Cauchy 问题"></a>3.1 热传导方程的 Cauchy 问题</h3><h4 id="3-1-1-齐次热传导方程的-Cauchy-问题"><a href="#3-1-1-齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.1 齐次热传导方程的 Cauchy 问题"></a>3.1.1 齐次热传导方程的 Cauchy 问题</h4><p>一维齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{1} \label{eq:1}<br>\right.<br>\end{equation} $$</p>
+<p>方程 （1）的解具有如下性质：</p>
+<blockquote>
+<p>性质 3.1 设$ u(x,t) $是（1）的解, 则对任意的$ y\in R$，$u(x-y, t)$ 也是（1）的解。<br>性质 3.2 设$ u(x,t) $是（1）的解, 则它的各阶导数也是（1）的解。<br>性质 3.3 设$ S(x,t) $是（1）的解，则对任意连续函数$ g(y) $<br>$$<br>v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y<br>$$<br>也是（1）的解。</p>
+</blockquote>
+<p>理由：<br>$$V_{\varepsilon}=\int_{-\infty}^{\infty} S_{\varepsilon}(x-y, t) g(y)\to g(x) \qquad \varepsilon\to 0 $$</p>
+<blockquote>
+<p>性质 3.4 设$ u(x,t) $是（1）的解，则对任意的$ \lambda&gt;0,$ $u\left(\lambda x, \lambda^{2} t\right)$ 也是（1）的解。</p>
+</blockquote>
+<p>理由：<br>$u$是（1）的解，寻找$v(x,t)=\lambda{\alpha}u(\lambda{\beta}x，\lambda{\gamma}t)$是（1）的解<br>$$v_t=\lambda{\alpha+\gamma}u_t,u_x=\lambda{\alpha+\beta}u_x，u_{xx}=\lambda{\alpha+2\beta}u_x$$<br>$$0=v_t-a^{2}v_{xx}=\lambda{\alpha+\gamma}u_t-a^{2}\lambda{\alpha+2\beta}u_{xx}$$<br>取$$\gamma=2\beta，\lambda=\frac{1}{\sqrt{t}}，v(x, t)=u(\lambda x，\lambda^{2}t)=u({\frac{x}{\sqrt{t}}})=u(\xi)，\xi={\frac{x}{\sqrt{t}}}$$<br>空间变量、时间变量做伸缩变换（尺度不一）<br>$$0=v_t-a^{2}v_{xx}=2xt^{-\frac{3}{2}}- a^2 u^{\prime \prime} t^{-1}$$<br>化简有<br>$$u^{\prime \prime}+\frac{1}{2 a^{2}} \xi u^{\prime}=0$$<br>$$u(\xi)=c_{1} \int_{0}^{\xi} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>其中$ c_1 $, $ c_2 $是两个积分常数。<br>进而<br>$$u(x,t)=c_{1} \int_{0}^{\frac{x}{\sqrt{t}}} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>$$S(x, t)=\frac{\partial}{\partial x} v(x, t)=\frac{c_{1}}{\sqrt{t}} e^{-\frac{x^{2}}{4 a^{2} t}}$$<br>由性质3.3知对任意连续函数$g(y)$,<br>$$v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y=\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y$$<br>也是（1）的解<br>求出$c_1$使其满足初始条件，即<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y = \varphi(y)$$<br>作变换$y-x=2a \sqrt{t} \xi$，有<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-\mu)^{2}}{4 a^{2} t}} g(x+2a \sqrt{t} \xi) 2a{\sqrt{t}} \mathrm{d} \xi = 2ac_1\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\xi^{2}} g(x+2a \sqrt{t}\xi) \mathrm{d} \xi \\ =2ac_1g(x)\int_{-\infty}^{\infty}\mathrm{e}^{-\xi^{2}} \mathrm{d} \xi=2a{\sqrt{\pi}}c_1g(x)=\varphi(x)$$<br>第二个等号成立的条件：$g$连续且一致有界$\Rightarrow$一致收敛（反常积分）$\Rightarrow$t的连续函数<br>取$c_1=\frac{\varphi(x)}{2a{\sqrt{\pi}}g(x)}$，代入有<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>称上式为Cauchy问题的Possion公式<br>记<br>$$G(x, t)=\begin{cases}<br>\frac{1}{2 a \sqrt{\pi t}} \mathrm{e}^{-\frac{x^{2}}{4 a^{2} t}}  &amp; t&gt;0 \\<br>0  &amp; t&lt;0<br>\end{cases} $$<br>则有<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y$$<br>称由上式确定的函数称为热核函数</p>
+<p>下证$u(x,t)=\int_{-\infty}^{\infty} G(x-y,t) \varphi(y) \mathrm{d} y$是如下Cauchy问题的解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>知<br>$$u(x,t)=-\frac{1}{2a{\sqrt{\pi}t^{\frac{3}{2}}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y+\frac{1}{2a{\sqrt{\pi}}t} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {\frac{(x-y)^{2}}{4 a^{2} t^2}} \varphi(y) \mathrm{d} y$$<br>$\forall t_0 \gt 0,t\ge t_0$时，上述积分都一致收敛<br>理由：<br>$$\begin{aligned}<br>| u(x, t) | \leq M \int_{-\infty}^{\infty} G(x-y, t) \mathrm{d} y=\frac{M}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \mathrm{d} y=M<br>\end{aligned}$$<br>其中$|\varphi(x)| \le M,\forall t \gt 0$<br>局部：$\forall (x_0,t_1)\in \mathrm{R}\times(0,{\infty}) $，取$t_0=\frac{t_1}{2}$，故在$[\frac{t_1}{2},{\infty}]$上一致收敛<br>$$u_t(x, t)=\int_{-\infty}^{\infty} G_t(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_{xx}(x, t)=\int_{-\infty}^{\infty} G_{xx}(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_t(x, t)-a^2u_{xx}=\int_{-\infty}^{\infty} (G_t-a^2G_xx)(x-y, t) \varphi(y) \mathrm{d} y=0$$<br>注1：$\varphi$ 为有界连续函数，则$u(x,t)$当$t \gt 0$关于$x,t$无穷次可微，即<br>$$\frac{\partial^{k+1} u}{\partial x^{k} \partial t^{l}}=\int_{-\infty}^{\infty} \frac{\partial^{k+l}}{\partial x^{k} \partial t^{l}} G(x-y, t) \varphi(y) \mathrm{d} y \sim P(\frac{1}{\sqrt{t}}) \int_{-\infty}^{\infty} Q(x,y) \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y$$<br>其中$\sim$为等价符号，$Q(x,y)$为只含$x,y$变量的二元函数。由$\forall \delta \gt 0$，上式右端在区域${-\infty&lt;x&lt;\infty, t \geq \delta}$上一致收敛。由于当$t \gt 0$，$G(x-y,t)$无穷次可微，故$u(x, t) \in C^{\infty}\left(\mathbb{R}_{+}^{2}\right)$</p>
+<p>注2：初值 $\varphi $属于有界函数类的条件可放宽为$${|\varphi(x)| \leq M \mathrm{e}^{N x^{2}}, \quad-\infty&lt;x&lt;\infty}$$<br>理由:可证$u(x,t)$在区域$ {0 \lt t \lt \frac{1}{4 a^{2} N}，-\infty&lt;x&lt;\infty}$上仍是热传导方程Cauchy问题的解。</p>
+<p>注3：若$|\varphi(x)| \le M$，由Possion公式知，$|u(x,t)| \le M，-\infty&lt;x&lt;\infty，t \geq 0$</p>
+<p>注4：Possion公式给出的解在任意一点$(x,t)(t \gt 0)$的值，依赖于初始值在整个$x$轴的值，没有有限的依赖区域。<br>如果杆的初始温度只在某一小段$I_{\delta}=\left(x_{0}-\delta, x_{0}+\delta\right)$不为0，设$$\varphi(x)&gt;0, x \in I_{\delta}; \varphi(x) \equiv 0, x \notin I_{\delta}$$<br>当$ t \geq 0$时，$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y&gt;0$$<br>说明热量瞬间传播到杆上的每一点，热的传播速度是无限的</p>
+<h4 id="3-1-2-非齐次热传导方程的-Cauchy-问题"><a href="#3-1-2-非齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.2 非齐次热传导方程的 Cauchy 问题"></a>3.1.2 非齐次热传导方程的 Cauchy 问题</h4><p>一维非齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{2} \label{eq:2}<br>\right.<br>\end{equation} $$<br>由叠加原理上式可分解为以下两个问题的求解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d}=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=0, \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{3} \label{eq:3}<br>\right.<br>\end{equation} $$</p>
+<blockquote>
+<p>引理3.1（齐次化原理）若函数$w(x,t,\tau)$是Cauchy问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.w\right|_{t=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{4} \label{eq:4}<br>\right.<br>\end{equation} $$</p>
+</blockquote>
+<p>的解，则函数 $u(x,t)=\int_{0}^{t} w(x,t,\tau) \mathrm{d} \tau$ 是Cauchy问题（4）的解<br>证：</p>
+<ol>
+<li>满足初始条件$\left.u\right|_{t=0}=0 $</li>
+<li>满足方程$u_{t}-a^{2} u_{x x}=f(x,t)$<br>$$u_t=w(x,t,\tau)+\int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau = f(x,t)+\int_{0}^{t} w_t(x,t,\tau) \mathrm{d} \tau$$<br>$$u_x=\int_{0}^{t} w_x (x,t,\tau) \mathrm{d} \tau，u_{xx}=\int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau$$<br>则<br>$$u_t-a^{2}u_{xx} = f(x,t)+ \int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau - a^{2} \int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau \\ = f(x,t) + \int_{0}^{t} (w_t - a^{2}w_{xx}) (x,t,\tau) \mathrm{d} \tau = f(x,t)$$</li>
+</ol>
+<p>为了求解问题（4），令$t^{\prime}=t-\tau，x=x$（自变量变换）</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t^{\prime}}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t^{\prime}&gt;0  \\<br>&amp;\left.w\right|_{t^{\prime}=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{5} \label{eq:5}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$w(x,t^{\prime},\tau)=\int_{-\infty}^{\infty} G(x-y, t^{\prime}) f(y,\tau) \mathrm{d} y $$<br>则问题（4）的解<br>$$w(x,t,\tau)=\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y $$<br>则问题（3）的解<br>$$u(x,t)=\int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau$$<br>故由叠加原理,问题（2）的解为<br>$$u(x,t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y)\mathrm{d} y + \int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau $$<br>也记为$$u(x,t)=G \ast \varphi + \int_{0}^{t} G(\bullet,t-\tau)f(\bullet,t-\tau)$$<br>其中$\ast$为卷积符号，$\bullet$表示关于第一个空间变量作卷积</p>
+<blockquote>
+<p>定理3.1：若$\varphi(x) \in C(-\infty, \infty), f(x, t) \in C((-\infty, \infty) \times(0, \infty))$且均有界，则由Possion公式确定的函数$u(x,t)$是Cauchy问题（2）的解</p>
+</blockquote>
+<p>理由：根据上述推导证明可得。</p>
+<h3 id="3-2-热传导方程的混合问题"><a href="#3-2-热传导方程的混合问题" class="headerlink" title="3.2 热传导方程的混合问题"></a>3.2 热传导方程的混合问题</h3><h4 id="3-2-1-半直线上热传导方程与热的反射"><a href="#3-2-1-半直线上热传导方程与热的反射" class="headerlink" title="3.2.1 半直线上热传导方程与热的反射"></a>3.2.1 半直线上热传导方程与热的反射</h4><p>考虑侧表面绝热的均匀细杆，一端固定，已知初始温度和细杆在固定端点的温度，则杆上的温度分布满足如下混合问题：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x, t),  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=\mu(t), &amp;t \geq 0<br>\end{aligned}<br>\tag{6} \label{eq:6}<br>\right.<br>\end{equation} $$</p>
+<p>考虑$f(x) \equiv 0，u(t) \equiv 0$的情形</p>
+<ol>
+<li>Dirlect边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{7} \label{eq:7}<br>\right.<br>\end{equation} $$</p>
+<p>由</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{8} \label{eq:8}<br>\right.<br>\end{equation} $$</p>
+<p>解出：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>初始：<br>$$ \left.u\right|_{t=0}=\varphi(x)，-\infty&lt;x&lt;\infty$$</p>
+<p>选取（连续奇函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>-\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>其中：<br>$$u(0, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} e^{-\frac{y^{2}}{4 a^{2}}} \Phi(y) d y=0$$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = \frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y + \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y \\ =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}-e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<ol start="2">
+<li>Newmann边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u_x(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{9} \label{eq:9}<br>\right.<br>\end{equation} $$<br>选取（连续偶函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = -\frac{1}{ a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y + \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y \\ =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}+e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<p>为求解问题（6），将边界齐次化，令$v(x,t)=u(x,t)-\mu(t)$<br>则</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由叠加原理，上述问题可分解为</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=0，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=0，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>若令$v(x,t)=u(x,t)-\mu(t)x$，则可将Newmann边界齐次化<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty \lt x \lt \infty, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \lt \infty \\<br>&amp;u_x(0,t)=\mu(t), \quad 0 \le x \lt \infty \\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<h4 id="3-2-1-有限区间上的热传导方程与分离变量法"><a href="#3-2-1-有限区间上的热传导方程与分离变量法" class="headerlink" title="3.2.1 有限区间上的热传导方程与分离变量法"></a>3.2.1 有限区间上的热传导方程与分离变量法</h4><p>在矩形区域$\Omega = {0 \le x \le l，0 \lt t \le T}$上，考虑<br>$$u_t-a^{2}u_{xx}=f(x,t)，0 \le x \le l，0 \lt t \le T$$</p>
+<p>及初始条件<br>$$ \left.u\right|_{t=0}=\varphi(x)，0 \le x \le l $$</p>
+<p>和边界条件<br>$$ u(0,t)=\mu_1(t), u(l,t)=\mu_2(t)，0 \le x \le l $$</p>
+<p>先考虑第二边值问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad 0 \lt x \lt l, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \le l \\<br>&amp;u_x(0,t)=\mu(t), u_x(0,t)=\mu(t) \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>寻找$u(x,t)=X(x)T(t)$形式解<br>$$X(x)T^{\prime}(t)-a^{2}X^{\prime \prime}(x)T(t)=0$$<br>从而<br>$$\frac{T^{\prime}(t)}{a^{2}T(t)}=\frac{X^{\prime \prime}(x)}{X(x)}=\lambda$$<br>有<br>$$T^{\prime}(t)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0$$<br>联立<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;X^{\prime}(x)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0 \\<br>&amp;X^{\prime}(0)=0, X^{\prime}(l)=0 \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>情形$1^{\prime}$ $\lambda \lt 0$<br>$$X(x)=c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}，X^{\prime}(x)=\left(-c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}\right){-\sqrt{-\lambda}}$$<br>代入得$$c_1=c_2=0$$</p>
+<p>情形$2^{\prime}$ $\lambda = 0$<br>$$X(x)=c_1+c_2x$$<br>代入得$c_2 = 0$，$X_0(x) \equiv 1$是上述问题得一个非平凡解</p>
+<p>情形$3^{\prime}$ $\lambda \gt 0$<br>$$X(x)=c_1cos{\sqrt{\lambda}}x+c_2sin{\sqrt{\lambda}}x，X^{\prime}(x)=\left(-c_1sin{\sqrt{\lambda}}x+c_2cos{\sqrt{\lambda}}x\right){\sqrt{\lambda}}$$<br>代入得$c_2 = 0$，$c_1 = {\sqrt{\lambda}}sin{\sqrt{\lambda}}l = 0$</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            <div class="end" style="background:#8fdfdb">
+                <div style="text-align:center;color:#000;font-size:16px;margin:6px auto">
+                    "--------本文结束"
+                    <i class="fa fa-paw"></i>
+                    "感谢您的阅读!---------"
+                </div>
+            </div>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gkm0120.cn" rel="external nofollow noreferrer">戈孔明</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gkm0120.cn/posts/d1b5.html">https://gkm0120.cn/posts/d1b5.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://gkm0120.cn" target="_blank">戈孔明</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PDE/">
+                                    <span class="chip bg-color">PDE</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+    <div class="addthis_inline_share_toolbox"></div>
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">客官能否打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/alipay.bmp" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/loading.gif" data-original="/medias/reward/wechat.bmp" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png ") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '留下你的足迹呗'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/cdea.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="DES数据加密标准">
+                        
+                        <span class="card-title">DES数据加密标准</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一种对称公私钥加密算法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/密码学/" class="post-category">
+                                    密码学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DES/">
+                        <span class="chip bg-color">DES</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/fcf1.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/loading.gif" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="Markdown中LaTeX编写技巧">
+                        
+                        <span class="card-title">Markdown中LaTeX编写技巧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Markdown中LaTeX使用方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/编辑器/" class="post-category">
+                                    编辑器
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                    <a href="/tags/LaTeX/">
+                        <span class="chip bg-color">LaTeX</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 孔明の博客<br />'
+            + '文章作者: 戈孔明<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+<div>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+</div>
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <div>
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        font-size: 15px;
+        color: #42b983;
+    }
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="7228626834"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    
+</div>
+<footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <span class="with-love" id="heart"></span>
+            <i class="fa fa-heart" style="color:#ff71a8"></i>
+            <a href="https://www.gkm0120.cn/about/" target="_blank">戈孔明</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "3";
+                    var startDate = "15";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">28.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            
+             <span id="busuanzi_container_site_uv" style='display:none'></span> 人次 |&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+            
+            <br>
+            <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+            <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+            <br>
+            
+            <span id="icp"><img src="/medias/loading.gif" data-original="/medias/icp.png" style="display:inline-block;text-decoration:none;height:14px;line-height:20px;" />
+                 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.11065253.7y9jhqsfz.113.530d2c6bAbgC6V" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">赣公网安备 36100202000238号</p></a>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/gkm0120" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1626716857@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1626716857" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1626716857" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://zhihu.com/people/gong-zi-xing-shen-ming-shui-jia-zhu-he-chu-17" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fab fa-inverse">知</i>
+    </a>
+
+
+
+    <a href="https://weibo.com/5742053799" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
+        <i class="fab fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+    <div class="progress-bar"></div>
+</footer>
+
+
+
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144253917-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144253917-1');
+</script>
+
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a7b5bf975a39c3962abf958cfd2e4693";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "6ab6f29b"
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+    <!-- gkm0120 -->
+    <script type="text/javascript">
+    WIDGET = {FID: 'SDKCWQAI77'}
+    </script>
+    <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
+
+    <script type="text/javascript">
+      //只在桌面版网页启用特效
+      var windowWidth = $(window).width();
+      if (windowWidth > 768) {
+          document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+      }
+    </script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <script src="/js/cursor.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-hibiki"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+
+</html>
