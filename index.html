@@ -301,7 +301,8 @@
          <div></div>
      </div>
  </div><body>
-    <header class="navbar-fixed">
+    
+<header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -330,11 +331,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="/archives" class="waves-effect waves-light">
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>归档</span>
     </a>
     
   </li>
@@ -352,11 +353,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>归档</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -390,6 +391,17 @@
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
       <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/navigate" class="waves-effect waves-light">
+      
+      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
+      
+      <span>快捷导航</span>
     </a>
     
   </li>
@@ -433,11 +445,11 @@
         
         <li class="m-nav-item">
       
-        <a href="/tags" class="waves-effect waves-light">
+        <a href="/archives" class="waves-effect waves-light">
             
-                <i class="fa-fw fas fa-tags"></i>
+                <i class="fa-fw fas fa-archive"></i>
             
-            标签
+            归档
         </a>
           
         </li>
@@ -455,11 +467,11 @@
         
         <li class="m-nav-item">
       
-        <a href="/archives" class="waves-effect waves-light">
+        <a href="/tags" class="waves-effect waves-light">
             
-                <i class="fa-fw fas fa-archive"></i>
+                <i class="fa-fw fas fa-tags"></i>
             
-            归档
+            标签
         </a>
           
         </li>
@@ -493,6 +505,17 @@
                 <i class="fa-fw fas fa-address-book"></i>
             
             友情链接
+        </a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+      
+        <a href="/navigate" class="waves-effect waves-light">
+            
+                <i class="fa-fw fas fa-location-arrow"></i>
+            
+            快捷导航
         </a>
           
         </li>
@@ -615,13 +638,6 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
-        <div id="prev-cover" class="left waves-effect carousel-control">
-            <i class="icon fa fa-angle-left"></i>
-        </div>
-        <div id="next-cover" class="right waves-effect carousel-control">
-            <i class="icon fa fa-angle-right"></i>
-        </div>
-    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -706,10 +722,6 @@
 
 
 
-    <a href="https://weibo.com/5742053799" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
-
 
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
@@ -720,32 +732,6 @@
         </div>
     </div>
 
-    
-        
-
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/banner/19.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">Hexo+GitHub博客美化教程</div>
-                            <div class="description center-align">
-                                
-                                    更换主题模板，实现个性化定制
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/posts/138c.html" class="waves-effect waves-light btn" target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
     
 </div>
 
@@ -822,20 +808,115 @@
             <div class="card">
                 <div class="card-content">
                     
-                        <div class="dream">
+                    
+                        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        font-size: 15px;
+        color: #42b983;
+    }
     
-         <div class="card-content">
-             <i class="fa fa-volume-up fa-lg fa-fw text-color"></i>&nbsp;&nbsp;咸鱼说&nbsp;&nbsp;当你的才华撑不起你的野心时，那你就该静下心来学习；当你的经济还撑不起你的梦想时，那你就应该踏实的去工作。
+</style>
+<div class="music-player">
+    
+        <div class="title center-align">
+            <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
         </div>
     
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="7228626834"
+                   fixed='false'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
 </div>
-                    
-                    
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+                        
                     
                     
                     <div id="recommend-sections" class="recommend">
                         
 
+
+
+
+
+<div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
+    
+    
+    <div class="col s12 m6" >
+        <div class="post-card" style="background-image: url('/medias/featureimages/0.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/计算机图形学/" class="category">计算机图形学</a>
+                        
+                    
+                </div>
+                <a href="/posts/37ba.html">
+                    <h3 class="post-title">扫描转换算法</h3>
+                </a>
+                <p class="post-description">
+                    
+                        DDA、中点画线、Bresenham算法
+                    
+                </p>
+                <a href="/posts/37ba.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" >
+        <div class="post-card" style="background-image: url('/medias/banner/5.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/博客搭建/" class="category">博客搭建</a>
+                        
+                    
+                </div>
+                <a href="/posts/138c.html">
+                    <h3 class="post-title">Hexo+GitHub博客美化教程</h3>
+                </a>
+                <p class="post-description">
+                    
+                        更换主题模板，实现个性化定制
+                    
+                </p>
+                <a href="/posts/138c.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
 
 
                     </div>
@@ -1447,54 +1528,44 @@
 
     <div>
     
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        font-size: 15px;
-        color: #42b983;
-    }
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="tencent"
-                   type="playlist"
-                   id="7228626834"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
 </div>
+    <footer class="page-footer bg-color">
+        <div class="container row center-align" style="margin-bottom: 15px !important;">
+            <div class="col s12 m8 l8 copy-right">
+                
+                <span id="icp"><img src="/medias/loading.gif" data-original="/medias/icp.png" style="display:inline-block;text-decoration:none;height:14px;line-height:20px;" />
+                     <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.11065253.7y9jhqsfz.113.530d2c6bAbgC6V" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">赣公网安备 36100202000238号</p></a>
+                     |&nbsp;
+                    <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
+                </span>
+                
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">28.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            |&nbsp;
+            
+            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i>总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+            
+             <span id="busuanzi_container_site_uv" style='display:none'></span> 人次 |&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+            
 
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-    
-</div>
-<footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
+            <br>
+            <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+            <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
+            <br>
             Copyright&nbsp;&copy;
             <span id="year">2020</span>
             <span class="with-love" id="heart"></span>
             <i class="fa fa-heart" style="color:#ff71a8"></i>
             <a href="https://www.gkm0120.cn/about/" target="_blank">戈孔明</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
+            |&nbsp;
             
             <span id="sitetime">载入运行时间...</span>
             <script>
@@ -1540,31 +1611,6 @@
                 setInterval(siteTime, 1000);
             </script>
             
-            <span class="my-face">ღゝ◡╹)ノ♡</span>
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.8k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv" style='display:none'></span> <i class="fa fa-heart-o"></i> 总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-            
-             <span id="busuanzi_container_site_uv" style='display:none'></span> 人次 |&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
-            
-            <br>
-            <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278737185'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278737185%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
-            <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
-            <br>
-            
-            <span id="icp"><img src="/medias/loading.gif" data-original="/medias/icp.png" style="display:inline-block;text-decoration:none;height:14px;line-height:20px;" />
-                 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.11065253.7y9jhqsfz.113.530d2c6bAbgC6V" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">赣公网安备 36100202000238号</p></a>
-                <a href="http://www.beian.miit.gov.cn/" target="_blank">赣ICP备20004005号</a>
-            </span>
-            
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/gkm0120" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -1595,10 +1641,6 @@
 
 
 
-    <a href="https://weibo.com/5742053799" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
-
 
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
@@ -1607,6 +1649,7 @@
 
 </div>
     </div>
+
     <div class="progress-bar"></div>
 </footer>
 
@@ -1761,6 +1804,8 @@ $(function () {
 
     <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":125,"height":275},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+    <script src="//instant.page/2.0.0" type="module" defer integrity="sha384-D7B5eODAUd397+f4zNFAVlnDNDtO1ppV8rPnfygILQXhqu3cUndgHvlcJR2Bhig8"></script>
+
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 
 </html>
