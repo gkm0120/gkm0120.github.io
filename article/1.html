@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AlexNet,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。">
+<meta name="keywords" content="AlexNet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks">
+<meta property="og:url" content="https://gkm0120.github.io/article/1.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317102132.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317103052.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317112956.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/gQxpuzTKfKARjiMdflOasFN65mOZhwl1Ml3_262opmo.original.fullsize.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113117.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113202.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113300.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113315.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113330.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113339.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113353.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113402.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113410.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113420.png">
+<meta property="og:updated_time" content="2021-03-18T07:03:09.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks">
+<meta name="twitter:description" content="在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317102132.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/1.html">
+
+
+
+
+
+  <title>【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-07T09:57:50+08:00">
+                2020-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">论文翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/1.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/1.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  10.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  40 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。</p>
+<a id="more"></a>
+
+
+<img width="600" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317102132.png">
+
+
+<h1 id="一、论文翻译"><a href="#一、论文翻译" class="headerlink" title="一、论文翻译"></a>一、论文翻译</h1><blockquote>
+<p>论文：<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">ImageNet Classification with Deep Convolutional Neural Networks</a></p>
+</blockquote>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们训练了一个庞大的深层卷积神经网络，将ImageNet LSVRC-2010比赛中的120万张高分辨率图像分为1000个不同的类别。在测试数据上，我们取得了37.5％和17.0％的前1和前5的错误率，这比以前的先进水平要好得多。具有6000万个参数和650,000个神经元的神经网络由五个卷积层组成，其中一些随后是最大池化层，三个全连接层以及最后的1000个softmax输出。为了加快训练速度，我们使用非饱和神经元和能高效进行卷积运算的GPU实现。为了减少全连接层中的过拟合，我们采用了最近开发的称为“dropout”的正则化方法，该方法证明是非常有效的。我们还在ILSVRC-2012比赛中使用了这种模式的一个变种，取得了15.3％的前五名测试失误率，而第二名的成绩是26.2％。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>目前，机器学习方法对物体识别非常重要。为了改善他们的表现，我们可以收集更大的数据集，训练更强大的模型，并使用更好的技术来防止过拟合。直到最近，标记好图像的数据集相对还较小——大约上万的数量级（例如，NORB，Caltech-101/256 和CIFAR-10/100）。使用这种规模的数据集可以很好地解决简单的识别任务，特别是如果他们增加了保留标签转换（label-preserving transformations）。例如，目前MNIST数字识别任务的最低错误率（&lt;0.3％）基本达到了人类的识别水平。但是物体在现实环境中可能表现出相当大的变化性，所以要学会识别它们，就必须使用更大的训练集。事实上，小图像数据集的缺点已是众所周知（例如，Pinto），但直到最近才可以收集到数百万的标记数据集。新的大型数据集包括LabelMe ，其中包含数十万个完全分割的图像，以及ImageNet，其中包含超过15,000万个超过22,000个类别的高分辨率图像。</p>
+<p>要从数百万图像中学习数千个类别，我们需要一个具有强大学习能力的模型。然而，物体识别任务的巨大复杂性意味着即使是像ImageNet这样大的数据集也不能完美地解决这个问题，所以我们的模型也需要使用很多先验知识来弥补我们数据集不足的问题。卷积神经网络（CNN）就构成了一类这样的模型。它们的容量可以通过改变它们的深度和宽度来控制，并且它们也对图像的性质（即统计量的定态假设以及像素局部依赖性假设）做出准确而且全面的假设。因此，与具有相同大小的层的标准前馈神经网络相比，CNN具有更少的连接和参数，因此它们更容易训练，而其理论最优性能可能稍微弱一些。</p>
+<p>尽管CNN具有很好的质量，并且尽管其局部结构的效率相对较高，但将它们大规模应用于高分辨率图像时仍然显得非常昂贵。幸运的是，当前的GPU可以用于高度优化的二维卷积，能够加速许多大型CNN的训练，并且最近的数据集（如ImageNet）包含足够多的标记样本来训练此类模型，而不会出现严重的过度拟合。</p>
+<p>本文的具体贡献如下：我们在ILSVRC-2010和ILSVRC-2012比赛中使用的ImageNet子集上训练了迄今为止最大的卷积神经网络之一，并在这些数据集上取得了迄今为止最好的结果。我们编写了一个高度优化的2D卷积的GPU实现以及其他训练卷积神经网络的固有操作，并将其公开。我们的网络包含许多新的和不同寻常的功能，这些功能可以提高网络的性能并缩短训练时间，详情请参阅第3节。我们的网络规模较大，即使有120万个带标签的训练样本，仍然存在过拟合的问题，所以我们采用了几个有效的技巧来阻止过拟合，在第4节中有详细的描述。我们最终的网络包含五个卷积层和三个全连接层，并且这个深度似乎很重要：我们发现去除任何卷积层（每个卷积层只包含不超过整个模型参数的1%的参数）都会使网络的性能变差。</p>
+<p>最后，网络的规模主要受限于目前GPU上可用的内存量以及我们可接受的训练时间。我们的网络需要在两块GTX 580 3GB GPU上花费五到六天的时间来训练。我们所有的实验都表明，通过等待更快的GPU和更大的数据集出现，我们的结果可以进一步完善。</p>
+<h2 id="2-数据集"><a href="#2-数据集" class="headerlink" title="2 数据集"></a>2 数据集</h2><p>ImageNet是一个拥有超过1500万个已标记高分辨率图像的数据集，大概有22,000个类别。图像都是从网上收集，并使用Amazon-Mechanical Turk群智工具人工标记。从2010年起，作为Pascal视觉对象挑战赛的一部分，这是每年举办一次的名为ImageNet大型视觉识别挑战赛（ILSVRC）的比赛。 ILSVRC使用的是ImageNet的一个子集，每1000个类别中大约有1000个图像。总共有大约120万张训练图像，50,000张验证图像和150,000张测试图像。</p>
+<p>ILSVRC-2010是ILSVRC中的唯一可以使用测试集标签的版本，因此这也正是我们进行大部分实验的版本。由于我们也在ILSVRC-2012比赛中引入了我们的模型，因此在第6部分中，我们也会给出此版本数据集的结果，尽管这个版本的测试集标签不可用。在ImageNet上，习惯上使用两种错误率：top-1和top-5，其中top-5错误率是正确标签不在被模型认为最可能的五个标签之中的测试图像的百分率。</p>
+<p>ImageNet由可变分辨率的图像组成，而我们的系统需要固定的输入尺寸。因此，我们将图像下采样到256×256的固定分辨率。给定一个矩形图像，我们首先重新缩放图像，使得短边长度为256，然后从结果中裁剪出中心的256×256的图片。除了将每个像素中减去训练集的像素均值之外，我们没有以任何其他方式对图像进行预处理。所以我们在像素的（中心）原始RGB值上训练了我们的网络。</p>
+<h2 id="3-结构"><a href="#3-结构" class="headerlink" title="3  结构"></a>3  结构</h2><p>图2概括了我们所提出网络的结构。它包含八个学习层——五个卷积层和三个全连接层。下面，我们将描述一些所提出网络框架中新颖或不寻常的地方。 3.1-3.4节按照我们对它们重要性的估计进行排序，其中最重要的是第一个。</p>
+<h3 id="3-1-ReLU非线性单元"><a href="#3-1-ReLU非线性单元" class="headerlink" title="3.1 ReLU非线性单元"></a>3.1 ReLU非线性单元</h3><p>对一个神经元模型的输出的常规方法是，给他接上一个激活函数：$f(x)=tanh(x)$或者$f(x)=(1+e^{−x})^{−1}$。就梯度下降法的训练时间而言，这些饱和非线性函数比非饱和非线性函数如$f(x)=max(0,x)$慢得多。根据Nair和Hinton的说法，我们将这种非线性单元称为——修正非线性单元（Rectified Linear Units (ReLUs)）。使用ReLUs做为激活函数的卷积神经网络比起使用tanh单元作为激活函数的训练起来快了好几倍。这个结果从图1中可以看出来，该图展示了对于一个特定的四层CNN，CIFAR-10数据集训练中的误差率达到25%所需要的迭代次数。从这张图的结果可以看出，如果我们使用传统的饱和神经元模型来训练CNN，那么我们将无法为这项工作训练如此大型的神经网络。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317103052.png">
+
+<p>我们并不是第一个考虑在CNN中替换掉传统神经元模型的。例如，Jarrett等人表示，非线性函数$f(x)=|tanh(x)|$在他们的对比度归一化问题上，再接上局部均值池化单元，在Caltech-101数据集上表现的非常好。然而，在这个数据集中，主要担心的还是防止过拟合，所以他们观察到的效果与我们在使用ReLU时观察到的训练集的加速能力还是不一样。加快训练速度对大型数据集上训练的大型模型的性能有很大的影响。</p>
+<h3 id="3-2-在多个GPU上训练"><a href="#3-2-在多个GPU上训练" class="headerlink" title="3.2 在多个GPU上训练"></a>3.2 在多个GPU上训练</h3><p>单个GTX 580 GPU只有3GB内存，这限制了可以在其上训练的网络的最大尺寸。事实证明，120万个训练样本足以训练那些因规模太大而不适合使用一个GPU训练的网络。因此，我们将网络分布在两个GPU上。目前的GPU很适合于跨GPU并行化操作，因为它们能够直接读写对方的内存，而无需通过主机内存。我们采用的并行化方案基本上将半个内核（或神经元）放在各个GPU上，另外还有一个技巧：GPU只在某些层间进行通信。这意味着，例如，第3层的内核从第2层的所有内核映射（kernel maps）中获取输入。然而，第4层中的内核又仅从位于同一GPU上的第3层中的那些内核映射获取输入。选择连接模式对于交叉验证是一个不小的问题，但这使得我们能够精确调整通信量，直到它的计算量的达到可接受的程度。</p>
+<p>由此产生的架构有点类似于Cire¸san等人使用的“柱状”CNN，除了我们的每列不是独立的之外（见图2）。与一个GPU上训练的每个卷积层只有一半的内核数量的网络相比，该方案分别将我们的top-1和top-5错误率分别降低了1.7％和1.2％。双GPU网络的训练时间比单GPU网络更少。</p>
+<h3 id="3-3-局部响应归一化"><a href="#3-3-局部响应归一化" class="headerlink" title="3.3 局部响应归一化"></a>3.3 局部响应归一化</h3><p>ReLU具有理想的属性，它们不需要对输入进行归一化来防止它们饱和。如果至少有一些训练实例为ReLU产生了正的输入，那么这个神经元就会学习。然而，我们还是发现下面的这种归一化方法有助于泛化。设$a^i_{x,y}$ 表示第$i$个内核计算$(x,y)$位置的ReLU非线性单元的输出，而响应归一化（Local Response Normalization）的输出值定义为$b^{i}_{x,y}$：</p>
+<p>$$<br>b_{x, y}^{i}=a_{x, y}^{i} /\left(k+\alpha \sum_{j=\max (0, i-n / 2)}^{\min (N-1, i+n / 2)}\left(a_{x, y}^{j}\right)^{2}\right)^{\beta}<br>$$</p>
+<p>其中，求和部分公式中的$n$表示同一个位置下与该位置相邻的内核映射的数量，而$N$表示这一层所有的内核数（即通道数）。内核映射的顺序当然是任意的，并且在训练之前就已经定好了。这种响应归一化实现了一种模仿真实神经元的横向抑制，从而在使用不同内核计算的神经元输出之间产生较大的竞争。常数 k、$n$、$α$和$β$都是超参数（hyper-parameters），它们的值都由验证集决定。我们取 $k=2$、$n=5$、 $α=10^{−4}$、$β=0.75$。我们在某些层的应用ReLU后再使用这种归一化方法（参见第3.5节）。</p>
+<p>这个方案与Jarrett等人的局部对比归一化方案有些相似之处，但我们的被更准确地称为“亮度归一化”，因为我们没有减去均值。响应归一化将我们的top-1和top-5的错误率分别降低了1.4％和1.2％。我们还验证了这种方案在CIFAR-10数据集上的有效性：没有进行归一化的四层CNN实现了13％的测试错误率，而进行了归一化的则为11％。</p>
+<h3 id="3-4-重叠池化"><a href="#3-4-重叠池化" class="headerlink" title="3.4 重叠池化"></a>3.4 重叠池化</h3><p>CNN中的池化层汇集了相同内核映射中相邻神经元组的输出。在传统方法中，相邻池化单元之间互不重叠。更准确地说，一个池化层可以被认为是由一些间隔为$s$个像素的池化单元组成的网格，每个都表示了一个以池化单元的位置为中心的大小为$z×z$的邻域。如果我们令$s = z$，我们就可以得到CNN中常用的传统的局部池化。如果我们令$s\le z$，则获得重叠池。 这就是我们在整个过程中使用的网络，其中$s = 2$和$z =3$。该方案将top-1和top-5的错误率分别降低了0.4％和0.3％，并且与非重叠方案$s = 2,z=2$相比，产生相同维度尺寸的输出。 我们通常会在训练期间观察到重叠的模型汇集发现它可以轻微防止过拟合。</p>
+<h3 id="3-5-整体结构"><a href="#3-5-整体结构" class="headerlink" title="3.5 整体结构"></a>3.5 整体结构</h3><p>现在我们已经准备好描述CNN的整体架构了。如图2所示，这个网络包含了八层权重;前五个是卷积层，其余三个为全连接层。最后的全连接层的输出被送到1000维的softmax函数，其产生1000个类的预测。我们的网络最大化多项逻辑回归目标，这相当于在预测的分布下最大化训练样本中正确标签对数概率的平均值。</p>
+<p>第二，第四和第五个卷积层的内核仅与上一层存放在同一GPU上的内核映射相连（见图2）。第三个卷积层的内核连接到第二层中的所有内核映射。全连接层中的神经元连接到前一层中的所有神经元。响应归一化层紧接着第一个和第二个卷积层。 在3.4节中介绍的最大池化层，后面连接响应归一化层以及第五个卷积层。将ReLU应用于每个卷积层和全连接层的输出。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317112956.png">
+
+<p>第一个卷积层的输入为224×224×3的图像，对其使用96个大小为11×11×3、步长为4（步长表示内核映射中相邻神经元感受野中心之间的距离）的内核来处理输入图像。第二个卷积层将第一个卷积层的输出（响应归一化以及池化）作为输入，并使用256个内核处理图像，每个内核大小为5×5×48。第三个、第四个和第五个卷积层彼此连接而中间没有任何池化或归一化层。第三个卷积层有384个内核，每个的大小为3×3×256，其输入为第二个卷积层的输出。第四个卷积层有384个内核，每个内核大小为3×3×192。第五个卷积层有256个内核，每个内核大小为3×3×192。全连接层各有4096个神经元。</p>
+<h2 id="4-减少过拟合"><a href="#4-减少过拟合" class="headerlink" title="4 减少过拟合"></a>4 减少过拟合</h2><p>我们的神经网络架构拥有6000万个参数。尽管ILSVRC的1000个类别使得每个训练样本从图像到标签的映射被限制在了10 bit之内，但这不足以保证训练这么多参数而不出现过拟合。下面，我们将介绍对付过度拟合的两个方法。</p>
+<h3 id="4-1-数据增强（Data-Augmentation）"><a href="#4-1-数据增强（Data-Augmentation）" class="headerlink" title="4.1 数据增强（Data Augmentation）"></a>4.1 数据增强（Data Augmentation）</h3><p>减小过拟合的最简单且最常用的方法就是，使用标签保留转换（label-preserving transformations），人为地放大数据集。我们采用两种不同形式的数据增强方法，它们都允许通过很少的计算就能从原始图像中生成转换图像，所以转换后的图像不需要存储在硬盘上。在我们实现过程中，转换后的图像是使用CPU上的Python代码生成的，在生成这些转换图像的同时，GPU还在训练上一批图像数据。所以这些数据增强方案实际上是很高效的。</p>
+<p>数据增强的第一种形式包括平移图像和水平映射。我们通过从256×256图像中随机提取224×224的图像块（及其水平映射）并在这些提取的图像块上训练我们的网络来做到这一点。这使我们的训练集的规模增加了2048倍，尽管由此产生的训练样本当然还是高度相互依赖的。如果没有这个方案，我们的网络就可能会遭受大量的的过拟合，可能会迫使我们不得不使用更小的网络。在测试时，网络通过提取5个224×224的图像块（四个角块和中心块）以及它们的水平映射（因此总共包括10个块）来进行预测，并求网络的softmax层的上的十个预测结果的均值。</p>
+<p>第二种形式的数据增强包括改变训练图像中RGB通道的灰度。具体而言，我们在整个ImageNet训练集的图像的RGB像素值上使用PCA。对于每个训练图像，我们添加多个通过PCA找到的主成分，大小与相应的特征值成比例，乘以一个随机值，该随机值属于均值为0、标准差为0.1的高斯分布。因此，对于每个图像的RGB像素有：<br>$I_{xy}=[I^R_{xy} \quad I^G_{xy} \quad I^B_{xy}]^T$，我们加入如下的值：</p>
+<p>$$<br>[p_1\quad p_2 \quad p_3][\alpha_1\lambda_1 \quad \alpha_2\lambda_2 \quad \alpha_3\lambda_3]^T<br>$$</p>
+<p>其中， $p_i$和 $\lambda_i$分别是3x3的RGB协方差矩阵的第$i$个特征向量和第$i$个的特征值，而 $\lambda_i$是前面所说的随机值。对于一张特定图像中的所有像素，每个$\lambda_i$只会被抽取一次，知道这张图片再次用于训练时，才会重新提取随机变量。这个方案近似地捕捉原始图像的一些重要属性，对象的身份不受光照的强度和颜色变化影响。这个方案将top-1错误率降低了1％以上。</p>
+<h3 id="4-2-Dropout"><a href="#4-2-Dropout" class="headerlink" title="4.2 Dropout"></a>4.2 Dropout</h3><p>结合许多不同模型的预测结果是减少测试错误率的一种非常成功的方法，但对于已经花费数天时间训练的大型神经网络来说，它似乎成本太高了。然而，有一种非常有效的模型组合方法，在训练期间，只需要消耗1/2的参数。这个新发现的技术叫做“Dropout”，它会以50%的概率将隐含层的神经元输出置为0。以这种方法被置0的神经元不参与网络的前馈和反向传播。因此，每次给网络提供了输入后，神经网络都会采用一个不同的结构，但是这些结构都共享权重。这种技术减少了神经元的复杂适应性，因为神经元无法依赖于其他特定的神经元而存在。因此，它被迫学习更强大更鲁棒的功能，使得这些神经元可以与其他神经元的许多不同的随机子集结合使用。在测试时，我们试着使用了所有的神经元，并将它们的输出乘以0.5。这与采用大量dropout的网络产生的预测结果分布的几何均值近似。</p>
+<p>我们在图2中的前两个全连接层上使用了dropout。没有dropout，我们的网络会出现严重的过拟合。Dropout大概会使达到收敛的迭代次数翻倍。</p>
+<h2 id="5-训练细节"><a href="#5-训练细节" class="headerlink" title="5 训练细节"></a>5 训练细节</h2><p>我们使用随机梯度下降法来训练我们的模型，每个batch有128个样本，动量（momentum）为0.9，权重衰减（weight decay）为0.0005。我们发现这种较小的权重衰减对于模型的训练很重要。换句话说，权重衰减在这里不仅仅是一个正则化方法：它减少了模型的训练误差。权重$\omega$的更新法则是：<br><img src="https://cdn.mathpix.com/snip/images/gQxpuzTKfKARjiMdflOasFN65mOZhwl1Ml3_262opmo.original.fullsize.png" alt></p>
+<p>其中，$i$表示当前的迭代次数，$v$表示动量（momentum），$\epsilon$表示学习率， $\left\langle\left.\frac{\partial L}{\partial w}\right|{w_i}\right\rangle_{D_{i}}$是目标函数关于$\omega$ 的偏导数$\omega_i$的第 $i$批次的$D_i$的平均值。</p>
+<p>我们使用标准差为0.01、均值为0的高斯分布来初始化各层的权重。我们使用常数1来初始化了网络中的第二个、第四个和第五个卷积层以及全连接层中的隐含层中的所有偏置参数。这种初始化权重的方法通过向ReLU提供了正的输入，来加速前期的训练。我们使用常数0来初始化剩余层中的偏置参数。</p>
+<p>我们对所有层都使用相同的学习率，在训练过程中又手动进行了调整。我们遵循的启发式方法是：以当前的学习速率训练，验证集上的错误率停止降低时，将学习速率除以10.学习率初始时设为0.01，并且在终止前减少3次。我们使用120万张图像的训练集对网络进行了大约90次迭代的训练，这在两块NVIDIA GTX 580 3GB GPU上花费了大约5到6天的时间。</p>
+<h2 id="6-结果"><a href="#6-结果" class="headerlink" title="6 结果"></a>6 结果</h2><p>我们在ILSVRC-2010上取得的结果如表1所示。我们的网络的top-1和top-5测试集错误率分别为37.5％和17.0％。在ILSVRC-2010比赛期间取得的最佳成绩是47.1％和28.2％，其方法是对六种不同的稀疏编码模型所产生的预测结果求平均。此后公布的最佳结果为45.7％、25.7％，其方法是对两种经过密集采样的特征计算出来的Fisher向量（FV）训练的两个分类器取平均值。</p>
+<p>我们的网络实现了37.5％和17.0％的前1和前5个测试集错误率5。在ILSVRC-2010比赛期间取得的最佳成绩是47.1％和28.2％，其中一种方法是对六种针对不同特征进行训练的稀疏编码模型所产生的预测进行平均，此后最佳公布结果为45.7％， 25.7％，其中一种方法是：对两个在不同取样密度的Fisher向量上训练的分类器取平均。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113117.png">
+
+<p>我们还在ILSVRC-2012竞赛中使用了我们的模型，并在表2中给出了我们的结果。由于ILSVRC-2012测试集标签未公开，因此我们无法给出我们测试过的所有模型在测试集上的错误率。在本节的其余部分中，我们将验证集和测试集的错误率互换，因为根据我们的经验，它们之间的差值不超过0.1％（见表2）。本文描述的CNN的top-5错误率达到了18.2％。对五个相似CNN的预测结果计算均值，得到的错误率为16.4％。单独一个CNN，在最后一个池化层之后，额外添加第六个卷积层，对整个ImageNet Fall 2011 release(15M images, 22K categories)进行分类，然后在ILSVRC-2012上“微调”（fine-tuning）网络，得到的错误率为16.6％。对整个ImageNet Fall 2011版本的数据集下预训练的两个CNN，求他们输出的预测值与前面提到的5个不同的CNN输出的预测值的均值，得到的错误率为15.3％。比赛的第二名达到了26.2％的top-5错误率，他们的方法是：对几个在特征取样密度不同的Fisher向量上训练的分类器的预测结果取平均的方法。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113202.png">
+
+<p>最后，我们还在ImageNet Fall 2009版本的数据集上提交了错误率，总共有10,184个类别和890万张图像。在这个数据集中，我们遵循文献中的使用一半图像用于训练，一半图像用于测试的惯例。由于没有建立测试集，所以我们的拆分方法有必要与先前作者使用的拆分方法不同，但这并不会对结果产生显著的影响。我们在这个数据集上的top-1和top-5错误率分别是67.4％和40.9％，是通过前面描述的网络获得的，但是在最后的池化层上还有额外的第6个卷积层。该数据集此前公布的最佳结果是78.1％和60.9％。</p>
+<h3 id="6-1-定性评估"><a href="#6-1-定性评估" class="headerlink" title="6.1 定性评估"></a>6.1 定性评估</h3><img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113300.png">
+
+<p>图3显示了由网络的两个数据连接层学习得到的卷积内核。该网络已经学习到许多频率和方向提取的内核，以及各种色块。请注意两个GPU所展现的不同特性，这也是3.5节中介绍的限制互连的结果。GPU1上的内核在很大程度上与颜色无关，然而GPU2上的内核在很大程度上都于颜色有关。这种特异性在每次迭代期间都会发生，并且独立于任何特定的随机权重初始化过程（以GPU的重新编号为模）。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113315.png">
+
+<p>在图4的左边，我们通过计算8张测试图像的top-5预测来定性评估网络的训练结果。请注意，即使是偏离中心的物体，如左上角的螨虫，也可以被网络识别出来。大多数top-5的标签都显得比较合理。例如，只有其他类型的猫才被认为是豹子的可能标签。在某些情况下（栅栏、樱桃），照片的关注点存在模糊性，不知道到底该关注哪个。</p>
+<p>另一个研究可视化的网络的方法是，考虑由最后一个4096维隐含层中的图像的特征的激活函数输出值。如果两幅图像产生有的欧氏距离，我们可以认为高层次的神经网络认为它们是相似的。图4显示了测试集中的5个图像和来袭训练集的6个图像，这些图像根据这种度量方法来比较它们中的哪一个与其最相似。请注意，在像素层次上，待检测的训练图像通常不会与第一列中的查询图像有较小的L2距离。例如，检索到的狗和大象有各种不同的姿势。我们在补充材料中提供了更多测试图像的结果。<br>通过使用欧式距离来计算两个4096维实值向量的相似性，效率不高，但是通过训练自编码器可以将这些向量压缩为较短的二进制码，能够使其更高效。与应用自编码器到原始像素[14]相比，这应该是更好的图像检索方法。它不使用图像标签，因此更秦翔宇检索具有相似图案边缘的图像，不管它们的图像语义是否相似。</p>
+<h2 id="7-讨论"><a href="#7-讨论" class="headerlink" title="7 讨论"></a>7 讨论</h2><p>我们的研究结果表明，一个大的深层卷积神经网络能够在纯粹使用监督学习的情况下，在极具挑战性的数据集上实现破纪录的结果。值得注意的是，如果移除任何一个卷积层，网络的性能就会下降。例如，删除任何中间层的结果会导致网络性能的top-1错误率下降2%。因此网络的深度对于实现我们的结果真的很重要。</p>
+<p>为了简化我们的实验，我们没有使用任何无监督的预训练方法，尽管这样可能会有所帮助，特别是如果我们获得了足够的计算能力来显著地增加网络的大小而不会相应地增加已标记数据的数量。到目前为止，我们的结果已经获得了足够的进步，因为我们已经使网络更大，并且训练了更长时间。但我们仍然有很大的空间去优化网络，使之能够像人类的视觉系统一样感知。最后，我们希望对视频序列使用非常大的深度卷积神经网路，其中时间结构提供了非常有用的信息，这些信息往往在静态图像中丢失了，或者说不太明显。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
+<h1 id="二、论文解读"><a href="#二、论文解读" class="headerlink" title="二、论文解读"></a>二、论文解读</h1><h2 id="1-卷积层"><a href="#1-卷积层" class="headerlink" title="1 卷积层"></a>1 卷积层</h2><h3 id="1-1-CNN中卷积层的作用"><a href="#1-1-CNN中卷积层的作用" class="headerlink" title="1.1 CNN中卷积层的作用"></a>1.1 CNN中卷积层的作用</h3><p>CNN中的卷积层，在很多网络结构中会用conv来表示，也就是convolution的缩写。卷积层在CNN中扮演着很重要的角色——特征的抽象和提取。在传统机器学习算法中，需要人为的指定特征是什么，而在卷积神经网络中，大部分特征提取的工作在卷积层自动完成了，越深越宽的卷积层一般来说就会有更好的表达能力。</p>
+<h4 id="1-1-1-卷积层如何操作"><a href="#1-1-1-卷积层如何操作" class="headerlink" title="1.1.1 卷积层如何操作"></a>1.1.1 卷积层如何操作</h4><p>CNN中的卷积层操作与图像处理中的卷积是一样的，都是一个卷积核对图像做自上而下，自左而右的加权和操作。</p>
+<ul>
+<li><strong>卷积核的厚度=被卷积的图像的通道数</strong></li>
+<li><strong>卷积核的个数=卷积操作后输出的通道数</strong></li>
+</ul>
+<p>例如：输入图像尺寸$5\times5\times3$（宽/高/通道数）,卷积核尺寸：$3\times3\times3$（宽/高/厚度），步长：1，边界填充：0，卷积核数量：1。用这样的一个卷积核去卷积图像中某一个位置后，是将该位置上宽3，高3，通道3上27个像素值分别乘以卷积核上27个对应位置的参数，得到一个数，依次滑动，得到卷积后的图像，这个图像的通道数为1（与卷积核个数相同），图像的高宽尺寸如下公式：</p>
+<p>$$<br>\lfloor \frac{5-3+2\times0 }{1} \rfloor+1=3<br>$$</p>
+<p>所以，卷积后的图像尺寸为：$3\times3\times1$（宽/高/通道数）。</p>
+<h3 id="1-2-AlexNet中的卷积层"><a href="#1-2-AlexNet中的卷积层" class="headerlink" title="1.2 AlexNet中的卷积层"></a>1.2 AlexNet中的卷积层</h3><p>论文原文中的图：<br><img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113330.png"></p>
+<p>输入层：$227\times227\times3$<br>C1：$96\times11\times11\times3$ （卷积核个数/宽/高/厚度）<br>C2：$256\times5\times5\times48$（卷积核个数/宽/高/厚度）<br>C3：$384\times3\times3\times256$（卷积核个数/宽/高/厚度）<br>C4：$384\times3\times3\times192$（卷积核个数/宽/高/厚度）<br>C5：$256\times3\times3\times192$（卷积核个数/宽/高/厚度）</p>
+<p>细化的图:</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113339.png">
+
+<h4 id="1-2-1-conv1层"><a href="#1-2-1-conv1层" class="headerlink" title="1.2.1 conv1层"></a>1.2.1 conv1层</h4><ol>
+<li>输入Input的图像规格：$224\times 224\times3$（RGB图像）,实际上会经过预处理变为$227\times 227\times3$。</li>
+<li>使用的96个大小规格为$11\times 11$的过滤器filter，或者称为<strong>卷积核，进行特征提取</strong>，（ps:图上之所以看起来是48个是由于采用了2个GPU服务器处理，每一个服务器上承担了48个）.需要特别提一下的是，原始图片为RBG图像，也就是三个通道的，我们这96个过滤器也是三通道的，也就是我们使用的实际大小规格为$11\times 11\times3$，也就是原始图像是彩色的，我们提取到的特征也是彩色的，在卷积的时候，我们会依据这个公式来提取特征图： $\lfloor \frac{(img_{size} - filter_{size})}{stride} \rfloor+1 = newfeature_{size}$，所以这里我们得到的特征图大小为：</li>
+</ol>
+<ul>
+<li>$\lfloor (227-11) / 4 + 1= 55 \rfloor$ 注意$\lfloor \rfloor$表示向下取整. 我们得到的新的特征图规格为$55\times55$，注意这里提取到的特征图是彩色的.这样得到了96个$55\times55$大小的特征图了，并且是RGB通道的.</li>
+</ul>
+<ol start="3">
+<li><strong>使用RELU激励函数</strong>，来确保特征图的值范围在合理范围之内，比如{0,1}，{0,255}, 最后还有一个LRN处理。</li>
+<li><strong>降采样处理</strong>（pool层也称为池化）</li>
+<li>使用LRN，中文翻译为局部区域归一化,对降采样的特征图数据进行</li>
+</ol>
+<h4 id="1-2-2-conv2层"><a href="#1-2-2-conv2层" class="headerlink" title="1.2.2 conv2层"></a>1.2.2 conv2层</h4><ul>
+<li>conv2和conv1不同，conv2中使用256个$5\times5$大小的过滤器filter对$96\times27\times27$个特征图，进行进一步提取特征，但是处理的方式和conv1不同，<strong>过滤器是对96个特征图中的某几个特征图中相应的区域乘以相应的权重，然后加上偏置之后所得到区域进行卷积</strong>,经过这样卷积之后，然后在宽度高度两边都<strong>填充2像素</strong>，会的到一个新的256个特征图.</li>
+<li>特征图的大小为：$\lfloor \frac{27+2\times2 - 5}{1}  \rfloor+1 = 27$，也就是会有256个$27\times27$大小的特征图.然后进行ReLU操作.再进行降采样pool处理<br>得到： $\lfloor \frac{27-3}{2} \rfloor+1 = 13$  也就是得到256个$13\times13$大小的特征图.</li>
+</ul>
+<h4 id="1-2-3-conv3层"><a href="#1-2-3-conv3层" class="headerlink" title="1.2.3 conv3层"></a>1.2.3 conv3层</h4><ul>
+<li>$\lfloor \frac{13 + 2\times  1 - 3}{1} \rfloor+1 = 13$  也就是得到384个$13\times13$大小的特征图.</li>
+<li><strong>conv3没有使用降采样层.</strong></li>
+</ul>
+<h4 id="1-2-4-conv4-层"><a href="#1-2-4-conv4-层" class="headerlink" title="1.2.4 conv4 层"></a>1.2.4 conv4 层</h4><ul>
+<li>$\lfloor \frac{13 + 2\times  1 - 3}{1} \rfloor+1 = 13$，384个$13\times13$特征图。</li>
+<li><strong>conv4没有使用降采样层.</strong></li>
+</ul>
+<h4 id="1-2-5-conv5层"><a href="#1-2-5-conv5层" class="headerlink" title="1.2.5 conv5层"></a>1.2.5 conv5层</h4><ul>
+<li><strong>conv5有降采样层pool,防止过拟合</strong></li>
+<li>$\lfloor \frac{13 - 3}{2} \rfloor+1 = 6$，384个$6\times6$特征图。</li>
+</ul>
+<h2 id="2-全连接层"><a href="#2-全连接层" class="headerlink" title="2 全连接层"></a>2 全连接层</h2><h3 id="2-1-全连接层的作用"><a href="#2-1-全连接层的作用" class="headerlink" title="2.1 全连接层的作用"></a>2.1 全连接层的作用</h3><p>CNN中的全连接层与浅层神经网络中的作用是一样的，负责逻辑推断，所有的参数都需要学习得到。有一点区别在于第一层的全连接层用于链接卷积层的输出，它还有一个作用是去除空间信息（通道数），是一种将三维矩阵变成向量的过程（一种全卷积操作），其操作如下：</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113353.png">
+
+<p>输入图像是 $W\times H \times C$，那么卷积核的尺寸为 $W\times H\times C$，这样的话整个输入图像就变成了一个数，一共有 $k$ 个数（第一层全连接层后的神经元个数），就有$k$个这样的 $W\times H\times C$ 的卷积核。</p>
+<h3 id="2-2-AlexNet中的全连接层"><a href="#2-2-AlexNet中的全连接层" class="headerlink" title="2.2 AlexNet中的全连接层"></a>2.2 AlexNet中的全连接层</h3><p>AlexNet结构，R1，R2，R3就是全连接层。R2，R3很好理解，在这里主要说明下R1输入层：</p>
+<ul>
+<li>输入图像：$13\times13\times256$</li>
+<li>卷积核尺寸：$13\times13\times256$， 个数 $2048\times2$</li>
+<li>输出尺寸：4096（列向量）<br>从最开始的结构中可以看到，R1中也有通道的交互：<br>所以串接后的通道数是256，全卷积的卷积核尺寸也就是$13\times13\times256$，一个有4096个这样尺寸的卷积核分别对输入图像做4096次的全卷积操作，最后的结果就是一个列向量，一共有4096个数。</li>
+</ul>
+<h5 id="2-2-1-fc6层"><a href="#2-2-1-fc6层" class="headerlink" title="2.2.1 fc6层"></a>2.2.1 fc6层</h5><p>描述一下：</p>
+<ul>
+<li>这里使用4096个神经元，对256个大小为$6\times6$特征图，进行一个全连接，也就是将$6\times6$大小的特征图，进行卷积变为一个特征点,</li>
+<li>然后对于4096个神经元中的一个点，是由256个特征图中某些个特征图卷积之后得到的特征点乘以相应的权重之后，再加上一个偏置得到。</li>
+<li>再进行一个dropout随机从4096个节点中丢掉一些节点信息（也就是值清0），然后就得到新的4096个神经元。</li>
+</ul>
+<h5 id="2-2-2-fc7层"><a href="#2-2-2-fc7层" class="headerlink" title="2.2.2 fc7层"></a>2.2.2 fc7层</h5><p>和fc6类似.</p>
+<h5 id="2-2-3-fc8层"><a href="#2-2-3-fc8层" class="headerlink" title="2.2.3 fc8层"></a>2.2.3 fc8层</h5><ul>
+<li>采用的是1000个神经元，然后对fc7中4096个神经元进行全链接，然后会通过高斯过滤器，得到1000个float型的值，也就是我们所看到的预测的可能性,</li>
+<li>如果是训练模型的话，会通过标签label进行对比误差，然后求解出残差，再通过链式求导法则，将残差通过求解偏导数逐步向上传递，并将权重进行推倒更改，类似与BP网络思虑，然后会逐层逐层的调整权重以及偏置.</li>
+</ul>
+<h3 id="3-其它层"><a href="#3-其它层" class="headerlink" title="3 其它层"></a>3 其它层</h3><p>严格上说池化层与卷积层不属于CNN中的单独的层，也不记入CNN的层数内，所以我们一般直说AlexNet一共8层，有5层卷积层与3层全连接层。但是在这里为了逻辑上清晰，就把他们单独拿出来说明下：</p>
+<h4 id="3-1-池化层"><a href="#3-1-池化层" class="headerlink" title="3.1 池化层"></a>3.1 池化层</h4><p>池化操作（Pooling）用于卷积操作之后，其作用在于特征融合和降维，其实也是一种类似卷积的操作，只是池化层的所有参数都是超参数，都是不用学习得到的。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113402.png">
+
+<p>上面这张图解释了最大池化（Max Pooling）的操作过程，核的尺寸为 $2\times2$，步长为2，最大池化的过程是将 $2\times2$ 尺寸内的所有像素值取最大值，作为输出通道的像素值。除了最大池化外，还有平均池化（Average Pooling），也就是将取最大改为取平均。一个输入为 $224\times224\times64$ 的图像，经过最大池化后的尺寸变为$112\times112\times64$，可以看到池化操作的降维改变的是图像的宽高，而不改变通道数。</p>
+<h4 id="3-2-激活层"><a href="#3-2-激活层" class="headerlink" title="3.2 激活层"></a>3.2 激活层</h4><p>池化操作用于卷积层内，而激活操作则在卷积层和全连接层都会用到。<strong>激活函数在神经网络中的功能即通过对加权的输入进行非线性组合产生非线性决策边界（non-linear decision boundary）</strong>。使用的是ReLu(Rectified Linear Units)函数，主要是为了解决Sigmoid函数带来的梯度消失问题。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113410.png">
+
+<p><strong>在全连接层中</strong>的激活过程就很好理解了，因为全连接层内所有的神经元的输出都是一个数，只要这个数$x&gt;0$，则$x=x$；$x&lt;0$，则$x=0$。<br><strong>在卷积层中</strong>的激活针对的是每一个像素值，比如某卷积层输出中某个通道中$i$行$j$列像素值为$x$，只要这个数$x&gt;0$，则$x=x$；$x&lt;0$，则$x=0$。</p>
+<h4 id="3-3-Softmax层"><a href="#3-3-Softmax层" class="headerlink" title="3.3 Softmax层"></a>3.3 Softmax层</h4><h5 id="3-3-1-Softmax作用"><a href="#3-3-1-Softmax作用" class="headerlink" title="3.3.1 Softmax作用"></a>3.3.1 Softmax作用</h5><p>Softmax层也不属于CNN中单独的层，一般要用CNN做分类的话，Softmax 是将神经元的输出变成概率的形式：</p>
+<p>$$<br>\sigma (z_j)=\frac{e^z_j}{\sum^K_{k=1} e^{z_{k}}}, j=1, \cdots, K<br>$$</p>
+<p>Softmax层所有的输出相加为1，即</p>
+<p>$$<br>\sum^k_{j=0} \sigma(z)_j = 1<br>$$</p>
+<p>而某一个输出的就是概率，最后我们按照这个概率的大小确定到底属于哪一类。</p>
+<h5 id="3-3-2-AlexNet中的Softmax"><a href="#3-3-2-AlexNet中的Softmax" class="headerlink" title="3.3.2 AlexNet中的Softmax"></a>3.3.2 AlexNet中的Softmax</h5><p>AlexNet最后的分类数目为1000，也就是最后的输出为1000，输入为4096，中间通过R3链接，R3就是最后一层了，全连接的第3层，所有层数的第8层。</p>
+<h3 id="4-AlexNet与在其之前的神经网络相比改进"><a href="#4-AlexNet与在其之前的神经网络相比改进" class="headerlink" title="4 AlexNet与在其之前的神经网络相比改进"></a>4 AlexNet与在其之前的神经网络相比改进</h3><ol>
+<li><strong>数据增广（Data Augmentation）</strong><br>常用的数据增强的方法有 水平翻转、随机裁剪、平移变换、颜色、光照、对比度变换</li>
+<li><strong>Dropout</strong><br>有效防止过拟合。</li>
+<li><strong>Relu激活函数</strong><br>用ReLU代替了传统的Sigmoid或者tanh激活函数。</li>
+<li><strong>Local Response Normalization 局部响应归一化</strong><br>参考了生物学上神经网络的侧抑制的功能，做了临近数据归一化，提高来模型的泛化能力，这一功能的作用有争议(VGG)。</li>
+<li><strong>Overlapping Pooling 重叠池化</strong><br>重叠池化减少了系统的过拟合，减少了top-5和top-1错误率的0.4%和0.3%。</li>
+<li><strong>多GPU并行训练</strong><br>AlexNet将网络分成了上下两部分，两部分的结构完全一致，这两部分由两块不同的GPU来训练，提高了训练速度。AlexNet大约有6000万个参数。</li>
+</ol>
+<h3 id="5-AlexNet-中60M参数"><a href="#5-AlexNet-中60M参数" class="headerlink" title="5 AlexNet 中60M参数"></a>5 AlexNet 中60M参数</h3><p>AlexNet只有8层，但是它需要学习的参数有60000000个，相比如他的层数，这是一个很可怕的数字了，我们来计算下这些参数都是怎么来的：</p>
+<ul>
+<li>C1：$96\times11\times11\times3$(卷积核个数/宽/高/厚度) 34848个</li>
+<li>C2：$256\times5\times5\times48$（卷积核个数/宽/高/厚度） 307200个</li>
+<li>C3：$384\times3\times3\times256$（卷积核个数/宽/高/厚度） 884736个</li>
+<li>C4：$384\times3\times3\times192$（卷积核个数/宽/高/厚度） 663552个</li>
+<li>C5：$256\times3\times3\times192$（卷积核个数/宽/高/厚度） 442368个</li>
+<li>R1：$4096\times6\times6\times256$（卷积核个数/宽/高/厚度） 37748736个</li>
+<li>R2：$4096\times4096$ 16777216个</li>
+<li>R3：$4096\times1000$  4096000个</li>
+</ul>
+<p>在R1中卷积核尺寸是 $6\times6\times256$ 而不是$13\times13\times256$是因为经过了最大池化。可以看到，全连接层（尤其是第一层）参数数量占了绝大部分。</p>
+<h3 id="6-Pytorch实现"><a href="#6-Pytorch实现" class="headerlink" title="6 Pytorch实现"></a>6 Pytorch实现</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlexNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,num_classes=<span class="number">1000</span>)</span>:</span></span><br><span class="line">        super(AlexNet,self).__init__()</span><br><span class="line">        self.feature_extraction = nn.Sequential(</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">3</span>,out_channels=<span class="number">96</span>,kernel_size=<span class="number">11</span>,stride=<span class="number">4</span>,padding=<span class="number">2</span>,bias=<span class="literal">False</span>),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>),</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">96</span>,out_channels=<span class="number">192</span>,kernel_size=<span class="number">5</span>,stride=<span class="number">1</span>,padding=<span class="number">2</span>,bias=<span class="literal">False</span>),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>,stride=<span class="number">2</span>,padding=<span class="number">0</span>),</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">192</span>,out_channels=<span class="number">384</span>,kernel_size=<span class="number">3</span>,stride=<span class="number">1</span>,padding=<span class="number">1</span>,bias=<span class="literal">False</span>),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">384</span>,out_channels=<span class="number">256</span>,kernel_size=<span class="number">3</span>,stride=<span class="number">1</span>,padding=<span class="number">1</span>,bias=<span class="literal">False</span>),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">256</span>,out_channels=<span class="number">256</span>,kernel_size=<span class="number">3</span>,stride=<span class="number">1</span>,padding=<span class="number">1</span>,bias=<span class="literal">False</span>),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>),</span><br><span class="line">        )</span><br><span class="line">        self.classifier = nn.Sequential(</span><br><span class="line">            nn.Dropout(p=<span class="number">0.5</span>),</span><br><span class="line">            nn.Linear(in_features=<span class="number">256</span>*<span class="number">6</span>*<span class="number">6</span>,out_features=<span class="number">4096</span>),</span><br><span class="line">            nn.Dropout(p=<span class="number">0.5</span>),</span><br><span class="line">            nn.Linear(in_features=<span class="number">4096</span>, out_features=<span class="number">4096</span>),</span><br><span class="line">            nn.Linear(in_features=<span class="number">4096</span>, out_features=num_classes),</span><br><span class="line">        )</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        x = self.feature_extraction(x)</span><br><span class="line">        x = x.view(x.size(<span class="number">0</span>),<span class="number">256</span>*<span class="number">6</span>*<span class="number">6</span>)</span><br><span class="line">        x = self.classifier(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">'__main__'</span>:</span><br><span class="line">    model = AlexNet()</span><br><span class="line">    print(model)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="7-CNN的发展"><a href="#7-CNN的发展" class="headerlink" title="7 CNN的发展"></a>7 CNN的发展</h3><p>在AlexNet问世之后，CNN以一个很快的速度发展，截止到2017年，已经有了多代的网络结构问世，深度、宽度上也越来越大，效率和正确率上也越来越好：</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210317113420.png">
+
+<p>AlexNet—NiN—VGG—GoogLeNet—ResNet, 在这些结构中：</p>
+<ul>
+<li>NiN 引入$1\times1$卷积层（Bottleneck layer）和全局池化；</li>
+<li>VGG将$7\times7$替换成三个$3\times3$；</li>
+<li>GoogLeNet引入了Inception模块；</li>
+<li>ResNet引入了直连思想；</li>
+<li>DenseNet引入稠密链接，将当前的层与之后的所有层直连。</li>
+</ul>
+<p>其中的一些网络甚至替换了AlexNet中提出的一些思想，但是CNN大体上结构依旧遵循着AlexNet，甚至还有很多传统ANN的思想存在。</p>
+<ul>
+<li>收敛速度：$VGG&gt;Inception&gt;DenseNet&gt;ResNET$</li>
+<li>泛化能力：$Inception\approx DenseNet \approx ResNet &gt;VGG$</li>
+<li>运算量：$Inception&lt;Densenet &lt; ResNet&lt;VGG$</li>
+<li>内存开销：$Inception&lt;Resnet &lt; DenseNet&lt;VGG$</li>
+</ul>
+<p>参考</p>
+<ol>
+<li><a href="https://blog.csdn.net/hongbin_xu/article/details/80271291" target="_blank" rel="noopener">AlexNet论文(ImageNet Classification with Deep Convolutional Neural Networks)(译)</a></li>
+<li><a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">《ImageNet Classification with Deep Convolutional Neural Networks》</a></li>
+<li><a href="https://www.cnblogs.com/gongxijun/p/6027747.html" target="_blank" rel="noopener">神经网络模型之AlexNet的一些总结</a></li>
+<li><a href="https://blog.csdn.net/chaipp0607/article/details/72847422" target="_blank" rel="noopener">从AlexNet理解卷积神经网络的一般结构</a></li>
+<li><a href="http://dgschwend.github.io/netscope/#/preset/alexnet" target="_blank" rel="noopener">AlexNet</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AlexNet/" rel="tag"># AlexNet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/cdea.html" rel="next" title="DES数据加密标准">
+                <i class="fa fa-chevron-left"></i> DES数据加密标准
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/2.html" rel="prev" title="【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition">
+                【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、论文翻译"><span class="nav-text">一、论文翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据集"><span class="nav-text">2 数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-结构"><span class="nav-text">3  结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-ReLU非线性单元"><span class="nav-text">3.1 ReLU非线性单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-在多个GPU上训练"><span class="nav-text">3.2 在多个GPU上训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-局部响应归一化"><span class="nav-text">3.3 局部响应归一化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-重叠池化"><span class="nav-text">3.4 重叠池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-整体结构"><span class="nav-text">3.5 整体结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-减少过拟合"><span class="nav-text">4 减少过拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-数据增强（Data-Augmentation）"><span class="nav-text">4.1 数据增强（Data Augmentation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Dropout"><span class="nav-text">4.2 Dropout</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-训练细节"><span class="nav-text">5 训练细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-结果"><span class="nav-text">6 结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-定性评估"><span class="nav-text">6.1 定性评估</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-讨论"><span class="nav-text">7 讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、论文解读"><span class="nav-text">二、论文解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-卷积层"><span class="nav-text">1 卷积层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-CNN中卷积层的作用"><span class="nav-text">1.1 CNN中卷积层的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-卷积层如何操作"><span class="nav-text">1.1.1 卷积层如何操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-AlexNet中的卷积层"><span class="nav-text">1.2 AlexNet中的卷积层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-conv1层"><span class="nav-text">1.2.1 conv1层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-conv2层"><span class="nav-text">1.2.2 conv2层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-conv3层"><span class="nav-text">1.2.3 conv3层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-4-conv4-层"><span class="nav-text">1.2.4 conv4 层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-5-conv5层"><span class="nav-text">1.2.5 conv5层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-全连接层"><span class="nav-text">2 全连接层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-全连接层的作用"><span class="nav-text">2.1 全连接层的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-AlexNet中的全连接层"><span class="nav-text">2.2 AlexNet中的全连接层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-fc6层"><span class="nav-text">2.2.1 fc6层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-fc7层"><span class="nav-text">2.2.2 fc7层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-3-fc8层"><span class="nav-text">2.2.3 fc8层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-其它层"><span class="nav-text">3 其它层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-池化层"><span class="nav-text">3.1 池化层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-激活层"><span class="nav-text">3.2 激活层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Softmax层"><span class="nav-text">3.3 Softmax层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-Softmax作用"><span class="nav-text">3.3.1 Softmax作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-AlexNet中的Softmax"><span class="nav-text">3.3.2 AlexNet中的Softmax</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-AlexNet与在其之前的神经网络相比改进"><span class="nav-text">4 AlexNet与在其之前的神经网络相比改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-AlexNet-中60M参数"><span class="nav-text">5 AlexNet 中60M参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Pytorch实现"><span class="nav-text">6 Pytorch实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-CNN的发展"><span class="nav-text">7 CNN的发展</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

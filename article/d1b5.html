@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="热传导方程,Cauchy 问题,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="偏微分的学习记录，持续更新中。。。">
+<meta name="keywords" content="热传导方程,Cauchy 问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="偏微分方程">
+<meta property="og:url" content="https://gkm0120.github.io/article/d1b5.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="偏微分的学习记录，持续更新中。。。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-18T07:01:58.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="偏微分方程">
+<meta name="twitter:description" content="偏微分的学习记录，持续更新中。。。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/d1b5.html">
+
+
+
+
+
+  <title>偏微分方程 | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/d1b5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">偏微分方程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-13T16:31:08+08:00">
+                2020-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/偏微分方程/" itemprop="url" rel="index">
+                    <span itemprop="name">偏微分方程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/d1b5.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/d1b5.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  3.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  19 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>偏微分的学习记录，持续更新中。。。</p>
+<a id="more"></a>
+
+<h2 id="3-热传导方程"><a href="#3-热传导方程" class="headerlink" title="3 热传导方程"></a>3 热传导方程</h2><h3 id="3-1-热传导方程的-Cauchy-问题"><a href="#3-1-热传导方程的-Cauchy-问题" class="headerlink" title="3.1 热传导方程的 Cauchy 问题"></a>3.1 热传导方程的 Cauchy 问题</h3><h4 id="3-1-1-齐次热传导方程的-Cauchy-问题"><a href="#3-1-1-齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.1 齐次热传导方程的 Cauchy 问题"></a>3.1.1 齐次热传导方程的 Cauchy 问题</h4><p>一维齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{1} \label{eq:1}<br>\right.<br>\end{equation} $$</p>
+<p>方程 （1）的解具有如下性质：</p>
+<blockquote>
+<p>性质 3.1 设$ u(x,t) $是（1）的解, 则对任意的$ y\in R$，$u(x-y, t)$ 也是（1）的解。<br>性质 3.2 设$ u(x,t) $是（1）的解, 则它的各阶导数也是（1）的解。<br>性质 3.3 设$ S(x,t) $是（1）的解，则对任意连续函数$ g(y) $<br>$$<br>v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y<br>$$<br>也是（1）的解。</p>
+</blockquote>
+<p>理由：<br>$$V_{\varepsilon}=\int_{-\infty}^{\infty} S_{\varepsilon}(x-y, t) g(y)\to g(x) \qquad \varepsilon\to 0 $$</p>
+<blockquote>
+<p>性质 3.4 设$ u(x,t) $是（1）的解，则对任意的$ \lambda&gt;0,$ $u\left(\lambda x, \lambda^{2} t\right)$ 也是（1）的解。</p>
+</blockquote>
+<p>理由：<br>$u$是（1）的解，寻找$v(x,t)=\lambda{\alpha}u(\lambda{\beta}x，\lambda{\gamma}t)$是（1）的解<br>$$v_t=\lambda{\alpha+\gamma}u_t,u_x=\lambda{\alpha+\beta}u_x，u_{xx}=\lambda{\alpha+2\beta}u_x$$<br>$$0=v_t-a^{2}v_{xx}=\lambda{\alpha+\gamma}u_t-a^{2}\lambda{\alpha+2\beta}u_{xx}$$<br>取$$\gamma=2\beta，\lambda=\frac{1}{\sqrt{t}}，v(x, t)=u(\lambda x，\lambda^{2}t)=u({\frac{x}{\sqrt{t}}})=u(\xi)，\xi={\frac{x}{\sqrt{t}}}$$<br>空间变量、时间变量做伸缩变换（尺度不一）<br>$$0=v_t-a^{2}v_{xx}=2xt^{-\frac{3}{2}}- a^2 u^{\prime \prime} t^{-1}$$<br>化简有<br>$$u^{\prime \prime}+\frac{1}{2 a^{2}} \xi u^{\prime}=0$$<br>$$u(\xi)=c_{1} \int_{0}^{\xi} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>其中$ c_1 $, $ c_2 $是两个积分常数。<br>进而<br>$$u(x,t)=c_{1} \int_{0}^{\frac{x}{\sqrt{t}}} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>$$S(x, t)=\frac{\partial}{\partial x} v(x, t)=\frac{c_{1}}{\sqrt{t}} e^{-\frac{x^{2}}{4 a^{2} t}}$$<br>由性质3.3知对任意连续函数$g(y)$,<br>$$v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y=\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y$$<br>也是（1）的解<br>求出$c_1$使其满足初始条件，即<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y = \varphi(y)$$<br>作变换$y-x=2a \sqrt{t} \xi$，有<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-\mu)^{2}}{4 a^{2} t}} g(x+2a \sqrt{t} \xi) 2a{\sqrt{t}} \mathrm{d} \xi = 2ac_1\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\xi^{2}} g(x+2a \sqrt{t}\xi) \mathrm{d} \xi \\ =2ac_1g(x)\int_{-\infty}^{\infty}\mathrm{e}^{-\xi^{2}} \mathrm{d} \xi=2a{\sqrt{\pi}}c_1g(x)=\varphi(x)$$<br>第二个等号成立的条件：$g$连续且一致有界$\Rightarrow$一致收敛（反常积分）$\Rightarrow$t的连续函数<br>取$c_1=\frac{\varphi(x)}{2a{\sqrt{\pi}}g(x)}$，代入有<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>称上式为Cauchy问题的Possion公式<br>记<br>$$G(x, t)=\begin{cases}<br>\frac{1}{2 a \sqrt{\pi t}} \mathrm{e}^{-\frac{x^{2}}{4 a^{2} t}}  &amp; t&gt;0 \\<br>0  &amp; t&lt;0<br>\end{cases} $$<br>则有<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y$$<br>称由上式确定的函数称为热核函数</p>
+<p>下证$u(x,t)=\int_{-\infty}^{\infty} G(x-y,t) \varphi(y) \mathrm{d} y$是如下Cauchy问题的解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>知<br>$$u(x,t)=-\frac{1}{2a{\sqrt{\pi}t^{\frac{3}{2}}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y+\frac{1}{2a{\sqrt{\pi}}t} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {\frac{(x-y)^{2}}{4 a^{2} t^2}} \varphi(y) \mathrm{d} y$$<br>$\forall t_0 \gt 0,t\ge t_0$时，上述积分都一致收敛<br>理由：<br>$$\begin{aligned}<br>| u(x, t) | \leq M \int_{-\infty}^{\infty} G(x-y, t) \mathrm{d} y=\frac{M}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \mathrm{d} y=M<br>\end{aligned}$$<br>其中$|\varphi(x)| \le M,\forall t \gt 0$<br>局部：$\forall (x_0,t_1)\in \mathrm{R}\times(0,{\infty}) $，取$t_0=\frac{t_1}{2}$，故在$[\frac{t_1}{2},{\infty}]$上一致收敛<br>$$u_t(x, t)=\int_{-\infty}^{\infty} G_t(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_{xx}(x, t)=\int_{-\infty}^{\infty} G_{xx}(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_t(x, t)-a^2u_{xx}=\int_{-\infty}^{\infty} (G_t-a^2G_xx)(x-y, t) \varphi(y) \mathrm{d} y=0$$<br>注1：$\varphi$ 为有界连续函数，则$u(x,t)$当$t \gt 0$关于$x,t$无穷次可微，即<br>$$\frac{\partial^{k+1} u}{\partial x^{k} \partial t^{l}}=\int_{-\infty}^{\infty} \frac{\partial^{k+l}}{\partial x^{k} \partial t^{l}} G(x-y, t) \varphi(y) \mathrm{d} y \sim P(\frac{1}{\sqrt{t}}) \int_{-\infty}^{\infty} Q(x,y) \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y$$<br>其中$\sim$为等价符号，$Q(x,y)$为只含$x,y$变量的二元函数。由$\forall \delta \gt 0$，上式右端在区域${-\infty&lt;x&lt;\infty, t \geq \delta}$上一致收敛。由于当$t \gt 0$，$G(x-y,t)$无穷次可微，故$u(x, t) \in C^{\infty}\left(\mathbb{R}_{+}^{2}\right)$</p>
+<p>注2：初值 $\varphi $属于有界函数类的条件可放宽为$${|\varphi(x)| \leq M \mathrm{e}^{N x^{2}}, \quad-\infty&lt;x&lt;\infty}$$<br>理由:可证$u(x,t)$在区域$ {0 \lt t \lt \frac{1}{4 a^{2} N}，-\infty&lt;x&lt;\infty}$上仍是热传导方程Cauchy问题的解。</p>
+<p>注3：若$|\varphi(x)| \le M$，由Possion公式知，$|u(x,t)| \le M，-\infty&lt;x&lt;\infty，t \geq 0$</p>
+<p>注4：Possion公式给出的解在任意一点$(x,t)(t \gt 0)$的值，依赖于初始值在整个$x$轴的值，没有有限的依赖区域。<br>如果杆的初始温度只在某一小段$I_{\delta}=\left(x_{0}-\delta, x_{0}+\delta\right)$不为0，设$$\varphi(x)&gt;0, x \in I_{\delta}; \varphi(x) \equiv 0, x \notin I_{\delta}$$<br>当$ t \geq 0$时，$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y&gt;0$$<br>说明热量瞬间传播到杆上的每一点，热的传播速度是无限的</p>
+<h4 id="3-1-2-非齐次热传导方程的-Cauchy-问题"><a href="#3-1-2-非齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.2 非齐次热传导方程的 Cauchy 问题"></a>3.1.2 非齐次热传导方程的 Cauchy 问题</h4><p>一维非齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{2} \label{eq:2}<br>\right.<br>\end{equation} $$<br>由叠加原理上式可分解为以下两个问题的求解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d}=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=0, \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{3} \label{eq:3}<br>\right.<br>\end{equation} $$</p>
+<blockquote>
+<p>引理3.1（齐次化原理）若函数$w(x,t,\tau)$是Cauchy问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.w\right|_{t=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{4} \label{eq:4}<br>\right.<br>\end{equation} $$</p>
+</blockquote>
+<p>的解，则函数 $u(x,t)=\int_{0}^{t} w(x,t,\tau) \mathrm{d} \tau$ 是Cauchy问题（4）的解<br>证：</p>
+<ol>
+<li>满足初始条件$\left.u\right|_{t=0}=0 $</li>
+<li>满足方程$u_{t}-a^{2} u_{x x}=f(x,t)$<br>$$u_t=w(x,t,\tau)+\int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau = f(x,t)+\int_{0}^{t} w_t(x,t,\tau) \mathrm{d} \tau$$<br>$$u_x=\int_{0}^{t} w_x (x,t,\tau) \mathrm{d} \tau，u_{xx}=\int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau$$<br>则<br>$$u_t-a^{2}u_{xx} = f(x,t)+ \int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau - a^{2} \int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau \\ = f(x,t) + \int_{0}^{t} (w_t - a^{2}w_{xx}) (x,t,\tau) \mathrm{d} \tau = f(x,t)$$</li>
+</ol>
+<p>为了求解问题（4），令$t^{\prime}=t-\tau，x=x$（自变量变换）</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t^{\prime}}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t^{\prime}&gt;0  \\<br>&amp;\left.w\right|_{t^{\prime}=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{5} \label{eq:5}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$w(x,t^{\prime},\tau)=\int_{-\infty}^{\infty} G(x-y, t^{\prime}) f(y,\tau) \mathrm{d} y $$<br>则问题（4）的解<br>$$w(x,t,\tau)=\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y $$<br>则问题（3）的解<br>$$u(x,t)=\int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau$$<br>故由叠加原理,问题（2）的解为<br>$$u(x,t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y)\mathrm{d} y + \int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau $$<br>也记为$$u(x,t)=G \ast \varphi + \int_{0}^{t} G(\bullet,t-\tau)f(\bullet,t-\tau)$$<br>其中$\ast$为卷积符号，$\bullet$表示关于第一个空间变量作卷积</p>
+<blockquote>
+<p>定理3.1：若$\varphi(x) \in C(-\infty, \infty), f(x, t) \in C((-\infty, \infty) \times(0, \infty))$且均有界，则由Possion公式确定的函数$u(x,t)$是Cauchy问题（2）的解</p>
+</blockquote>
+<p>理由：根据上述推导证明可得。</p>
+<h3 id="3-2-热传导方程的混合问题"><a href="#3-2-热传导方程的混合问题" class="headerlink" title="3.2 热传导方程的混合问题"></a>3.2 热传导方程的混合问题</h3><h4 id="3-2-1-半直线上热传导方程与热的反射"><a href="#3-2-1-半直线上热传导方程与热的反射" class="headerlink" title="3.2.1 半直线上热传导方程与热的反射"></a>3.2.1 半直线上热传导方程与热的反射</h4><p>考虑侧表面绝热的均匀细杆，一端固定，已知初始温度和细杆在固定端点的温度，则杆上的温度分布满足如下混合问题：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x, t),  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=\mu(t), &amp;t \geq 0<br>\end{aligned}<br>\tag{6} \label{eq:6}<br>\right.<br>\end{equation} $$</p>
+<p>考虑$f(x) \equiv 0，u(t) \equiv 0$的情形</p>
+<ol>
+<li>Dirlect边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{7} \label{eq:7}<br>\right.<br>\end{equation} $$</p>
+<p>由</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{8} \label{eq:8}<br>\right.<br>\end{equation} $$</p>
+<p>解出：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>初始：<br>$$ \left.u\right|_{t=0}=\varphi(x)，-\infty&lt;x&lt;\infty$$</p>
+<p>选取（连续奇函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>-\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>其中：<br>$$u(0, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} e^{-\frac{y^{2}}{4 a^{2}}} \Phi(y) d y=0$$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = \frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y +\\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}-e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<ol start="2">
+<li>Newmann边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u_x(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{9} \label{eq:9}<br>\right.<br>\end{equation} $$<br>选取（连续偶函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = -\frac{1}{ a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y + \\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}+e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<p>为求解问题（6），将边界齐次化，令$v(x,t)=u(x,t)-\mu(t)$<br>则</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由叠加原理，上述问题可分解为</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=0，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=0，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>若令$v(x,t)=u(x,t)-\mu(t)x$，则可将Newmann边界齐次化<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty \lt x \lt \infty, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \lt \infty \\<br>&amp;u_x(0,t)=\mu(t), \quad 0 \le x \lt \infty \\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<h4 id="3-2-1-有限区间上的热传导方程与分离变量法"><a href="#3-2-1-有限区间上的热传导方程与分离变量法" class="headerlink" title="3.2.1 有限区间上的热传导方程与分离变量法"></a>3.2.1 有限区间上的热传导方程与分离变量法</h4><p>在矩形区域$\Omega = {0 \le x \le l，0 \lt t \le T}$上，考虑<br>$$u_t-a^{2}u_{xx}=f(x,t)，0 \le x \le l，0 \lt t \le T$$</p>
+<p>及初始条件<br>$$ \left.u\right|_{t=0}=\varphi(x)，0 \le x \le l $$</p>
+<p>和边界条件<br>$$ u(0,t)=\mu_1(t), u(l,t)=\mu_2(t)，0 \le x \le l $$</p>
+<p>先考虑第二边值问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad 0 \lt x \lt l, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \le l \\<br>&amp;u_x(0,t)=\mu(t), u_x(0,t)=\mu(t) \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>寻找$u(x,t)=X(x)T(t)$形式解<br>$$X(x)T^{\prime}(t)-a^{2}X^{\prime \prime}(x)T(t)=0$$<br>从而<br>$$\frac{T^{\prime}(t)}{a^{2}T(t)}=\frac{X^{\prime \prime}(x)}{X(x)}=\lambda$$<br>有<br>$$T^{\prime}(t)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0$$<br>联立<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;X^{\prime}(x)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0 \\<br>&amp;X^{\prime}(0)=0, X^{\prime}(l)=0 \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>情形$1^{\prime}$ $\lambda \lt 0$<br>$$X(x)=c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}，X^{\prime}(x)=\left(-c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}\right){-\sqrt{-\lambda}}$$<br>代入得$$c_1=c_2=0$$</p>
+<p>情形$2^{\prime}$ $\lambda = 0$<br>$$X(x)=c_1+c_2x$$<br>代入得$c_2 = 0$，$X_0(x) \equiv 1$是上述问题得一个非平凡解</p>
+<p>情形$3^{\prime}$ $\lambda \gt 0$<br>$$X(x)=c_1cos{\sqrt{\lambda}}x+c_2sin{\sqrt{\lambda}}x，X^{\prime}(x)=\left(-c_1sin{\sqrt{\lambda}}x+c_2cos{\sqrt{\lambda}}x\right){\sqrt{\lambda}}$$<br>代入得$c_2 = 0$，$c_1 = {\sqrt{\lambda}}sin{\sqrt{\lambda}}l = 0$</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/热传导方程/" rel="tag"># 热传导方程</a>
+          
+            <a href="/tags/Cauchy-问题/" rel="tag"># Cauchy 问题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/fcf1.html" rel="next" title="Markdown中LaTeX编写技巧">
+                <i class="fa fa-chevron-left"></i> Markdown中LaTeX编写技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/cdea.html" rel="prev" title="DES数据加密标准">
+                DES数据加密标准 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-热传导方程"><span class="nav-text">3 热传导方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-热传导方程的-Cauchy-问题"><span class="nav-text">3.1 热传导方程的 Cauchy 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.1 齐次热传导方程的 Cauchy 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-非齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.2 非齐次热传导方程的 Cauchy 问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-热传导方程的混合问题"><span class="nav-text">3.2 热传导方程的混合问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-半直线上热传导方程与热的反射"><span class="nav-text">3.2.1 半直线上热传导方程与热的反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-有限区间上的热传导方程与分离变量法"><span class="nav-text">3.2.1 有限区间上的热传导方程与分离变量法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="用C++实现三个 Sierpinski 镂垫程序">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sierpinski 镂垫程序">
+<meta property="og:url" content="https://gkm0120.github.io/article/d9d1.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="用C++实现三个 Sierpinski 镂垫程序">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040312.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040313.jpg">
+<meta property="og:updated_time" content="2021-03-18T06:52:58.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sierpinski 镂垫程序">
+<meta name="twitter:description" content="用C++实现三个 Sierpinski 镂垫程序">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/d9d1.html">
+
+
+
+
+
+  <title>Sierpinski 镂垫程序 | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/d9d1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Sierpinski 镂垫程序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-19T18:12:31+08:00">
+                2020-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图形图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图形图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/d9d1.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/d9d1.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>用C++实现三个 Sierpinski 镂垫程序</p>
+<a id="more"></a>
+
+<blockquote>
+<p>Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。</p>
+</blockquote>
+<p>生成算法如下：</p>
+<ol>
+<li>在三角形内部随机选取一个点作为初始点；</li>
+<li>在三角形的3个顶点中随机选取一个，求出该顶点与初始点连线的中点，画出该中点；</li>
+<li>将第二步中的中点作为初始点，循环第二步；</li>
+</ol>
+<h2 id="Sierpinski镂垫"><a href="#Sierpinski镂垫" class="headerlink" title="Sierpinski镂垫"></a>Sierpinski镂垫</h2><h3 id="二维Sierpinski镂垫"><a href="#二维Sierpinski镂垫" class="headerlink" title="二维Sierpinski镂垫"></a>二维Sierpinski镂垫</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*使用随机选择的顶点和中点绘制二维Sierpinski镂垫*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myinit</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  glClearColor(<span class="number">1.0</span>,<span class="number">1.0</span>,<span class="number">1.0</span>,<span class="number">1.0</span>);<span class="comment">/*白色背景*/</span></span><br><span class="line">  glColor3f(<span class="number">1.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>);<span class="comment">/*红色*/</span></span><br><span class="line"></span><br><span class="line">  glMatrixMode(GL_PROJECTION);</span><br><span class="line">  glLoadIdentity();</span><br><span class="line">  gluOrtho2D(<span class="number">0.0</span>,<span class="number">50.0</span>,<span class="number">0.0</span>,<span class="number">50.0</span>);<span class="comment">/*50×50相机坐标窗口与原点左下角*/</span></span><br><span class="line">  glMatrixMode(GL_MODELVIEW);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  GLfloat vertices[<span class="number">3</span>][<span class="number">2</span>]={{<span class="number">0.0</span>,<span class="number">0.0</span>},{<span class="number">25.0</span>,<span class="number">50.0</span>},{<span class="number">50.0</span>,<span class="number">0.0</span>}};</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> j,k;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">rand</span><span class="params">()</span></span>;<span class="comment">/*产生随机数*/</span></span><br><span class="line">  GLfloat p[<span class="number">2</span>]={<span class="number">7.5</span>,<span class="number">5.0</span>};<span class="comment">/*在三角形内任意初始点*/</span></span><br><span class="line">  glClear(GL_COLOR_BUFFER_BIT);<span class="comment">/*清理窗口*/</span></span><br><span class="line"></span><br><span class="line">  glBegin(GL_POINTS);<span class="comment">/*产生5000个新点*/</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;<span class="number">5000</span>;k++)</span><br><span class="line">  {</span><br><span class="line">    j=rand()%<span class="number">3</span>;<span class="comment">/*随机选择一个顶点*/</span></span><br><span class="line">    <span class="comment">/*计算点位于选定顶点和旧点之间*/</span></span><br><span class="line">    p[<span class="number">0</span>]=(p[<span class="number">0</span>]+vertices[j][<span class="number">0</span>])/<span class="number">2.0</span>;</span><br><span class="line">    p[<span class="number">1</span>]=(p[<span class="number">1</span>]+vertices[j][<span class="number">1</span>])/<span class="number">2.0</span>;</span><br><span class="line">    <span class="comment">/*画新点*/</span></span><br><span class="line">    glVertex2fv(p);</span><br><span class="line">  }</span><br><span class="line">  glEnd();</span><br><span class="line">  glFlush();<span class="comment">/*清除缓冲帧*/</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  glutInit(&amp;argc,argv);<span class="comment">/*标准的GLUT初始化*/</span></span><br><span class="line">  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);<span class="comment">/*默认设置*/</span></span><br><span class="line">  glutInitWindowSize(<span class="number">500</span>,<span class="number">500</span>);<span class="comment">/*500×500像素窗口*/</span></span><br><span class="line">  glutInitWindowPosition(<span class="number">0</span>,<span class="number">0</span>);<span class="comment">/*将窗口放在左下角*/</span></span><br><span class="line">  glutCreateWindow(<span class="string">"Sierpinski Gasket"</span>);<span class="comment">/*窗口名*/</span></span><br><span class="line">  glutDisplayFunc(display);<span class="comment">/*窗口打开时调用的显示回调*/</span></span><br><span class="line">  myinit();<span class="comment">/*设置属性*/</span></span><br><span class="line">  glutMainLoop();<span class="comment">/*进入事件循环*/</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg">
+
+<h3 id="生成-Sierpinski-镂垫的递归程序"><a href="#生成-Sierpinski-镂垫的递归程序" class="headerlink" title="生成 Sierpinski 镂垫的递归程序"></a>生成 Sierpinski 镂垫的递归程序</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 通过细分三角形的方法生成Sierpinski镂垫 */</span></span><br><span class="line"><span class="comment">/* 通过命令行输入递归的次数 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">/* 初始的三角形 */</span></span><br><span class="line">GLfloat v[<span class="number">3</span>][<span class="number">2</span>]={{<span class="number">-1.0</span>, <span class="number">-0.58</span>}, {<span class="number">1.0</span>, <span class="number">-0.58</span>}, {<span class="number">0.0</span>, <span class="number">1.15</span>}};</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">triangle</span><span class="params">( GLfloat *a, GLfloat *b, GLfloat *c)</span></span></span><br><span class="line"><span class="function"><span class="comment">/* 定义某个三角形 */</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> glVertex2fv(a);</span><br><span class="line"> glVertex2fv(b);</span><br><span class="line"> glVertex2fv(c);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide_triangle</span><span class="params">(GLfloat *a, GLfloat *b, GLfloat *c, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="comment">/* 基于某个顶点的数量对三角形进行细分处理 */</span></span><br><span class="line"> GLfloat v0[<span class="number">2</span>], v1[<span class="number">2</span>], v2[<span class="number">2</span>];</span><br><span class="line"> <span class="keyword">int</span> j;</span><br><span class="line"> <span class="keyword">if</span>(m&gt;<span class="number">0</span>)</span><br><span class="line"> {</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">2</span>; j++) v0[j]=(a[j]+b[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">2</span>; j++) v1[j]=(a[j]+c[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">2</span>; j++) v2[j]=(b[j]+c[j])/<span class="number">2</span>;</span><br><span class="line"> divide_triangle(a, v0, v1, m<span class="number">-1</span>);</span><br><span class="line"> divide_triangle(c, v1, v2, m<span class="number">-1</span>);</span><br><span class="line"> divide_triangle(b, v2, v0, m<span class="number">-1</span>);</span><br><span class="line"> }</span><br><span class="line"> <span class="keyword">else</span> triangle(a,b,c); <span class="comment">/* 递归结束时绘制三角形 */</span></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">     glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">         glBegin(GL_TRIANGLES);</span><br><span class="line">         divide_triangle(v[<span class="number">0</span>], v[<span class="number">1</span>], v[<span class="number">2</span>], n);</span><br><span class="line">         glEnd();</span><br><span class="line">     glFlush();</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myinit</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">     glMatrixMode(GL_PROJECTION);</span><br><span class="line">     glLoadIdentity();</span><br><span class="line">     gluOrtho2D(<span class="number">-2.0</span>, <span class="number">2.0</span>, <span class="number">-2.0</span>, <span class="number">2.0</span>);</span><br><span class="line">     glMatrixMode(GL_MODELVIEW);</span><br><span class="line">     glClearColor(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">     glColor3f(<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>);</span><br><span class="line">}</span><br><span class="line">main(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span><br><span class="line">{</span><br><span class="line">     n=<span class="number">3</span>;    <span class="comment">/* 或者在此输入三角形细分的步数 */</span></span><br><span class="line">     glutInit(&amp;argc, argv);</span><br><span class="line">     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);</span><br><span class="line">     glutInitWindowSize(<span class="number">500</span>, <span class="number">500</span>);</span><br><span class="line">     glutCreateWindow(<span class="string">"Sierpinski Gasket"</span>);</span><br><span class="line">     glutDisplayFunc(display);</span><br><span class="line">         myinit();</span><br><span class="line">     glutMainLoop();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040312.jpg">
+
+<h3 id="三维-Sierpinski-镂垫的递归程序"><a href="#三维-Sierpinski-镂垫的递归程序" class="headerlink" title="三维 Sierpinski 镂垫的递归程序"></a>三维 Sierpinski 镂垫的递归程序</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 通过递归细分四面体方法生成Sierpinski镂垫 */</span></span><br><span class="line"><span class="comment">/* 通过命令行递归的次数 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="comment">/* 初始的四面体 */</span></span><br><span class="line">GLfloat v[<span class="number">4</span>][<span class="number">3</span>]={{<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>},{<span class="number">0.0</span>, <span class="number">0.942809</span>, <span class="number">-0.33333</span>},</span><br><span class="line">  {<span class="number">-0.816497</span>, <span class="number">-0.471405</span>, <span class="number">-0.333333</span>},{<span class="number">0.816497</span>, <span class="number">-0.471405</span>, <span class="number">-0.333333</span>}};</span><br><span class="line">GLfloat colors[<span class="number">4</span>][<span class="number">3</span>]={{<span class="number">1.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>},{<span class="number">0.0</span>,<span class="number">1.0</span>,<span class="number">0.0</span>},</span><br><span class="line">{<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">1.0</span>},{<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>}};</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">triangle</span><span class="params">( GLfloat *va, GLfloat *vb, GLfloat *vc)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> glVertex3fv(va);</span><br><span class="line"> glVertex3fv(vb);</span><br><span class="line"> glVertex3fv(vc);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tetra</span><span class="params">(GLfloat *a, GLfloat *b, GLfloat *c, GLfloat *d)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> glColor3fv(colors[<span class="number">0</span>]);</span><br><span class="line"> triangle(a,b,c);</span><br><span class="line"> glColor3fv(colors[<span class="number">1</span>]);</span><br><span class="line"> triangle(a,c,d);</span><br><span class="line"> glColor3fv(colors[<span class="number">2</span>]);</span><br><span class="line"> triangle(a,d,b);</span><br><span class="line"> glColor3fv(colors[<span class="number">3</span>]);</span><br><span class="line"> triangle(b,d,c);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide_tetra</span><span class="params">(GLfloat *a, GLfloat *b, GLfloat *c, GLfloat *d, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> GLfloat mid[<span class="number">6</span>][<span class="number">3</span>];</span><br><span class="line"> <span class="keyword">int</span> j;</span><br><span class="line"> <span class="keyword">if</span>(m&gt;<span class="number">0</span>)</span><br><span class="line"> {</span><br><span class="line">   <span class="comment">/* 计算六个中点 */</span></span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">0</span>][j]=(a[j]+b[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">1</span>][j]=(a[j]+c[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">2</span>][j]=(a[j]+d[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">3</span>][j]=(b[j]+c[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">4</span>][j]=(c[j]+d[j])/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) mid[<span class="number">5</span>][j]=(b[j]+d[j])/<span class="number">2</span>;</span><br><span class="line">   <span class="comment">/* 通过细分生成四个四面体 */</span></span><br><span class="line"> divide_tetra(a,mid[<span class="number">0</span>],mid[<span class="number">1</span>],mid[<span class="number">2</span>], m<span class="number">-1</span>);</span><br><span class="line"> divide_tetra(mid[<span class="number">0</span>],b,mid[<span class="number">3</span>],mid[<span class="number">5</span>], m<span class="number">-1</span>);</span><br><span class="line"> divide_tetra(mid[<span class="number">1</span>],mid[<span class="number">3</span>],c,mid[<span class="number">4</span>], m<span class="number">-1</span>);</span><br><span class="line"> divide_tetra(mid[<span class="number">2</span>],mid[<span class="number">4</span>],d,mid[<span class="number">5</span>], m<span class="number">-1</span>);</span><br><span class="line"> }</span><br><span class="line"> <span class="keyword">else</span>   tetra(a,b,c,d); <span class="comment">/* 递归结束时绘制四面体 */</span></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"> glBegin(GL_TRIANGLES);</span><br><span class="line">     divide_tetra(v[<span class="number">0</span>],v[<span class="number">1</span>],v[<span class="number">2</span>],v[<span class="number">3</span>],n);</span><br><span class="line">     glEnd();</span><br><span class="line">     glFlush();</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myReshape</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">     glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line">     glMatrixMode(GL_PROJECTION);</span><br><span class="line">     glLoadIdentity();</span><br><span class="line">     <span class="keyword">if</span> (w &lt;= h)</span><br><span class="line">     glOrtho(<span class="number">-2.0</span>, <span class="number">2.0</span>, <span class="number">-2.0</span> * (GLfloat) h / (GLfloat) w,</span><br><span class="line"> <span class="number">2.0</span> * (GLfloat) h / (GLfloat) w, <span class="number">-10.0</span>, <span class="number">10.0</span>);</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">     glOrtho(<span class="number">-2.0</span> * (GLfloat) w / (GLfloat) h,</span><br><span class="line"> <span class="number">2.0</span> * (GLfloat) w / (GLfloat) h, <span class="number">-2.0</span>, <span class="number">2.0</span>, <span class="number">-10.0</span>, <span class="number">10.0</span>);</span><br><span class="line"> glMatrixMode(GL_MODELVIEW);</span><br><span class="line"> glutPostRedisplay();</span><br><span class="line">}</span><br><span class="line">main(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span><br><span class="line">{</span><br><span class="line"> n=atoi(argv[<span class="number">1</span>]);  <span class="comment">/* 或者在此处输入四面体细分的步数 */</span></span><br><span class="line"> glutInit(&amp;argc, argv);</span><br><span class="line"> glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);</span><br><span class="line"> glutInitWindowSize(<span class="number">500</span>, <span class="number">500</span>);</span><br><span class="line"> glutCreateWindow(<span class="string">"3D Gasket"</span>);</span><br><span class="line"> glutReshapeFunc(myReshape);</span><br><span class="line"> glutDisplayFunc(display);</span><br><span class="line"> glEnable(GL_DEPTH_TEST);</span><br><span class="line"> glClearColor (<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line"> glutMainLoop();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040313.jpg">
+
+
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/1454.html" rel="next" title="球体的细分逼近程序">
+                <i class="fa fa-chevron-left"></i> 球体的细分逼近程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/cded.html" rel="prev" title="Hill密码加密解密">
+                Hill密码加密解密 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sierpinski镂垫"><span class="nav-text">Sierpinski镂垫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维Sierpinski镂垫"><span class="nav-text">二维Sierpinski镂垫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成-Sierpinski-镂垫的递归程序"><span class="nav-text">生成 Sierpinski 镂垫的递归程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-1"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果-1"><span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维-Sierpinski-镂垫的递归程序"><span class="nav-text">三维 Sierpinski 镂垫的递归程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-2"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果-2"><span class="nav-text">结果</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

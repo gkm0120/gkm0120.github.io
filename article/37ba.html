@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="DDA、中点画线、Bresenham算法">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扫描转换算法">
+<meta property="og:url" content="https://gkm0120.github.io/article/37ba.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="DDA、中点画线、Bresenham算法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033102.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040305.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040301.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040302.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040303.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033103.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033104.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033107.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416202043.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416204239.png">
+<meta property="og:updated_time" content="2021-03-18T06:53:32.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="扫描转换算法">
+<meta name="twitter:description" content="DDA、中点画线、Bresenham算法">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/37ba.html">
+
+
+
+
+
+  <title>扫描转换算法 | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/37ba.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">扫描转换算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-31T16:33:52+08:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图形图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图形图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/37ba.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/37ba.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  12 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>DDA、中点画线、Bresenham算法</p>
+<a id="more"></a>
+
+<h2 id="1-直线扫描转换算法"><a href="#1-直线扫描转换算法" class="headerlink" title="1 直线扫描转换算法"></a>1 直线扫描转换算法</h2><h3 id="1-1-DDA算法"><a href="#1-1-DDA算法" class="headerlink" title="1.1 DDA算法"></a>1.1 DDA算法</h3><blockquote>
+<p>Digital Differential Analyer</p>
+</blockquote>
+<p>在计算机光栅显示器上绘制一条直线$ y=kx+b $的本质是用一些离散的像素点去逼近这条直线，需要确定这些像素点的$ x $，$ y $坐标。<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033101.jpg"></p>
+<p>给出确定的两个端点$ \bigl(x_0,y_0\bigr) $和$ \bigl(x_1,y_1\bigr) $，即斜率$ k=\frac{y_1-y_0}{x_1-x_0} $<br>现假定$ x $已知，即从起点$ x_0 $开始，沿$ x $方向前进一个像素（步长=1），可以计算相应的$ y $值</p>
+<blockquote>
+<p>注：因为像素的坐标是整数，而斜率$k$是浮点数，所以对于计算出的$ y $值需要进行取整处理</p>
+</blockquote>
+<ol>
+<li>基本思想：</li>
+</ol>
+<ul>
+<li>$ k\le1 $时，对$ x $值计算相应的$ y $值（对$ y $取整），从而确定需要给那些像素着色</li>
+<li>$ k&gt;1 $时，对$ y $值计算相应的$ x $值（对$ x $取整），从而确定需要给那些像素着色</li>
+</ul>
+<img width="200" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033102.jpg">
+
+<ol start="2">
+<li>优化计算思想：增量思想</li>
+</ol>
+<ul>
+<li>$ k\le1 $时,对于 $ y_i=kx_i+b $，$ y_{i+1}=kx_{i+1}+b=k(x_i+1)+b=y_i+k $，那么斜率$ k $即可看为前进一步的增量，这样就把将乘法运算变成了加法</li>
+<li>$ k&gt;1 $时，取$ x_{i+1}=x_i+\frac{1}{k} $即可</li>
+</ul>
+<h4 id="1-1-1-代码"><a href="#1-1-1-代码" class="headerlink" title="1.1.1 代码"></a>1.1.1 代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;GL\glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glClearColor(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);  <span class="comment">// Set display-window color to white.</span></span><br><span class="line">    glMatrixMode(GL_PROJECTION);       <span class="comment">// Set projection parameters.</span></span><br><span class="line">    gluOrtho2D(<span class="number">0.0</span>, <span class="number">200.0</span>, <span class="number">0.0</span>, <span class="number">150.0</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    数值微分方法画线</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LineDDA</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glColor3f(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);       <span class="comment">// 红色</span></span><br><span class="line">    glPointSize(<span class="number">2.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        两点重合尚未判断</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">int</span> dm = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">abs</span>(x2 - x1) &gt;= <span class="built_in">abs</span>(y2 - y1))</span><br><span class="line">    {</span><br><span class="line">        dm = <span class="built_in">abs</span>(x2 - x1);              <span class="comment">// x 为计长方向</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        dm = <span class="built_in">abs</span>(y2 - y1);              <span class="comment">// y 为计长方向</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">float</span> dx = (<span class="keyword">float</span>)(x2 - x1) / dm;   <span class="comment">// 当 x 为计长方向，dx = 1</span></span><br><span class="line">    <span class="keyword">float</span> dy = (<span class="keyword">float</span>)(y2 - y1) / dm;   <span class="comment">// 当 y 为计长方向，dy = 1</span></span><br><span class="line">    <span class="keyword">float</span> x = x1;</span><br><span class="line">    <span class="keyword">float</span> y = y1;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dm; ++i)</span><br><span class="line">    {</span><br><span class="line">        glBegin(GL_POINTS);</span><br><span class="line">        glVertex2f((<span class="keyword">int</span>)x, (<span class="keyword">int</span>)y);</span><br><span class="line">        glEnd();</span><br><span class="line">        glFlush();</span><br><span class="line">        x += dx;</span><br><span class="line">        y += dy;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    交换两个int 类型的变量的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap_value</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> tmp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = tmp;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 窗口大小改变时调用的登记函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ChangeSize</span><span class="params">(GLsizei w, GLsizei h)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (h == <span class="number">0</span>)     h = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置视区尺寸</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重置坐标系统</span></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立修剪空间的范围</span></span><br><span class="line">    <span class="keyword">if</span> (w &lt;= h)</span><br><span class="line">        glOrtho(<span class="number">0.0f</span>, <span class="number">250.0f</span>, <span class="number">0.0f</span>, <span class="number">250.0f</span>*h / w, <span class="number">1.0</span>, <span class="number">-1.0</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        glOrtho(<span class="number">0.0f</span>, <span class="number">250.0f</span>*w / h, <span class="number">0.0f</span>, <span class="number">250.0f</span>, <span class="number">1.0</span>, <span class="number">-1.0</span>);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// 用当前背景色填充窗口，如果不写这句会残留之前的图像</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> x1 = <span class="number">20</span>, y1 = <span class="number">20</span>, x2 = <span class="number">160</span>, y2 = <span class="number">80</span>;</span><br><span class="line">    LineDDA(x1, y1, x2, y2);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);</span><br><span class="line">    glutInitWindowPosition(<span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">    glutInitWindowSize(<span class="number">400</span>, <span class="number">400</span>);</span><br><span class="line">    glutCreateWindow(<span class="string">"Line"</span>);</span><br><span class="line">    glutDisplayFunc(display);</span><br><span class="line">    glutReshapeFunc(ChangeSize);</span><br><span class="line">    init();</span><br><span class="line">    glutMainLoop();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="1-1-2-运行结果"><a href="#1-1-2-运行结果" class="headerlink" title="1.1.2 运行结果"></a>1.1.2 运行结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040305.jpg">
+
+
+<h3 id="1-2-中点画线算法"><a href="#1-2-中点画线算法" class="headerlink" title="1.2 中点画线算法"></a>1.2 中点画线算法</h3><blockquote>
+<p>效率上最快</p>
+</blockquote>
+<p>基本思想：采用直线的一般式方程$ F(x,y)=Ax+By+C=0 $<br>$ F(x,y)=Ax+By+C=0\le\left|k\right|\le1 $,$ x_i+1\rightarrow y_i \rightarrow \begin{cases}y_i \\y_i +1\end{cases}$，把浮点运算改成整数加法。</p>
+<p>假定$ 0\le\left|k\right|\le1 $，沿$x$方向前进一个像素，$x_i \rightarrow x_i+1$，计算出$y_i \rightarrow \begin{cases}y_i \\y_i +1\end{cases} $.</p>
+<ul>
+<li>当中点$M$在$Q$下方时，则$P_u$离直线近一些，选择$P_u$作为下一个像素点</li>
+<li>当中点$M$在$Q$上方时，则$P_d$离直线近一些，选择$P_d$作为下一个像素点</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040301.jpg">
+
+<p>判断$M$与$Q$的位置关系：将$M$点坐标代入方程有$d_i=A(x_i+1)+B(y_i+0.5)+C$</p>
+<ul>
+<li>当$d_i\geq0$时选择$P_d$</li>
+<li>当$d_i&lt;0$时选择$P_u$</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040302.jpg">
+
+<p>优化计算：$p(x_i,y_i)$在直线上即$Ax_i+By_i+C=0$，初值$d_0=F\left(x_i+1,y_i+0.5\right)=A+0.5B$</p>
+<ul>
+<li><p>当选择了$P_u$作为像素点时，$d_0=F\left(x_i+1,y_i+0.5\right)$；$d_1=F\left(x_i+2,y_i+1.5\right)=d_0+A+B$</p>
+</li>
+<li><p>当选择了$P_d$作为像素点时，$d_0=F\left(x_i+1,y_i+0.5\right)$；$d_1=F\left(x_i+2,y_i+0.5\right)=d_0+A$</p>
+</li>
+</ul>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040303.jpg">
+
+<h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><blockquote>
+<p>适用范围扩大，与方程无关不仅限于画直线</p>
+</blockquote>
+<h3 id="1-3-理论"><a href="#1-3-理论" class="headerlink" title="1.3 理论"></a>1.3 理论</h3><p>DDA算法在编码实现比较容易，但是每生成一个像素都要用到一次浮点加法运算，Bresenham的线段光栅化算法可以避免浮点运算。</p>
+<ol>
+<li>假设线段的起点$ \bigl(x_0,y_0\bigr) $和终点$ \bigl(x_1,y_1\bigr) $的坐标值都是整数，且斜率满足$ 0\leq m\leq 1 $</li>
+<li>在线段扫描转换过程某一步中，假定已知$ (i+\frac{1}{2},j+\frac{1}{2}) $的像素。该线段所在的直线方程为$ y=mx+h $,当$ x=i+\frac{1}{2} $时，该直线与$ (i+\frac{1}{2},j+\frac{1}{2}) $处像素的垂直扫描线的实际交点是在垂直扫描线上位于该像素的半个像素内部的某一点（假定像素中心位置的坐标值位于两个整数之间），否则，对该实际交点进行四舍五入处理后不可能得到当前这个像素。</li>
+</ol>
+<img width="200" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033103.jpg">
+
+<ol start="3">
+<li>可以引入判定变量$ d=b-a $来判断下一个像素点的坐标，其中，$ a $和$ b $<br>表示在$x=i+\frac{3}{2}$号处，该线段分别离上方候选像素和下方候选像素的距离，如果$ d&lt;0 $，那么线段靠近下方的像素，所以选择位于$ (x=i+\frac{3}{2},j+\frac{1}{2}) $处的下方像素；否则，应选择位于$ (i+\frac{3}{2},j+\frac{3}{2}) $处的上方像素.</li>
+</ol>
+<img width="200" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033104.jpg">
+
+<h4 id="1-3-1-优化"><a href="#1-3-1-优化" class="headerlink" title="1.3.1 优化"></a>1.3.1 优化</h4><blockquote>
+<p>定点运算代替浮点运算</p>
+</blockquote>
+<p>令$ d=(x_2-x_1)(b-a)=\Delta x(b-a) $，用线段的方程将$ a $和$ b $的值代入，结合$ m=\frac{y_2-y_1}{x_2-x_1} $，$ h=y_2-mx_2 $，运算得$ d $为一整数（用到多次定点运算）</p>
+<blockquote>
+<p>使该算法成为增量算法</p>
+</blockquote>
+<p>假定$ d_k $是$ x＝k+\frac{1}{2} $号时对应的$ d $值。我们希望计算$ d_k $的增量形$ d_k+1 $，它是$ x=k+\frac{3}{2} $号时对应的$ d $值。</p>
+<p>通过观察上方候选像素与直线之间的距离$ a $的值，当$ x=k+\frac{1}{2} $处像素的 $ y $坐标相对于前一个像素增加1，$ a $值增加$ 1-m $，或者减少$ m $。同理，当增加$ x $的值时，$ b $值要么增加$ m $，要么减少$ 1-m $。</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020033107.jpg">
+
+<p>其中：<br>        $$d_{k+1}=\begin{cases}<br>    d_k+2\Delta y \qquad &amp; d_k&lt;0\\<br>    2(\Delta y-\Delta x)\qquad &amp; d_k\geq0<br>    \end{cases} $$</p>
+<h4 id="1-3-2-代码"><a href="#1-3-2-代码" class="headerlink" title="1.3.2 代码"></a>1.3.2 代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glu.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/gl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;GL\glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glClearColor(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);  <span class="comment">// Set display-window color to white.</span></span><br><span class="line">    glMatrixMode(GL_PROJECTION);       <span class="comment">// Set projection parameters.</span></span><br><span class="line">    gluOrtho2D(<span class="number">0.0</span>, <span class="number">200.0</span>, <span class="number">0.0</span>, <span class="number">150.0</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    交换两个int 类型的变量的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap_value</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> tmp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = tmp;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Bresenham 画线法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LineBres</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);       <span class="comment">// 蓝色</span></span><br><span class="line">    glPointSize(<span class="number">2.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> dx = <span class="built_in">abs</span>(x2 - x1);</span><br><span class="line">    <span class="keyword">int</span> dy = <span class="built_in">abs</span>(y2 - y1);</span><br><span class="line">    <span class="comment">// 两点重合</span></span><br><span class="line">    <span class="keyword">if</span> (dx == <span class="number">0</span> &amp;&amp; dy == <span class="number">0</span>)</span><br><span class="line">    {</span><br><span class="line">        glBegin(GL_POINTS);</span><br><span class="line">            glVertex2f(x1, y1);</span><br><span class="line">        glEnd();</span><br><span class="line">        glFlush();</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;       <span class="comment">// 将斜率变换到 0 &lt;= |k| &lt;= 1 区间</span></span><br><span class="line">    <span class="keyword">if</span> (dx &lt; dy)</span><br><span class="line">    {</span><br><span class="line">        flag = <span class="number">1</span>;</span><br><span class="line">        swap_value(&amp;x1, &amp;y1);</span><br><span class="line">        swap_value(&amp;x2, &amp;y2);</span><br><span class="line">        swap_value(&amp;dx, &amp;dy);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> tx = (x2 - x1) &gt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> ty = (y2 - y1) &gt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> curx = x1;</span><br><span class="line">    <span class="keyword">int</span> cury = y1;</span><br><span class="line">    <span class="keyword">int</span> dS = <span class="number">2</span> * dy;</span><br><span class="line">    <span class="keyword">int</span> dT = <span class="number">2</span> * (dy - dx);</span><br><span class="line">    <span class="keyword">int</span> d = dS - dx;</span><br><span class="line">    <span class="keyword">while</span> (curx != x2)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (d &lt; <span class="number">0</span>)</span><br><span class="line">            d += dS;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            cury += ty;</span><br><span class="line">            d += dT;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">        {</span><br><span class="line">            glBegin(GL_POINTS);</span><br><span class="line">                glVertex2f(cury, curx);</span><br><span class="line">            glEnd();</span><br><span class="line">            glFlush();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            glBegin(GL_POINTS);</span><br><span class="line">                glVertex2f(curx, cury);</span><br><span class="line">            glEnd();</span><br><span class="line">            glFlush();</span><br><span class="line">        }</span><br><span class="line">        curx += tx;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 窗口大小改变时调用的登记函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ChangeSize</span><span class="params">(GLsizei w, GLsizei h)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (h == <span class="number">0</span>)     h = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置视区尺寸</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重置坐标系统</span></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立修剪空间的范围</span></span><br><span class="line">    <span class="keyword">if</span> (w &lt;= h)</span><br><span class="line">        glOrtho(<span class="number">0.0f</span>, <span class="number">250.0f</span>, <span class="number">0.0f</span>, <span class="number">250.0f</span>*h / w, <span class="number">1.0</span>, <span class="number">-1.0</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        glOrtho(<span class="number">0.0f</span>, <span class="number">250.0f</span>*w / h, <span class="number">0.0f</span>, <span class="number">250.0f</span>, <span class="number">1.0</span>, <span class="number">-1.0</span>);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// 用当前背景色填充窗口，如果不写这句会残留之前的图像</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    <span class="keyword">int</span> x12 = <span class="number">20</span>, y12 = <span class="number">40</span>, x22 = <span class="number">160</span>, y22 = <span class="number">100</span>;</span><br><span class="line">    LineBres(x12, y12, x22, y22);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);</span><br><span class="line">    glutInitWindowPosition(<span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">    glutInitWindowSize(<span class="number">400</span>, <span class="number">400</span>);</span><br><span class="line">    glutCreateWindow(<span class="string">"Line"</span>);</span><br><span class="line">    glutDisplayFunc(display);</span><br><span class="line">    glutReshapeFunc(ChangeSize);</span><br><span class="line">    init();</span><br><span class="line">    glutMainLoop();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>####1.3.3 运行结果<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg"></p>
+<h2 id="2-多边形扫描转化算法"><a href="#2-多边形扫描转化算法" class="headerlink" title="2 多边形扫描转化算法"></a>2 多边形扫描转化算法</h2><p>多边形分为凸多边形，凹多边形（任意两顶点间的连线有不在多边形内的部分）含内环的多边形</p>
+<h3 id="2-1-X扫描线算法"><a href="#2-1-X扫描线算法" class="headerlink" title="2.1 X扫描线算法"></a>2.1 X扫描线算法</h3><blockquote>
+<p>多边形扫描转换指的是把多边形的顶点表示转换为点阵表示</p>
+</blockquote>
+<ol>
+<li>基本思想：按扫描线的顺序，计算扫描线与多边形的相交区间，再用要求的颜色显示这些区间的像素，完成填充工作。端点即为扫描线与多边形边界线的交点。</li>
+<li>算法步骤：</li>
+</ol>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416202043.png">
+
+<p>（1） 确定多边形所占有的最大扫描数，得到多边形顶点的最小和最大值<br>（2） 从 $y=y_{min}$ 到 $y=y_{max}$ 每次用一条扫描线进行填充<br>（3） 扫描线的填充过程：求交排序（交点按递增顺序排）$\to$交点配对（偶数个）$\to$区间填色</p>
+<ol start="3">
+<li>当扫描线与某一顶点相交时，交点的取舍问题处理办法为：<br>共享顶点的两条边分别落在扫描线左右两边，交点只算1个<br>共享顶点的两条边的另外两个端点 值大于顶点 值，交点算2个，否则算0个<br>缺点：扫描线与多边形各边求交很麻烦</li>
+</ol>
+<h3 id="2-2-改进的X扫描线算法（不求交）"><a href="#2-2-改进的X扫描线算法（不求交）" class="headerlink" title="2.2 改进的X扫描线算法（不求交）"></a>2.2 改进的X扫描线算法（不求交）</h3><ol>
+<li><p>改进求交方法：<br>（1）只与有效边求交；<br>（2）扫描线的连贯性——当前扫描线与各边交点顺序与下条扫描线与各边交点顺序雷同;<br>（3）多边形的连贯性——某条边与当前扫描线相交时很可能也与下一条扫描线相交.</p>
+</li>
+<li><p>引进数据结构：<br>（1）活性边表——与当前扫描线相交的边叫做活性边，并把他们按与扫描线交点，坐标递增的顺序存放在一个链表中<br>（2）结点内容——$x$（交点坐标）；$\delta{x}$（相邻扫描线的增量）；$y_{max}$（最高扫描线的坐标值）</p>
+</li>
+</ol>
+<p>$$ x  \to \delta x \to y_{max} \to \text { Next } $$</p>
+<p> 扫描线一次向上移动1，即$y_{i+1}-y_{i}=1$ ，相交直线边斜率为$k$，即$x_{i+1}=x_{i}+\frac{1}{k}$<br>其中$\delta=\frac{1}{k}$ ，而$y_{max}$可以确定何时抛弃该有效边</p>
+<ol start="3">
+<li>构建新边表：构造纵向链表，链表长度为多边形所占有的最大扫描线数<br>对扫描线出现的位置构造</li>
+</ol>
+<p>$$ y_{max} \to x_{min} \to \frac{1}{k} \to \text { Next } $$</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416204239.png">
+
+<p>注：边是否被抛弃，未抛弃则要注意 ，还要看是否有新边进来</p>
+<h3 id="2-3-区域填充算法"><a href="#2-3-区域填充算法" class="headerlink" title="2.3 区域填充算法"></a>2.3 区域填充算法</h3><blockquote>
+<p>要求区域内连通</p>
+</blockquote>
+<p>区域可分4连通（左上右下）和8连通（斜方向）区域</p>
+<ol>
+<li><p>简单四连通种子填充算法（区域填充递归算法）：<br>使用栈结构来实现：栈顶像素出栈$\to$将出栈像素置成要填充色$\to$按左上右下顺序将不在边界且未填充的像素入栈填充$\to$对最后一个入栈的像素重复上述操作</p>
+</li>
+<li><p>多边形扫描转换算法与区域填充算法的区别<br>区域填充需要一个种子点，根据区域连通性进行颜色扩散<br>扫描线转换是从边界出发采用多种形式的连贯性进行填充</p>
+</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.icourse163.org/learn/CAU-45006?tid=1450413503#/learn/content?type=detail&amp;id=1215011255" target="_blank" rel="noopener">中国大学MOOC</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/fa12.html" rel="next" title="Liang-Barsky裁剪算法">
+                <i class="fa fa-chevron-left"></i> Liang-Barsky裁剪算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/fcf1.html" rel="prev" title="Markdown中LaTeX编写技巧">
+                Markdown中LaTeX编写技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-直线扫描转换算法"><span class="nav-text">1 直线扫描转换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-DDA算法"><span class="nav-text">1.1 DDA算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-代码"><span class="nav-text">1.1.1 代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-运行结果"><span class="nav-text">1.1.2 运行结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-中点画线算法"><span class="nav-text">1.2 中点画线算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bresenham算法"><span class="nav-text">Bresenham算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-理论"><span class="nav-text">1.3 理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-优化"><span class="nav-text">1.3.1 优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-代码"><span class="nav-text">1.3.2 代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-多边形扫描转化算法"><span class="nav-text">2 多边形扫描转化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-X扫描线算法"><span class="nav-text">2.1 X扫描线算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-改进的X扫描线算法（不求交）"><span class="nav-text">2.2 改进的X扫描线算法（不求交）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-区域填充算法"><span class="nav-text">2.3 区域填充算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

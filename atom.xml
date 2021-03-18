@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>孔明の博客</title>
   
-  <subtitle>孔明の博客</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://www.gkm0120.cn/"/>
-  <updated>2020-04-20T07:43:50.515Z</updated>
-  <id>https://www.gkm0120.cn/</id>
+  <link href="https://gkm0120.github.io/"/>
+  <updated>2021-03-18T08:13:06.248Z</updated>
+  <id>https://gkm0120.github.io/</id>
   
   <author>
     <name>戈孔明</name>
@@ -17,410 +17,350 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DES数据加密标准</title>
-    <link href="https://www.gkm0120.cn/posts/cdea.html"/>
-    <id>https://www.gkm0120.cn/posts/cdea.html</id>
-    <published>2020-04-16T13:06:33.000Z</published>
-    <updated>2020-04-20T07:43:50.515Z</updated>
+    <title>【图像分类—NIN】Network in Network</title>
+    <link href="https://gkm0120.github.io/article/4.html"/>
+    <id>https://gkm0120.github.io/article/4.html</id>
+    <published>2020-12-18T02:11:52.000Z</published>
+    <updated>2021-03-18T08:13:06.248Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;1-加密算法的分类&quot;&gt;&lt;a href=&quot;#1-加密算法的分类&quot; class=&quot;headerlink&quot; title=&quot;1 加密算法的分类&quot;&gt;&lt;/a&gt;1
-        
-      
+      &lt;p&gt;文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。&lt;/p&gt;
     
     </summary>
     
-      <category term="密码学" scheme="https://www.gkm0120.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
     
     
-      <category term="DES" scheme="https://www.gkm0120.cn/tags/DES/"/>
+      <category term="NiN" scheme="https://gkm0120.github.io/tags/NiN/"/>
     
   </entry>
   
   <entry>
-    <title>PDE Notes</title>
-    <link href="https://www.gkm0120.cn/posts/d1b5.html"/>
-    <id>https://www.gkm0120.cn/posts/d1b5.html</id>
-    <published>2020-04-13T08:31:08.000Z</published>
-    <updated>2020-05-20T09:21:44.592Z</updated>
+    <title>【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions</title>
+    <link href="https://gkm0120.github.io/article/3.html"/>
+    <id>https://gkm0120.github.io/article/3.html</id>
+    <published>2020-12-17T12:01:47.000Z</published>
+    <updated>2021-03-18T07:51:02.041Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;3-热传导方程&quot;&gt;&lt;a href=&quot;#3-热传导方程&quot; class=&quot;headerlink&quot; title=&quot;3 热传导方程&quot;&gt;&lt;/a&gt;3 热传导方程&lt;/h2&gt;&lt;h3 id=&quot;3-1-热传导方程的-Cauchy-问题&quot;&gt;&lt;a
-        
-      
+      &lt;p&gt;Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次浮点运算，同时只有500万的参数量，仅为 AlexNet 参数量（6000万）的 1/12。&lt;/p&gt;
     
     </summary>
     
-      <category term="Personal notes" scheme="https://www.gkm0120.cn/categories/Personal-notes/"/>
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
     
     
-      <category term="PDE" scheme="https://www.gkm0120.cn/tags/PDE/"/>
+      <category term="GoogleNetV1" scheme="https://gkm0120.github.io/tags/GoogleNetV1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition</title>
+    <link href="https://gkm0120.github.io/article/2.html"/>
+    <id>https://gkm0120.github.io/article/2.html</id>
+    <published>2020-12-08T06:47:58.000Z</published>
+    <updated>2021-03-18T07:03:17.384Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;VGG对于Alexnet来说，改进并不是很大，主要改进就在于使用了小卷积核，网络是分段卷积网络，通过max pooling过度，同时网络更深更宽。分别在定位和分类问题中获得了第一和第二名。我们还表明，我们的方法很好地推广到了其他数据集上，在那里他们实现了最好的结果。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="VGG" scheme="https://gkm0120.github.io/tags/VGG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks</title>
+    <link href="https://gkm0120.github.io/article/1.html"/>
+    <id>https://gkm0120.github.io/article/1.html</id>
+    <published>2020-12-07T01:57:50.000Z</published>
+    <updated>2021-03-18T07:03:09.445Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="AlexNet" scheme="https://gkm0120.github.io/tags/AlexNet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DES数据加密标准</title>
+    <link href="https://gkm0120.github.io/article/cdea.html"/>
+    <id>https://gkm0120.github.io/article/cdea.html</id>
+    <published>2020-04-16T13:06:33.000Z</published>
+    <updated>2021-03-18T02:09:11.346Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一种对称公私钥加密算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="密码学" scheme="https://gkm0120.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+      <category term="DES" scheme="https://gkm0120.github.io/tags/DES/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>偏微分方程</title>
+    <link href="https://gkm0120.github.io/article/d1b5.html"/>
+    <id>https://gkm0120.github.io/article/d1b5.html</id>
+    <published>2020-04-13T08:31:08.000Z</published>
+    <updated>2021-03-18T07:01:58.317Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;偏微分的学习记录，持续更新中。。。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="偏微分方程" scheme="https://gkm0120.github.io/categories/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+    
+    
+      <category term="热传导方程" scheme="https://gkm0120.github.io/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/"/>
+    
+      <category term="Cauchy 问题" scheme="https://gkm0120.github.io/tags/Cauchy-%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Markdown中LaTeX编写技巧</title>
-    <link href="https://www.gkm0120.cn/posts/fcf1.html"/>
-    <id>https://www.gkm0120.cn/posts/fcf1.html</id>
+    <link href="https://gkm0120.github.io/article/fcf1.html"/>
+    <id>https://gkm0120.github.io/article/fcf1.html</id>
     <published>2020-04-01T13:04:57.000Z</published>
-    <updated>2020-05-22T00:57:40.475Z</updated>
+    <updated>2021-03-18T06:51:22.512Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;Markdown中LaTeX常用语法&quot;&gt;&lt;a href=&quot;#Markdown中LaTeX常用语法&quot; class=&quot;headerlink&quot; title=&quot;Markdown中LaTeX常用语法&quot;&gt;&lt;/a&gt;Markdown中LaTeX常用语法&lt;/h1&gt;&lt;h2
-        
-      
+      &lt;p&gt;Markdown中LaTeX使用方法&lt;/p&gt;
     
     </summary>
     
-      <category term="编辑器" scheme="https://www.gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <category term="使用技巧" scheme="https://gkm0120.github.io/categories/%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
-      <category term="Markdown" scheme="https://www.gkm0120.cn/tags/Markdown/"/>
+      <category term="Markdown" scheme="https://gkm0120.github.io/tags/Markdown/"/>
     
-      <category term="LaTeX" scheme="https://www.gkm0120.cn/tags/LaTeX/"/>
+      <category term="LaTeX" scheme="https://gkm0120.github.io/tags/LaTeX/"/>
     
   </entry>
   
   <entry>
     <title>扫描转换算法</title>
-    <link href="https://www.gkm0120.cn/posts/37ba.html"/>
-    <id>https://www.gkm0120.cn/posts/37ba.html</id>
+    <link href="https://gkm0120.github.io/article/37ba.html"/>
+    <id>https://gkm0120.github.io/article/37ba.html</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2020-05-17T08:33:20.563Z</updated>
+    <updated>2021-03-18T06:53:32.200Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;1-直线扫描转换算法&quot;&gt;&lt;a href=&quot;#1-直线扫描转换算法&quot; class=&quot;headerlink&quot; title=&quot;1 直线扫描转换算法&quot;&gt;&lt;/a&gt;1 直线扫描转换算法&lt;/h2&gt;&lt;h3 id=&quot;1-1-DDA算法&quot;&gt;&lt;a href=&quot;#1-1-DDA算法&quot;
-        
-      
+      &lt;p&gt;DDA、中点画线、Bresenham算法&lt;/p&gt;
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
     
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
-    
-      <category term="DDA" scheme="https://www.gkm0120.cn/tags/DDA/"/>
+      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>Liang-Barsky裁剪算法</title>
-    <link href="https://www.gkm0120.cn/posts/fa12.html"/>
-    <id>https://www.gkm0120.cn/posts/fa12.html</id>
+    <link href="https://gkm0120.github.io/article/fa12.html"/>
+    <id>https://gkm0120.github.io/article/fa12.html</id>
     <published>2020-03-29T13:38:16.000Z</published>
-    <updated>2020-04-20T07:43:50.532Z</updated>
+    <updated>2021-03-18T06:50:23.223Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Liang-Barsky裁剪算法&quot;&gt;&lt;a href=&quot;#Liang-Barsky裁剪算法&quot; class=&quot;headerlink&quot; title=&quot;Liang-Barsky裁剪算法&quot;&gt;&lt;/a&gt;Liang-Barsky裁剪算法&lt;/h2&gt;&lt;h3 id=&quot;原理&quot;&gt;&lt;a
-        
-      
+      &lt;p&gt;Liang-Barsky算法的原理与代码&lt;/p&gt;
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
     
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
-    
-      <category term="Liang-Barsky" scheme="https://www.gkm0120.cn/tags/Liang-Barsky/"/>
+      <category term="Liang-Barsky" scheme="https://gkm0120.github.io/tags/Liang-Barsky/"/>
     
   </entry>
   
   <entry>
     <title>使用Git批量上传图片</title>
-    <link href="https://www.gkm0120.cn/posts/bb97.html"/>
-    <id>https://www.gkm0120.cn/posts/bb97.html</id>
+    <link href="https://gkm0120.github.io/article/bb97.html"/>
+    <id>https://gkm0120.github.io/article/bb97.html</id>
     <published>2020-03-27T03:06:17.000Z</published>
-    <updated>2020-04-20T07:43:50.553Z</updated>
+    <updated>2021-03-18T06:53:17.035Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;使用方法&quot;&gt;&lt;a href=&quot;#使用方法&quot; class=&quot;headerlink&quot; title=&quot;使用方法&quot;&gt;&lt;/a&gt;使用方法&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md
-        
-      
+      &lt;p&gt;使用Git，构建GitHub图床，批量上传图片&lt;/p&gt;
     
     </summary>
     
-      <category term="批量上传图片" scheme="https://www.gkm0120.cn/categories/%E6%89%B9%E9%87%8F%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
     
     
-      <category term="jsDelivr" scheme="https://www.gkm0120.cn/tags/jsDelivr/"/>
-    
-      <category term="CDN" scheme="https://www.gkm0120.cn/tags/CDN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown 编辑器语法指南</title>
-    <link href="https://www.gkm0120.cn/posts/c86e.html"/>
-    <id>https://www.gkm0120.cn/posts/c86e.html</id>
-    <published>2020-03-26T01:24:52.000Z</published>
-    <updated>2020-04-20T07:43:50.544Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Markdown-编辑器语法指南&quot;&gt;&lt;a href=&quot;#Markdown-编辑器语法指南&quot; class=&quot;headerlink&quot; title=&quot;Markdown 编辑器语法指南&quot;&gt;&lt;/a&gt;Markdown 编辑器语法指南&lt;/h1&gt;&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="编辑器" scheme="https://www.gkm0120.cn/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-    
-    
-      <category term="Markdown" scheme="https://www.gkm0120.cn/tags/Markdown/"/>
+      <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Cohen-Sutherland编码裁剪</title>
-    <link href="https://www.gkm0120.cn/posts/f4dd.html"/>
-    <id>https://www.gkm0120.cn/posts/f4dd.html</id>
+    <link href="https://gkm0120.github.io/article/f4dd.html"/>
+    <id>https://gkm0120.github.io/article/f4dd.html</id>
     <published>2020-03-25T13:35:08.000Z</published>
-    <updated>2020-05-17T07:34:35.046Z</updated>
+    <updated>2021-03-18T06:48:44.876Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Cohen-Sutherland编码裁剪算法&quot;&gt;&lt;a href=&quot;#Cohen-Sutherland编码裁剪算法&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;一类编码裁剪算法&lt;/p&gt;
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
     
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://gkm0120.github.io/tags/OpenGL/"/>
     
-      <category term="Cohen-Sutherland" scheme="https://www.gkm0120.cn/tags/Cohen-Sutherland/"/>
+      <category term="Cohen-Sutherland" scheme="https://gkm0120.github.io/tags/Cohen-Sutherland/"/>
     
   </entry>
   
   <entry>
-    <title>Hexo+GitHub博客美化教程</title>
-    <link href="https://www.gkm0120.cn/posts/138c.html"/>
-    <id>https://www.gkm0120.cn/posts/138c.html</id>
+    <title>Hexo+GitHub+matery博客美化教程</title>
+    <link href="https://gkm0120.github.io/article/138c.html"/>
+    <id>https://gkm0120.github.io/article/138c.html</id>
     <published>2020-03-21T15:48:07.000Z</published>
-    <updated>2020-05-17T05:27:55.157Z</updated>
+    <updated>2021-03-18T02:18:34.339Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;定制&quot;&gt;&lt;a href=&quot;#定制&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;更换主题模板，实现个性化定制&lt;/p&gt;
     
     </summary>
     
-      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="博客搭建" scheme="https://gkm0120.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Hexo" scheme="https://www.gkm0120.cn/tags/Hexo/"/>
-    
-      <category term="GitHub" scheme="https://www.gkm0120.cn/tags/GitHub/"/>
+      <category term="Hexo" scheme="https://gkm0120.github.io/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>Hill密码加密解密</title>
-    <link href="https://www.gkm0120.cn/posts/cded.html"/>
-    <id>https://www.gkm0120.cn/posts/cded.html</id>
+    <link href="https://gkm0120.github.io/article/cded.html"/>
+    <id>https://gkm0120.github.io/article/cded.html</id>
     <published>2020-03-20T14:39:30.000Z</published>
-    <updated>2020-04-20T07:43:50.535Z</updated>
+    <updated>2021-03-18T02:12:27.228Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;希尔密码加密解密原理&quot;&gt;&lt;a href=&quot;#希尔密码加密解密原理&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;用C++实现Hill密码加解密&lt;/p&gt;
     
     </summary>
     
-      <category term="密码学" scheme="https://www.gkm0120.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+      <category term="密码学" scheme="https://gkm0120.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     
-      <category term="Hill" scheme="https://www.gkm0120.cn/tags/Hill/"/>
+      <category term="Hill" scheme="https://gkm0120.github.io/tags/Hill/"/>
     
   </entry>
   
   <entry>
     <title>Sierpinski 镂垫程序</title>
-    <link href="https://www.gkm0120.cn/posts/d9d1.html"/>
-    <id>https://www.gkm0120.cn/posts/d9d1.html</id>
+    <link href="https://gkm0120.github.io/article/d9d1.html"/>
+    <id>https://gkm0120.github.io/article/d9d1.html</id>
     <published>2020-03-19T10:12:31.000Z</published>
-    <updated>2020-04-20T07:43:50.546Z</updated>
+    <updated>2021-03-18T06:52:58.127Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣，
-        
-      
+      &lt;p&gt;用C++实现三个 Sierpinski 镂垫程序&lt;/p&gt;
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
     
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
+      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>球体的细分逼近程序</title>
-    <link href="https://www.gkm0120.cn/posts/1454.html"/>
-    <id>https://www.gkm0120.cn/posts/1454.html</id>
+    <link href="https://gkm0120.github.io/article/1454.html"/>
+    <id>https://gkm0120.github.io/article/1454.html</id>
     <published>2020-03-18T08:42:54.000Z</published>
-    <updated>2020-04-20T07:43:50.570Z</updated>
+    <updated>2021-03-18T06:52:46.789Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;球体的细分逼近程序&quot;&gt;&lt;a href=&quot;#球体的细分逼近程序&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;用C++实现四面体递归逼近球体&lt;/p&gt;
     
     </summary>
     
-      <category term="计算机图形学" scheme="https://www.gkm0120.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
     
-      <category term="OpenGL" scheme="https://www.gkm0120.cn/tags/OpenGL/"/>
+      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>Git和Node.js安装</title>
-    <link href="https://www.gkm0120.cn/posts/7966.html"/>
-    <id>https://www.gkm0120.cn/posts/7966.html</id>
+    <link href="https://gkm0120.github.io/article/7966.html"/>
+    <id>https://gkm0120.github.io/article/7966.html</id>
     <published>2020-03-17T05:07:25.000Z</published>
-    <updated>2020-04-20T07:43:50.518Z</updated>
+    <updated>2021-03-18T06:49:40.242Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Git和Node-js重新安装&quot;&gt;&lt;a href=&quot;#Git和Node-js重新安装&quot; class=&quot;headerlink&quot; title=&quot;Git和Node.js重新安装&quot;&gt;&lt;/a&gt;Git和Node.js重新安装&lt;/h2&gt;&lt;h3
-        
-      
+      &lt;p&gt;Git、Node.js安装&lt;/p&gt;
     
     </summary>
     
-      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
     
     
-      <category term="Git" scheme="https://www.gkm0120.cn/tags/Git/"/>
+      <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
     
-      <category term="Nodejs" scheme="https://www.gkm0120.cn/tags/Nodejs/"/>
+      <category term="Nodejs" scheme="https://gkm0120.github.io/tags/Nodejs/"/>
     
   </entry>
   
   <entry>
     <title>Git常见报错及处理方法</title>
-    <link href="https://www.gkm0120.cn/posts/d3ea.html"/>
-    <id>https://www.gkm0120.cn/posts/d3ea.html</id>
+    <link href="https://gkm0120.github.io/article/d3ea.html"/>
+    <id>https://gkm0120.github.io/article/d3ea.html</id>
     <published>2020-03-16T06:03:03.000Z</published>
-    <updated>2020-04-20T07:43:50.519Z</updated>
+    <updated>2021-03-18T06:49:20.322Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Git常见报错及处理方法&quot;&gt;&lt;a href=&quot;#Git常见报错及处理方法&quot; class=&quot;headerlink&quot; title=&quot;Git常见报错及处理方法&quot;&gt;&lt;/a&gt;Git常见报错及处理方法&lt;/h2&gt;&lt;h3 id=&quot;Error-1&quot;&gt;&lt;a
-        
-      
+      &lt;p&gt;一些常见Git报错处理&lt;/p&gt;
     
     </summary>
     
-      <category term="Git" scheme="https://www.gkm0120.cn/categories/Git/"/>
+      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
     
     
-      <category term="Git" scheme="https://www.gkm0120.cn/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建Hexo+GitHub博客</title>
-    <link href="https://www.gkm0120.cn/posts/ab6d.html"/>
-    <id>https://www.gkm0120.cn/posts/ab6d.html</id>
-    <published>2020-03-15T06:24:06.000Z</published>
-    <updated>2020-04-20T07:43:50.561Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;1-博客搭建步骤&quot;&gt;&lt;a href=&quot;#1-博客搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;1 博客搭建步骤&quot;&gt;&lt;/a&gt;1 博客搭建步骤&lt;/h2&gt;&lt;h3 id=&quot;1-1-node安装&quot;&gt;&lt;a href=&quot;#1-1-node安装&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="博客搭建" scheme="https://www.gkm0120.cn/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-    
-      <category term="Hexo" scheme="https://www.gkm0120.cn/tags/Hexo/"/>
-    
-      <category term="GitHub" scheme="https://www.gkm0120.cn/tags/GitHub/"/>
+      <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
     
   </entry>
   

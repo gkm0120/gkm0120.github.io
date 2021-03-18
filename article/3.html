@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GoogleNetV1,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次">
+<meta name="keywords" content="GoogleNetV1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
+<meta property="og:url" content="https://gkm0120.github.io/article/3.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152602.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217191517676.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152618.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152624.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217192216720.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152639.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152645.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217193132998.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217193157865.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152705.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152712.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201211212029716.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152723.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152730.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152740.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152750.png">
+<meta property="og:updated_time" content="2021-03-18T07:51:02.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
+<meta name="twitter:description" content="Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152602.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/3.html">
+
+
+
+
+
+  <title>【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-17T20:01:47+08:00">
+                2020-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">论文翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/3.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/3.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  11k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  40 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次浮点运算，同时只有500万的参数量，仅为 AlexNet 参数量（6000万）的 1/12。</p>
+<a id="more"></a>
+
+<img width="600" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152602.png">
+
+<h1 id="一、论文翻译"><a href="#一、论文翻译" class="headerlink" title="一、论文翻译"></a>一、论文翻译</h1><blockquote>
+<p>论文：<a href="https://arxiv.org/pdf/1409.4842v1.pdf" target="_blank" rel="noopener">Going deeper with convolutions</a></p>
+</blockquote>
+<blockquote>
+<p>Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次浮点运算，同时只有500万的参数量，仅为 AlexNet 参数量（6000万）的 1/12。</p>
+</blockquote>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们在ImageNet大规模视觉识别挑战赛2014（ILSVRC14）上提出了一种代号为Inception的深度卷积神经网络结构，并在分类和检测上取得了新的最好结果。这个架构的主要特点是提高了网络内部计算资源的利用率。通过精心的手工设计，我们在增加了网络深度和广度的同时保持了计算预算不变。为了优化质量，架构的设计以赫布理论和多尺度处理直觉为基础。我们在ILSVRC14提交中应用的一个特例被称为GoogLeNet，一个22层的深度网络，其质量在分类和检测的背景下进行了评估。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>过去三年中，由于深度学习和卷积网络的发展，我们的目标分类和检测能力得到了显著提高。一个令人鼓舞的消息是，大部分的进步不仅仅是更强大硬件、更大数据集、更大模型的结果，而主要是新的想法、算法和网络结构改进的结果。例如，ILSVRC 2014竞赛中最靠前的输入除了用于检测目的的分类数据集之外，没有使用新的数据资源。我们在ILSVRC 2014中的GoogLeNet提交实际使用的参数只有两年前Krizhevsky等人获胜结构参数的1/12，而结果明显更准确。在目标检测前沿，最大的收获不是来自于越来越大的深度网络的简单应用，而是来自于深度架构和经典计算机视觉的协同，像Girshick等人的R-CNN算法那样。</p>
+<p>另一个显著因素是随着移动和嵌入式设备的推动，我们的算法的效率很重要——尤其是它们的电力和内存使用。值得注意的是，正是包含了这个因素的考虑才得出了本文中呈现的深度架构设计，而不是单纯的为了提高准确率。对于大多数实验来说，模型被设计为在一次推断中保持15亿乘加的计算预算，所以最终它们不是单纯的学术好奇心，而是能在现实世界中应用，甚至是以合理的代价在大型数据集上使用。</p>
+<p>在本文中，我们将关注一个高效的计算机视觉深度神经网络架构，代号为Inception，它的名字来自于Lin等人网络论文中的Network与著名的“we need to go deeper”网络迷的结合。在我们的案例中，单词“deep”用在两个不同的含义中：首先，在某种意义上，我们以“Inception module”的形式引入了一种新层次的组织方式，在更直接的意义上增加了网络的深度。一般来说，可以把Inception模型看作论文的逻辑顶点同时从Arora等人的理论工作中受到了鼓舞和引导。这种架构的好处在ILSVRC 2014分类和检测挑战赛中通过实验得到了验证，它明显优于目前的最好水平。</p>
+<h2 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h2><p>从LeNet-5开始，卷积神经网络（CNN）通常有一个标准结构——堆叠的卷积层（后面可以选择有对比归一化和最大池化）后面是一个或更多的全连接层。这个基本设计的变种在图像分类著作流行，并且目前为止在MNIST，CIFAR和更著名的ImageNet分类挑战赛中的已经取得了最佳结果。对于更大的数据集例如ImageNet来说，最近的趋势是增加层的数目和层的大小，同时使用丢弃来解决过拟合问题。</p>
+<p>尽管担心最大池化层会引起准确空间信息的损失，但与相同的卷积网络结构也已经成功的应用于定位，目标检测和行人姿态估计。</p>
+<p>受灵长类视觉皮层神经科学模型的启发，Serre等人使用了一系列固定的不同大小的Gabor滤波器来处理多尺度。我们使用一个了类似的策略。然而，与Thomas Serre的固定的2层深度模型相反，Inception结构中所有的滤波器是学习到的。此外，Inception层重复了很多次，在GoogleNet模型中得到了一个22层的深度模型。</p>
+<p>Network-in-Network是Lin等人为了增加神经网络表现能力而提出的一种方法。在他们的模型中，网络中添加了额外的1 × 1卷积层，增加了网络的深度。我们的架构中大量的使用了这个方法。但是，在我们的设置中，1 × 1卷积有两个目的：最关键的是，它们主要是用来作为降维模块来移除卷积瓶颈，否则将会限制我们网络的大小。这不仅允许了深度的增加，而且允许我们网络的宽度增加但没有明显的性能损失。</p>
+<p>最后，目前最好的目标检测是Girshick等人的基于区域的卷积神经网络（R-CNN）方法。R-CNN将整个检测问题分解为两个子问题：利用低层次的信号例如颜色，纹理以跨类别的方式来产生目标位置候选区域，然后用CNN分类器来识别那些位置上的对象类别。这样一种两个阶段的方法利用了低层特征分割边界框的准确性，也利用了目前的CNN非常强大的分类能力。我们在我们的检测提交中采用了类似的方式，但探索增强这两个阶段，例如对于更高的目标边界框召回使用多盒预测，并融合了更好的边界框候选区域分类方法。</p>
+<h2 id="3-动机和高层思考"><a href="#3-动机和高层思考" class="headerlink" title="3 动机和高层思考"></a>3 动机和高层思考</h2><p>提高深度神经网络性能最直接的方式是增加它们的尺寸。这不仅包括增加深度——网络层次的数目——也包括它的宽度：每一层的单元数目。这是一种训练更高质量模型容易且安全的方法，尤其是在可获得大量标注的训练数据的情况下。但是这个简单方案有两个主要的缺点。更大的尺寸通常意味着更多的参数，这会使增大的网络更容易过拟合，尤其是在训练集的标注样本有限的情况下。这是一个主要的瓶颈，因为要获得强标注数据集费时费力且代价昂贵，经常需要专家评委在各种细粒度的视觉类别进行区分，例如图1中显示的ImageNet中的类别（甚至是1000类ILSVRC的子集）。</p>
+<img width="300" height="300" src="https://img-blog.csdnimg.cn/20201217191517676.png">
+
+<p>统一增加网络尺寸的另一个缺点是计算资源使用的显著增加。例如，在一个深度视觉网络中，如果两个卷积层相连，它们的滤波器数目的任何统一增加都会引起计算量平方式的增加。如果增加的能力使用时效率低下（例如，如果大多数权重结束时接近于0），那么会浪费大量的计算能力。由于计算预算总是有限的，计算资源的有效分布更偏向于尺寸无差别的增加，即使主要目标是增加性能的质量。</p>
+<p>解决这两个问题的一个基本的方式就是引入稀疏性并将全连接层替换为稀疏的全连接层，甚至是卷积层。除了模仿生物系统之外，由于Arora等人的开创性工作，这也具有更坚固的理论基础优势。他们的主要成果说明如果数据集的概率分布可以通过一个大型稀疏的深度神经网络表示，则最优的网络拓扑结构可以通过分析前一层激活的相关性统计和聚类高度相关的神经元来一层层的构建。虽然严格的数学证明需要在很强的条件下，但事实上这个声明与著名的赫布理论产生共鸣——神经元一起激发，一起连接——实践表明，基础概念甚至适用于不严格的条件下。</p>
+<p>遗憾的是，当碰到在非均匀的稀疏数据结构上进行数值计算时，现在的计算架构效率非常低下。即使算法运算的数量减少100倍，查询和缓存丢失上的开销仍占主导地位：切换到稀疏矩阵可能是不可行的。随着稳定提升和高度调整的数值库的应用，差距仍在进一步扩大，数值库要求极度快速密集的矩阵乘法，利用底层的CPU或GPU硬件的微小细节。非均匀的稀疏模型也要求更多的复杂工程和计算基础结构。目前大多数面向视觉的机器学习系统通过采用卷积的优点来利用空域的稀疏性。然而，卷积被实现为对上一层块的密集连接的集合。为了打破对称性，提高学习水平，从论文开始，ConvNets习惯上在特征维度使用随机的稀疏连接表，然而为了进一步优化并行计算，论文中趋向于变回全连接。目前最新的计算机视觉架构有统一的结构。更多的滤波器和更大的批大小要求密集计算的有效使用。</p>
+<p>这提出了下一个中间步骤是否有希望的问题：一个架构能利用滤波器水平的稀疏性，正如理论所建议的那样，但能通过利用密集矩阵计算来利用我们目前的硬件。稀疏矩阵乘法的大量文献认为对于稀疏矩阵乘法，将稀疏矩阵聚类为相对密集的子矩阵会有更佳的性能。在不久的将来会利用类似的方法来进行非均匀深度学习架构的自动构建，这样的想法似乎并不牵强。</p>
+<p>Inception架构开始是作为案例研究，用于评估一个复杂网络拓扑构建算法的假设输出，该算法试图近似中所示的视觉网络的稀疏结构，并通过密集的、容易获得的组件来覆盖假设结果。尽管是一个非常投机的事情，但与基于的参考网络相比，早期可以观测到适度的收益。随着一点点调整加宽差距，作为基础网络，Inception被证明在定位上下文和目标检测中尤其有用。有趣的是，虽然大多数最初的架构选择已被质疑并分离开进行全面测试，但结果证明它们是局部最优的。然而必须谨慎：尽管Inception架构在计算机上领域取得成功，但这是否可以归因于构建其架构的指导原则仍是有疑问的。确保这一点将需要更彻底的分析和验证。</p>
+<h2 id="4-架构细节"><a href="#4-架构细节" class="headerlink" title="4 架构细节"></a>4 架构细节</h2><p>Inception架构的主要想法是考虑怎样近似卷积视觉网络的最优稀疏结构并用容易获得的密集组件进行覆盖。注意假设转换不变性，这意味着我们的网络将以卷积构建块为基础。我们所需要做的是找到最优的局部构造并在空间上重复它。Arora等人提出了一个层次结构，其中应该分析最后一层的相关统计并将它们聚集成具有高相关性的单元组。这些聚类形成了下一层的单元并与前一层的单元连接。我们假设较早层的每个单元都对应输入层的某些区域，并且这些单元被分成滤波器组。在较低的层（接近输入的层）相关单元集中在局部区域。因此，我们最终会有许多聚类集中在单个区域，它们可以通过下一层的1×1卷积层覆盖。然而也可以预期，将存在更小数目的在更大空间上扩展的聚类，其可以被更大块上的卷积覆盖，在越来越大的区域上块的数量将会下降。为了避免块校正的问题，目前Inception架构形式的滤波器的尺寸仅限于1×1、3×3、5×5，这个决定更多的是基于便易性而不是必要性。这也意味着提出的架构是所有这些层的组合，其输出滤波器组连接成单个输出向量形成了下一阶段的输入。另外，由于池化操作对于目前卷积网络的成功至关重要，因此建议在每个这样的阶段添加一个替代的并行池化路径应该也应该具有额外的有益效果（看图2(a)）。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152618.png">
+
+<p>由于这些“Inception模块”在彼此的顶部堆叠，其输出相关统计必然有变化：由于较高层会捕获较高的抽象特征，其空间集中度预计会减少。这表明随着转移到更高层，3×3和5×5卷积的比例应该会增加。</p>
+<p>上述模块的一个大问题是在具有大量滤波器的卷积层之上，即使适量的5×5卷积也可能是非常昂贵的，至少在这种朴素形式中有这个问题。一旦池化单元添加到混合中，这个问题甚至会变得更明显：输出滤波器的数量等于前一阶段滤波器的数量。池化层输出和卷积层输出的合并会导致这一阶段到下一阶段输出数量不可避免的增加。虽然这种架构可能会覆盖最优稀疏结构，但它会非常低效，导致在几个阶段内计算量爆炸。</p>
+<p>这导致了Inception架构的第二个想法：在计算要求会增加太多的地方，明智地减少维度。这是基于嵌入的成功：甚至低维嵌入可能包含大量关于较大图像块的信息。然而嵌入以密集、压缩形式表示信息并且压缩信息更难处理。这种表示应该在大多数地方保持稀疏（根据[2]中条件的要求】）并且仅在它们必须汇总时才压缩信号。也就是说，在昂贵的3×3和5×5卷积之前，1×1卷积用来计算降维。除了用来降维之外，它们也包括使用线性修正单元使其两用。最终的结果如图2(b)所示。</p>
+<p>通常，Inception网络是一个由上述类型的模块互相堆叠组成的网络，偶尔会有步长为2的最大池化层将网络分辨率减半。出于技术原因（训练过程中内存效率），只在更高层开始使用Inception模块而在更低层仍保持传统的卷积形式似乎是有益的。这不是绝对必要的，只是反映了我们目前实现中的一些基础结构效率低下。</p>
+<p>该架构的一个有用的方面是它允许显著增加每个阶段的单元数量，而不会在后面的阶段出现计算复杂度不受控制的爆炸。这是在尺寸较大的块进行昂贵的卷积之前通过普遍使用降维实现的。此外，设计遵循了实践直觉，即视觉信息应该在不同的尺度上处理然后聚合，为的是下一阶段可以从不同尺度同时抽象特征。</p>
+<p>计算资源的改善使用允许增加每个阶段的宽度和阶段的数量，而不会陷入计算困境。可以利用Inception架构创建略差一些但计算成本更低的版本。我们发现所有可用的控制允许计算资源的受控平衡，导致网络比没有Inception结构的类似执行网络快3—10倍，但是在这一点上需要仔细的手动设计。</p>
+<h2 id="5-GoogLeNet"><a href="#5-GoogLeNet" class="headerlink" title="5 GoogLeNet"></a>5 GoogLeNet</h2><p>通过“GoogLeNet”这个名字，我们提到了在ILSVRC 2014竞赛的提交中使用的Inception架构的特例。我们也使用了一个稍微优质的更深更宽的Inception网络，但将其加入到组合中似乎只稍微提高了结果。我们忽略了该网络的细节，因为经验证据表明确切架构的参数影响相对较小。表1说明了竞赛中使用的最常见的Inception实例。这个网络（用不同的图像块采样方法训练的）使用了我们组合中7个模型中的6个。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152624.png">
+
+<p>所有的卷积都使用了修正线性激活，包括Inception模块内部的卷积。在我们的网络中感受野是在均值为0的RGB颜色空间中，大小是224×224。“#3×3 reduce”和“#5×5 reduce”表示在3×3和5×5卷积之前，降维层使用的1×1滤波器的数量。在pool proj列可以看到内置的最大池化之后，投影层中1×1滤波器的数量。所有的这些降维/投影层也都使用了线性修正激活。</p>
+<p>网络的设计考虑了计算效率和实用性，因此推断可以单独的设备上运行，甚至包括那些计算资源有限的设备，尤其是低内存占用的设备。当只计算有参数的层时，网络有22层（如果我们也计算池化层是27层）。构建网络的全部层（独立构建块）的数目大约是100。确切的数量取决于机器学习基础设施对层的计算方式。分类器之前的平均池化是基于[12]的，尽管我们的实现有一个额外的线性层。线性层使我们的网络能很容易地适应其它的标签集，但它主要是为了方便使用，我们不期望它有重大的影响。我们发现从全连接层变为平均池化，提高了大约top-1 0.6%的准确率，然而即使在移除了全连接层之后，丢失的使用还是必不可少的。</p>
+<p>给定深度相对较大的网络，有效传播梯度反向通过所有层的能力是一个问题。在这个任务上，更浅网络的强大性能表明网络中部层产生的特征应该是非常有识别力的。通过将辅助分类器添加到这些中间层，可以期望较低阶段分类器的判别力。这被认为是在提供正则化的同时克服梯度消失问题。这些分类器采用较小卷积网络的形式，放置在Inception (4a)和Inception (4b)模块的输出之上。在训练期间，它们的损失以折扣权重（辅助分类器损失的权重是0.3）加到网络的整个损失上。在推断时，这些辅助网络被丢弃。后面的控制实验表明辅助网络的影响相对较小（约0.5），只需要其中一个就能取得同样的效果。</p>
+<p>包括辅助分类器在内的附加网络的具体结构如下：</p>
+<ul>
+<li>一个滤波器大小5×5，步长为3的平均池化层，导致(4a)阶段的输出为4×4×512，(4d)的输出为4×4×528。</li>
+<li>具有128个滤波器的1×1卷积，用于降维和修正线性激活。</li>
+<li>一个全连接层，具有1024个单元和修正线性激活。</li>
+<li>丢弃70%输出的丢弃层。</li>
+<li>使用带有softmax损失的线性层作为分类器（作为主分类器预测同样的1000类，但在推断时移除）。<br>最终的网络模型图如图3所示。</li>
+</ul>
+<img width="600" height="300" src="https://img-blog.csdnimg.cn/20201217192216720.jpg">
+
+
+<h2 id="6-训练方法"><a href="#6-训练方法" class="headerlink" title="6 训练方法"></a>6 训练方法</h2><p>GoogLeNet网络使用DistBelief分布式机器学习系统进行训练，该系统使用适量的模型和数据并行。尽管我们仅使用一个基于CPU的实现，但粗略的估计表明GoogLeNet网络可以用更少的高端GPU在一周之内训练到收敛，主要的限制是内存使用。我们的训练使用异步随机梯度下降，动量参数为0.9，固定的学习率计划（每8次遍历下降学习率4%）。Polyak平均在推断时用来创建最终的模型。</p>
+<p>图像采样方法在过去几个月的竞赛中发生了重大变化，并且已收敛的模型在其他选项上进行了训练，有时还结合着超参数的改变，例如丢弃和学习率。因此，很难对训练这些网络的最有效的单一方式给出明确指导。让事情更复杂的是，受Andrew G的启发，一些模型主要是在相对较小的裁剪图像进行训练，其它模型主要是在相对较大的裁剪图像上进行训练。然而，一个经过验证的方案在竞赛后工作地很好，包括各种尺寸的图像块的采样，它的尺寸均匀分布在图像区域的8%–100%之间，方向角限制为$[\frac{3}{4},\frac{4}{3}]$之间。另外，我们发现Andrew Howard的光度扭曲对于克服训练数据成像条件的过拟合是有用的。</p>
+<h2 id="7-ILSVRC-2014分类挑战赛设置和结果"><a href="#7-ILSVRC-2014分类挑战赛设置和结果" class="headerlink" title="7 ILSVRC 2014分类挑战赛设置和结果"></a>7 ILSVRC 2014分类挑战赛设置和结果</h2><p>ILSVRC 2014分类挑战赛包括将图像分类到ImageNet层级中1000个叶子结点类别的任务。训练图像大约有120万张，验证图像有5万张，测试图像有10万张。每一张图像与一个实际类别相关联，性能度量基于分类器预测的最高分。通常报告两个数字：top-1准确率，比较实际类别和第一个预测类别，top-5错误率，比较实际类别与前5个预测类别：如果图像实际类别在top-5中，则认为图像分类正确，不管它在top-5中的排名。挑战赛使用top-5错误率来进行排名。</p>
+<p>我们参加竞赛时没有使用外部数据来训练。除了本文中前面提到的训练技术之外，我们在获得更高性能的测试中采用了一系列技巧，描述如下：</p>
+<ol>
+<li>我们独立训练了7个版本的相同的GoogLeNet模型（包括一个更广泛的版本），并用它们进行了整体预测。这些模型的训练具有相同的初始化（甚至具有相同的初始权重，由于监督）和学习率策略。它们仅在采样方法和随机输入图像顺序方面不同。</li>
+<li>在测试中，我们采用比Krizhevsky等人更积极的裁剪方法。具体来说，我们将图像归一化为四个尺度，其中较短维度（高度或宽度）分别为256，288，320和352，取这些归一化的图像的左，中，右方块（在肖像图片中，我们采用顶部，中心和底部方块）。对于每个方块，我们将采用4个角以及中心224×224裁剪图像以及方块尺寸归一化为224×224，以及它们的镜像版本。这导致每张图像会得到4×3×6×2=144的裁剪图像。前一年的输入中，Andrew Howard采用了类似的方法，经过我们实证验证，其方法略差于我们提出的方案。我们注意到，在实际应用中，这种积极裁剪可能是不必要的，因为存在合理数量的裁剪图像后，更多裁剪图像的好处会变得很微小（正如我们后面展示的那样）。</li>
+<li>softmax概率在多个裁剪图像上和所有单个分类器上进行平均，然后获得最终预测。在我们的实验中，我们分析了验证数据的替代方法，例如裁剪图像上的最大池化和分类器的平均，但是它们比简单平均的性能略逊。</li>
+</ol>
+<p>在本文的其余部分，我们分析了有助于最终提交整体性能的多个因素。</p>
+<p>竞赛中我们的最终提交在验证集和测试集上得到了top-5 6.67%的错误率，在其它的参与者中排名第一。与2012年的SuperVision方法相比相对减少了56.5%，与前一年的最佳方法（Clarifai）相比相对减少了约40%，这两种方法都使用了外部数据训练分类器。表2显示了过去三年中一些表现最好的方法的统计。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152639.png">
+
+<p>我们也分析报告了多种测试选择的性能，当预测图像时通过改变表3中使用的模型数目和裁剪图像数目。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152645.png">
+## 8 ILSVRC 2014检测挑战赛设置和结果
+ILSVRC检测任务是为了在200个可能的类别中生成图像中目标的边界框。如果检测到的对象匹配的它们实际类别并且它们的边界框重叠至少50%（使用Jaccard索引），则将检测到的对象记为正确。无关的检测记为假阳性且被惩罚。与分类任务相反，每张图像可能包含多个对象或没有对象，并且它们的尺度可能是变化的。报告的结果使用平均精度均值（mAP）。GoogLeNet检测采用的方法类似于R-CNN，但用Inception模块作为区域分类器进行了增强。此外，为了更高的目标边界框召回率，通过选择搜索方法和多箱预测相结合改进了区域生成步骤。为了减少假阳性的数量，超分辨率的尺寸增加了2倍。这将选择搜索算法的区域生成减少了一半。我们总共补充了200个来自多盒结果的区域生成，大约使用60%的区域，同时将覆盖率从92%提高到93%。减少区域生成的数量，增加覆盖率的整体影响是对于单个模型的情况平均精度均值增加了1%。最后，等分类单个区域时，我们使用了6个GoogLeNets的组合。这导致准确率从40%提高到43.9%。注意，与R-CNN相反，由于缺少时间我们没有使用边界框回归。
+
+<p>我们首先报告了最好检测结果，并显示了从第一版检测任务以来的进展。与2013年的结果相比，准确率几乎翻了一倍。所有表现最好的团队都使用了卷积网络。我们在表4中报告了官方的分数和每个队伍的常见策略：使用外部数据、集成模型或上下文模型。外部数据通常是ILSVRC12的分类数据，用来预训练模型，后面在检测数据集上进行改善。一些团队也提到使用定位数据。由于定位任务的边界框很大一部分不在检测数据集中，所以可以用该数据预训练一般的边界框回归器，这与分类预训练的方式相同。GoogLeNet输入没有使用定位数据进行预训练。</p>
+<img width="300" height="300" src="https://img-blog.csdnimg.cn/20201217193132998.png">
+
+<p>在表5中，我们仅比较了单个模型的结果。最好性能模型是Deep Insight的，令人惊讶的是3个模型的集合仅提高了0.3个点，而GoogLeNet在模型集成时明显获得了更好的结果。</p>
+<img width="300" height="300" src="https://img-blog.csdnimg.cn/20201217193157865.png">
+
+<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h2><p>我们的结果取得了坚实的证据，即通过易获得的密集构造块来近似期望的最优稀疏结果是改善计算机视觉神经网络的一种可行方法。相比于较浅且较窄的架构，这个方法的主要优势是在计算需求适度增加的情况下有显著的质量收益。</p>
+<p>我们的目标检测工作虽然没有利用上下文，也没有执行边界框回归，但仍然具有竞争力，这进一步显示了Inception架构优势的证据。</p>
+<p>对于分类和检测，预期通过更昂贵的类似深度和宽度的非Inception类型网络可以实现类似质量的结果。然而，我们的方法取得了可靠的证据，即转向更稀疏的结构一般来说是可行有用的想法。这表明未来的工作将在先前基础上以自动化方式创建更稀疏更精细的结构，以及将Inception架构的思考应用到其他领域。</p>
+<hr>
+<h1 id="二、论文解读"><a href="#二、论文解读" class="headerlink" title="二、论文解读"></a>二、论文解读</h1><h2 id="1-GoogLeNet"><a href="#1-GoogLeNet" class="headerlink" title="1 GoogLeNet"></a>1 GoogLeNet</h2><p>GoogLeNet的特点是提升了计算资源的利用率，可以在保持网络计算资源不变的前提下，通过工艺上的设计来增加网络的宽度和深度，基于Hebbian法则和多尺度处理来优化性能。 在深度学习中, 提升网络性能最直接的办法就是增加网络深度和宽度, 这也就意味着巨量的参数。但是, 巨量参数<strong>容易产生过拟合</strong>也会大大<strong>增加计算量</strong>。</p>
+<blockquote>
+<p>一般来说，提升网络性能最直接的办法就是增加网络深度和宽度，深度指网络层次数量、宽度指神经元数量。但这种方式存在以下问题：<br>（1）参数太多，如果训练数据集有限，很容易产生过拟合；<br>（2）网络越大、参数越多，计算复杂度越大，难以应用；<br>（3）网络越深，容易出现梯度弥散问题（梯度越往后穿越容易消失），难以优化模型。 </p>
+</blockquote>
+<p>对于大规模稀疏的神经网络，可以通过分析激活值的统计特性和对高度相关的输出进行聚类来逐层构建出一个最优网络, 这点表明<strong>臃肿的稀疏网络可能被不失性能地简化</strong>。解决<strong>过拟合</strong>和<strong>计算成本</strong>的根本方法是将全连接甚至一般的卷积都转化为<strong>稀疏连接</strong>, 早在AlexNet中使用的Dropout就是将网络之间的连接转变为稀疏连接从而减少参数的数据以防止模型过拟合, 但是，计算机软硬件对非均匀稀疏数据的计算效率很差，所以在AlexNet中又重新启用了全连接层，目的是为了更好地优化并行运算。</p>
+<p>GoogLeNet而非GoogleNet是为了向早期的LeNet致敬!</p>
+<h3 id="1-1-Inception模块"><a href="#1-1-Inception模块" class="headerlink" title="1.1 Inception模块"></a>1.1 Inception模块</h3><blockquote>
+<p>如何<strong>既能保持网络结构的稀疏性，又能利用密集矩阵的高计算性能</strong>呢? </p>
+</blockquote>
+<p>在GoogLeNet中提出了Inception结构来实现的, 采用将多个稀疏矩阵合并成相关的稠密子矩阵的方法来解决:</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152705.png">
+
+<ul>
+<li>采用不同大小的卷积核意味着不同大小的感受野，最后的Filter concatenation意味着不同尺度特征的融合</li>
+<li>卷积核大小采用1、3和5，主要是为了方便对齐。设定卷积步长stride=1之后，只要分别设定pad=0、1、2，那么卷积之后便可以得到相同维度的特征，然后这些特征就可以直接拼接在一起了</li>
+<li>网络越到后面(滤波器变大)，特征越抽象，而且每个特征所涉及的感受野也更大</li>
+</ul>
+<h3 id="1-2-特征聚合过程"><a href="#1-2-特征聚合过程" class="headerlink" title="1.2 特征聚合过程:"></a>1.2 特征聚合过程:</h3><img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152712.png">
+
+
+<ul>
+<li>如上图所示, 我们在相同的一块区域中, 使用不同大小的滤波器进行特征提取, 然后将通过聚类算法将高相关性的区域聚集到一起, filter越来越大, 聚类的数目越来越少</li>
+</ul>
+<img width="300" height="300" src="https://img-blog.csdnimg.cn/20201211212029716.jpg">
+
+<ul>
+<li>在pooling层添加一个额外的并行pooling路径用于提高效率<br>采用上面的模块有一个大问题是: 在卷积层顶端由于滤波器太多，即使是5x5的卷积都会让计算成本太高, 于是有了改进的版本:</li>
+</ul>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152723.png">
+
+
+<h2 id="2-采用1x1卷积核来进行降维"><a href="#2-采用1x1卷积核来进行降维" class="headerlink" title="2 采用1x1卷积核来进行降维:"></a>2 采用1x1卷积核来进行降维:</h2><ul>
+<li>上一层的输出为100x100x128，经过具有256个输出的5x5卷积层之后(stride=1，pad=2)，输出数据为100x100x256。其中，卷积层的参数为128x5x5x256。假如上一层输出先经过具有32个输出的1x1卷积层，再经过具有256个输出的5x5卷积层，那么最终的输出数据仍为为100x100x256，但卷积参数量已经减少为128x1x1x32 + 32x5x5x256，大约减少了4倍。</li>
+</ul>
+<h2 id="3-网络结构"><a href="#3-网络结构" class="headerlink" title="3 网络结构"></a>3 网络结构</h2><img width="600" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152730.png">
+
+<blockquote>
+<p>网络结构解析<br><strong>0、输入</strong><br>原始输入图像为224x224x3，且都进行了零均值化的预处理操作（图像每个像素减去均值）。<br>1、<strong>第一层（卷积层）</strong><br>　　使用7x7的卷积核（滑动步长2，padding为3），64通道，输出为112x112x64，卷积后进行ReLU操作<br>　　经过3x3的max pooling（步长为2），输出为((112 - 3+1)/2)+1=56，即56x56x64，再进行ReLU操作<br><strong>2、第二层（卷积层）</strong><br>　　使用3x3的卷积核（滑动步长为1，padding为1），192通道，输出为56x56x192，卷积后进行ReLU操作<br>　　经过3x3的max pooling（步长为2），输出为((56 - 3+1)/2)+1=28，即28x28x192，再进行ReLU操作<br><strong>3a、第三层（Inception 3a层）</strong><br>　　分为四个分支，采用不同尺度的卷积核来进行处理<br>　　（1）64个1x1的卷积核，然后RuLU，输出28x28x64<br>　　（2）96个1x1的卷积核，作为3x3卷积核之前的降维，变成28x28x96，然后进行ReLU计算，再进行128个3x3的卷积（padding为1），输出28x28x128<br>　　（3）16个1x1的卷积核，作为5x5卷积核之前的降维，变成28x28x16，进行ReLU计算后，再进行32个5x5的卷积（padding为2），输出28x28x32<br>　　（4）pool层，使用3x3的核（padding为1），输出28x28x192，然后进行32个1x1的卷积，输出28x28x32。<br>将四个结果进行连接，对这四部分输出结果的第三维并联，即64+128+32+32=256，最终输出28x28x256<br><strong>3b、第三层（Inception 3b层）</strong><br>　　（1）128个1x1的卷积核，然后RuLU，输出28x28x128<br>　　（2）128个1x1的卷积核，作为3x3卷积核之前的降维，变成28x28x128，进行ReLU，再进行192个3x3的卷积（padding为1），输出28x28x192<br>　　（3）32个1x1的卷积核，作为5x5卷积核之前的降维，变成28x28x32，进行ReLU计算后，再进行96个5x5的卷积（padding为2），输出28x28x96<br>　　（4）pool层，使用3x3的核（padding为1），输出28x28x256，然后进行64个1x1的卷积，输出28x28x64。<br>将四个结果进行连接，对这四部分输出结果的第三维并联，即128+192+96+64=480，最终输出输出为28x28x480<br><strong>第四层（4a,4b,4c,4d,4e）、第五层（5a,5b）……，与3a、3b类似，在此就不再重复。</strong><br><img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152740.png"></p>
+</blockquote>
+<p><strong>结构</strong></p>
+<ul>
+<li>GoogLeNet采用了模块化的结构，方便增添和修改<br>网络最后采用了average pooling来代替全连接层, 实际在最后还是加了一个全连接层，主要是为了方便以后大家finetune</li>
+<li>虽然移除了全连接，但是网络中依然使用了Dropout</li>
+<li>为了避免梯度消失，网络额外增加了2个辅助的softmax用于向前传导梯度。文章中说这两个辅助的分类器的loss应该加一个衰减系数，但看caffe中的model也没有加任何衰减。此外，实际测试的时候，这两个额外的- - - softmax会被去掉。</li>
+<li>线性层将softmax损失作为分类器</li>
+<li>所有的reduction/projection层都利用了修正线性激活</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ConvBNReLU</span><span class="params">(in_channels,out_channels,kernel_size)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">        nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=<span class="number">1</span>,padding=kernel_size//<span class="number">2</span>),</span><br><span class="line">        nn.BatchNorm2d(out_channels),</span><br><span class="line">        nn.ReLU6(inplace=<span class="literal">True</span>)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InceptionV1Module</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channels,out_channels1, out_channels2reduce,out_channels2, out_channels3reduce, out_channels3, out_channels4)</span>:</span></span><br><span class="line">        super(InceptionV1Module, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.branch1_conv = ConvBNReLU(in_channels=in_channels,out_channels=out_channels1,kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.branch2_conv1 = ConvBNReLU(in_channels=in_channels,out_channels=out_channels2reduce,kernel_size=<span class="number">1</span>)</span><br><span class="line">        self.branch2_conv2 = ConvBNReLU(in_channels=out_channels2reduce,out_channels=out_channels2,kernel_size=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        self.branch3_conv1 = ConvBNReLU(in_channels=in_channels, out_channels=out_channels3reduce, kernel_size=<span class="number">1</span>)</span><br><span class="line">        self.branch3_conv2 = ConvBNReLU(in_channels=out_channels3reduce, out_channels=out_channels3, kernel_size=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        self.branch4_pool = nn.MaxPool2d(kernel_size=<span class="number">3</span>,stride=<span class="number">1</span>,padding=<span class="number">1</span>)</span><br><span class="line">        self.branch4_conv1 = ConvBNReLU(in_channels=in_channels, out_channels=out_channels4, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        out1 = self.branch1_conv(x)</span><br><span class="line">        out2 = self.branch2_conv2(self.branch2_conv1(x))</span><br><span class="line">        out3 = self.branch3_conv2(self.branch3_conv1(x))</span><br><span class="line">        out4 = self.branch4_conv1(self.branch4_pool(x))</span><br><span class="line">        out = torch.cat([out1, out2, out3, out4], dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InceptionAux</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channels,out_channels)</span>:</span></span><br><span class="line">        super(InceptionAux, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.auxiliary_avgpool = nn.AvgPool2d(kernel_size=<span class="number">5</span>, stride=<span class="number">3</span>)</span><br><span class="line">        self.auxiliary_conv1 = ConvBNReLU(in_channels=in_channels, out_channels=<span class="number">128</span>, kernel_size=<span class="number">1</span>)</span><br><span class="line">        self.auxiliary_linear1 = nn.Linear(in_features=<span class="number">128</span> * <span class="number">4</span> * <span class="number">4</span>, out_features=<span class="number">1024</span>)</span><br><span class="line">        self.auxiliary_relu = nn.ReLU6(inplace=<span class="literal">True</span>)</span><br><span class="line">        self.auxiliary_dropout = nn.Dropout(p=<span class="number">0.7</span>)</span><br><span class="line">        self.auxiliary_linear2 = nn.Linear(in_features=<span class="number">1024</span>, out_features=out_channels)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.auxiliary_conv1(self.auxiliary_avgpool(x))</span><br><span class="line">        x = x.view(x.size(<span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">        x= self.auxiliary_relu(self.auxiliary_linear1(x))</span><br><span class="line">        out = self.auxiliary_linear2(self.auxiliary_dropout(x))</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InceptionV1</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_classes=<span class="number">1000</span>, stage=<span class="string">'train'</span>)</span>:</span></span><br><span class="line">        super(InceptionV1, self).__init__()</span><br><span class="line">        self.stage = stage</span><br><span class="line"></span><br><span class="line">        self.block1 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">3</span>,out_channels=<span class="number">64</span>,kernel_size=<span class="number">7</span>,stride=<span class="number">2</span>,padding=<span class="number">3</span>),</span><br><span class="line">            nn.BatchNorm2d(<span class="number">64</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>,stride=<span class="number">2</span>, padding=<span class="number">1</span>),</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">64</span>, out_channels=<span class="number">64</span>, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>),</span><br><span class="line">            nn.BatchNorm2d(<span class="number">64</span>),</span><br><span class="line">        )</span><br><span class="line">        self.block2 = nn.Sequential(</span><br><span class="line">            nn.Conv2d(in_channels=<span class="number">64</span>, out_channels=<span class="number">192</span>, kernel_size=<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>),</span><br><span class="line">            nn.BatchNorm2d(<span class="number">192</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.block3 = nn.Sequential(</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">192</span>,out_channels1=<span class="number">64</span>, out_channels2reduce=<span class="number">96</span>, out_channels2=<span class="number">128</span>, out_channels3reduce = <span class="number">16</span>, out_channels3=<span class="number">32</span>, out_channels4=<span class="number">32</span>),</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">256</span>, out_channels1=<span class="number">128</span>, out_channels2reduce=<span class="number">128</span>, out_channels2=<span class="number">192</span>,out_channels3reduce=<span class="number">32</span>, out_channels3=<span class="number">96</span>, out_channels4=<span class="number">64</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.block4_1 = InceptionV1Module(in_channels=<span class="number">480</span>, out_channels1=<span class="number">192</span>, out_channels2reduce=<span class="number">96</span>, out_channels2=<span class="number">208</span>,out_channels3reduce=<span class="number">16</span>, out_channels3=<span class="number">48</span>, out_channels4=<span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.stage == <span class="string">'train'</span>:</span><br><span class="line">            self.aux_logits1 = InceptionAux(in_channels=<span class="number">512</span>,out_channels=num_classes)</span><br><span class="line"></span><br><span class="line">        self.block4_2 = nn.Sequential(</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">512</span>, out_channels1=<span class="number">160</span>, out_channels2reduce=<span class="number">112</span>, out_channels2=<span class="number">224</span>,</span><br><span class="line">                              out_channels3reduce=<span class="number">24</span>, out_channels3=<span class="number">64</span>, out_channels4=<span class="number">64</span>),</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">512</span>, out_channels1=<span class="number">128</span>, out_channels2reduce=<span class="number">128</span>, out_channels2=<span class="number">256</span>,</span><br><span class="line">                              out_channels3reduce=<span class="number">24</span>, out_channels3=<span class="number">64</span>, out_channels4=<span class="number">64</span>),</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">512</span>, out_channels1=<span class="number">112</span>, out_channels2reduce=<span class="number">144</span>, out_channels2=<span class="number">288</span>,</span><br><span class="line">                              out_channels3reduce=<span class="number">32</span>, out_channels3=<span class="number">64</span>, out_channels4=<span class="number">64</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.stage == <span class="string">'train'</span>:</span><br><span class="line">            self.aux_logits2 = InceptionAux(in_channels=<span class="number">528</span>,out_channels=num_classes)</span><br><span class="line"></span><br><span class="line">        self.block4_3 = nn.Sequential(</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">528</span>, out_channels1=<span class="number">256</span>, out_channels2reduce=<span class="number">160</span>, out_channels2=<span class="number">320</span>,</span><br><span class="line">                              out_channels3reduce=<span class="number">32</span>, out_channels3=<span class="number">128</span>, out_channels4=<span class="number">128</span>),</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.block5 = nn.Sequential(</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">832</span>, out_channels1=<span class="number">256</span>, out_channels2reduce=<span class="number">160</span>, out_channels2=<span class="number">320</span>,out_channels3reduce=<span class="number">32</span>, out_channels3=<span class="number">128</span>, out_channels4=<span class="number">128</span>),</span><br><span class="line">            InceptionV1Module(in_channels=<span class="number">832</span>, out_channels1=<span class="number">384</span>, out_channels2reduce=<span class="number">192</span>, out_channels2=<span class="number">384</span>,out_channels3reduce=<span class="number">48</span>, out_channels3=<span class="number">128</span>, out_channels4=<span class="number">128</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.avgpool = nn.AvgPool2d(kernel_size=<span class="number">7</span>,stride=<span class="number">1</span>)</span><br><span class="line">        self.dropout = nn.Dropout(p=<span class="number">0.4</span>)</span><br><span class="line">        self.linear = nn.Linear(in_features=<span class="number">1024</span>,out_features=num_classes)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.block1(x)</span><br><span class="line">        x = self.block2(x)</span><br><span class="line">        x = self.block3(x)</span><br><span class="line">        aux1 = x = self.block4_1(x)</span><br><span class="line">        aux2 = x = self.block4_2(x)</span><br><span class="line">        x = self.block4_3(x)</span><br><span class="line">        out = self.block5(x)</span><br><span class="line">        out = self.avgpool(out)</span><br><span class="line">        out = self.dropout(out)</span><br><span class="line">        out = out.view(out.size(<span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">        out = self.linear(out)</span><br><span class="line">        <span class="keyword">if</span> self.stage == <span class="string">'train'</span>:</span><br><span class="line">            aux1 = self.aux_logits1(aux1)</span><br><span class="line">            aux2 = self.aux_logits2(aux2)</span><br><span class="line">            <span class="keyword">return</span> aux1, aux2, out</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    model = InceptionV1()</span><br><span class="line">    print(model)</span><br><span class="line"></span><br><span class="line">    input = torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">224</span>, <span class="number">224</span>)</span><br><span class="line">    aux1, aux2, out = model(input)</span><br><span class="line">    print(aux1.shape)</span><br><span class="line">    print(aux2.shape)</span><br><span class="line">    print(out.shape)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-训练策略"><a href="#4-训练策略" class="headerlink" title="4 训练策略"></a>4 训练策略</h2><ul>
+<li>利用分布式机器学习系统和数据并行来训练网络，虽然实现时只用了CPU，但是是可以用个别高端的GPU一周达到收敛的。采用异步随机梯度下降，动量为0.9，学习率每8个epoch下降4%。用Polyak平均来创建最后的模型。</li>
+<li>图像采样的patch大小从图像的8%到100%，选取的长宽比在3/4到4/3之间，光度扭曲也有利于减少过拟合，还使用随机插值方法结合其他超参数的改变来调整图像大小。</li>
+</ul>
+<h2 id="5-稀疏结构和Hebbian原理的学习"><a href="#5-稀疏结构和Hebbian原理的学习" class="headerlink" title="5 稀疏结构和Hebbian原理的学习"></a>5 稀疏结构和Hebbian原理的学习</h2><p>　　人脑神经元的连接是稀疏的，因此研究者认为大型神经网络的合理连接方式应该也是稀疏的。稀疏结构是非常适合神经网络的一种结构，尤其是对非常大型，非常深的神经网络，可以减轻过拟合并降低计算量，例如卷积神经网络就是稀疏的连接。Inception Net的主要目标就是找到最优的稀疏结构单元（即Inception Module），论文中提到其稀疏结构基于 Hebbian原理，这里简单解释一下Hebbian原理：神经反射活动的持续与重复会导致神经元连接稳定性的持久提升，当两个神经元细胞 A 和B 距离很近，并且A 参与了对B重复，持续的兴奋，那么某些代谢会导致A将作为能使B兴奋的细胞。总结一下即“一起发射的神经元会连接一起”（Cells that fire together, were together），学习过程中的刺激会使神经元间的突触强度增加。受 Hebbian原理启发，另一篇文章 Provable Bounds for learning Some Deep Representations 提出，如果数据集的概率分布可以被一个很大很稀疏的神经网络所表达，那么构筑这个网络的最佳方法时逐层构筑网络：将上一层高度相关（correlated）的节点聚类，并将聚类出来的每一个小簇（cluster）连接到一起，如下图所示，这个相关性高的节点应该被连接在一起的结论，即使从神经网络的角度对 Hebbian 原理有效性的证明。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152750.png">
+
+<p> 　　因此一个“好”的稀疏结构，应该是符合 Hebbian原理的，我们应该把相关性高的一簇神经元节点连接在一起。在普通的数据集中，这可能需要对神经元节点聚类，但是在图片数据中，天然的就是临近区域的数据相关性高，因此相邻的像素点被卷积操作连接在一起。而我们可能有多个卷积核，在同一空间位置但在不同通道的卷积核的输出结果相关性极高。因此，一个$1\times1$的卷积就可以很自然的把这些相关性很高的，在同一个空间位置但是不同通道的特征连接在一起，这就是为什么$1\times1$卷积这么频繁的被应用到 Inception Net 中的原因。$1\times1$ 卷积所连接的节点的相关性是最高的，而稍微大一点尺寸的卷积，比如$3\times3$，$5\times5$的卷积所连接的节点的相关性是最高的，而稍微大一点的卷积，比如$3\times3$，$5\times5$的卷积所连接的节点相关性也很高，因此也可以适当地使用一些大尺寸的卷积，增加多样性（diversity）。最后 Inception Module 通过4个分支中不同尺寸的 $1\times1$，$3\times3$，$5\times5$等小型卷积将相关性很高的节点连接在一起，就完成了其设计初衷，构建出了很高效的符合 Hebbian原理的稀疏结构。</p>
+<ol>
+<li><a href="http://noahsnail.com/2017/07/21/2017-07-21-GoogleNet%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91%E2%80%94%E2%80%94%E4%B8%AD%E6%96%87%E7%89%88/" target="_blank" rel="noopener">GoogLeNet论文翻译——中文版</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22817228" target="_blank" rel="noopener">机器学习进阶笔记之四 | 深入理解GoogLeNet</a></li>
+<li><a href="https://www.cnblogs.com/wj-1314/p/11337807.html" target="_blank" rel="noopener">tensorflow学习笔记——GoogLeNet</a></li>
+<li><a href="http://dgschwend.github.io/netscope/#/preset/googlenet" target="_blank" rel="noopener">GoogleNet</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GoogleNetV1/" rel="tag"># GoogleNetV1</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/2.html" rel="next" title="【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition">
+                <i class="fa fa-chevron-left"></i> 【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/4.html" rel="prev" title="【图像分类—NIN】Network in Network">
+                【图像分类—NIN】Network in Network <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、论文翻译"><span class="nav-text">一、论文翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-相关工作"><span class="nav-text">2 相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-动机和高层思考"><span class="nav-text">3 动机和高层思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-架构细节"><span class="nav-text">4 架构细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-GoogLeNet"><span class="nav-text">5 GoogLeNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-训练方法"><span class="nav-text">6 训练方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-ILSVRC-2014分类挑战赛设置和结果"><span class="nav-text">7 ILSVRC 2014分类挑战赛设置和结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-总结"><span class="nav-text">9. 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、论文解读"><span class="nav-text">二、论文解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GoogLeNet"><span class="nav-text">1 GoogLeNet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Inception模块"><span class="nav-text">1.1 Inception模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-特征聚合过程"><span class="nav-text">1.2 特征聚合过程:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-采用1x1卷积核来进行降维"><span class="nav-text">2 采用1x1卷积核来进行降维:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络结构"><span class="nav-text">3 网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-训练策略"><span class="nav-text">4 训练策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-稀疏结构和Hebbian原理的学习"><span class="nav-text">5 稀疏结构和Hebbian原理的学习</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>

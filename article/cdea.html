@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DES,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="孔明の博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一种对称公私钥加密算法">
+<meta name="keywords" content="DES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DES数据加密标准">
+<meta property="og:url" content="https://gkm0120.github.io/article/cdea.html">
+<meta property="og:site_name" content="孔明の博客">
+<meta property="og:description" content="一种对称公私钥加密算法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200233.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200503.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200612.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200621.png">
+<meta property="og:updated_time" content="2021-03-18T02:09:11.346Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DES数据加密标准">
+<meta name="twitter:description" content="一种对称公私钥加密算法">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://gkm0120.github.io/article/cdea.html">
+
+
+
+
+
+  <title>DES数据加密标准 | 孔明の博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">孔明の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/cdea.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DES数据加密标准</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-16T21:06:33+08:00">
+                2020-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/密码学/" itemprop="url" rel="index">
+                    <span itemprop="name">密码学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/article/cdea.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/article/cdea.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一种对称公私钥加密算法</p>
+<a id="more"></a>
+
+<h2 id="1-加密算法的分类"><a href="#1-加密算法的分类" class="headerlink" title="1 加密算法的分类"></a>1 加密算法的分类</h2><ol>
+<li><p>对称加解密算法<br>（1）通信双方同时掌握一个密钥，加密解密都是由一个密钥完成的（即加密密钥等于解密密钥，加解密密钥可以相互推倒出来）。<br>（2）双方通信前共同拟定一个密钥，不对第三方公开。<br>（3）不具有个体原子性，一个密钥被共享，泄漏几率增大</p>
+</li>
+<li><p>公私钥加解密算法<br>通信双方掌握不同的密钥，不同方向的加解密由不同的密钥完成。</p>
+</li>
+</ol>
+<h2 id="2-DES加密算法"><a href="#2-DES加密算法" class="headerlink" title="2 DES加密算法"></a>2 DES加密算法</h2><blockquote>
+<p>Data Encryption Standard<br>DES加密算法主要是通过先对密钥进行加密，再将加密后的密钥放入明文中再次加密，得到密文。加密过程要用到很多表格，这些表格是固定的。下先介绍这些表格的转换方法，再分别介绍密钥和明文的加密步骤。</p>
+</blockquote>
+<h3 id="2-1-转换方法"><a href="#2-1-转换方法" class="headerlink" title="2.1 转换方法"></a>2.1 转换方法</h3><ol>
+<li>交换表：以交换表1为例，找到第57位的数字，将第1位数字置换成第57位上的数字，奇偶校验位直接省去不需要转换，位数就会减少8位</li>
+<li>位移（位移轮数表）：1位即左移1位，2位即左移2位</li>
+<li>E盒（扩展表）：表内有16个数字重复了，即位数增加了16位</li>
+<li>S盒：$8\ast6$变成$8\ast4$，即将第1位和第6位看作行，中间4位看做列，在 盒找到对应的数据，转换为二进制（4位）</li>
+<li>P盒：直接置换，没有位数减少</li>
+</ol>
+<h3 id="2-2-对密钥K（64位）"><a href="#2-2-对密钥K（64位）" class="headerlink" title="2.2 对密钥K（64位）"></a>2.2 对密钥K（64位）</h3><ol>
+<li><p>密钥（明文）由16个数字组成，二进制转换为64位，0123456789ABCDEF表示0到16，二进制表示为0000到1111</p>
+</li>
+<li><p>先用64位转56位的交换表1（$8\ast7$）,将$K$置换为<br>（56位），第8,16,24,32,40,48,56,64位（8的倍数）称为奇偶校验位，直接省去不需要转换，结果就只有56位了</p>
+</li>
+<li><p>再经过位移轮数表将$c_0d_0$变为$c_1d_1，\cdots，c_{16}d_{16}$（56位）</p>
+</li>
+<li><p>再用56位转48位的交换表2（$8\ast6$）,分别将$c_1d_1 \to k_1，\cdots，c_{16}d_{16} \to k_{16}$（48位），奇偶校验位是7的倍数</p>
+</li>
+</ol>
+<p>交换表1：</p>
+<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">57 </span> <span class="number">49</span>  <span class="number">41</span>  <span class="number">33</span>  <span class="number">25</span>  <span class="number">17</span>  <span class="number">9</span></span><br><span class="line"><span class="symbol">1 </span>  <span class="number">58</span>  <span class="number">50</span>  <span class="number">42</span>  <span class="number">34</span>  <span class="number">26</span>  <span class="number">18</span></span><br><span class="line"><span class="symbol">10 </span> <span class="number">2</span>   <span class="number">59</span>  <span class="number">51</span>  <span class="number">43</span>  <span class="number">35</span>  <span class="number">27</span></span><br><span class="line"><span class="symbol">19 </span> <span class="number">11</span>  <span class="number">3</span>   <span class="number">60</span>  <span class="number">52</span>  <span class="number">44</span>  <span class="number">36</span></span><br><span class="line"><span class="symbol">63 </span> <span class="number">55</span>  <span class="number">47</span>  <span class="number">39</span>  <span class="number">31</span>  <span class="number">23</span>  <span class="number">15</span></span><br><span class="line"><span class="symbol">7 </span>  <span class="number">62</span>  <span class="number">54</span>  <span class="number">46</span>  <span class="number">38</span>  <span class="number">30</span>  <span class="number">22</span></span><br><span class="line"><span class="symbol">14 </span> <span class="number">6</span>   <span class="number">61</span>  <span class="number">53</span>  <span class="number">45</span>  <span class="number">37</span>  <span class="number">29</span></span><br><span class="line"><span class="symbol">21 </span> <span class="number">13</span>  <span class="number">5</span>   <span class="number">28</span>  <span class="number">20</span>  <span class="number">12</span>  <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>位移轮数表：</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
+
+
+<p>交换表2：</p>
+<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">14 </span> <span class="number">17</span>  <span class="number">11</span>  <span class="number">24</span>  <span class="number">1</span>   <span class="number">5</span></span><br><span class="line"><span class="symbol">3 </span>  <span class="number">28</span>  <span class="number">15</span>  <span class="number">6</span>   <span class="number">21</span>  <span class="number">10</span></span><br><span class="line"><span class="symbol">23 </span> <span class="number">19</span>  <span class="number">12</span>  <span class="number">4</span>   <span class="number">26</span>  <span class="number">8</span></span><br><span class="line"><span class="symbol">16 </span> <span class="number">7</span>   <span class="number">27</span>  <span class="number">20</span>  <span class="number">13</span>  <span class="number">2</span></span><br><span class="line"><span class="symbol">41 </span> <span class="number">52</span>  <span class="number">31</span>  <span class="number">37</span>  <span class="number">47</span>  <span class="number">55</span></span><br><span class="line"><span class="symbol">30 </span> <span class="number">40</span>  <span class="number">51</span>  <span class="number">45</span>  <span class="number">33</span>  <span class="number">48</span></span><br><span class="line"><span class="symbol">44 </span> <span class="number">49</span>  <span class="number">39</span>  <span class="number">56</span>  <span class="number">34</span>  <span class="number">53</span></span><br><span class="line"><span class="symbol">46 </span> <span class="number">42</span>  <span class="number">50</span>  <span class="number">36</span>  <span class="number">29</span>  <span class="number">32</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-对明文（64位）加密："><a href="#2-3-对明文（64位）加密：" class="headerlink" title="2.3 对明文（64位）加密："></a>2.3 对明文（64位）加密：</h3><ol>
+<li>先根据交换表$IP（8\ast8$） 将$M$转换为$L_0R_0$(各32位)</li>
+<li>计算出$L_{16}R_{16}$：$L_n=R_{\left(n-1\right)}，R_n=L_{(n-1)}\oplus P\left(S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)\right)$<br>（1）利用$E$盒将32位的 扩展为48位的$R_{(n-1)}（1,\cdots 16）$<br>（2）$R_{(n-1)}$（48位）与$k_n$（48位）做异或运算$R_{(n-1)}\oplus k_n$，即$E\left(R_{(n-1)}\oplus k_n\right)$（48位）<br>（3）通过$S$盒将其转换为32位,即$S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)$（32位）<br>（4）再经过$P$盒进行置换，即$P\left(S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)\right)$（32位）<br>（5）再与$L_{n-1}$（32位）做异或运算得到$R_n$</li>
+<li>再将$L_{16}R_{16}$转换为$R_{16}L_{16}$（64位）</li>
+<li>最后用交换表$IP-1（8\ast8）$对$R_{16}L_{16}$进行置换得到密文<br>交换表$IP$：<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">58 </span> <span class="number">50</span>  <span class="number">42</span>  <span class="number">34</span>  <span class="number">26</span>  <span class="number">18</span>  <span class="number">10</span>  <span class="number">2</span></span><br><span class="line"><span class="symbol">60 </span> <span class="number">52</span>  <span class="number">44</span>  <span class="number">36</span>  <span class="number">28</span>  <span class="number">20</span>  <span class="number">12</span>  <span class="number">4</span></span><br><span class="line"><span class="symbol">62 </span> <span class="number">54</span>  <span class="number">46</span>  <span class="number">38</span>  <span class="number">30</span>  <span class="number">22</span>  <span class="number">14</span>  <span class="number">6</span></span><br><span class="line"><span class="symbol">64 </span> <span class="number">56</span>  <span class="number">48</span>  <span class="number">40</span>  <span class="number">32</span>  <span class="number">24</span>  <span class="number">16</span>  <span class="number">8</span></span><br><span class="line"><span class="symbol">57 </span> <span class="number">49</span>  <span class="number">41</span>  <span class="number">33</span>  <span class="number">25</span>  <span class="number">17</span>  <span class="number">9</span>   <span class="number">1</span></span><br><span class="line"><span class="symbol">59 </span> <span class="number">51</span>  <span class="number">43</span>  <span class="number">35</span>  <span class="number">27</span>  <span class="number">19</span>  <span class="number">11</span>  <span class="number">3</span></span><br><span class="line"><span class="symbol">61 </span> <span class="number">53</span>  <span class="number">45</span>  <span class="number">37</span>  <span class="number">29</span>  <span class="number">21</span>  <span class="number">13</span>  <span class="number">5</span></span><br><span class="line"><span class="symbol">63 </span> <span class="number">55</span>  <span class="number">47</span>  <span class="number">39</span>  <span class="number">31</span>  <span class="number">23</span>  <span class="number">15</span>  <span class="number">7</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>$E$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200233.png"></p>
+<p> $S$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200503.png"></p>
+<p>$P$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200612.png"><br>交换表$IP-1$：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200621.png"></p>
+<h2 id="3-参考链接"><a href="#3-参考链接" class="headerlink" title="3 参考链接"></a>3 参考链接</h2><ol>
+<li><a href="http://www.doc88.com/p-9909383710144.html" target="_blank" rel="noopener">道客巴巴</a></li>
+<li><a href="https://blog.csdn.net/yxtxiaotian/article/details/52025653" target="_blank" rel="noopener">DES加解密算法</a></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DES/" rel="tag"># DES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/d1b5.html" rel="next" title="偏微分方程">
+                <i class="fa fa-chevron-left"></i> 偏微分方程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/article/1.html" rel="prev" title="【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks">
+                【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="戈孔明">
+            
+              <p class="site-author-name" itemprop="name">戈孔明</p>
+              <p class="site-description motion-element" itemprop="description">湖南师范大学 | 计算机视觉</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gkm0120" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gkm0120@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gkm0120.cn/" title="孔明の博客" target="_blank">孔明の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hpcsiplab.hunnu.edu.cn/" title="LCSM" target="_blank">LCSM</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-加密算法的分类"><span class="nav-text">1 加密算法的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DES加密算法"><span class="nav-text">2 DES加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-转换方法"><span class="nav-text">2.1 转换方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-对密钥K（64位）"><span class="nav-text">2.2 对密钥K（64位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-对明文（64位）加密："><span class="nav-text">2.3 对明文（64位）加密：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-参考链接"><span class="nav-text">3 参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">戈孔明</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">71.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
+        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
+        placeholder: '留下你的足迹呗',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
