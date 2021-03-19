@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.github.io/"/>
-  <updated>2021-03-18T08:13:06.248Z</updated>
+  <updated>2021-03-18T13:45:34.082Z</updated>
   <id>https://gkm0120.github.io/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【图像分类—GoogLeNet Inception V3】Rethinking the Inception Architecture for Computer Vision</title>
+    <link href="https://gkm0120.github.io/article/7.html"/>
+    <id>https://gkm0120.github.io/article/7.html</id>
+    <published>2021-01-16T13:43:36.000Z</published>
+    <updated>2021-03-18T13:45:34.082Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分析了Inception优化的一些历史情况；提出了设计Inception的四个原则；提出分解卷积核的方式；辅助分类器的作用；提出缩小feature的结构。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="GoogLeNetV3" scheme="https://gkm0120.github.io/tags/GoogLeNetV3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—GoogLeNet Inception V2】Batch Normalization</title>
+    <link href="https://gkm0120.github.io/article/6.html"/>
+    <id>https://gkm0120.github.io/article/6.html</id>
+    <published>2021-01-13T05:57:05.000Z</published>
+    <updated>2021-03-18T13:46:39.300Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;BN的提出是为了克服深度神经网络难以训练的弊病，减轻了对参数初始化的依赖；训练更快，可以使用更高的学习率；BN一定程度上增加了泛化能力，dropout等技术可以去掉。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="GoogLeNetV2" scheme="https://gkm0120.github.io/tags/GoogLeNetV2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【图像分类—NIN】Network in Network</title>
     <link href="https://gkm0120.github.io/article/4.html"/>
     <id>https://gkm0120.github.io/article/4.html</id>
     <published>2020-12-18T02:11:52.000Z</published>
-    <updated>2021-03-18T08:13:06.248Z</updated>
+    <updated>2021-03-18T11:55:02.088Z</updated>
     
     <summary type="html">
     
@@ -57,6 +97,26 @@
   </entry>
   
   <entry>
+    <title>【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation</title>
+    <link href="https://gkm0120.github.io/article/5.html"/>
+    <id>https://gkm0120.github.io/article/5.html</id>
+    <published>2020-12-11T12:31:40.000Z</published>
+    <updated>2021-03-18T13:11:44.370Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全连接层＋softmax输出）不同，FCN可以接受任意尺寸的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="FCN" scheme="https://gkm0120.github.io/tags/FCN/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition</title>
     <link href="https://gkm0120.github.io/article/2.html"/>
     <id>https://gkm0120.github.io/article/2.html</id>
@@ -81,7 +141,7 @@
     <link href="https://gkm0120.github.io/article/1.html"/>
     <id>https://gkm0120.github.io/article/1.html</id>
     <published>2020-12-07T01:57:50.000Z</published>
-    <updated>2021-03-18T07:03:09.445Z</updated>
+    <updated>2021-03-19T12:46:20.265Z</updated>
     
     <summary type="html">
     
@@ -143,7 +203,7 @@
     <link href="https://gkm0120.github.io/article/fcf1.html"/>
     <id>https://gkm0120.github.io/article/fcf1.html</id>
     <published>2020-04-01T13:04:57.000Z</published>
-    <updated>2021-03-18T06:51:22.512Z</updated>
+    <updated>2021-03-19T12:55:39.203Z</updated>
     
     <summary type="html">
     

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,10 @@
 
 
 
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -89,25 +93,25 @@
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210224162636661.png?text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgzOTAzOQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217210005864.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217212751187.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217212904330.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121721292834.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121721301511.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121721303893.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217213109985.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020121721313631.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201217213233949.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201211204917650.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201211205128416.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201211205607699.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201211205900127.png#pic_center">
-<meta property="og:updated_time" content="2021-03-18T08:13:06.248Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318193941.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318193956.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194007.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194013.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194018.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194024.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194029.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194035.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194041.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194050.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194057.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194102.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194107.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194113.png">
+<meta property="og:updated_time" content="2021-03-18T11:55:02.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像分类—NIN】Network in Network">
 <meta name="twitter:description" content="文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210224162636661.png?text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgzOTAzOQ==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318193941.png">
 
 
 
@@ -115,9 +119,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -163,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -332,6 +336,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -375,7 +384,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -385,7 +394,8 @@
 <a id="more"></a>
 
 
-<p><img src="https://img-blog.csdnimg.cn/20210224162636661.png?text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTgzOTAzOQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<img width="600" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318193941.png">
+
 <h1 id="一、论文翻译"><a href="#一、论文翻译" class="headerlink" title="一、论文翻译"></a>一、论文翻译</h1><blockquote>
 <p>论文：<a href="https://arxiv.org/abs/1312.4400" target="_blank" rel="noopener">Network In Network</a></p>
 </blockquote>
@@ -395,7 +405,9 @@
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们提出了一种新型的深度网络结构，称为“Network In Network”（NIN），它可以增强模型在感受野（receptive field）内对局部区域（local patches）的辨别能力。传统的卷积层使用线性滤波器来扫描输入，后面接一个非线性激活函数。而我们则构建了一些结构稍复杂的微型神经网络来抽象receptive field内的数据。 我们用多层感知器实例化微型神经网络，这是一种有效的函数逼近器。特征图可以通过微型神经网络在输入上滑动得到，类似于CNN；接下来特征图被传入下一层。深度NIN可以通过堆叠上述结构实现。通过微型网络增强局部模型，我们就可以在分类层中利用所有特征图的全局平均池化层（GAP），这样更容易解释且比传统的全连接层更不容易过拟合。我们证明了NIN在CIFAR-10和CIFAR-100上得到了有史以来最佳的表现以及在SVHN和MNIST数据集上合理的表现。</p>
 <h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>卷积神经网络（CNN）由卷积层和池化层交替组成。卷积层使用线性滤波器和底层receptive field做内积，然后接一个非线性的激活函数，得到的输出称作特征图（feature map）。</p>
 <p>CNN的卷积滤波器是底层数据块的广义线性模型（generalized linear model ）（GLM），而且我们认为它的抽象程度较低。这里的抽象较低是指该特征对同一概念的变体是不变的。用更有效的非线性函数逼近器代替GLM可以增强局部模型的抽象能力。当样本的隐含概念（latent concept）线性可分时，GLM可以达到很好的抽象程度，例如：这些概念的变体都在GLM分割平面的同一边，而传统的CNN就默认了这个假设——认为隐含概念（latent concept）是线性可分的。然而，同一概念的数据通常是非线性流形的（nonlinear manifold），捕捉这些概念的表达通常都是输入的高维非线性函数。在NIN中，GLM用“微型网络”结构替代，该结构是一个非线性函数逼近器。在本项研究中，我们选择多层感知器实例化微型网络，该感知器是一个通用函数逼近器，也是一个通过反向传播训练的神经网络。</p>
-<p>最终结构我们称为“mlpconv”层，与CNN的比较见图1.<br><img src="https://img-blog.csdnimg.cn/20201217210005864.png#pic_center" alt="在这里插入图片描述"></p>
+<p>最终结构我们称为“mlpconv”层，与CNN的比较见图1.</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318193956.png">
+
 <p>图1 线性卷积层与mlpconv层的比较。线性卷积层包含线性滤波器，而mlpconv层包含的是微型网络（本文选择多层感知器）。两种层都将局部感受野映射到了隐含概念的置信度值 </p>
 <p>线性卷积层和mlpconv层都从局部感受野（receptive field）映射到了输出特征向量。mlpconv 层将局部块的输入通过一个由全连接层和非线性激活函数组成的多层感知器（MLP）映射到了输出的特征向量。MLP在所有局部感受野中共享。特征图通过用像CNN一样的方式在输入上滑动MLP得到，NIN的总体结构是一系列mplconv层的堆叠。被称作“Network In Network”（NIN），因为内部含有MLP。</p>
 <p>我们没有采用传统CNN的全连接层进行分类，而是直接通过全局平均池化层（GAP）输出最后一个mlpconv层特征图的空间平均值作为类别的置信度值，然后将得到的向量输入softmax层。在传统的CNN中，很难解释如何将来自分类层（objective cost layer）的分类信息传递回前一个卷积层，因为全连接层像一个黑盒一样。相比之下，全局平均池化层（GAP）更有意义且容易解释，因为它强化了特征图与分类的对应关系，这是通过使用微型网络构成的局部建模器实现的。此外，全连接层更容易过拟合且严重依赖于dropout正则化，而GAP则本身就是一个结构化的正则化器，能避免整体结构的过拟合。</p>
@@ -416,47 +428,71 @@
 <p>但是，全连接层容易过拟合，从而阻碍了整个网络的泛化能力。后来dropout被Hinton等人提出，用于正则化，在训练过程中随机地将全连接层的一半激活值置零，改善了它的泛化能力并且很大程度地预防了过拟合。</p>
 <p>在本文中，我们提出了另一个策略，叫做全局平均池化层，用它来替代CNN中的全连接层。想法是在最后一个mlpconv层生成一个分类任务中相应类别的特征图。我们没有在特征图最顶端增加全连接层，而是求每个特征图的平均值，得到的结果向量直接输入softmax层。GAP相比全连接层的优点在于通过增强特征图与类比间的对应关系使卷积结构保留的更好，使特征图分类是可信的得到很好的解释；另一个优点是GAP层中没有参数设置，因此避免了过拟合；此外，GAP汇聚了空间信息，所以对输入的空间转换更鲁棒。</p>
 <p>我们可以看到GAP作为一个正则化器，加强了特征图与概念（类别）的可信度的联系。这是通过mlpconv层实现的，因为他们比GLM更好逼近置信图（conficence maps）。</p>
-<h3 id="3-3-网络中的网络结构"><a href="#3-3-网络中的网络结构" class="headerlink" title="3.3 网络中的网络结构"></a>3.3 网络中的网络结构</h3><p>NIN的整体结构是一系列mlpconve层的堆叠，最上层接一个GAP层和分类层。mlpconv层间的子层可以被相加，像CNN和maxout网络一样。图2展示了一个包含三个mlpconv层的NIN。每个mlpconv层，包含一个三层的感知器，NIN和微型网络的层数都是灵活的，可以根据具体任务微调。<br><img src="https://img-blog.csdnimg.cn/20201217212751187.png#pic_center" alt="在这里插入图片描述"><br>图2 NIN的整体结构。本文的NIN由三个mlpconve层和一个GAP层堆叠而成。</p>
+<h3 id="3-3-网络中的网络结构"><a href="#3-3-网络中的网络结构" class="headerlink" title="3.3 网络中的网络结构"></a>3.3 网络中的网络结构</h3><p>NIN的整体结构是一系列mlpconve层的堆叠，最上层接一个GAP层和分类层。mlpconv层间的子层可以被相加，像CNN和maxout网络一样。图2展示了一个包含三个mlpconv层的NIN。每个mlpconv层，包含一个三层的感知器，NIN和微型网络的层数都是灵活的，可以根据具体任务微调。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194007.png">
+
+<p>图2 NIN的整体结构。本文的NIN由三个mlpconve层和一个GAP层堆叠而成。</p>
 <h2 id="4-实验"><a href="#4-实验" class="headerlink" title="4 实验"></a>4 实验</h2><h3 id="4-1-概况"><a href="#4-1-概况" class="headerlink" title="4.1 概况"></a>4.1 概况</h3><p>我们在四个基准数据集上评估了NIN：CIFAR-10，CIFAR-100，SVHN和MNIST。网络在这些数据上都使用三层堆叠mplconv层结构，mlpconv层后面都跟随一个最大池化层，把原输入样本缩减一倍。作为正则化器，除了最后一个mlpconv层外所有输出都加一个dropout。除非特别说明，否则实验部分的所有全连接层都用全局平均池化层替代。另一个正则化方法是和Krizhevsky等人一样的权重衰减。图2展示了本节所用的NIN网络整体结构，详细的参数设置在补充材料中。我们使用由AlexKrizhevsky开发的超快速cuda-convnet代码来实现我们的网络。数据预处理和训练集验证集的拆分同Goodfellow。</p>
 <p>我们的训练过程同Krizhevsky等人一样。也就是说，我们手动初始化了权重以及学习率，使用128小批次训练。训练层初始化权重和学习率开始，直到训练集上的准确率停止改善，然后损失率减少10倍，再继续训练，重复直到学习率衰减到1%。</p>
 <h3 id="4-2-CIFAR-10"><a href="#4-2-CIFAR-10" class="headerlink" title="4.2 CIFAR-10"></a>4.2 CIFAR-10</h3><p>CIFAR-10数据集由10类自然图片组成，有50000张训练图片，10000张测试图片，每张图片是32x32的RGB图片。对于这个数据集，我们使用与Goodfellow在maxout network中相同的global contrast normalization和ZCA白化。我们用训练集的最后10000张图片做验证集。</p>
 <p>实验中每个mlpconv层的特征图数与maxout网络相同。有两个超参数用验证集微调，如局部感受野（local receptive field）的大小和权重衰减。超参数调整好后固定，然后重新在训练集合验证集上训练，将最终模型用于测试集。我们在测试集上得到了10.41%的错误率，比当前最优结果降低1%。</p>
 <p>表1展示了与先前方法的对比。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201217212904330.png#pic_center" alt="在这里插入图片描述"><br>我们实验证明，mlpconv层间使用dropout可以通过增加模型泛化能力来提升模型表现。如图3所示，在mlpconv层间引用dropout层错误率减少了20%多。这一结果与Goodfellow等人的一致，所以本文的所有模型mlpconv层间都加了dropout。没有dropout的模型在CIFAR-10数据集上错误率是14.5%，已经超过之前最好的使用正则化的模型（除了maxout）。由于没有dropout的maxout不可靠，所以本文只与有dropout正则器的版本比较。<br><img src="https://img-blog.csdnimg.cn/2020121721292834.png#pic_center" alt="在这里插入图片描述"><br>与先前一样，我们也在做了位移和水平翻转的数据增强的CIFAR-10数据集上对我们的方法做了评估，在测试集上达到了8.81%的错误率，创了新纪录。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194013.png">
+
+<p>我们实验证明，mlpconv层间使用dropout可以通过增加模型泛化能力来提升模型表现。如图3所示，在mlpconv层间引用dropout层错误率减少了20%多。这一结果与Goodfellow等人的一致，所以本文的所有模型mlpconv层间都加了dropout。没有dropout的模型在CIFAR-10数据集上错误率是14.5%，已经超过之前最好的使用正则化的模型（除了maxout）。由于没有dropout的maxout不可靠，所以本文只与有dropout正则器的版本比较。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194018.png">
+
+<p>与先前一样，我们也在做了位移和水平翻转的数据增强的CIFAR-10数据集上对我们的方法做了评估，在测试集上达到了8.81%的错误率，创了新纪录。</p>
 <h3 id="4-3-CIFAR-100"><a href="#4-3-CIFAR-100" class="headerlink" title="4.3 CIFAR-100"></a>4.3 CIFAR-100</h3><p>CIFAR-100和CIFAR-10数据规模一样，只是分为100类。因此每一类图的数目是CIFAR-10的1/10。对于CIFAR-100，我们不调整超参数，而是使用和CIFAR-10一样的设置。位移的不同是最后一个mlpconv层输出100个特征图。CIFAR-100在测试集上的错误率为35.68%，超了当前不做数据增强最好的表现1%多。详细的表现比较见表2。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020121721301511.png#pic_center" alt="在这里插入图片描述"></p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194024.png">
+
+
 <h3 id="4-4-Street-View-House-Numbers"><a href="#4-4-Street-View-House-Numbers" class="headerlink" title="4.4 Street View House Numbers"></a>4.4 Street View House Numbers</h3><p>SVHN数据集由630,420 32x32的彩图组成，分为训练集、测试集和额外集。这个数据集的任务是识别出每张图中间的数字。训练和测试过程同Goodfellow，也就是说，每一类从训练集中选择400张图，从额外集中选200张图作为验证集。剩余的训练集和额外集用于训练。验证集只用于调整超参数，不用于训练。</p>
 <p>数据集的预处理也同Goodfellow，即local contrast normalization。用于SVHN的结构和参数设置同CIFAR-10一样，由三个mlpconv层加GAP组成。我们在这个数据集上得到2.35%的错误率。我们将结果与其他没有做数据增强的方法结果进行比较，如表3所示。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020121721303893.png#pic_center" alt="在这里插入图片描述"></p>
-<h3 id="4-5-MNIST"><a href="#4-5-MNIST" class="headerlink" title="4.5 MNIST"></a>4.5 MNIST</h3><p>MNIST数据集由28x28的0-9手写数字组成。有60000张训练集图片和10000张测试集图片。对于这个数据集，网络结构同CIFAR-10一样，只是每个mlpconv层的特征图数减少了，因为MNIST比CIFAR-10简单。与先前使用卷积神经网络的结果对比如表4.<br><img src="https://img-blog.csdnimg.cn/20201217213109985.png#pic_center" alt="在这里插入图片描述"><br>我们得到了0.47%的表现，但是没有当前最好的0.45%好，因为MNIST的错误率已经非常低了。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194029.png">
+
+
+<h3 id="4-5-MNIST"><a href="#4-5-MNIST" class="headerlink" title="4.5 MNIST"></a>4.5 MNIST</h3><p>MNIST数据集由28x28的0-9手写数字组成。有60000张训练集图片和10000张测试集图片。对于这个数据集，网络结构同CIFAR-10一样，只是每个mlpconv层的特征图数减少了，因为MNIST比CIFAR-10简单。与先前使用卷积神经网络的结果对比如表4.</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194035.png">
+
+<p>我们得到了0.47%的表现，但是没有当前最好的0.45%好，因为MNIST的错误率已经非常低了。</p>
 <h3 id="4-6-作为正则化器的全局平均池"><a href="#4-6-作为正则化器的全局平均池" class="headerlink" title="4.6 作为正则化器的全局平均池"></a>4.6 作为正则化器的全局平均池</h3><p>GAP层和全连接层很相似，都对特征向量做了线性转换。不同的是转换矩阵。GAP的转换矩阵是事先定义的并且仅在共享相同值的块对角线元素上是非零的。全连接层可以有复杂矩阵变换且值是通过反向传播设置的。为了研究GAP的正则化影响，我们用GAP替换全连接层，模型其他部分相同。我们评估了全连接层前面有dropout和没有dropout的模型，都在CIFAR-10上测试，表现比较如表5.</p>
-<p><img src="https://img-blog.csdnimg.cn/2020121721313631.png#pic_center" alt="在这里插入图片描述"><br>如表5所示，全连接层没有dropout的表现最差，11.59%，与预期一样，全连接层没有正则化器会过拟合。全连接层前增加了dropout后测试集错误率为10.88%。GAP在三者比较中得到了最低错误率10.41%。</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194041.png">
+
+<p>如表5所示，全连接层没有dropout的表现最差，11.59%，与预期一样，全连接层没有正则化器会过拟合。全连接层前增加了dropout后测试集错误率为10.88%。GAP在三者比较中得到了最低错误率10.41%。</p>
 <p>然后我们探索了GAP对传统CNN来说是否也有同样的正则化影响。我们实例化了一个像Hiton等人描述的传统CNN，由三个卷积层和一个局部连接层（local connection layer）组成。局部连接层生成16个特征图，传给没有dropout的全连接层。为了比较的公正性，我们把局部连接层的特征图数从16减到了10，因为GAP的每个类别只允许一个特征图。GAP的等价网络由dropout+带有GAP的全连接层替代，表现在CIFAR-10上测试。</p>
 <p>全连接层的CNN模型只能得到17.56%的错误率，添加dropout后与Hinton等人提到的表现相近——15.99%。用GAP替换全连接层，我们达到16.46%的错误率，与没有dropout的CNN相比提升了1%。这又一次验证了GAP层作为正则化器的有效性。尽管比dropout稍差一些，但是我们认为GAP可能对线性卷积要求过高，因为它需要带有rectified激活函数的线性滤波器来为类别的置信图建模。</p>
 <h3 id="4-7-NIN的可视化"><a href="#4-7-NIN的可视化" class="headerlink" title="4.7 NIN的可视化"></a>4.7 NIN的可视化</h3><p>我们通过GAP来增强NIN最后一个mlpconv层的特征图，使其作为分类是可信的，这可能会加强局部感受野的建模。为了知道这个目标实现了多少，我们提取和可视化了在CIFAR-10上训练的模型的来自最后一个mlpconv层的特征图。</p>
 <p>图4展示了CIFAR-10上测试集上选择的10类的一些示例图和相关特征图。如预期，特征图的最大激活区域和输入的相关真实分类吻合，这明显是GAP加强过的。在真实分类的特征图内，可以看到最大的激活区域出现在与原物体相同的区域，在结构化物体中尤其如此，例如图4第二行的车。注意这些特征图的分类只用类别信息进行训练，如果使用有边界框标注的图片效果会更好。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201217213233949.png#pic_center" alt="在这里插入图片描述"></p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194050.png">
+
 <p>可视化证明了NIN的有效性，通过用mlpconv层建模得到一个更强的局部感受野，使其有效，然后GAP增强了特征图类别的学习。下一步研究可以用于物体侦测，侦测结果可以基于与Farabet等人的场景标记工作相同的类别级特征图来实现。</p>
 <h2 id="5-结论"><a href="#5-结论" class="headerlink" title="5 结论"></a>5 结论</h2><p>我们提出了一个新的深度网络，叫做“Network In Network”（NIN），用于分类任务。这个新结构有mlpconv层组成，使用多层感知器对输入进行卷积，用GAP代替传统CNN中的全连接层。mlpconv层对局部块建模更好，GAP充当结构化正则化器，防止了过拟合。用NIN的这两个组件，我们得到了当前在CIFAR-10，CIFAR-100和SVHN数据集上最好的表现。通过可视化特征图，我们证明了来自NIN的最后一个mlpconv层的特征图得到的分类是可信的，并且使通过NIN做物体侦测变成了可能。</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><hr>
+<hr>
 <h1 id="二、论文解读"><a href="#二、论文解读" class="headerlink" title="二、论文解读"></a>二、论文解读</h1><h2 id="1-Network-In-Network"><a href="#1-Network-In-Network" class="headerlink" title="1 Network In Network"></a>1 Network In Network</h2><p>CNN高层特征其实是低层特征通过某种运算的组合, 至于这个运算的目的就是提取高维特征, 线性卷积层采用的是离散卷积运算, 那么能不能改进这个运算使得特征提取更加高效呢, 基于这种思想, 文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：<strong>MLP卷积层</strong></p>
 <p>传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。一般来说线性卷积层用来提取线性可分的特征，但所提取的特征高度非线性时，需要更加多的filters来提取各种潜在的特征，这样就导致filters太多，使得网络参数太多，网络过于复杂对于计算压力太大且容易过拟合。这就产生了传统卷积网络的两个痛点:</p>
 <ul>
 <li>线性卷积层在处理高度非线性的底层特征时, 使得网络参数过多</li>
 <li>传统的CNN最后一层都是全连接层，参数个数非常之多，容易引起过拟合</li>
 </ul>
-<h2 id="2-MLP卷积层"><a href="#2-MLP卷积层" class="headerlink" title="2 MLP卷积层"></a>2 MLP卷积层</h2><p>如下图所示:<br><img src="https://img-blog.csdnimg.cn/20201211204917650.png#pic_center" alt="在这里插入图片描述"><br>(a): 左图是一个<strong>线性卷积层</strong>, 该层在局部感受野上的运算可以理解为一个单层的网络<br>(b): 右图是一个<strong>MLP卷积层</strong>, 该层可以看成是每个卷积的局部感受野中还包含了一个微型的多层网络, 使得计算比传统CNN更加复杂, 从而提高对非线性特征的提取能力</p>
+<h2 id="2-MLP卷积层"><a href="#2-MLP卷积层" class="headerlink" title="2 MLP卷积层"></a>2 MLP卷积层</h2><p>如下图所示:</p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194057.png">
+
+<p>(a): 左图是一个<strong>线性卷积层</strong>, 该层在局部感受野上的运算可以理解为一个单层的网络<br>(b): 右图是一个<strong>MLP卷积层</strong>, 该层可以看成是每个卷积的局部感受野中还包含了一个微型的多层网络, 使得计算比传统CNN更加复杂, 从而提高对非线性特征的提取能力</p>
 <p>MLP卷积层可以理解为在一个传统的CNN卷积层的基础上把网络在局部感受野的尺度上做深, 增加单个NIN的特征表示能力</p>
 <h2 id="3-全局均值池化"><a href="#3-全局均值池化" class="headerlink" title="3 全局均值池化"></a>3 全局均值池化</h2><p>传统的卷积神经网络卷积运算一般是出现在低层网络。对于分类问题，最后一个卷积层的特征图通过量化然后与全连接层连接，最后在接一个softmax逻辑回归分类层。这种网络结构，使得卷积层和传统的神经网络层连接在一起。我们可以把卷积层看做是特征提取器，然后得到的特征再用传统的神经网络进行分类。传统CNN网络中最后全连接层参数过多很容易导致过拟合，造成网络的泛化能力差，Alexnet中使用dropout来防止过拟合提高网络的泛化能力。</p>
 <p><strong>文章提出采用全局均值池化的方法，替代传统CNN中的全连接层</strong>。与传统的全连接层不同，对每个特征图(feature map)的整张图片进行全局均值池化，这样每张特征图都可以得到一个输出。<strong>采用均值池化，可以大大减小网络的参数数量，避免模型过拟合，另一方面它有一个特点，每张特征图相当于一个输出特征，然后这个特征就表示了输出类的特征</strong>。这样如果我们在做1000个分类任务的时候，我们网络在设计的时候，最后一层的特征图个数就要选择1000</p>
-<p><strong>网络结构</strong><br><img src="https://img-blog.csdnimg.cn/20201211205128416.png#pic_center" alt="在这里插入图片描述"><br>在全局结构图中我们可看到:</p>
+<p><strong>网络结构</strong><br><img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194102.png"></p>
+<p>在全局结构图中我们可看到:</p>
 <ul>
 <li>在局部网络中, 在局部感受野进行卷积运算的基础上又加了两层小的全连接层</li>
 </ul>
 <ol>
 <li>NIN的实现方式</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20201211205607699.png#pic_center" alt="在这里插入图片描述"></p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194107.png">
+
+
 <ul>
 <li><p>由Caffe的prototxt文件可知, 在实现NIN的时候, 全连接层的实现方式为:设置一个滤波器大小为1,步长为1的卷积层实现全连接层</p>
 </li>
@@ -466,7 +502,8 @@
 <ol start="2">
 <li>全局均值池化</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20201211205900127.png#pic_center" alt="在这里插入图片描述"></p>
+<img width="300" height="300" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194113.png">
+
 <ul>
 <li>在Alexnet网络中最后一个卷积层输出的特征图大小是6∗6, pooling的<strong>大小选择6，方法选择：AVE进行全局均值池化</strong></li>
 </ul>
@@ -565,6 +602,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/article/6.html" rel="prev" title="【图像分类—GoogLeNet Inception V2】Batch Normalization">
+                【图像分类—GoogLeNet Inception V2】Batch Normalization <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -647,7 +688,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -669,7 +710,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -749,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、论文翻译"><span class="nav-text">一、论文翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-text">2 卷积神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络中的网络"><span class="nav-text">3 网络中的网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-MLP卷积层"><span class="nav-text">3.1 MLP卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-全局平均池"><span class="nav-text">3.2 全局平均池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-网络中的网络结构"><span class="nav-text">3.3 网络中的网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实验"><span class="nav-text">4 实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-概况"><span class="nav-text">4.1 概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-CIFAR-10"><span class="nav-text">4.2 CIFAR-10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-CIFAR-100"><span class="nav-text">4.3 CIFAR-100</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Street-View-House-Numbers"><span class="nav-text">4.4 Street View House Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-MNIST"><span class="nav-text">4.5 MNIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-作为正则化器的全局平均池"><span class="nav-text">4.6 作为正则化器的全局平均池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-NIN的可视化"><span class="nav-text">4.7 NIN的可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-结论"><span class="nav-text">5 结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、论文解读"><span class="nav-text">二、论文解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Network-In-Network"><span class="nav-text">1 Network In Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-MLP卷积层"><span class="nav-text">2 MLP卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-全局均值池化"><span class="nav-text">3 全局均值池化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、论文翻译"><span class="nav-text">一、论文翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-text">2 卷积神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络中的网络"><span class="nav-text">3 网络中的网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-MLP卷积层"><span class="nav-text">3.1 MLP卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-全局平均池"><span class="nav-text">3.2 全局平均池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-网络中的网络结构"><span class="nav-text">3.3 网络中的网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实验"><span class="nav-text">4 实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-概况"><span class="nav-text">4.1 概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-CIFAR-10"><span class="nav-text">4.2 CIFAR-10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-CIFAR-100"><span class="nav-text">4.3 CIFAR-100</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Street-View-House-Numbers"><span class="nav-text">4.4 Street View House Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-MNIST"><span class="nav-text">4.5 MNIST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-作为正则化器的全局平均池"><span class="nav-text">4.6 作为正则化器的全局平均池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-NIN的可视化"><span class="nav-text">4.7 NIN的可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-结论"><span class="nav-text">5 结论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、论文解读"><span class="nav-text">二、论文解读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Network-In-Network"><span class="nav-text">1 Network In Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-MLP卷积层"><span class="nav-text">2 MLP卷积层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-全局均值池化"><span class="nav-text">3 全局均值池化</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -757,6 +798,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -783,7 +831,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.8k</span>
+    <span title="Site words total count">103.2k</span>
   
 </div>
 
@@ -795,7 +843,34 @@
 
 
 
+<span id="runtime_span"></span>
+<script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new 
+Date("3/15/2020 00:00:00");
+Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;
+a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);
+runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
+
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -808,14 +883,13 @@
     </footer>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -980,6 +1054,31 @@
   
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   
