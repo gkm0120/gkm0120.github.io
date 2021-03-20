@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.github.io/"/>
-  <updated>2021-03-18T13:45:34.082Z</updated>
+  <updated>2021-03-20T07:09:09.686Z</updated>
   <id>https://gkm0120.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【图像分类—ResNet V1】Deep Residual Learning for Image Recognition</title>
+    <link href="https://gkm0120.github.io/article/8.html"/>
+    <id>https://gkm0120.github.io/article/8.html</id>
+    <published>2021-01-18T14:32:38.000Z</published>
+    <updated>2021-03-20T07:09:09.686Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;论文解决的主要问题是深层的神经网络很难训练；提出了一种残差学习框架来减轻网络训练。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文翻译" scheme="https://gkm0120.github.io/categories/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="ResNetV1" scheme="https://gkm0120.github.io/tags/ResNetV1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【图像分类—GoogLeNet Inception V3】Rethinking the Inception Architecture for Computer Vision</title>
     <link href="https://gkm0120.github.io/article/7.html"/>
     <id>https://gkm0120.github.io/article/7.html</id>
     <published>2021-01-16T13:43:36.000Z</published>
-    <updated>2021-03-18T13:45:34.082Z</updated>
+    <updated>2021-03-20T06:57:32.757Z</updated>
     
     <summary type="html">
     
@@ -41,7 +61,7 @@
     <link href="https://gkm0120.github.io/article/6.html"/>
     <id>https://gkm0120.github.io/article/6.html</id>
     <published>2021-01-13T05:57:05.000Z</published>
-    <updated>2021-03-18T13:46:39.300Z</updated>
+    <updated>2021-03-20T07:10:30.917Z</updated>
     
     <summary type="html">
     
@@ -401,26 +421,6 @@
       <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
     
       <category term="Nodejs" scheme="https://gkm0120.github.io/tags/Nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git常见报错及处理方法</title>
-    <link href="https://gkm0120.github.io/article/d3ea.html"/>
-    <id>https://gkm0120.github.io/article/d3ea.html</id>
-    <published>2020-03-16T06:03:03.000Z</published>
-    <updated>2021-03-18T06:49:20.322Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一些常见Git报错处理&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
-    
-    
-      <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
     
   </entry>
   
