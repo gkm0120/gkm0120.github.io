@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="C++,">
+  <meta name="keywords" content="热传导方程,Cauchy 问题,">
 
 
 
@@ -85,20 +85,18 @@
 
 
 
-<meta name="description" content="用C++实现四面体递归逼近球体">
-<meta name="keywords" content="C++">
+<meta name="description" content="偏微分的学习记录，持续更新中。。。">
+<meta name="keywords" content="热传导方程,Cauchy 问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="球体的细分逼近程序">
-<meta property="og:url" content="https://gkm0120.github.io/article/1454.html">
+<meta property="og:title" content="热传导方程的 Cauchy 问题">
+<meta property="og:url" content="https://gkm0120.github.io/p/21593.html">
 <meta property="og:site_name" content="孔明の博客">
-<meta property="og:description" content="用C++实现四面体递归逼近球体">
+<meta property="og:description" content="偏微分的学习记录，持续更新中。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040311.jpg">
-<meta property="og:updated_time" content="2021-03-18T06:52:46.789Z">
+<meta property="og:updated_time" content="2021-03-31T01:52:38.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="球体的细分逼近程序">
-<meta name="twitter:description" content="用C++实现四面体递归逼近球体">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040311.jpg">
+<meta name="twitter:title" content="热传导方程的 Cauchy 问题">
+<meta name="twitter:description" content="偏微分的学习记录，持续更新中。。。">
 
 
 
@@ -128,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/1454.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/21593.html">
 
 
 
 
 
-  <title>球体的细分逼近程序 | 孔明の博客</title>
+  <title>热传导方程的 Cauchy 问题 | 孔明の博客</title>
   
 
 
@@ -274,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/1454.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/21593.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -291,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">球体的细分逼近程序</h1>
+          <h1 class="post-title" itemprop="name headline">热传导方程的 Cauchy 问题</h1>
         
 
         <div class="post-meta">
@@ -303,8 +301,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T16:42:54+08:00">
-                2020-03-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-13T16:31:08+08:00">
+                2020-04-13
               </time>
             
 
@@ -326,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图形图像处理/" itemprop="url" rel="index">
-                    <span itemprop="name">图形图像处理</span>
+                  <a href="/categories/偏微分方程/" itemprop="url" rel="index">
+                    <span itemprop="name">偏微分方程</span>
                   </a>
                 </span>
 
@@ -344,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/1454.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/1454.html" itemprop="commentCount"></span>
+                <a href="/p/21593.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/21593.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -372,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  864
+                  3.6k
                 </span>
               
 
@@ -388,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4 min
+                  19 min
                 </span>
               
             </div>
@@ -409,15 +407,76 @@
       
 
       
-        <p>用C++实现四面体递归逼近球体</p>
+        <p>偏微分的学习记录，持续更新中。。。</p>
 <a id="more"></a>
 
-<h3 id="球体的细分逼近程序"><a href="#球体的细分逼近程序" class="headerlink" title="球体的细分逼近程序"></a>球体的细分逼近程序</h3><blockquote>
-<p>通过递归细分四面体生成球体，三种显示模式：线性框、均匀着色，插值着色</p>
+<h2 id="3-热传导方程"><a href="#3-热传导方程" class="headerlink" title="3 热传导方程"></a>3 热传导方程</h2><h3 id="3-1-热传导方程的-Cauchy-问题"><a href="#3-1-热传导方程的-Cauchy-问题" class="headerlink" title="3.1 热传导方程的 Cauchy 问题"></a>3.1 热传导方程的 Cauchy 问题</h3><h4 id="3-1-1-齐次热传导方程的-Cauchy-问题"><a href="#3-1-1-齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.1 齐次热传导方程的 Cauchy 问题"></a>3.1.1 齐次热传导方程的 Cauchy 问题</h4><p>一维齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{1} \label{eq:1}<br>\right.<br>\end{equation} $$</p>
+<p>方程 （1）的解具有如下性质：</p>
+<blockquote>
+<p>性质 3.1 设$ u(x,t) $是（1）的解, 则对任意的$ y\in R$，$u(x-y, t)$ 也是（1）的解。<br>性质 3.2 设$ u(x,t) $是（1）的解, 则它的各阶导数也是（1）的解。<br>性质 3.3 设$ S(x,t) $是（1）的解，则对任意连续函数$ g(y) $<br>$$<br>v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y<br>$$<br>也是（1）的解。</p>
 </blockquote>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 该程序在init()函数中还定义了材质和光源 */</span></span><br><span class="line"><span class="comment">/* mode 0 = 线性框, mode 1 = 均与着色,</span></span><br><span class="line"><span class="comment">mode 3 = 插值着色 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">float</span> point[<span class="number">4</span>];</span><br><span class="line"><span class="comment">/* 初始化四面体 */</span></span><br><span class="line">point v[]={{<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>}, {<span class="number">0.0</span>, <span class="number">0.942809</span>, <span class="number">-0.33333</span>},</span><br><span class="line">    {<span class="number">-0.816497</span>, <span class="number">-0.471405</span>, <span class="number">-0.333333</span>}, {<span class="number">0.816497</span>, <span class="number">-0.471405</span>, <span class="number">-0.333333</span>}};</span><br><span class="line"></span><br><span class="line">GLfloat theta[] = {<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>};</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> mode;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">triangle</span><span class="params">( point a, point b, point c)</span></span></span><br><span class="line"><span class="function"><span class="comment">/*利用GL_LINR_LOOP模式显示一个三角形的线性图，定义一个法向量用于均匀着色，</span></span></span><br><span class="line"><span class="function"><span class="comment">定义三个法向量用于插值着色*/</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> <span class="keyword">if</span> (mode==<span class="number">0</span>)  glBegin(GL_LINE_LOOP);</span><br><span class="line"> <span class="keyword">else</span>  glBegin(GL_POLYGON);</span><br><span class="line">    <span class="keyword">if</span>(mode==<span class="number">1</span>) glNormal3fv(a);</span><br><span class="line">    <span class="keyword">if</span>(mode==<span class="number">2</span>) glNormal3fv(a);</span><br><span class="line">     glVertex3fv(a);</span><br><span class="line">    <span class="keyword">if</span>(mode==<span class="number">2</span>) glNormal3fv(b);</span><br><span class="line">    glVertex3fv(b);</span><br><span class="line">    <span class="keyword">if</span>(mode==<span class="number">2</span>) glNormal3fv(c);</span><br><span class="line">    glVertex3fv(c);</span><br><span class="line"> glEnd();</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">normal</span><span class="params">(point p)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="comment">/* 矢量归一化 */</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt</span><span class="params">(<span class="keyword">double</span> d)</span></span>;</span><br><span class="line"><span class="keyword">float</span> d = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) d += p[i] * p[i];</span><br><span class="line">d = <span class="built_in">sqrt</span>(d);</span><br><span class="line"><span class="keyword">if</span> (d &gt; <span class="number">0.0</span>)</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) p[i] /= d;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide_triangle</span><span class="params">(point a, point b, point c, <span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="comment">/* 基于顶点数目细分三角形，应用右手规则生成对象的外向表面 */</span></span><br><span class="line"> point v1, v2, v3;</span><br><span class="line"> <span class="keyword">int</span> j;</span><br><span class="line"> <span class="keyword">if</span>(m&gt;<span class="number">0</span>)</span><br><span class="line"> {</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) v1[j]=a[j]+b[j];</span><br><span class="line">    normal(v1);</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) v2[j]=a[j]+c[j];</span><br><span class="line">    normal(v2);</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;<span class="number">3</span>; j++) v3[j]=b[j]+c[j];</span><br><span class="line">    normal(v3);</span><br><span class="line">    divide_triangle(a, v1, v2, m<span class="number">-1</span>);</span><br><span class="line">    divide_triangle(c, v2, v3, m<span class="number">-1</span>);</span><br><span class="line">    divide_triangle(b, v3, v1, m<span class="number">-1</span>);</span><br><span class="line">    divide_triangle(v1, v3, v2, m<span class="number">-1</span>);</span><br><span class="line"> }</span><br><span class="line"> <span class="keyword">else</span> triangle(a,b,c); <span class="comment">/* 递归结束时绘制三角形 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tetrahedron</span><span class="params">(<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="comment">/* 对四面体的表面应用三角细分 */</span></span><br><span class="line"> divide_triangle(v[<span class="number">0</span>], v[<span class="number">1</span>], v[<span class="number">2</span>], m);</span><br><span class="line"> divide_triangle(v[<span class="number">3</span>], v[<span class="number">2</span>], v[<span class="number">1</span>], m);</span><br><span class="line"> divide_triangle(v[<span class="number">0</span>], v[<span class="number">3</span>], v[<span class="number">1</span>], m);</span><br><span class="line"> divide_triangle(v[<span class="number">0</span>], v[<span class="number">2</span>], v[<span class="number">3</span>], m);</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"><span class="comment">/* 逐一显示这三种模式下的四面体 */</span></span><br><span class="line"> glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"> glLoadIdentity();</span><br><span class="line"> mode=<span class="number">0</span>;</span><br><span class="line"> tetrahedron(n);</span><br><span class="line"> mode=<span class="number">1</span>;</span><br><span class="line"> glTranslatef(<span class="number">-2.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line"> tetrahedron(n);</span><br><span class="line"> mode=<span class="number">2</span>;</span><br><span class="line"> glTranslatef(<span class="number">4.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line"> tetrahedron(n);</span><br><span class="line"> glFlush();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myReshape</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"> glViewport(<span class="number">0</span>, <span class="number">0</span>, w, h);</span><br><span class="line"> glMatrixMode(GL_PROJECTION);</span><br><span class="line"> glLoadIdentity();</span><br><span class="line"> <span class="keyword">if</span> (w &lt;= h)</span><br><span class="line">    glOrtho(<span class="number">-4.0</span>, <span class="number">4.0</span>, <span class="number">-4.0</span> * (GLfloat) h / (GLfloat) w,</span><br><span class="line">        <span class="number">4.0</span> * (GLfloat) h / (GLfloat) w, <span class="number">-10.0</span>, <span class="number">10.0</span>);</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line">    glOrtho(<span class="number">-4.0</span> * (GLfloat) w / (GLfloat) h,</span><br><span class="line">        <span class="number">4.0</span> * (GLfloat) w / (GLfloat) h, <span class="number">-4.0</span>, <span class="number">4.0</span>, <span class="number">-10.0</span>, <span class="number">10.0</span>);</span><br><span class="line"> glMatrixMode(GL_MODELVIEW);</span><br><span class="line"> display();</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myinit</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    GLfloat mat_specular[]={<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>};</span><br><span class="line">    GLfloat mat_diffuse[]={<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>};</span><br><span class="line">    GLfloat mat_ambient[]={<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>};</span><br><span class="line">    GLfloat mat_shininess={<span class="number">100.0</span>};</span><br><span class="line">    GLfloat light_ambient[]={<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>};</span><br><span class="line">    GLfloat light_diffuse[]={<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>};</span><br><span class="line">    GLfloat light_specular[]={<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>};</span><br><span class="line"><span class="comment">/* 为光源0分别设置环境光、漫反射光和镜面反射光的参数 */</span></span><br><span class="line">    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);</span><br><span class="line">    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);</span><br><span class="line">    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);</span><br><span class="line"><span class="comment">/* 为所有三角形正面定义材质属性 */</span></span><br><span class="line">    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);</span><br><span class="line">    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);</span><br><span class="line">    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);</span><br><span class="line">    glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);</span><br><span class="line">    glShadeModel(GL_SMOOTH); <span class="comment">/* 开启平滑着色 */</span></span><br><span class="line">    glEnable(GL_LIGHTING); <span class="comment">/* 开启光照 */</span></span><br><span class="line">    glEnable(GL_LIGHT0); <span class="comment">/* 开启光源0 */</span></span><br><span class="line">    glEnable(GL_DEPTH_TEST); <span class="comment">/* 开启z-buffer */</span></span><br><span class="line">    glClearColor (<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">    glColor3f (<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">}</span><br><span class="line">main(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span><br><span class="line">{</span><br><span class="line">    n=<span class="number">4</span>;<span class="comment">//n=1,2,3,4,5,6……</span></span><br><span class="line">  <span class="comment">//n=atoi(argv[1]);//直接运行会出错，具体参照BookCode的此处源码处理方案</span></span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);</span><br><span class="line">    glutInitWindowSize(<span class="number">500</span>, <span class="number">500</span>);</span><br><span class="line">    glutCreateWindow(<span class="string">"sphere"</span>);</span><br><span class="line">    myinit();</span><br><span class="line">    glutReshapeFunc(myReshape);</span><br><span class="line">    glutDisplayFunc(display);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040311.jpg">
+<p>理由：<br>$$V_{\varepsilon}=\int_{-\infty}^{\infty} S_{\varepsilon}(x-y, t) g(y)\to g(x) \qquad \varepsilon\to 0 $$</p>
+<blockquote>
+<p>性质 3.4 设$ u(x,t) $是（1）的解，则对任意的$ \lambda&gt;0,$ $u\left(\lambda x, \lambda^{2} t\right)$ 也是（1）的解。</p>
+</blockquote>
+<p>理由：<br>$u$是（1）的解，寻找$v(x,t)=\lambda{\alpha}u(\lambda{\beta}x，\lambda{\gamma}t)$是（1）的解<br>$$v_t=\lambda{\alpha+\gamma}u_t,u_x=\lambda{\alpha+\beta}u_x，u_{xx}=\lambda{\alpha+2\beta}u_x$$<br>$$0=v_t-a^{2}v_{xx}=\lambda{\alpha+\gamma}u_t-a^{2}\lambda{\alpha+2\beta}u_{xx}$$<br>取$$\gamma=2\beta，\lambda=\frac{1}{\sqrt{t}}，v(x, t)=u(\lambda x，\lambda^{2}t)=u({\frac{x}{\sqrt{t}}})=u(\xi)，\xi={\frac{x}{\sqrt{t}}}$$<br>空间变量、时间变量做伸缩变换（尺度不一）<br>$$0=v_t-a^{2}v_{xx}=2xt^{-\frac{3}{2}}- a^2 u^{\prime \prime} t^{-1}$$<br>化简有<br>$$u^{\prime \prime}+\frac{1}{2 a^{2}} \xi u^{\prime}=0$$<br>$$u(\xi)=c_{1} \int_{0}^{\xi} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>其中$ c_1 $, $ c_2 $是两个积分常数。<br>进而<br>$$u(x,t)=c_{1} \int_{0}^{\frac{x}{\sqrt{t}}} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>$$S(x, t)=\frac{\partial}{\partial x} v(x, t)=\frac{c_{1}}{\sqrt{t}} e^{-\frac{x^{2}}{4 a^{2} t}}$$<br>由性质3.3知对任意连续函数$g(y)$,<br>$$v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y=\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y$$<br>也是（1）的解<br>求出$c_1$使其满足初始条件，即<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y = \varphi(y)$$<br>作变换$y-x=2a \sqrt{t} \xi$，有<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-\mu)^{2}}{4 a^{2} t}} g(x+2a \sqrt{t} \xi) 2a{\sqrt{t}} \mathrm{d} \xi = 2ac_1\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\xi^{2}} g(x+2a \sqrt{t}\xi) \mathrm{d} \xi \\ =2ac_1g(x)\int_{-\infty}^{\infty}\mathrm{e}^{-\xi^{2}} \mathrm{d} \xi=2a{\sqrt{\pi}}c_1g(x)=\varphi(x)$$<br>第二个等号成立的条件：$g$连续且一致有界$\Rightarrow$一致收敛（反常积分）$\Rightarrow$t的连续函数<br>取$c_1=\frac{\varphi(x)}{2a{\sqrt{\pi}}g(x)}$，代入有<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>称上式为Cauchy问题的Possion公式<br>记<br>$$G(x, t)=\begin{cases}<br>\frac{1}{2 a \sqrt{\pi t}} \mathrm{e}^{-\frac{x^{2}}{4 a^{2} t}}  &amp; t&gt;0 \\<br>0  &amp; t&lt;0<br>\end{cases} $$<br>则有<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y$$<br>称由上式确定的函数称为热核函数</p>
+<p>下证$u(x,t)=\int_{-\infty}^{\infty} G(x-y,t) \varphi(y) \mathrm{d} y$是如下Cauchy问题的解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>知<br>$$u(x,t)=-\frac{1}{2a{\sqrt{\pi}t^{\frac{3}{2}}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y+\frac{1}{2a{\sqrt{\pi}}t} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {\frac{(x-y)^{2}}{4 a^{2} t^2}} \varphi(y) \mathrm{d} y$$<br>$\forall t_0 \gt 0,t\ge t_0$时，上述积分都一致收敛<br>理由：<br>$$\begin{aligned}<br>| u(x, t) | \leq M \int_{-\infty}^{\infty} G(x-y, t) \mathrm{d} y=\frac{M}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \mathrm{d} y=M<br>\end{aligned}$$<br>其中$|\varphi(x)| \le M,\forall t \gt 0$<br>局部：$\forall (x_0,t_1)\in \mathrm{R}\times(0,{\infty}) $，取$t_0=\frac{t_1}{2}$，故在$[\frac{t_1}{2},{\infty}]$上一致收敛<br>$$u_t(x, t)=\int_{-\infty}^{\infty} G_t(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_{xx}(x, t)=\int_{-\infty}^{\infty} G_{xx}(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_t(x, t)-a^2u_{xx}=\int_{-\infty}^{\infty} (G_t-a^2G_xx)(x-y, t) \varphi(y) \mathrm{d} y=0$$<br>注1：$\varphi$ 为有界连续函数，则$u(x,t)$当$t \gt 0$关于$x,t$无穷次可微，即<br>$$\frac{\partial^{k+1} u}{\partial x^{k} \partial t^{l}}=\int_{-\infty}^{\infty} \frac{\partial^{k+l}}{\partial x^{k} \partial t^{l}} G(x-y, t) \varphi(y) \mathrm{d} y \sim P(\frac{1}{\sqrt{t}}) \int_{-\infty}^{\infty} Q(x,y) \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y$$<br>其中$\sim$为等价符号，$Q(x,y)$为只含$x,y$变量的二元函数。由$\forall \delta \gt 0$，上式右端在区域${-\infty&lt;x&lt;\infty, t \geq \delta}$上一致收敛。由于当$t \gt 0$，$G(x-y,t)$无穷次可微，故$u(x, t) \in C^{\infty}\left(\mathbb{R}_{+}^{2}\right)$</p>
+<p>注2：初值 $\varphi $属于有界函数类的条件可放宽为$${|\varphi(x)| \leq M \mathrm{e}^{N x^{2}}, \quad-\infty&lt;x&lt;\infty}$$<br>理由:可证$u(x,t)$在区域$ {0 \lt t \lt \frac{1}{4 a^{2} N}，-\infty&lt;x&lt;\infty}$上仍是热传导方程Cauchy问题的解。</p>
+<p>注3：若$|\varphi(x)| \le M$，由Possion公式知，$|u(x,t)| \le M，-\infty&lt;x&lt;\infty，t \geq 0$</p>
+<p>注4：Possion公式给出的解在任意一点$(x,t)(t \gt 0)$的值，依赖于初始值在整个$x$轴的值，没有有限的依赖区域。<br>如果杆的初始温度只在某一小段$I_{\delta}=\left(x_{0}-\delta, x_{0}+\delta\right)$不为0，设$$\varphi(x)&gt;0, x \in I_{\delta}; \varphi(x) \equiv 0, x \notin I_{\delta}$$<br>当$ t \geq 0$时，$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y&gt;0$$<br>说明热量瞬间传播到杆上的每一点，热的传播速度是无限的</p>
+<h4 id="3-1-2-非齐次热传导方程的-Cauchy-问题"><a href="#3-1-2-非齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.2 非齐次热传导方程的 Cauchy 问题"></a>3.1.2 非齐次热传导方程的 Cauchy 问题</h4><p>一维非齐次热传导方程的Cauchy问题是</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{2} \label{eq:2}<br>\right.<br>\end{equation} $$<br>由叠加原理上式可分解为以下两个问题的求解：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d}=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=0, \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{3} \label{eq:3}<br>\right.<br>\end{equation} $$</p>
+<blockquote>
+<p>引理3.1（齐次化原理）若函数$w(x,t,\tau)$是Cauchy问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.w\right|_{t=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{4} \label{eq:4}<br>\right.<br>\end{equation} $$</p>
+</blockquote>
+<p>的解，则函数 $u(x,t)=\int_{0}^{t} w(x,t,\tau) \mathrm{d} \tau$ 是Cauchy问题（4）的解<br>证：</p>
+<ol>
+<li>满足初始条件$\left.u\right|_{t=0}=0 $</li>
+<li>满足方程$u_{t}-a^{2} u_{x x}=f(x,t)$<br>$$u_t=w(x,t,\tau)+\int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau = f(x,t)+\int_{0}^{t} w_t(x,t,\tau) \mathrm{d} \tau$$<br>$$u_x=\int_{0}^{t} w_x (x,t,\tau) \mathrm{d} \tau，u_{xx}=\int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau$$<br>则<br>$$u_t-a^{2}u_{xx} = f(x,t)+ \int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau - a^{2} \int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau \\ = f(x,t) + \int_{0}^{t} (w_t - a^{2}w_{xx}) (x,t,\tau) \mathrm{d} \tau = f(x,t)$$</li>
+</ol>
+<p>为了求解问题（4），令$t^{\prime}=t-\tau，x=x$（自变量变换）</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t^{\prime}}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t^{\prime}&gt;0  \\<br>&amp;\left.w\right|_{t^{\prime}=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{5} \label{eq:5}<br>\right.<br>\end{equation} $$</p>
+<p>解出<br>$$w(x,t^{\prime},\tau)=\int_{-\infty}^{\infty} G(x-y, t^{\prime}) f(y,\tau) \mathrm{d} y $$<br>则问题（4）的解<br>$$w(x,t,\tau)=\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y $$<br>则问题（3）的解<br>$$u(x,t)=\int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau$$<br>故由叠加原理,问题（2）的解为<br>$$u(x,t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y)\mathrm{d} y + \int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau $$<br>也记为$$u(x,t)=G \ast \varphi + \int_{0}^{t} G(\bullet,t-\tau)f(\bullet,t-\tau)$$<br>其中$\ast$为卷积符号，$\bullet$表示关于第一个空间变量作卷积</p>
+<blockquote>
+<p>定理3.1：若$\varphi(x) \in C(-\infty, \infty), f(x, t) \in C((-\infty, \infty) \times(0, \infty))$且均有界，则由Possion公式确定的函数$u(x,t)$是Cauchy问题（2）的解</p>
+</blockquote>
+<p>理由：根据上述推导证明可得。</p>
+<h3 id="3-2-热传导方程的混合问题"><a href="#3-2-热传导方程的混合问题" class="headerlink" title="3.2 热传导方程的混合问题"></a>3.2 热传导方程的混合问题</h3><h4 id="3-2-1-半直线上热传导方程与热的反射"><a href="#3-2-1-半直线上热传导方程与热的反射" class="headerlink" title="3.2.1 半直线上热传导方程与热的反射"></a>3.2.1 半直线上热传导方程与热的反射</h4><p>考虑侧表面绝热的均匀细杆，一端固定，已知初始温度和细杆在固定端点的温度，则杆上的温度分布满足如下混合问题：</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x, t),  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=\mu(t), &amp;t \geq 0<br>\end{aligned}<br>\tag{6} \label{eq:6}<br>\right.<br>\end{equation} $$</p>
+<p>考虑$f(x) \equiv 0，u(t) \equiv 0$的情形</p>
+<ol>
+<li>Dirlect边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{7} \label{eq:7}<br>\right.<br>\end{equation} $$</p>
+<p>由</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{8} \label{eq:8}<br>\right.<br>\end{equation} $$</p>
+<p>解出：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
+<p>初始：<br>$$ \left.u\right|_{t=0}=\varphi(x)，-\infty&lt;x&lt;\infty$$</p>
+<p>选取（连续奇函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>-\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>其中：<br>$$u(0, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} e^{-\frac{y^{2}}{4 a^{2}}} \Phi(y) d y=0$$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = \frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y +\\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}-e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<ol start="2">
+<li>Newmann边界</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u_x(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{9} \label{eq:9}<br>\right.<br>\end{equation} $$<br>选取（连续偶函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = -\frac{1}{ a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y + \\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}+e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
+<p>为求解问题（6），将边界齐次化，令$v(x,t)=u(x,t)-\mu(t)$<br>则</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>由叠加原理，上述问题可分解为</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=0，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>和</p>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=0，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>若令$v(x,t)=u(x,t)-\mu(t)x$，则可将Newmann边界齐次化<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty \lt x \lt \infty, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \lt \infty \\<br>&amp;u_x(0,t)=\mu(t), \quad 0 \le x \lt \infty \\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<h4 id="3-2-1-有限区间上的热传导方程与分离变量法"><a href="#3-2-1-有限区间上的热传导方程与分离变量法" class="headerlink" title="3.2.1 有限区间上的热传导方程与分离变量法"></a>3.2.1 有限区间上的热传导方程与分离变量法</h4><p>在矩形区域$\Omega = {0 \le x \le l，0 \lt t \le T}$上，考虑<br>$$u_t-a^{2}u_{xx}=f(x,t)，0 \le x \le l，0 \lt t \le T$$</p>
+<p>及初始条件<br>$$ \left.u\right|_{t=0}=\varphi(x)，0 \le x \le l $$</p>
+<p>和边界条件<br>$$ u(0,t)=\mu_1(t), u(l,t)=\mu_2(t)，0 \le x \le l $$</p>
+<p>先考虑第二边值问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad 0 \lt x \lt l, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \le l \\<br>&amp;u_x(0,t)=\mu(t), u_x(0,t)=\mu(t) \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>寻找$u(x,t)=X(x)T(t)$形式解<br>$$X(x)T^{\prime}(t)-a^{2}X^{\prime \prime}(x)T(t)=0$$<br>从而<br>$$\frac{T^{\prime}(t)}{a^{2}T(t)}=\frac{X^{\prime \prime}(x)}{X(x)}=\lambda$$<br>有<br>$$T^{\prime}(t)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0$$<br>联立<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;X^{\prime}(x)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0 \\<br>&amp;X^{\prime}(0)=0, X^{\prime}(l)=0 \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>情形$1^{\prime}$ $\lambda \lt 0$<br>$$X(x)=c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}，X^{\prime}(x)=\left(-c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}\right){-\sqrt{-\lambda}}$$<br>代入得$$c_1=c_2=0$$</p>
+<p>情形$2^{\prime}$ $\lambda = 0$<br>$$X(x)=c_1+c_2x$$<br>代入得$c_2 = 0$，$X_0(x) \equiv 1$是上述问题得一个非平凡解</p>
+<p>情形$3^{\prime}$ $\lambda \gt 0$<br>$$X(x)=c_1cos{\sqrt{\lambda}}x+c_2sin{\sqrt{\lambda}}x，X^{\prime}(x)=\left(-c_1sin{\sqrt{\lambda}}x+c_2cos{\sqrt{\lambda}}x\right){\sqrt{\lambda}}$$<br>代入得$c_2 = 0$，$c_1 = {\sqrt{\lambda}}sin{\sqrt{\lambda}}l = 0$</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -482,7 +541,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/热传导方程/" rel="tag"># 热传导方程</a>
+          
+            <a href="/tags/Cauchy-问题/" rel="tag"># Cauchy 问题</a>
           
         </div>
       
@@ -495,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/7966.html" rel="next" title="Git和Node.js安装">
-                <i class="fa fa-chevron-left"></i> Git和Node.js安装
+              <a href="/p/12046.html" rel="next" title="Markdown中LaTeX编写技巧">
+                <i class="fa fa-chevron-left"></i> Markdown中LaTeX编写技巧
               </a>
             
           </div>
@@ -505,8 +566,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/d9d1.html" rel="prev" title="Sierpinski 镂垫程序">
-                Sierpinski 镂垫程序 <i class="fa fa-chevron-right"></i>
+              <a href="/p/42607.html" rel="prev" title="DES数据加密标准">
+                DES数据加密标准 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -538,7 +599,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -679,7 +744,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -693,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#球体的细分逼近程序"><span class="nav-text">球体的细分逼近程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-text">结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-热传导方程"><span class="nav-text">3 热传导方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-热传导方程的-Cauchy-问题"><span class="nav-text">3.1 热传导方程的 Cauchy 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.1 齐次热传导方程的 Cauchy 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-非齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.2 非齐次热传导方程的 Cauchy 问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-热传导方程的混合问题"><span class="nav-text">3.2 热传导方程的混合问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-半直线上热传导方程与热的反射"><span class="nav-text">3.2.1 半直线上热传导方程与热的反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-有限区间上的热传导方程与分离变量法"><span class="nav-text">3.2.1 有限区间上的热传导方程与分离变量法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -917,30 +981,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

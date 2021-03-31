@@ -89,7 +89,7 @@
 <meta name="keywords" content="FCN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation">
-<meta property="og:url" content="https://gkm0120.github.io/article/5.html">
+<meta property="og:url" content="https://gkm0120.github.io/p/17422.html">
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全连接层＋softmax输出）不同，FCN可以接受任意尺寸的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。">
 <meta property="og:locale" content="zh-CN">
@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201211171202448.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201211171306283.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201211171358229.png#pic_center">
-<meta property="og:updated_time" content="2021-03-18T13:11:44.370Z">
+<meta property="og:updated_time" content="2021-03-31T01:36:18.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation">
 <meta name="twitter:description" content="与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全连接层＋softmax输出）不同，FCN可以接受任意尺寸的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。">
@@ -155,7 +155,7 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/5.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/17422.html">
 
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/5.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/17422.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -371,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/5.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/5.html" itemprop="commentCount"></span>
+                <a href="/p/17422.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/17422.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -791,7 +791,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/2.html" rel="next" title="【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition">
+              <a href="/p/88644.html" rel="next" title="【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition">
                 <i class="fa fa-chevron-left"></i> 【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition
               </a>
             
@@ -801,7 +801,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/3.html" rel="prev" title="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
+              <a href="/p/19719.html" rel="prev" title="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
                 【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -834,7 +834,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -975,7 +979,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -1213,30 +1216,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

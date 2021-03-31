@@ -89,7 +89,7 @@
 <meta name="keywords" content="GoogleNetV1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
-<meta property="og:url" content="https://gkm0120.github.io/article/3.html">
+<meta property="og:url" content="https://gkm0120.github.io/p/19719.html">
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次">
 <meta property="og:locale" content="zh-CN">
@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152730.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152740.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318152750.png">
-<meta property="og:updated_time" content="2021-03-18T07:51:02.041Z">
+<meta property="og:updated_time" content="2021-03-31T01:35:57.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions">
 <meta name="twitter:description" content="Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次">
@@ -143,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/3.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/19719.html">
 
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/3.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/19719.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -359,8 +359,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/3.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/3.html" itemprop="commentCount"></span>
+                <a href="/p/19719.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/19719.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -646,7 +646,7 @@ ILSVRC检测任务是为了在200个可能的类别中生成图像中目标的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/5.html" rel="next" title="【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation">
+              <a href="/p/17422.html" rel="next" title="【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation">
                 <i class="fa fa-chevron-left"></i> 【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation
               </a>
             
@@ -656,7 +656,7 @@ ILSVRC检测任务是为了在200个可能的类别中生成图像中目标的�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/4.html" rel="prev" title="【图像分类—NIN】Network in Network">
+              <a href="/p/41470.html" rel="prev" title="【图像分类—NIN】Network in Network">
                 【图像分类—NIN】Network in Network <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -689,7 +689,11 @@ ILSVRC检测任务是为了在200个可能的类别中生成图像中目标的�
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -830,7 +834,6 @@ ILSVRC检测任务是为了在200个可能的类别中生成图像中目标的�
           
 
           
-
         </div>
       </section>
 
@@ -1068,30 +1071,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

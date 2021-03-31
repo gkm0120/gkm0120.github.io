@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="热传导方程,Cauchy 问题,">
+  <meta name="keywords" content="DES,">
 
 
 
@@ -85,18 +85,24 @@
 
 
 
-<meta name="description" content="偏微分的学习记录，持续更新中。。。">
-<meta name="keywords" content="热传导方程,Cauchy 问题">
+<meta name="description" content="一种对称公私钥加密算法">
+<meta name="keywords" content="DES">
 <meta property="og:type" content="article">
-<meta property="og:title" content="偏微分方程">
-<meta property="og:url" content="https://gkm0120.github.io/article/d1b5.html">
+<meta property="og:title" content="DES数据加密标准">
+<meta property="og:url" content="https://gkm0120.github.io/p/42607.html">
 <meta property="og:site_name" content="孔明の博客">
-<meta property="og:description" content="偏微分的学习记录，持续更新中。。。">
+<meta property="og:description" content="一种对称公私钥加密算法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-18T07:01:58.317Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200233.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200503.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200612.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200621.png">
+<meta property="og:updated_time" content="2021-03-31T01:32:58.298Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="偏微分方程">
-<meta name="twitter:description" content="偏微分的学习记录，持续更新中。。。">
+<meta name="twitter:title" content="DES数据加密标准">
+<meta name="twitter:description" content="一种对称公私钥加密算法">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
 
 
 
@@ -126,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/d1b5.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/42607.html">
 
 
 
 
 
-  <title>偏微分方程 | 孔明の博客</title>
+  <title>DES数据加密标准 | 孔明の博客</title>
   
 
 
@@ -272,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/d1b5.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/42607.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -289,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">偏微分方程</h1>
+          <h1 class="post-title" itemprop="name headline">DES数据加密标准</h1>
         
 
         <div class="post-meta">
@@ -301,8 +307,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-13T16:31:08+08:00">
-                2020-04-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-16T21:06:33+08:00">
+                2020-04-16
               </time>
             
 
@@ -324,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/偏微分方程/" itemprop="url" rel="index">
-                    <span itemprop="name">偏微分方程</span>
+                  <a href="/categories/密码学/" itemprop="url" rel="index">
+                    <span itemprop="name">密码学</span>
                   </a>
                 </span>
 
@@ -342,8 +348,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/d1b5.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/d1b5.html" itemprop="commentCount"></span>
+                <a href="/p/42607.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/42607.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -370,7 +376,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  3.6k
+                  1k
                 </span>
               
 
@@ -386,7 +392,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  19 min
+                  4 min
                 </span>
               
             </div>
@@ -407,76 +413,60 @@
       
 
       
-        <p>偏微分的学习记录，持续更新中。。。</p>
+        <p>一种对称公私钥加密算法</p>
 <a id="more"></a>
 
-<h2 id="3-热传导方程"><a href="#3-热传导方程" class="headerlink" title="3 热传导方程"></a>3 热传导方程</h2><h3 id="3-1-热传导方程的-Cauchy-问题"><a href="#3-1-热传导方程的-Cauchy-问题" class="headerlink" title="3.1 热传导方程的 Cauchy 问题"></a>3.1 热传导方程的 Cauchy 问题</h3><h4 id="3-1-1-齐次热传导方程的-Cauchy-问题"><a href="#3-1-1-齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.1 齐次热传导方程的 Cauchy 问题"></a>3.1.1 齐次热传导方程的 Cauchy 问题</h4><p>一维齐次热传导方程的Cauchy问题是</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{1} \label{eq:1}<br>\right.<br>\end{equation} $$</p>
-<p>方程 （1）的解具有如下性质：</p>
-<blockquote>
-<p>性质 3.1 设$ u(x,t) $是（1）的解, 则对任意的$ y\in R$，$u(x-y, t)$ 也是（1）的解。<br>性质 3.2 设$ u(x,t) $是（1）的解, 则它的各阶导数也是（1）的解。<br>性质 3.3 设$ S(x,t) $是（1）的解，则对任意连续函数$ g(y) $<br>$$<br>v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y<br>$$<br>也是（1）的解。</p>
-</blockquote>
-<p>理由：<br>$$V_{\varepsilon}=\int_{-\infty}^{\infty} S_{\varepsilon}(x-y, t) g(y)\to g(x) \qquad \varepsilon\to 0 $$</p>
-<blockquote>
-<p>性质 3.4 设$ u(x,t) $是（1）的解，则对任意的$ \lambda&gt;0,$ $u\left(\lambda x, \lambda^{2} t\right)$ 也是（1）的解。</p>
-</blockquote>
-<p>理由：<br>$u$是（1）的解，寻找$v(x,t)=\lambda{\alpha}u(\lambda{\beta}x，\lambda{\gamma}t)$是（1）的解<br>$$v_t=\lambda{\alpha+\gamma}u_t,u_x=\lambda{\alpha+\beta}u_x，u_{xx}=\lambda{\alpha+2\beta}u_x$$<br>$$0=v_t-a^{2}v_{xx}=\lambda{\alpha+\gamma}u_t-a^{2}\lambda{\alpha+2\beta}u_{xx}$$<br>取$$\gamma=2\beta，\lambda=\frac{1}{\sqrt{t}}，v(x, t)=u(\lambda x，\lambda^{2}t)=u({\frac{x}{\sqrt{t}}})=u(\xi)，\xi={\frac{x}{\sqrt{t}}}$$<br>空间变量、时间变量做伸缩变换（尺度不一）<br>$$0=v_t-a^{2}v_{xx}=2xt^{-\frac{3}{2}}- a^2 u^{\prime \prime} t^{-1}$$<br>化简有<br>$$u^{\prime \prime}+\frac{1}{2 a^{2}} \xi u^{\prime}=0$$<br>$$u(\xi)=c_{1} \int_{0}^{\xi} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>其中$ c_1 $, $ c_2 $是两个积分常数。<br>进而<br>$$u(x,t)=c_{1} \int_{0}^{\frac{x}{\sqrt{t}}} \mathrm{e}^{-\frac{1}{4 a^{2}} \eta^{2}} d \eta+c_{2}$$<br>$$S(x, t)=\frac{\partial}{\partial x} v(x, t)=\frac{c_{1}}{\sqrt{t}} e^{-\frac{x^{2}}{4 a^{2} t}}$$<br>由性质3.3知对任意连续函数$g(y)$,<br>$$v(x, t)=\int_{-\infty}^{\infty} S(x-y, t) g(y) \mathrm{d} y=\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y$$<br>也是（1）的解<br>求出$c_1$使其满足初始条件，即<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} g(y) \mathrm{d} y = \varphi(y)$$<br>作变换$y-x=2a \sqrt{t} \xi$，有<br>$$\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-\mu)^{2}}{4 a^{2} t}} g(x+2a \sqrt{t} \xi) 2a{\sqrt{t}} \mathrm{d} \xi = 2ac_1\lim_{t \rightarrow 0^{+}}\frac{c_{1}}{\sqrt{t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\xi^{2}} g(x+2a \sqrt{t}\xi) \mathrm{d} \xi \\ =2ac_1g(x)\int_{-\infty}^{\infty}\mathrm{e}^{-\xi^{2}} \mathrm{d} \xi=2a{\sqrt{\pi}}c_1g(x)=\varphi(x)$$<br>第二个等号成立的条件：$g$连续且一致有界$\Rightarrow$一致收敛（反常积分）$\Rightarrow$t的连续函数<br>取$c_1=\frac{\varphi(x)}{2a{\sqrt{\pi}}g(x)}$，代入有<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>称上式为Cauchy问题的Possion公式<br>记<br>$$G(x, t)=\begin{cases}<br>\frac{1}{2 a \sqrt{\pi t}} \mathrm{e}^{-\frac{x^{2}}{4 a^{2} t}}  &amp; t&gt;0 \\<br>0  &amp; t&lt;0<br>\end{cases} $$<br>则有<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y$$<br>称由上式确定的函数称为热核函数</p>
-<p>下证$u(x,t)=\int_{-\infty}^{\infty} G(x-y,t) \varphi(y) \mathrm{d} y$是如下Cauchy问题的解：</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<p>由<br>$$u(x,t)=\frac{1}{2a{\sqrt{\pi t}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2} t}} \varphi(y) \mathrm{d} y$$<br>知<br>$$u(x,t)=-\frac{1}{2a{\sqrt{\pi}t^{\frac{3}{2}}}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y+\frac{1}{2a{\sqrt{\pi}}t} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {\frac{(x-y)^{2}}{4 a^{2} t^2}} \varphi(y) \mathrm{d} y$$<br>$\forall t_0 \gt 0,t\ge t_0$时，上述积分都一致收敛<br>理由：<br>$$\begin{aligned}<br>| u(x, t) | \leq M \int_{-\infty}^{\infty} G(x-y, t) \mathrm{d} y=\frac{M}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \mathrm{d} y=M<br>\end{aligned}$$<br>其中$|\varphi(x)| \le M,\forall t \gt 0$<br>局部：$\forall (x_0,t_1)\in \mathrm{R}\times(0,{\infty}) $，取$t_0=\frac{t_1}{2}$，故在$[\frac{t_1}{2},{\infty}]$上一致收敛<br>$$u_t(x, t)=\int_{-\infty}^{\infty} G_t(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_{xx}(x, t)=\int_{-\infty}^{\infty} G_{xx}(x-y, t) \varphi(y) \mathrm{d} y$$<br>$$u_t(x, t)-a^2u_{xx}=\int_{-\infty}^{\infty} (G_t-a^2G_xx)(x-y, t) \varphi(y) \mathrm{d} y=0$$<br>注1：$\varphi$ 为有界连续函数，则$u(x,t)$当$t \gt 0$关于$x,t$无穷次可微，即<br>$$\frac{\partial^{k+1} u}{\partial x^{k} \partial t^{l}}=\int_{-\infty}^{\infty} \frac{\partial^{k+l}}{\partial x^{k} \partial t^{l}} G(x-y, t) \varphi(y) \mathrm{d} y \sim P(\frac{1}{\sqrt{t}}) \int_{-\infty}^{\infty} Q(x,y) \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y$$<br>其中$\sim$为等价符号，$Q(x,y)$为只含$x,y$变量的二元函数。由$\forall \delta \gt 0$，上式右端在区域${-\infty&lt;x&lt;\infty, t \geq \delta}$上一致收敛。由于当$t \gt 0$，$G(x-y,t)$无穷次可微，故$u(x, t) \in C^{\infty}\left(\mathbb{R}_{+}^{2}\right)$</p>
-<p>注2：初值 $\varphi $属于有界函数类的条件可放宽为$${|\varphi(x)| \leq M \mathrm{e}^{N x^{2}}, \quad-\infty&lt;x&lt;\infty}$$<br>理由:可证$u(x,t)$在区域$ {0 \lt t \lt \frac{1}{4 a^{2} N}，-\infty&lt;x&lt;\infty}$上仍是热传导方程Cauchy问题的解。</p>
-<p>注3：若$|\varphi(x)| \le M$，由Possion公式知，$|u(x,t)| \le M，-\infty&lt;x&lt;\infty，t \geq 0$</p>
-<p>注4：Possion公式给出的解在任意一点$(x,t)(t \gt 0)$的值，依赖于初始值在整个$x$轴的值，没有有限的依赖区域。<br>如果杆的初始温度只在某一小段$I_{\delta}=\left(x_{0}-\delta, x_{0}+\delta\right)$不为0，设$$\varphi(x)&gt;0, x \in I_{\delta}; \varphi(x) \equiv 0, x \notin I_{\delta}$$<br>当$ t \geq 0$时，$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d} y&gt;0$$<br>说明热量瞬间传播到杆上的每一点，热的传播速度是无限的</p>
-<h4 id="3-1-2-非齐次热传导方程的-Cauchy-问题"><a href="#3-1-2-非齐次热传导方程的-Cauchy-问题" class="headerlink" title="3.1.2 非齐次热传导方程的 Cauchy 问题"></a>3.1.2 非齐次热传导方程的 Cauchy 问题</h4><p>一维非齐次热传导方程的Cauchy问题是</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{2} \label{eq:2}<br>\right.<br>\end{equation} $$<br>由叠加原理上式可分解为以下两个问题的求解：</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<p>解出<br>$$u(x, t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y) \mathrm{d}=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
-<p>和</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=0, \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{3} \label{eq:3}<br>\right.<br>\end{equation} $$</p>
-<blockquote>
-<p>引理3.1（齐次化原理）若函数$w(x,t,\tau)$是Cauchy问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.w\right|_{t=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{4} \label{eq:4}<br>\right.<br>\end{equation} $$</p>
-</blockquote>
-<p>的解，则函数 $u(x,t)=\int_{0}^{t} w(x,t,\tau) \mathrm{d} \tau$ 是Cauchy问题（4）的解<br>证：</p>
-<ol>
-<li>满足初始条件$\left.u\right|_{t=0}=0 $</li>
-<li>满足方程$u_{t}-a^{2} u_{x x}=f(x,t)$<br>$$u_t=w(x,t,\tau)+\int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau = f(x,t)+\int_{0}^{t} w_t(x,t,\tau) \mathrm{d} \tau$$<br>$$u_x=\int_{0}^{t} w_x (x,t,\tau) \mathrm{d} \tau，u_{xx}=\int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau$$<br>则<br>$$u_t-a^{2}u_{xx} = f(x,t)+ \int_{0}^{t} w_t (x,t,\tau) \mathrm{d} \tau - a^{2} \int_{0}^{t} w_{xx} (x,t,\tau) \mathrm{d} \tau \\ = f(x,t) + \int_{0}^{t} (w_t - a^{2}w_{xx}) (x,t,\tau) \mathrm{d} \tau = f(x,t)$$</li>
+<h2 id="1-加密算法的分类"><a href="#1-加密算法的分类" class="headerlink" title="1 加密算法的分类"></a>1 加密算法的分类</h2><ol>
+<li><p>对称加解密算法<br>（1）通信双方同时掌握一个密钥，加密解密都是由一个密钥完成的（即加密密钥等于解密密钥，加解密密钥可以相互推倒出来）。<br>（2）双方通信前共同拟定一个密钥，不对第三方公开。<br>（3）不具有个体原子性，一个密钥被共享，泄漏几率增大</p>
+</li>
+<li><p>公私钥加解密算法<br>通信双方掌握不同的密钥，不同方向的加解密由不同的密钥完成。</p>
+</li>
 </ol>
-<p>为了求解问题（4），令$t^{\prime}=t-\tau，x=x$（自变量变换）</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;w_{t^{\prime}}-a^{2} w_{x x}=0, \quad-\infty&lt;x&lt;\infty, t^{\prime}&gt;0  \\<br>&amp;\left.w\right|_{t^{\prime}=0}=f(x,\tau), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{5} \label{eq:5}<br>\right.<br>\end{equation} $$</p>
-<p>解出<br>$$w(x,t^{\prime},\tau)=\int_{-\infty}^{\infty} G(x-y, t^{\prime}) f(y,\tau) \mathrm{d} y $$<br>则问题（4）的解<br>$$w(x,t,\tau)=\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y $$<br>则问题（3）的解<br>$$u(x,t)=\int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau$$<br>故由叠加原理,问题（2）的解为<br>$$u(x,t)=\int_{-\infty}^{\infty} G(x-y, t) \varphi(y)\mathrm{d} y + \int_{0}^{t}\int_{-\infty}^{\infty} G(x-y, t-\tau) f(y,\tau) \mathrm{d} y \mathrm{d} \tau $$<br>也记为$$u(x,t)=G \ast \varphi + \int_{0}^{t} G(\bullet,t-\tau)f(\bullet,t-\tau)$$<br>其中$\ast$为卷积符号，$\bullet$表示关于第一个空间变量作卷积</p>
-<blockquote>
-<p>定理3.1：若$\varphi(x) \in C(-\infty, \infty), f(x, t) \in C((-\infty, \infty) \times(0, \infty))$且均有界，则由Possion公式确定的函数$u(x,t)$是Cauchy问题（2）的解</p>
+<h2 id="2-DES加密算法"><a href="#2-DES加密算法" class="headerlink" title="2 DES加密算法"></a>2 DES加密算法</h2><blockquote>
+<p>Data Encryption Standard<br>DES加密算法主要是通过先对密钥进行加密，再将加密后的密钥放入明文中再次加密，得到密文。加密过程要用到很多表格，这些表格是固定的。下先介绍这些表格的转换方法，再分别介绍密钥和明文的加密步骤。</p>
 </blockquote>
-<p>理由：根据上述推导证明可得。</p>
-<h3 id="3-2-热传导方程的混合问题"><a href="#3-2-热传导方程的混合问题" class="headerlink" title="3.2 热传导方程的混合问题"></a>3.2 热传导方程的混合问题</h3><h4 id="3-2-1-半直线上热传导方程与热的反射"><a href="#3-2-1-半直线上热传导方程与热的反射" class="headerlink" title="3.2.1 半直线上热传导方程与热的反射"></a>3.2.1 半直线上热传导方程与热的反射</h4><p>考虑侧表面绝热的均匀细杆，一端固定，已知初始温度和细杆在固定端点的温度，则杆上的温度分布满足如下混合问题：</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x, t),  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=\mu(t), &amp;t \geq 0<br>\end{aligned}<br>\tag{6} \label{eq:6}<br>\right.<br>\end{equation} $$</p>
-<p>考虑$f(x) \equiv 0，u(t) \equiv 0$的情形</p>
-<ol>
-<li>Dirlect边界</li>
+<h3 id="2-1-转换方法"><a href="#2-1-转换方法" class="headerlink" title="2.1 转换方法"></a>2.1 转换方法</h3><ol>
+<li>交换表：以交换表1为例，找到第57位的数字，将第1位数字置换成第57位上的数字，奇偶校验位直接省去不需要转换，位数就会减少8位</li>
+<li>位移（位移轮数表）：1位即左移1位，2位即左移2位</li>
+<li>E盒（扩展表）：表内有16个数字重复了，即位数增加了16位</li>
+<li>S盒：$8\ast6$变成$8\ast4$，即将第1位和第6位看作行，中间4位看做列，在 盒找到对应的数据，转换为二进制（4位）</li>
+<li>P盒：直接置换，没有位数减少</li>
 </ol>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{7} \label{eq:7}<br>\right.<br>\end{equation} $$</p>
-<p>由</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0, \quad-\infty&lt;x&lt;\infty, t&gt;0  \\<br>&amp;\left.u\right|_{t=0}=\varphi(x), \quad-\infty&lt;x&lt;\infty<br>\end{aligned}<br>\tag{8} \label{eq:8}<br>\right.<br>\end{equation} $$</p>
-<p>解出：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y $$</p>
-<p>初始：<br>$$ \left.u\right|_{t=0}=\varphi(x)，-\infty&lt;x&lt;\infty$$</p>
-<p>选取（连续奇函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>-\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>其中：<br>$$u(0, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} e^{-\frac{y^{2}}{4 a^{2}}} \Phi(y) d y=0$$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = \frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y +\\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}-e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
-<ol start="2">
-<li>Newmann边界</li>
+<h3 id="2-2-对密钥K（64位）"><a href="#2-2-对密钥K（64位）" class="headerlink" title="2.2 对密钥K（64位）"></a>2.2 对密钥K（64位）</h3><ol>
+<li><p>密钥（明文）由16个数字组成，二进制转换为64位，0123456789ABCDEF表示0到16，二进制表示为0000到1111</p>
+</li>
+<li><p>先用64位转56位的交换表1（$8\ast7$）,将$K$置换为<br>（56位），第8,16,24,32,40,48,56,64位（8的倍数）称为奇偶校验位，直接省去不需要转换，结果就只有56位了</p>
+</li>
+<li><p>再经过位移轮数表将$c_0d_0$变为$c_1d_1，\cdots，c_{16}d_{16}$（56位）</p>
+</li>
+<li><p>再用56位转48位的交换表2（$8\ast6$）,分别将$c_1d_1 \to k_1，\cdots，c_{16}d_{16} \to k_{16}$（48位），奇偶校验位是7的倍数</p>
+</li>
 </ol>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=0,  &amp;0 \lt x \lt \infty, t&gt;0 \\<br>&amp;u(x, 0)=\varphi(x),  &amp;0 \leq x \lt \infty \\<br>&amp;u_x(0, t)=0, &amp;t \geq 0<br>\end{aligned}<br>\tag{9} \label{eq:9}<br>\right.<br>\end{equation} $$<br>选取（连续偶函数）：<br>$$\Phi(x)=\begin{cases}<br>\varphi(x)  &amp; x \ge 0 \\<br>\varphi(-x)  &amp; x \lt 0<br>\end{cases} $$<br>则有：<br>$$u(x, t)=\frac{1}{2 a \sqrt{\pi t}} \int_{-\infty}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y = -\frac{1}{ a \sqrt{\pi t}} \int_{-\infty}^{0} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} {-\varphi(-y)} \mathrm{d} y + \\ \frac{1}{2 a \sqrt{\pi t}} \int_{0}^{\infty} \mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}t}} \varphi(y) \mathrm{d} y  =\frac{1}{2 a \sqrt{\pi t}} \int_{0}^{+\infty}\left(\mathrm{e}^{-\frac{(x-y)^{2}}{4 a^{2}}}+e^{-\frac{(x+y)^{2}}{4 a^{2}}}\right) \varphi(y) \mathrm{d} y $$</p>
-<p>为求解问题（6），将边界齐次化，令$v(x,t)=u(x,t)-\mu(t)$<br>则</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<p>由叠加原理，上述问题可分解为</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=0，\\<br>&amp;v(x,0)=\varphi(x)-\mu(0)，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<p>和</p>
-<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;v_{t}-a^{2} v_{x x}=f(x,t)-\mu^{\prime}(t)，\\<br>&amp;v(x,0)=0，\\<br>&amp;v(0,t)=0.\\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<p>若令$v(x,t)=u(x,t)-\mu(t)x$，则可将Newmann边界齐次化<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad-\infty \lt x \lt \infty, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \lt \infty \\<br>&amp;u_x(0,t)=\mu(t), \quad 0 \le x \lt \infty \\<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
-<h4 id="3-2-1-有限区间上的热传导方程与分离变量法"><a href="#3-2-1-有限区间上的热传导方程与分离变量法" class="headerlink" title="3.2.1 有限区间上的热传导方程与分离变量法"></a>3.2.1 有限区间上的热传导方程与分离变量法</h4><p>在矩形区域$\Omega = {0 \le x \le l，0 \lt t \le T}$上，考虑<br>$$u_t-a^{2}u_{xx}=f(x,t)，0 \le x \le l，0 \lt t \le T$$</p>
-<p>及初始条件<br>$$ \left.u\right|_{t=0}=\varphi(x)，0 \le x \le l $$</p>
-<p>和边界条件<br>$$ u(0,t)=\mu_1(t), u(l,t)=\mu_2(t)，0 \le x \le l $$</p>
-<p>先考虑第二边值问题<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;u_{t}-a^{2} u_{x x}=f(x,t), \quad 0 \lt x \lt l, t&gt;0  \\<br>&amp;u(x,0)=\varphi(x), \quad 0 \le x \le l \\<br>&amp;u_x(0,t)=\mu(t), u_x(0,t)=\mu(t) \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>寻找$u(x,t)=X(x)T(t)$形式解<br>$$X(x)T^{\prime}(t)-a^{2}X^{\prime \prime}(x)T(t)=0$$<br>从而<br>$$\frac{T^{\prime}(t)}{a^{2}T(t)}=\frac{X^{\prime \prime}(x)}{X(x)}=\lambda$$<br>有<br>$$T^{\prime}(t)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0$$<br>联立<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp;X^{\prime}(x)+a^{2}\lambda X^{\prime \prime}(x)T(t)=0 \\<br>&amp;X^{\prime}(0)=0, X^{\prime}(l)=0 \\<br>\end{aligned}<br>\right.<br>\end{equation} $$<br>情形$1^{\prime}$ $\lambda \lt 0$<br>$$X(x)=c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}，X^{\prime}(x)=\left(-c_1e^{-\sqrt{-\lambda}}+c_2e^{-\sqrt{-\lambda}}\right){-\sqrt{-\lambda}}$$<br>代入得$$c_1=c_2=0$$</p>
-<p>情形$2^{\prime}$ $\lambda = 0$<br>$$X(x)=c_1+c_2x$$<br>代入得$c_2 = 0$，$X_0(x) \equiv 1$是上述问题得一个非平凡解</p>
-<p>情形$3^{\prime}$ $\lambda \gt 0$<br>$$X(x)=c_1cos{\sqrt{\lambda}}x+c_2sin{\sqrt{\lambda}}x，X^{\prime}(x)=\left(-c_1sin{\sqrt{\lambda}}x+c_2cos{\sqrt{\lambda}}x\right){\sqrt{\lambda}}$$<br>代入得$c_2 = 0$，$c_1 = {\sqrt{\lambda}}sin{\sqrt{\lambda}}l = 0$</p>
+<p>交换表1：</p>
+<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">57 </span> <span class="number">49</span>  <span class="number">41</span>  <span class="number">33</span>  <span class="number">25</span>  <span class="number">17</span>  <span class="number">9</span></span><br><span class="line"><span class="symbol">1 </span>  <span class="number">58</span>  <span class="number">50</span>  <span class="number">42</span>  <span class="number">34</span>  <span class="number">26</span>  <span class="number">18</span></span><br><span class="line"><span class="symbol">10 </span> <span class="number">2</span>   <span class="number">59</span>  <span class="number">51</span>  <span class="number">43</span>  <span class="number">35</span>  <span class="number">27</span></span><br><span class="line"><span class="symbol">19 </span> <span class="number">11</span>  <span class="number">3</span>   <span class="number">60</span>  <span class="number">52</span>  <span class="number">44</span>  <span class="number">36</span></span><br><span class="line"><span class="symbol">63 </span> <span class="number">55</span>  <span class="number">47</span>  <span class="number">39</span>  <span class="number">31</span>  <span class="number">23</span>  <span class="number">15</span></span><br><span class="line"><span class="symbol">7 </span>  <span class="number">62</span>  <span class="number">54</span>  <span class="number">46</span>  <span class="number">38</span>  <span class="number">30</span>  <span class="number">22</span></span><br><span class="line"><span class="symbol">14 </span> <span class="number">6</span>   <span class="number">61</span>  <span class="number">53</span>  <span class="number">45</span>  <span class="number">37</span>  <span class="number">29</span></span><br><span class="line"><span class="symbol">21 </span> <span class="number">13</span>  <span class="number">5</span>   <span class="number">28</span>  <span class="number">20</span>  <span class="number">12</span>  <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>位移轮数表：</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416214604.png">
+
+
+<p>交换表2：</p>
+<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">14 </span> <span class="number">17</span>  <span class="number">11</span>  <span class="number">24</span>  <span class="number">1</span>   <span class="number">5</span></span><br><span class="line"><span class="symbol">3 </span>  <span class="number">28</span>  <span class="number">15</span>  <span class="number">6</span>   <span class="number">21</span>  <span class="number">10</span></span><br><span class="line"><span class="symbol">23 </span> <span class="number">19</span>  <span class="number">12</span>  <span class="number">4</span>   <span class="number">26</span>  <span class="number">8</span></span><br><span class="line"><span class="symbol">16 </span> <span class="number">7</span>   <span class="number">27</span>  <span class="number">20</span>  <span class="number">13</span>  <span class="number">2</span></span><br><span class="line"><span class="symbol">41 </span> <span class="number">52</span>  <span class="number">31</span>  <span class="number">37</span>  <span class="number">47</span>  <span class="number">55</span></span><br><span class="line"><span class="symbol">30 </span> <span class="number">40</span>  <span class="number">51</span>  <span class="number">45</span>  <span class="number">33</span>  <span class="number">48</span></span><br><span class="line"><span class="symbol">44 </span> <span class="number">49</span>  <span class="number">39</span>  <span class="number">56</span>  <span class="number">34</span>  <span class="number">53</span></span><br><span class="line"><span class="symbol">46 </span> <span class="number">42</span>  <span class="number">50</span>  <span class="number">36</span>  <span class="number">29</span>  <span class="number">32</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-对明文（64位）加密："><a href="#2-3-对明文（64位）加密：" class="headerlink" title="2.3 对明文（64位）加密："></a>2.3 对明文（64位）加密：</h3><ol>
+<li>先根据交换表$IP（8\ast8$） 将$M$转换为$L_0R_0$(各32位)</li>
+<li>计算出$L_{16}R_{16}$：$L_n=R_{\left(n-1\right)}，R_n=L_{(n-1)}\oplus P\left(S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)\right)$<br>（1）利用$E$盒将32位的 扩展为48位的$R_{(n-1)}（1,\cdots 16）$<br>（2）$R_{(n-1)}$（48位）与$k_n$（48位）做异或运算$R_{(n-1)}\oplus k_n$，即$E\left(R_{(n-1)}\oplus k_n\right)$（48位）<br>（3）通过$S$盒将其转换为32位,即$S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)$（32位）<br>（4）再经过$P$盒进行置换，即$P\left(S\left(E\left(R_{(n-1)}\oplus k_n\right)\right)\right)$（32位）<br>（5）再与$L_{n-1}$（32位）做异或运算得到$R_n$</li>
+<li>再将$L_{16}R_{16}$转换为$R_{16}L_{16}$（64位）</li>
+<li>最后用交换表$IP-1（8\ast8）$对$R_{16}L_{16}$进行置换得到密文<br>交换表$IP$：<figure class="highlight basic"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">58 </span> <span class="number">50</span>  <span class="number">42</span>  <span class="number">34</span>  <span class="number">26</span>  <span class="number">18</span>  <span class="number">10</span>  <span class="number">2</span></span><br><span class="line"><span class="symbol">60 </span> <span class="number">52</span>  <span class="number">44</span>  <span class="number">36</span>  <span class="number">28</span>  <span class="number">20</span>  <span class="number">12</span>  <span class="number">4</span></span><br><span class="line"><span class="symbol">62 </span> <span class="number">54</span>  <span class="number">46</span>  <span class="number">38</span>  <span class="number">30</span>  <span class="number">22</span>  <span class="number">14</span>  <span class="number">6</span></span><br><span class="line"><span class="symbol">64 </span> <span class="number">56</span>  <span class="number">48</span>  <span class="number">40</span>  <span class="number">32</span>  <span class="number">24</span>  <span class="number">16</span>  <span class="number">8</span></span><br><span class="line"><span class="symbol">57 </span> <span class="number">49</span>  <span class="number">41</span>  <span class="number">33</span>  <span class="number">25</span>  <span class="number">17</span>  <span class="number">9</span>   <span class="number">1</span></span><br><span class="line"><span class="symbol">59 </span> <span class="number">51</span>  <span class="number">43</span>  <span class="number">35</span>  <span class="number">27</span>  <span class="number">19</span>  <span class="number">11</span>  <span class="number">3</span></span><br><span class="line"><span class="symbol">61 </span> <span class="number">53</span>  <span class="number">45</span>  <span class="number">37</span>  <span class="number">29</span>  <span class="number">21</span>  <span class="number">13</span>  <span class="number">5</span></span><br><span class="line"><span class="symbol">63 </span> <span class="number">55</span>  <span class="number">47</span>  <span class="number">39</span>  <span class="number">31</span>  <span class="number">23</span>  <span class="number">15</span>  <span class="number">7</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>$E$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200233.png"></p>
+<p> $S$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200503.png"></p>
+<p>$P$盒：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200612.png"><br>交换表$IP-1$：<br><img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200417200621.png"></p>
+<h2 id="3-参考链接"><a href="#3-参考链接" class="headerlink" title="3 参考链接"></a>3 参考链接</h2><ol>
+<li><a href="http://www.doc88.com/p-9909383710144.html" target="_blank" rel="noopener">道客巴巴</a></li>
+<li><a href="https://blog.csdn.net/yxtxiaotian/article/details/52025653" target="_blank" rel="noopener">DES加解密算法</a></li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -541,9 +531,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/热传导方程/" rel="tag"># 热传导方程</a>
-          
-            <a href="/tags/Cauchy-问题/" rel="tag"># Cauchy 问题</a>
+            <a href="/tags/DES/" rel="tag"># DES</a>
           
         </div>
       
@@ -556,8 +544,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/fcf1.html" rel="next" title="Markdown中LaTeX编写技巧">
-                <i class="fa fa-chevron-left"></i> Markdown中LaTeX编写技巧
+              <a href="/p/21593.html" rel="next" title="热传导方程的 Cauchy 问题">
+                <i class="fa fa-chevron-left"></i> 热传导方程的 Cauchy 问题
               </a>
             
           </div>
@@ -566,8 +554,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/cdea.html" rel="prev" title="DES数据加密标准">
-                DES数据加密标准 <i class="fa fa-chevron-right"></i>
+              <a href="/p/57886.html" rel="prev" title="【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks">
+                【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -599,7 +587,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -740,7 +732,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -754,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-热传导方程"><span class="nav-text">3 热传导方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-热传导方程的-Cauchy-问题"><span class="nav-text">3.1 热传导方程的 Cauchy 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.1 齐次热传导方程的 Cauchy 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-非齐次热传导方程的-Cauchy-问题"><span class="nav-text">3.1.2 非齐次热传导方程的 Cauchy 问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-热传导方程的混合问题"><span class="nav-text">3.2 热传导方程的混合问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-半直线上热传导方程与热的反射"><span class="nav-text">3.2.1 半直线上热传导方程与热的反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-有限区间上的热传导方程与分离变量法"><span class="nav-text">3.2.1 有限区间上的热传导方程与分离变量法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-加密算法的分类"><span class="nav-text">1 加密算法的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DES加密算法"><span class="nav-text">2 DES加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-转换方法"><span class="nav-text">2.1 转换方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-对密钥K（64位）"><span class="nav-text">2.2 对密钥K（64位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-对明文（64位）加密："><span class="nav-text">2.3 对明文（64位）加密：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-参考链接"><span class="nav-text">3 参考链接</span></a></li></ol></div>
             
 
           </div>
@@ -978,30 +969,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

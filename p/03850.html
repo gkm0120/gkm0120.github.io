@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="git,">
+  <meta name="keywords" content="git,Nodejs,">
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="一些常见Git报错处理">
-<meta name="keywords" content="git">
+<meta name="description" content="Git、Node.js安装">
+<meta name="keywords" content="git,Nodejs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常见报错及处理方法">
-<meta property="og:url" content="https://gkm0120.github.io/article/d3ea.html">
+<meta property="og:title" content="Git和Node.js安装">
+<meta property="og:url" content="https://gkm0120.github.io/p/03850.html">
 <meta property="og:site_name" content="孔明の博客">
-<meta property="og:description" content="一些常见Git报错处理">
+<meta property="og:description" content="Git、Node.js安装">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-18T06:49:20.322Z">
+<meta property="og:updated_time" content="2021-03-31T01:33:58.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常见报错及处理方法">
-<meta name="twitter:description" content="一些常见Git报错处理">
+<meta name="twitter:title" content="Git和Node.js安装">
+<meta name="twitter:description" content="Git、Node.js安装">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/d3ea.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/03850.html">
 
 
 
 
 
-  <title>Git常见报错及处理方法 | 孔明の博客</title>
+  <title>Git和Node.js安装 | 孔明の博客</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/d3ea.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/03850.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git常见报错及处理方法</h1>
+          <h1 class="post-title" itemprop="name headline">Git和Node.js安装</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-16T14:03:03+08:00">
-                2020-03-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-17T13:07:25+08:00">
+                2020-03-17
               </time>
             
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/d3ea.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/d3ea.html" itemprop="commentCount"></span>
+                <a href="/p/03850.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/03850.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  740
+                  378
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3 min
+                  1 min
                 </span>
               
             </div>
@@ -407,42 +407,39 @@
       
 
       
-        <p>一些常见Git报错处理</p>
+        <p>Git、Node.js安装</p>
 <a id="more"></a>
 
-<h2 id="Git常见报错及处理方法"><a href="#Git常见报错及处理方法" class="headerlink" title="Git常见报错及处理方法"></a>Git常见报错及处理方法</h2><h3 id="Error-1"><a href="#Error-1" class="headerlink" title="Error 1"></a>Error 1</h3><p><strong>Fatal:remote origin already exists.</strong><br>如果输入<code>$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git</code><br>提示出错信息：<code>fatal: remote origin already exists</code>.</p>
-<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><ol>
-<li>先输入<code>$ git remote rm origin</code></li>
-<li>再输入<code>$ git remote add origin git@github.com:gkm0120/gkm0120.github.io.git</code> 就不会报错了！</li>
-<li>若输入<code>$ git remote rm origin</code> 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容</li>
-<li>找到你的github的安装路径，我的是C:/Users/gkm0120/.git</li>
-<li>找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！</li>
+<h2 id="Git和Node-js重新安装"><a href="#Git和Node-js重新安装" class="headerlink" title="Git和Node.js重新安装"></a>Git和Node.js重新安装</h2><h3 id="1-Git安装教程"><a href="#1-Git安装教程" class="headerlink" title="1 Git安装教程"></a>1 Git安装教程</h3><h4 id="1-1-Git下载地址"><a href="#1-1-Git下载地址" class="headerlink" title="1.1 Git下载地址"></a>1.1 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git下载地址</a></h4><h4 id="1-2-安装步骤："><a href="#1-2-安装步骤：" class="headerlink" title="1.2 安装步骤："></a>1.2 安装步骤：</h4><ol>
+<li>点击next</li>
+<li>根据自己想安装软件的位置来选择路径(我这里选择的是D:\blog)</li>
+<li>安装配置文件，自己需要选择</li>
+<li>不创建启动文件夹（勾选Don’t create a Star Menu folder）</li>
+<li>选择默认编辑器</li>
+<li>点击Next(Git from the command…)</li>
+<li>使用默认设置就行(use the OpenSSL libuary)</li>
+<li>默认(Checkout Windows-style,…)</li>
+<li>在终端模拟器选择页面，默认即可，配置后Git</li>
+<li>最后配置Git额外选择默认安装</li>
+<li>安装完成（鼠标右键出现Git GUI Here和Git Bash Here）</li>
 </ol>
-<h3 id="Error-2"><a href="#Error-2" class="headerlink" title="Error 2"></a>Error 2</h3><p><strong>Permission denied (publickey)</strong><br>如果输入<code>$ ssh -T git@github.com</code>出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。</p>
-<h4 id="解决办法：-1"><a href="#解决办法：-1" class="headerlink" title="解决办法："></a>解决办法：</h4><ol>
-<li>先输入<code>$ ssh-agent</code>，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。</li>
-<li>如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。</li>
-<li>最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。</li>
-</ol>
-<h3 id="Error-3"><a href="#Error-3" class="headerlink" title="Error 3"></a>Error 3</h3><p><strong>Failed to push some refs to…</strong><br>如果输入<code>$ git push origin master</code>提示出错信息：error: failed to push some refs to ‘git@github.com:gkm0120/-.git’错误分析：本地没有update到最新版本的项目（git上有README.md文件没下载下来）、本地直接push所以会出错。</p>
-<h4 id="解决办法：-2"><a href="#解决办法：-2" class="headerlink" title="解决办法："></a>解决办法：</h4><h5 id="First"><a href="#First" class="headerlink" title="First"></a>First</h5><p>输入 <code>$ git pull --rebase origin master</code>……显示一串拉代码的英文，此时已经把github上最新的文件，然后在输入git push origin master,即可成功把本地的文件都上传到github上面去了，<code>$ git push origin master</code></p>
-<h5 id="Second"><a href="#Second" class="headerlink" title="Second"></a>Second</h5><ol>
-<li>先输入<code>$ git pull origin master</code> //先把远程服务器github上面的文件拉下来</li>
-<li>再输入<code>$ git push origin master</code></li>
-<li>如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.</li>
-<li>则需要重新输入<code>$ git remote add origin git@github.com:gkm0120/gkm0120.github.io.git</code><br>使用git在本地创建一个项目的过程</li>
-</ol>
-<ul>
-<li>$ makdir ~/hello-world //创建一个项目hello-world</li>
-<li>$ cd ~/hello-world  //打开这个项目</li>
-<li>$ git init //初始化</li>
-<li>$ git add README //更新README文件</li>
-<li>$ git commit -m ‘first commit’ //提交更新，并注释信息“first commit”</li>
-<li>$ git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:gkm0120/gkm0120.github.io.git //连接远程github项目</li>
-<li>$ git push -u origin master //将本地项目更新到github项目上去</li>
+<hr>
+<h3 id="2-Node-js安装"><a href="#2-Node-js安装" class="headerlink" title="2 Node.js安装"></a>2 Node.js安装</h3><h4 id="2-1-Node-js下载地址"><a href="#2-1-Node-js下载地址" class="headerlink" title="2.1 Node.js下载地址"></a>2.1 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js下载地址</a></h4><h4 id="2-2-安装步骤"><a href="#2-2-安装步骤" class="headerlink" title="2.2 安装步骤:"></a>2.2 安装步骤:</h4><ol>
+<li>下载完成后，开始安装</li>
+<li>接受协议</li>
+<li>根据自己要安装的地方选择安装目录(我这里选择D:\blog\node.js路径下)</li>
+<li>选择安装项，一般默认</li>
+<li>点击“Install”按钮，开始安装，完成安装</li>
+<li>检验：<ul>
+<li>node -v 查看 node 版本</li>
+<li>npm -v 查看 npm 版本</li>
 </ul>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
-<li><a href="https://blog.csdn.net/Umbrella_Um/article/details/97271486" target="_blank" rel="noopener">https://blog.csdn.net/Umbrella_Um/article/details/97271486</a></li>
+</li>
+</ol>
+<hr>
+<h3 id="3、环境配置"><a href="#3、环境配置" class="headerlink" title="3、环境配置"></a>3、环境配置</h3><ol>
+<li>设置环境变量，“我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”</li>
+<li>在用户变量里选择Path，点击新建，在弹出的框中点击新建，然后在其中添加D:\blog\Node.js\node_modules</li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -510,6 +507,8 @@
           
             <a href="/tags/git/" rel="tag"># git</a>
           
+            <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
+          
         </div>
       
 
@@ -521,14 +520,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/p/00952.html" rel="next" title="Git常见报错及处理方法">
+                <i class="fa fa-chevron-left"></i> Git常见报错及处理方法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/7966.html" rel="prev" title="Git和Node.js安装">
-                Git和Node.js安装 <i class="fa fa-chevron-right"></i>
+              <a href="/p/30012.html" rel="prev" title="球体的细分逼近程序">
+                球体的细分逼近程序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +563,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -701,7 +708,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -715,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git常见报错及处理方法"><span class="nav-text">Git常见报错及处理方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-1"><span class="nav-text">Error 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法："><span class="nav-text">解决办法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-2"><span class="nav-text">Error 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法：-1"><span class="nav-text">解决办法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-3"><span class="nav-text">Error 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法：-2"><span class="nav-text">解决办法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#First"><span class="nav-text">First</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Second"><span class="nav-text">Second</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git和Node-js重新安装"><span class="nav-text">Git和Node.js重新安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Git安装教程"><span class="nav-text">1 Git安装教程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Git下载地址"><span class="nav-text">1.1 Git下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-安装步骤："><span class="nav-text">1.2 安装步骤：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Node-js安装"><span class="nav-text">2 Node.js安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Node-js下载地址"><span class="nav-text">2.1 Node.js下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-安装步骤"><span class="nav-text">2.2 安装步骤:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、环境配置"><span class="nav-text">3、环境配置</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -939,30 +945,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

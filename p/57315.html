@@ -89,14 +89,14 @@
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+GitHub+matery博客美化教程">
-<meta property="og:url" content="https://gkm0120.github.io/article/138c.html">
+<meta property="og:url" content="https://gkm0120.github.io/p/57315.html">
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="更换主题模板，实现个性化定制">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/14.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/15.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shw2018/cdn/master/blog_files/img/Hexo-Blog-Tutorial/17.png">
-<meta property="og:updated_time" content="2021-03-18T02:18:34.339Z">
+<meta property="og:updated_time" content="2021-03-31T01:35:26.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+GitHub+matery博客美化教程">
 <meta name="twitter:description" content="更换主题模板，实现个性化定制">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/138c.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/57315.html">
 
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/138c.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/57315.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/138c.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/138c.html" itemprop="commentCount"></span>
+                <a href="/p/57315.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/57315.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -752,7 +752,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/cded.html" rel="next" title="Hill密码加密解密">
+              <a href="/p/13651.html" rel="next" title="Hill密码加密解密">
                 <i class="fa fa-chevron-left"></i> Hill密码加密解密
               </a>
             
@@ -762,7 +762,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/f4dd.html" rel="prev" title="Cohen-Sutherland编码裁剪">
+              <a href="/p/44546.html" rel="prev" title="Cohen-Sutherland编码裁剪">
                 Cohen-Sutherland编码裁剪 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -795,7 +795,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -936,7 +940,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -1174,30 +1177,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

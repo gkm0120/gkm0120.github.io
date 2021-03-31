@@ -89,7 +89,7 @@
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扫描转换算法">
-<meta property="og:url" content="https://gkm0120.github.io/article/37ba.html">
+<meta property="og:url" content="https://gkm0120.github.io/p/09543.html">
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="DDA、中点画线、Bresenham算法">
 <meta property="og:locale" content="zh-CN">
@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040306.jpg">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416202043.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200416204239.png">
-<meta property="og:updated_time" content="2021-03-18T06:53:32.200Z">
+<meta property="og:updated_time" content="2021-03-31T01:35:12.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扫描转换算法">
 <meta name="twitter:description" content="DDA、中点画线、Bresenham算法">
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/37ba.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/09543.html">
 
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/37ba.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/09543.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -355,8 +355,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/37ba.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/37ba.html" itemprop="commentCount"></span>
+                <a href="/p/09543.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/09543.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -628,7 +628,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/fa12.html" rel="next" title="Liang-Barsky裁剪算法">
+              <a href="/p/58428.html" rel="next" title="Liang-Barsky裁剪算法">
                 <i class="fa fa-chevron-left"></i> Liang-Barsky裁剪算法
               </a>
             
@@ -638,7 +638,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/fcf1.html" rel="prev" title="Markdown中LaTeX编写技巧">
+              <a href="/p/12046.html" rel="prev" title="Markdown中LaTeX编写技巧">
                 Markdown中LaTeX编写技巧 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -671,7 +671,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -812,7 +816,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -1050,30 +1053,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Liang-Barsky,">
 
 
 
@@ -85,18 +85,22 @@
 
 
 
-<meta name="description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
-<meta name="keywords" content="HPCSIP CV DeepLearning MachineLearning 计算机视觉 深度学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="快捷导航">
-<meta property="og:url" content="https://gkm0120.github.io/navigate/index.html">
+<meta name="description" content="Liang-Barsky算法的原理与代码">
+<meta name="keywords" content="Liang-Barsky">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Liang-Barsky裁剪算法">
+<meta property="og:url" content="https://gkm0120.github.io/p/58428.html">
 <meta property="og:site_name" content="孔明の博客">
-<meta property="og:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
+<meta property="og:description" content="Liang-Barsky算法的原理与代码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-17T08:09:22.139Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200413160753.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032905.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040310.jpg">
+<meta property="og:updated_time" content="2021-03-31T01:34:10.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快捷导航">
-<meta name="twitter:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)           .forEach(el =&amp;gt; {             if (!el.dataset.src) { return; }             const img = document.createElement(&apos;img&apos;);             img.style">
+<meta name="twitter:title" content="Liang-Barsky裁剪算法">
+<meta name="twitter:description" content="Liang-Barsky算法的原理与代码">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200413160753.png">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/navigate/">
+  <link rel="canonical" href="https://gkm0120.github.io/p/58428.html">
 
 
 
 
 
-  <title>快捷导航 | 孔明の博客</title>
+  <title>Liang-Barsky裁剪算法 | 孔明の博客</title>
   
 
 
@@ -260,24 +264,188 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/58428.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="戈孔明">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孔明の博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">快捷导航</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <script>
+          <h1 class="post-title" itemprop="name headline">Liang-Barsky裁剪算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:38:16+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图形图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图形图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/p/58428.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/58428.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Liang-Barsky算法的原理与代码</p>
+<a id="more"></a>
+
+<h2 id="Liang-Barsky裁剪算法"><a href="#Liang-Barsky裁剪算法" class="headerlink" title="Liang-Barsky裁剪算法"></a>Liang-Barsky裁剪算法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>用参数方程表示一条直线，用方程表示直线$P_{1}P_{2}$，其中$t$就是直线的斜率，$\mathrm{t} \in[0,1]:$</li>
+</ol>
+<p>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>x(t)=x_{1}+\left(x_{2}-x_{1}\right) t&amp;=x_{1}+t \Delta x  \qquad 0&lt;t&lt;1 \\<br>y(t)=y_{1}+\left(y_{2}-y_{1}\right) t&amp;=y_{1}+t \Delta y  \qquad 0&lt;t&lt;1<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20200413160753.png">
+裁剪区域内部可以表达为两个不等式：
+
+<p>$$\begin{aligned}<br>&amp;x_{L}&lt;x&lt;x_{R}\<br>&amp;y_{B}&lt;y&lt;y_{T}<br>\end{aligned}$$<br>把直线方程代入得到不等式：<br>$$ \begin{equation}<br>\left\{<br>\begin{aligned}<br>&amp; -t \Delta x&lt;x_{1}-x_{L} &amp; t \Delta x&lt;x_{R}-x_{1} \\<br>&amp; -t \Delta y&lt;y_{1}-y_{B} &amp; t \Delta y&lt;y_{T}-y_{1}<br>\end{aligned}<br>\right.<br>\end{equation} $$</p>
+<p>即<br>$$t d_{i}&lt;q_{i} \quad i=1,2,3,4$$</p>
+<p>$$\begin{array}{llll}<br>d_{1}=-\Delta x &amp; d_{2}=\Delta x &amp; d_{3}=-\Delta y &amp; d_{4}=\Delta y \\<br>q_{1}=x_{1}-x_{L} &amp; q_{2}=x_{R}-x_{1} &amp; q_{3}=y_{1}-y_{B} &amp; q_{4}=y_{T}-y_{1}<br>\end{array}$$</p>
+<ol start="2">
+<li>把被裁剪的红色直线段看成是一条有方向的线段，把窗口的四条边分成两类：<br>入边：左边界和下边界——从裁剪框外向裁剪框内<br>出边：右边界和上边界——从裁剪框内向裁剪框外<br><img src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032905.png" alt="出边与入边"></li>
+<li>分情况讨论</li>
+</ol>
+<ul>
+<li>$ d=0 :$<br>$ q&lt;0 $,  说明直线与裁剪框平行，并且位于裁剪框的外面，直线为不可见，可抛弃，直接结束；<br>$ q\geq0 $，说明直线在它所平行的窗口边界的内部，还需进一步计算确定直线是否在窗口内、外、或者相交</li>
+<li>$ d&lt;0 $，说明直线是从裁剪边界的外部延伸到内部</li>
+<li>$ d&gt;0 $, 说明直线是从裁剪边界的内部延伸到外部<br>对于$ d\neq0 $，可以利用式子计算直线与边界k的交点的参数$ u $。对于每条直线，可以计算直线位于裁剪窗口内线段的参数$ d_1 $和$ d_2 $.<br>$ d_1 $的值是由那些使得直线是从外部延伸到内部的窗口边界决定。对于这些边计算$ r_i=q_i/d_i $，$ d_i= max(r_i,0) $.<br>$ d_2 $的值是由那些使得直线是从内部延伸到窗口边界决定，$ d_2=min(r_i,1) $.<br>如果$ d_1 $$ d_2 $这条直线完全在窗口的外面，不可见，可抛弃，否则，根据参数$ u $的两个值，计算出裁剪后线段的端点.</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
+<p>代码的思路：画一个矩形，来作为一个裁剪窗口，然后画一条黄色的直线。如果直线没有经过矩形区域，则为黄色，如果穿过矩形区域，则使用Liang-Barskey算法来进行裁剪，裁剪之后，再进行画一条黑色的直线来覆盖。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*liang-barsky.cpp*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ww 640   <span class="comment">//屏幕的宽度</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> wh 480   <span class="comment">//屏幕的高度</span></span></span><br><span class="line"><span class="keyword">int</span> xs, ys, xb, yb;</span><br><span class="line"><span class="keyword">int</span> rl = <span class="number">200</span>, rb = <span class="number">200</span>;</span><br><span class="line"><span class="keyword">int</span> rr = <span class="number">400</span>, rt = <span class="number">400</span>;</span><br><span class="line"><span class="keyword">bool</span> first;</span><br><span class="line"><span class="comment">//画线的方法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lineNew</span><span class="params">(<span class="keyword">int</span> x0, <span class="keyword">int</span> y0, <span class="keyword">int</span> xEnd, <span class="keyword">int</span> yEnd)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">  glColor3f(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);  <span class="comment">//画黄色</span></span><br><span class="line">  glLineWidth(<span class="number">3</span>);</span><br><span class="line">  glBegin(GL_LINES);</span><br><span class="line">  glVertex2f(x0, y0);</span><br><span class="line">  glVertex2f(xEnd, yEnd);</span><br><span class="line">  glEnd();</span><br><span class="line"></span><br><span class="line">  glFlush();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myDisplay</span><span class="params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">  glClear(GL_COLOR_BUFFER_BIT); <span class="comment">//清空颜色缓冲池</span></span><br><span class="line">  glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>); <span class="comment">//设置绘图颜色</span></span><br><span class="line">  glRectf(rl,rb,rr,rt); <span class="comment">//绘制矩形</span></span><br><span class="line">  glFlush(); <span class="comment">//执行OpenGL指令列表中的指令</span></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ClipT</span><span class="params">(<span class="keyword">float</span> p, <span class="keyword">float</span> q, <span class="keyword">float</span> *u1, <span class="keyword">float</span> *u2)</span> </span>{</span><br><span class="line">  <span class="keyword">float</span> r;</span><br><span class="line">  <span class="keyword">if</span> (p &lt; <span class="number">0</span>) {</span><br><span class="line">    r = q / p;</span><br><span class="line">    <span class="keyword">if</span> (r &gt; *u2) {</span><br><span class="line">      <span class="keyword">return</span> FALSE;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (r &gt; *u1) {</span><br><span class="line">      *u1 = r;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (p &gt; <span class="number">0</span>) {</span><br><span class="line">    r = q / p;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; *u1) {</span><br><span class="line">      <span class="keyword">return</span> FALSE;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (r &lt; *u2) {</span><br><span class="line">      *u2 = r;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> q &gt;= <span class="number">0</span>;</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LB_LineClip</span><span class="params">(<span class="keyword">float</span> x1, <span class="keyword">float</span> y1, <span class="keyword">float</span> x2, <span class="keyword">float</span> y2, <span class="keyword">float</span> XL, <span class="keyword">float</span> XR, <span class="keyword">float</span> YB, <span class="keyword">float</span> YT)</span> </span>{</span><br><span class="line">  <span class="keyword">float</span> dx, dy, u1, u2;</span><br><span class="line">  u1 = <span class="number">0</span>;</span><br><span class="line">  u2 = <span class="number">1</span>;</span><br><span class="line">  dx = x2 - x1;</span><br><span class="line">  dy = y2 - y1;</span><br><span class="line">  <span class="keyword">if</span> (ClipT(-dx,x1-XL,&amp;u1,&amp;u2)) {</span><br><span class="line">    <span class="keyword">if</span> (ClipT(dx, XR - x1, &amp;u1, &amp;u2)) {</span><br><span class="line">      <span class="keyword">if</span> (ClipT(-dy, y1 - YB, &amp;u1, &amp;u2)) {</span><br><span class="line">        <span class="keyword">if</span> (ClipT(dy, YT - y1, &amp;u1, &amp;u2)) {</span><br><span class="line">          glLineWidth(<span class="number">3</span>);</span><br><span class="line">          glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);<span class="comment">//黑色</span></span><br><span class="line">          glBegin(GL_LINES);</span><br><span class="line"></span><br><span class="line">          glVertex2f(x1 + u1 * dx, y1 + u1 * dy);</span><br><span class="line">          glVertex2f(x1 + u2 * dx, y1 + u2 * dy);</span><br><span class="line">          glEnd();</span><br><span class="line">          glFlush();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span> </span>{</span><br><span class="line">  glClearColor(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>); <span class="comment">//即窗口的背景色</span></span><br><span class="line">  glClear(GL_COLOR_BUFFER_BIT);      <span class="comment">//清除颜色缓冲区，即窗口的背景色</span></span><br><span class="line">  glMatrixMode(GL_MODELVIEW);</span><br><span class="line">  glLoadIdentity();</span><br><span class="line">  gluOrtho2D(<span class="number">0.0</span>,ww, <span class="number">0.0</span>, wh);</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myMouse0</span><span class="params">(<span class="keyword">int</span> button, <span class="keyword">int</span> state, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  glBegin(GL_POINTS);</span><br><span class="line">  <span class="keyword">if</span> (button == GLUT_LEFT_BUTTON)</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span> (state == GLUT_DOWN) {</span><br><span class="line">      xs = x;</span><br><span class="line">      ys = wh - y;</span><br><span class="line">      glVertex2i(xs, ys);</span><br><span class="line">      first = <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> {</span><br><span class="line">      xb = x;</span><br><span class="line">      yb = wh - y;</span><br><span class="line">      first = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (first) {</span><br><span class="line">      lineNew(xs, ys, xb, yb);</span><br><span class="line">      LB_LineClip(xs, ys, xb, yb, rl, rr, rb, rt);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  }</span><br><span class="line">  glEnd();</span><br><span class="line">  glFlush(); <span class="comment">//glFlush()清空缓冲区，将指令送往缓硬件立即执行</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);</span><br><span class="line">  glutInitWindowSize(ww, wh);</span><br><span class="line">  glutInitWindowPosition(<span class="number">100</span>, <span class="number">150</span>);</span><br><span class="line">  glutCreateWindow(<span class="string">"Liang-Barskey"</span>);</span><br><span class="line">  Init();</span><br><span class="line">  glutDisplayFunc(myDisplay);</span><br><span class="line">  glutMouseFunc(myMouse0);</span><br><span class="line"></span><br><span class="line">  glutMainLoop();  <span class="comment">//持续显示，当窗口改变会重新绘制图形</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<img width="300" height="200" src="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040310.jpg">
+
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol>
+<li><a href="https://blog.csdn.net/weixin_34202952/article/details/94224985?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">Liang-Barsky算法</a></li>
+<li><a href="https://blog.csdn.net/pleasecallmewhy/article/details/8393445" target="_blank" rel="noopener">[OpenGL]计算机图形学：直线裁剪算法中Cohen-Sutherland算法和Liang-Barsky算法</a></li>
+<li><a href="https://blog.csdn.net/ding_programmer/article/details/90414243?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">Liang-Barskey算法以及代码实现</a></li>
+</ol>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -296,15 +464,96 @@
             document.body.appendChild(img);
           });
       </script>
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Liang-Barsky/" rel="tag"># Liang-Barsky</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/86344.html" rel="next" title="使用Git批量上传图片">
+                <i class="fa fa-chevron-left"></i> 使用Git批量上传图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/09543.html" rel="prev" title="扫描转换算法">
+                扫描转换算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -346,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -455,6 +713,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Liang-Barsky裁剪算法"><span class="nav-text">Liang-Barsky裁剪算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考链接"><span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

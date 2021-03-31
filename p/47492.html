@@ -89,14 +89,14 @@
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sierpinski 镂垫程序">
-<meta property="og:url" content="https://gkm0120.github.io/article/d9d1.html">
+<meta property="og:url" content="https://gkm0120.github.io/p/47492.html">
 <meta property="og:site_name" content="孔明の博客">
 <meta property="og:description" content="用C++实现三个 Sierpinski 镂垫程序">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040312.jpg">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040313.jpg">
-<meta property="og:updated_time" content="2021-03-18T06:52:58.127Z">
+<meta property="og:updated_time" content="2021-03-31T01:34:44.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sierpinski 镂垫程序">
 <meta name="twitter:description" content="用C++实现三个 Sierpinski 镂垫程序">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://gkm0120.github.io/article/d9d1.html">
+  <link rel="canonical" href="https://gkm0120.github.io/p/47492.html">
 
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/article/d9d1.html">
+    <link itemprop="mainEntityOfPage" href="https://gkm0120.github.io/p/47492.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="戈孔明">
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/article/d9d1.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/article/d9d1.html" itemprop="commentCount"></span>
+                <a href="/p/47492.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/47492.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -513,7 +513,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/article/1454.html" rel="next" title="球体的细分逼近程序">
+              <a href="/p/30012.html" rel="next" title="球体的细分逼近程序">
                 <i class="fa fa-chevron-left"></i> 球体的细分逼近程序
               </a>
             
@@ -523,7 +523,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/article/cded.html" rel="prev" title="Hill密码加密解密">
+              <a href="/p/13651.html" rel="prev" title="Hill密码加密解密">
                 Hill密码加密解密 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -556,7 +556,11 @@
 
   
     <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
     </div>
+
   
 
 
@@ -697,7 +701,6 @@
           
 
           
-
         </div>
       </section>
 
@@ -935,30 +938,50 @@ runtime_span.innerHTML="本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gkm0120',
+            repo: 'gkm0120.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '52833d4e9cc0993dd9d8b112011915f095048380',
+            
+                client_id: '6a4708bb548d9ee47cfd'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: true,
-        appId: 'EJkE1pAGJj5cqmMY6l6NpT99-gzGzoHsz',
-        appKey: 'RTVAilcFrOp07kcypuXbY3cG',
-        placeholder: '留下你的足迹呗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 
