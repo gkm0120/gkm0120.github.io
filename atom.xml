@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.github.io/"/>
-  <updated>2021-03-31T01:36:36.690Z</updated>
+  <updated>2021-04-07T01:37:02.993Z</updated>
   <id>https://gkm0120.github.io/</id>
   
   <author>
@@ -17,11 +17,111 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图网络开放数据集</title>
+    <link href="https://gkm0120.github.io/p/44728.html"/>
+    <id>https://gkm0120.github.io/p/44728.html</id>
+    <published>2021-04-06T13:14:01.000Z</published>
+    <updated>2021-04-07T01:37:02.993Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;完成图相关的任务，各种测试GNN性能的数据集。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="图神经网络GNN" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CGNN/"/>
+    
+    
+      <category term="数据集" scheme="https://gkm0120.github.io/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TeX Live 2021 从卸载到安装指南（WIN10）</title>
+    <link href="https://gkm0120.github.io/p/59473.html"/>
+    <id>https://gkm0120.github.io/p/59473.html</id>
+    <published>2021-04-06T12:54:20.000Z</published>
+    <updated>2021-04-06T13:24:34.614Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WIN10下TeX Live 2021 的下载安装和TeXstudio安装。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LaTeX" scheme="https://gkm0120.github.io/categories/LaTeX/"/>
+    
+    
+      <category term="texlive安装" scheme="https://gkm0120.github.io/tags/texlive%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB 学习过程常用命令记录 (绘图)</title>
+    <link href="https://gkm0120.github.io/p/32467.html"/>
+    <id>https://gkm0120.github.io/p/32467.html</id>
+    <published>2021-04-05T03:01:12.000Z</published>
+    <updated>2021-04-06T12:30:38.071Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MATLAB中一些基本图像的绘制。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/categories/MATLAB/"/>
+    
+    
+      <category term="matlab绘图" scheme="https://gkm0120.github.io/tags/matlab%E7%BB%98%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB 学习过程常用命令记录 (函数)</title>
+    <link href="https://gkm0120.github.io/p/47321.html"/>
+    <id>https://gkm0120.github.io/p/47321.html</id>
+    <published>2021-04-05T02:26:26.000Z</published>
+    <updated>2021-04-06T12:30:03.662Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MATLAB中一些基本函数的用法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/categories/MATLAB/"/>
+    
+    
+      <category term="matlab函数" scheme="https://gkm0120.github.io/tags/matlab%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git 教程</title>
+    <link href="https://gkm0120.github.io/p/24301.html"/>
+    <id>https://gkm0120.github.io/p/24301.html</id>
+    <published>2021-04-03T12:32:27.000Z</published>
+    <updated>2021-04-07T01:48:48.688Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于Git的简介、版本控制、远程仓库、创建分支、标签等用法介绍。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
+    
+    
+      <category term="git配置" scheme="https://gkm0120.github.io/tags/git%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【图像分类—ResNet V1】Deep Residual Learning for Image Recognition</title>
     <link href="https://gkm0120.github.io/p/63258.html"/>
     <id>https://gkm0120.github.io/p/63258.html</id>
     <published>2021-01-18T14:32:38.000Z</published>
-    <updated>2021-03-31T01:36:36.690Z</updated>
+    <updated>2021-04-06T12:11:24.130Z</updated>
     
     <summary type="html">
     
@@ -41,7 +141,7 @@
     <link href="https://gkm0120.github.io/p/19637.html"/>
     <id>https://gkm0120.github.io/p/19637.html</id>
     <published>2021-01-16T13:43:36.000Z</published>
-    <updated>2021-03-31T01:36:26.430Z</updated>
+    <updated>2021-04-06T12:12:23.639Z</updated>
     
     <summary type="html">
     
@@ -81,7 +181,7 @@
     <link href="https://gkm0120.github.io/p/41470.html"/>
     <id>https://gkm0120.github.io/p/41470.html</id>
     <published>2020-12-18T02:11:52.000Z</published>
-    <updated>2021-03-31T01:36:06.723Z</updated>
+    <updated>2021-04-06T12:13:06.129Z</updated>
     
     <summary type="html">
     
@@ -101,7 +201,7 @@
     <link href="https://gkm0120.github.io/p/19719.html"/>
     <id>https://gkm0120.github.io/p/19719.html</id>
     <published>2020-12-17T12:01:47.000Z</published>
-    <updated>2021-03-31T01:35:57.436Z</updated>
+    <updated>2021-04-06T12:13:29.588Z</updated>
     
     <summary type="html">
     
@@ -141,7 +241,7 @@
     <link href="https://gkm0120.github.io/p/88644.html"/>
     <id>https://gkm0120.github.io/p/88644.html</id>
     <published>2020-12-08T06:47:58.000Z</published>
-    <updated>2021-03-31T01:35:48.836Z</updated>
+    <updated>2021-04-06T12:14:01.673Z</updated>
     
     <summary type="html">
     
@@ -245,7 +345,7 @@
     <link href="https://gkm0120.github.io/p/09543.html"/>
     <id>https://gkm0120.github.io/p/09543.html</id>
     <published>2020-03-31T08:33:52.000Z</published>
-    <updated>2021-03-31T01:35:12.540Z</updated>
+    <updated>2021-04-05T01:47:55.861Z</updated>
     
     <summary type="html">
     
@@ -319,108 +419,6 @@
       <category term="OpenGL" scheme="https://gkm0120.github.io/tags/OpenGL/"/>
     
       <category term="Cohen-Sutherland" scheme="https://gkm0120.github.io/tags/Cohen-Sutherland/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo+GitHub+matery博客美化教程</title>
-    <link href="https://gkm0120.github.io/p/57315.html"/>
-    <id>https://gkm0120.github.io/p/57315.html</id>
-    <published>2020-03-21T15:48:07.000Z</published>
-    <updated>2021-03-31T01:35:26.954Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;更换主题模板，实现个性化定制&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="博客搭建" scheme="https://gkm0120.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-    
-      <category term="Hexo" scheme="https://gkm0120.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hill密码加密解密</title>
-    <link href="https://gkm0120.github.io/p/13651.html"/>
-    <id>https://gkm0120.github.io/p/13651.html</id>
-    <published>2020-03-20T14:39:30.000Z</published>
-    <updated>2021-03-31T01:33:19.182Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;用C++实现Hill密码加解密&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="密码学" scheme="https://gkm0120.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
-    
-      <category term="Hill" scheme="https://gkm0120.github.io/tags/Hill/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sierpinski 镂垫程序</title>
-    <link href="https://gkm0120.github.io/p/47492.html"/>
-    <id>https://gkm0120.github.io/p/47492.html</id>
-    <published>2020-03-19T10:12:31.000Z</published>
-    <updated>2021-03-31T01:34:44.914Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;用C++实现三个 Sierpinski 镂垫程序&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>球体的细分逼近程序</title>
-    <link href="https://gkm0120.github.io/p/30012.html"/>
-    <id>https://gkm0120.github.io/p/30012.html</id>
-    <published>2020-03-18T08:42:54.000Z</published>
-    <updated>2021-03-31T01:34:34.443Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;用C++实现四面体递归逼近球体&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="图形图像处理" scheme="https://gkm0120.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git和Node.js安装</title>
-    <link href="https://gkm0120.github.io/p/03850.html"/>
-    <id>https://gkm0120.github.io/p/03850.html</id>
-    <published>2020-03-17T05:07:25.000Z</published>
-    <updated>2021-03-31T01:33:58.910Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Git、Node.js安装&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Git" scheme="https://gkm0120.github.io/categories/Git/"/>
-    
-    
-      <category term="git" scheme="https://gkm0120.github.io/tags/git/"/>
-    
-      <category term="Nodejs" scheme="https://gkm0120.github.io/tags/Nodejs/"/>
     
   </entry>
   

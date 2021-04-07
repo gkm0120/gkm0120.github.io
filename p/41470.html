@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194102.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194107.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/20210318194113.png">
-<meta property="og:updated_time" content="2021-03-31T01:36:06.723Z">
+<meta property="og:updated_time" content="2021-04-06T12:13:06.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像分类—NIN】Network in Network">
 <meta name="twitter:description" content="文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。">
@@ -399,7 +399,7 @@
                 </span>
                 
                 <span title="Words count in article">
-                  6.7k
+                  6.6k
                 </span>
               
 
@@ -444,9 +444,6 @@
 
 <h1 id="一、论文翻译"><a href="#一、论文翻译" class="headerlink" title="一、论文翻译"></a>一、论文翻译</h1><blockquote>
 <p>论文：<a href="https://arxiv.org/abs/1312.4400" target="_blank" rel="noopener">Network In Network</a></p>
-</blockquote>
-<blockquote>
-<p>文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。</p>
 </blockquote>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们提出了一种新型的深度网络结构，称为“Network In Network”（NIN），它可以增强模型在感受野（receptive field）内对局部区域（local patches）的辨别能力。传统的卷积层使用线性滤波器来扫描输入，后面接一个非线性激活函数。而我们则构建了一些结构稍复杂的微型神经网络来抽象receptive field内的数据。 我们用多层感知器实例化微型神经网络，这是一种有效的函数逼近器。特征图可以通过微型神经网络在输入上滑动得到，类似于CNN；接下来特征图被传入下一层。深度NIN可以通过堆叠上述结构实现。通过微型网络增强局部模型，我们就可以在分类层中利用所有特征图的全局平均池化层（GAP），这样更容易解释且比传统的全连接层更不容易过拟合。我们证明了NIN在CIFAR-10和CIFAR-100上得到了有史以来最佳的表现以及在SVHN和MNIST数据集上合理的表现。</p>
 <h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>卷积神经网络（CNN）由卷积层和池化层交替组成。卷积层使用线性滤波器和底层receptive field做内积，然后接一个非线性的激活函数，得到的输出称作特征图（feature map）。</p>
@@ -769,7 +766,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -780,7 +777,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -791,7 +788,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -939,7 +936,7 @@ show_date_time();
       <h3 class="widget-title">Tag Cloud</h3>
       <div id="myCanvasContainer" class="widget tagcloud">
           <canvas width="250" height="250" id="resCanvas" style="width=100%">
-              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AlexNet/">AlexNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cauchy-问题/">Cauchy 问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cohen-Sutherland/">Cohen-Sutherland</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DES/">DES</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FCN/">FCN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogLeNetV2/">GoogLeNetV2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogLeNetV3/">GoogLeNetV3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogleNetV1/">GoogleNetV1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hill/">Hill</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Liang-Barsky/">Liang-Barsky</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NiN/">NiN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenGL/">OpenGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ResNetV1/">ResNetV1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VGG/">VGG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热传导方程/">热传导方程</a><span class="tag-list-count">1</span></li></ul>
+              <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AlexNet/">AlexNet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cauchy-问题/">Cauchy 问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cohen-Sutherland/">Cohen-Sutherland</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DES/">DES</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FCN/">FCN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogLeNetV2/">GoogLeNetV2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogLeNetV3/">GoogLeNetV3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GoogleNetV1/">GoogleNetV1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hill/">Hill</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Liang-Barsky/">Liang-Barsky</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NiN/">NiN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/">Nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenGL/">OpenGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ResNetV1/">ResNetV1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VGG/">VGG</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git配置/">git配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab函数/">matlab函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab绘图/">matlab绘图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/texlive安装/">texlive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据集/">数据集</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/热传导方程/">热传导方程</a><span class="tag-list-count">1</span></li></ul>
           </canvas>
       </div>
       </div>
@@ -970,7 +967,7 @@ show_date_time();
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Site words total count">114.1k</span>
+    <span title="Site words total count">121.4k</span>
   
 </div>
 
