@@ -5,26 +5,28 @@ top: false
 cover: false
 toc: true
 mathjax: true
-summary: 一类编码裁剪算法
+summary: 
 tags:
   - OpenGL
   - Cohen-Sutherland
 categories:
-  - 计算机图形学
-abbrlink: f4dd
+  - 图形图像处理
+abbrlink: 44546
 date: 2020-03-25 21:35:08
 img:
 coverImg:
 password:
 ---
 
-## Cohen-Sutherland编码裁剪算法
-### 二维剪裁 ###
+一类编码裁剪算法
+<!--more-->
+
+### 1 二维剪裁 
 二维剪裁是在三维线段投影到投影平面之后才进行的，并且剪裁窗口是投影平面的一部分，该投影片面投影到屏幕的视口中，所有的值都可用实数表示。AB整段显示，CD整段不显示，EF和GH裁剪后显示
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020032901.jpg"/>
 
-### 原理 ###
+### 2 原理
 为避免求交（所在直线与剪裁窗口各条边的交点）运算，Cohen-Sutherland算法使用浮点减法与位操作相结合的方式代替大量浮点乘法和除法的裁剪算法。
 该算法把裁剪窗口的四条边延长，将二维空间分割成9个区域，并赋予每个区域一个唯一的四位二进制数（编码），编码的4位分别代表端点位于窗口的上、下、右、左。
 
@@ -40,7 +42,7 @@ password:
 
 > 当要处理的线段很多，而实际显示的线段很少时，Cohen-Sutherland算法非常有效
 
-### 代码 ###
+### 3 代码 
 
 ```cpp
 #include<gl/glut.h>
@@ -202,10 +204,10 @@ int main(int argc, char *argv[]){
 }
 ```
 
-### 运行结果 ###
+### 4 运行结果 
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040307.jpg"/>
 
-## 参考链接
+**参考链接**
 1. [计算机图形学-直线裁剪Cohen-Sutherland编码裁剪算法](https://blog.csdn.net/yao1373446012/article/details/78375644)
 

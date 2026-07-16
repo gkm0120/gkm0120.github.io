@@ -1,16 +1,18 @@
 ---
 title: Git和Node.js安装
-summary: Git、Node.js安装
+summary: 
 tags:
-  - Git
+  - git
   - Nodejs
 categories:
-  - 博客搭建
-abbrlink: '7966'
+  - Git
+abbrlink: 03850
 date: 2020-03-17 13:07:25
 ---
 
-## Git和Node.js重新安装
+Git、Node.js安装
+<!--more-->
+
 
 ### 1 Git安装教程
 #### 1.1 [Git下载地址](https://git-scm.com/downloads)
@@ -43,6 +45,6 @@ date: 2020-03-17 13:07:25
 
 ---
 
-### 3、环境配置
+### 3 环境配置
 1. 设置环境变量，“我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”
 2. 在用户变量里选择Path，点击新建，在弹出的框中点击新建，然后在其中添加D:\blog\Node.js\node_modules

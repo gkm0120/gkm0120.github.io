@@ -1,16 +1,19 @@
 ---
 title: Git常见报错及处理方法
-summary: 一些常见Git报错处理
+summary: 
 tags:
-  - Git
+  - git
 categories:
   - Git
-abbrlink: d3ea
+abbrlink: 00952
 date: 2020-03-16 14:03:03
 ---
 
-## Git常见报错及处理方法
-### Error 1 ###
+一些常见Git报错处理
+<!--more-->
+
+
+### Error 1 
 **Fatal:remote origin already exists.**
 如果输入`$ git remote add origin git@github.com:gkm0120（github帐号名）/gitdemo（项目名）.git`
 提示出错信息：`fatal: remote origin already exists`.
@@ -21,7 +24,7 @@ date: 2020-03-16 14:03:03
 4. 找到你的github的安装路径，我的是C:/Users/gkm0120/.git
 5. 找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！
 
-### Error 2 ###
+### Error 2 
 **Permission denied (publickey)**
 如果输入`$ ssh -T git@github.com`出现错误提示：Permission denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。
 #### 解决办法： ####
@@ -29,7 +32,7 @@ date: 2020-03-16 14:03:03
 2. 如果还是不行的话，输入ssh-add ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。
 3. 最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
 
-### Error 3 ###
+### Error 3 
 **Failed to push some refs to...**
 如果输入`$ git push origin master`提示出错信息：error: failed to push some refs to 'git@github.com:gkm0120/-.git'错误分析：本地没有update到最新版本的项目（git上有README.md文件没下载下来）、本地直接push所以会出错。
 #### 解决办法： ####
@@ -51,5 +54,5 @@ date: 2020-03-16 14:03:03
 - $ git remote add origin git@github.com:gkm0120/gkm0120.github.io.git //连接远程github项目
 - $ git push -u origin master //将本地项目更新到github项目上去
 
-## 参考链接 ##
+**参考链接**
 1. <https://blog.csdn.net/Umbrella_Um/article/details/97271486>

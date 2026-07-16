@@ -7,16 +7,18 @@ toc: true
 mathjax: true
 summary: Liang-Barsky算法的原理与代码
 tags:
-  - OpenGL
   - Liang-Barsky
 categories:
-  - 计算机图形学
-abbrlink: fa12
+  - 图形图像处理
+abbrlink: 58428
 date: 2020-03-29 21:38:16
 img:
 coverImg:
 password:
 ---
+
+Liang-Barsky算法的原理与代码
+<!--more-->
 
 ## Liang-Barsky裁剪算法
 ### 原理 ###
@@ -206,7 +208,6 @@ int main()
 }
 ```
 
-#### 结果 ####
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040310.jpg"/>
 

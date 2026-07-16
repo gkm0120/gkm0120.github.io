@@ -2,12 +2,15 @@
 title: Sierpinski 镂垫程序
 summary: 用C++实现三个 Sierpinski 镂垫程序
 tags:
-  - OpenGL
+  - C++
 categories:
-  - 计算机图形学
-abbrlink: d9d1
+  - 图形图像处理
+abbrlink: 47492
 date: 2020-03-19 18:12:31
 ---
+
+用C++实现三个 Sierpinski 镂垫程序
+<!--more-->
 
 > Sierpinski镂垫是一个非常有趣的图案，有着悠久的历史， 在分形几何中等领域里引起了人们极大地兴趣， 是用递归和随机方式定义的几何形状。
 
@@ -16,9 +19,8 @@ date: 2020-03-19 18:12:31
 2. 在三角形的3个顶点中随机选取一个，求出该顶点与初始点连线的中点，画出该中点；
 3. 将第二步中的中点作为初始点，循环第二步；
 
-## Sierpinski镂垫 ##
-### 二维Sierpinski镂垫 ###
-#### 代码 ####
+### 1 二维Sierpinski镂垫 
+#### 代码 
 ```cpp
 /*使用随机选择的顶点和中点绘制二维Sierpinski镂垫*/
 #include <windows.h>
@@ -74,12 +76,12 @@ int main(int argc,char *argv[])
 
 ```
 
-#### 结果 ####
+#### 结果 
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040314.jpg"/>
 
-### 生成 Sierpinski 镂垫的递归程序 ###
-#### 代码 ####
+### 2 生成 Sierpinski 镂垫的递归程序
+#### 代码 
 
 ```cpp
 /* 通过细分三角形的方法生成Sierpinski镂垫 */
@@ -142,12 +144,12 @@ main(int argc, char **argv)
 }
 ```
 
-#### 结果 ####
+#### 结果 
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040312.jpg"/>
 
-### 三维 Sierpinski 镂垫的递归程序
-#### 代码 ####
+### 3 三维 Sierpinski 镂垫的递归程序
+#### 代码 
 
 ```cpp
 /* 通过递归细分四面体方法生成Sierpinski镂垫 */
@@ -235,7 +237,7 @@ main(int argc, char **argv)
 }
 ```
 
-#### 结果 ####
+#### 结果 
 
 <img width = '300' height ='200' src ="https://cdn.jsdelivr.net/gh/gkm0120/CDN/images/2020040313.jpg"/>
 

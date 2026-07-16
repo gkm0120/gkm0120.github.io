@@ -5,18 +5,20 @@ top: false
 cover: false
 toc: true
 mathjax: false
-summary: 使用Git Bash 上传图片
+summary: 
 tags:
-  - jsDelivr
-  - CDN
+  - git
 categories:
-  - 批量上传图片
-abbrlink: bb97
+  - Git
+abbrlink: 86344
 date: 2020-03-27 11:06:17
 img:
 coverImg:
 password:
 ---
+
+使用Git，构建GitHub图床，批量上传图片
+<!--more-->
 
 ## 使用方法 ##
 1. 首先登录/注册GitHub，新建一个仓库，填写好仓库名，仓库描述，初始化一个 README.md 描述文件，如图所示：

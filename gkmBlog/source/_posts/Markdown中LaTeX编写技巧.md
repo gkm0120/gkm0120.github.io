@@ -1,26 +1,29 @@
 ---
 title: Markdown中LaTeX编写技巧
 author: 戈孔明
-top: true
+top: false
 cover: false
 toc: true
 mathjax: true
-summary: Markdown中LaTeX使用方法
+summary: 
 tags:
   - Markdown
-  - LaTeX
+  - latex
 categories:
-  - 编辑器
-abbrlink: fcf1
+  - LaTeX
+abbrlink: 12046
 date: 2020-04-01 21:04:57
 img:
 coverImg:
 password:
 ---
 
+Markdown中LaTeX使用方法
+<!--more-->
+
 # Markdown中LaTeX常用语法
 
-## 常用希腊字母表
+## 1 常用希腊字母表
 
 | Name       | Display      | Capital Case   | Display      | Var Case      | Display         |
 | ---------  | :----------: | -------------- | :----------: | ------------  | :-------------: |
@@ -49,7 +52,7 @@ password:
 | `\iota`    | $\iota$      |                |              |               |                 |
 | `o`        | $o$          |                |              |               |                 |
 
-## 常用特殊字符表
+## 2 常用特殊字符表
 
 | Name         | Display        | Name         | Display        | Name     | Display    | Name       | Display     |
 | -----------  | :------------: | -----------  | :------------: | -------  | :--------: | ---------  | :---------: |
@@ -135,7 +138,7 @@ password:
 | `\left \Uparrow \frac{a}{b} \right \Downarrow`      | $\left \Uparrow \frac{a}{b} \right \Downarrow$      |
 | `\left \updownarrow \frac{a}{b} \right \Updownarrow`| $\left \updownarrow \frac{a}{b} \right \Updownarrow$|
 
-## 公式语法
+## 3 公式语法
 
 - 上下标`_ ^ , _{}^{}`：
     $$ y = x_i^{a_1^2} $$
@@ -189,7 +192,7 @@ password:
 
     多次根号`\sqrt[n]`： $$ x^{2/3} = \sqrt[3]{x^2} $$
 
-## 编号
+###  编号
 
 - 插入编号：
     使用`\tag`指令指定公式的具体编号，并使用`\label`指令埋下锚点。如`y=x^2 \tag{1.5a} \label{eq:test}`：
@@ -203,15 +206,9 @@ password:
     ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
     ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 
-## 方程组
+## 4 方程组
 
 - 左侧花括号
-
-```javascript
-$(document).ready(function () {
-    alert('hello world');
-});
-```
 
 ```tex
     \begin{equation}
@@ -229,6 +226,7 @@ $(document).ready(function () {
     % 因此有时候 '\{'需要写作'\\{'，'*'需要写作'\*'，'\\'需要写作'\\\\'等，视不同的解释环境而定
 ```
 
+```tex
     $$ \begin{equation}
     \left\\{
     \begin{aligned}
@@ -237,31 +235,26 @@ $(document).ready(function () {
     \end{aligned}
     \right.
     \end{equation} $$
-
-    **注**：如果各个方程需要在某个字符处对齐（如等号对齐），只需在所有要对齐的字符前加上 `&` 符号。如果不需要公式编号，只需在宏包名称后加上 `*` 号。
-
+```
+**注**：如果各个方程需要在某个字符处对齐（如等号对齐），只需在所有要对齐的字符前加上 `&` 符号。如果不需要公式编号，只需在宏包名称后加上 `*` 号。
 
 - 分情况讨论方程式
 
-    ```tex
+```tex
     f(x) =
     \begin{cases}
     x^2 \qquad & a \gt 0 \\
     e^x \qquad & a \le 0
     \end{cases}
-    ```
+```
 
-    $$ f(x) = \begin{cases}
+
+$$f(x) = \begin{cases}
     x^2 \qquad & a \gt 0 \\\\
     e^x \qquad & a \le 0
     \end{cases} $$
 
-    $$ \begin{aligned}
+$$ \begin{aligned}
     a &= 1 \\\\
     bcd &= 2
     \end{aligned} $$
-
-
-
-## 参考链接
- 1. [最全 Markdown + Latex 编写技巧](https://blog.csdn.net/HaleyPKU/article/details/80341932)
