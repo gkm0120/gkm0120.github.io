@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>孔明の博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://gkm0120.github.io/"/>
+  <updated>2026-07-20T09:17:24.005Z</updated>
+  <id>https://gkm0120.github.io/</id>
+  
+  <author>
+    <name>戈孔明</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图网络开放数据集</title>
+    <link href="https://gkm0120.github.io/p/44728.html"/>
+    <id>https://gkm0120.github.io/p/44728.html</id>
+    <published>2021-04-06T13:14:01.000Z</published>
+    <updated>2026-07-20T09:17:24.005Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;完成图相关的任务，各种测试GNN性能的数据集。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图神经网络" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="图神经网络" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="GNN" scheme="https://gkm0120.github.io/tags/GNN/"/>
+    
+      <category term="数据集" scheme="https://gkm0120.github.io/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TeX Live 2021 从卸载到安装指南（WIN10）</title>
+    <link href="https://gkm0120.github.io/p/59473.html"/>
+    <id>https://gkm0120.github.io/p/59473.html</id>
+    <published>2021-04-06T12:54:20.000Z</published>
+    <updated>2026-07-20T09:17:21.724Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WIN10下TeX Live 2021 的下载安装和TeXstudio安装。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LaTeX" scheme="https://gkm0120.github.io/categories/LaTeX/"/>
+    
+    
+      <category term="环境安装" scheme="https://gkm0120.github.io/tags/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="LaTeX" scheme="https://gkm0120.github.io/tags/LaTeX/"/>
+    
+      <category term="TeXLive" scheme="https://gkm0120.github.io/tags/TeXLive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB 学习过程常用命令记录 (绘图)</title>
+    <link href="https://gkm0120.github.io/p/32467.html"/>
+    <id>https://gkm0120.github.io/p/32467.html</id>
+    <published>2021-04-05T03:01:12.000Z</published>
+    <updated>2026-07-20T09:17:22.793Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MATLAB中一些基本图像的绘制。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/categories/MATLAB/"/>
+    
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/tags/MATLAB/"/>
+    
+      <category term="绘图" scheme="https://gkm0120.github.io/tags/%E7%BB%98%E5%9B%BE/"/>
+    
+      <category term="可视化" scheme="https://gkm0120.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB 学习过程常用命令记录 (函数)</title>
+    <link href="https://gkm0120.github.io/p/47321.html"/>
+    <id>https://gkm0120.github.io/p/47321.html</id>
+    <published>2021-04-05T02:26:26.000Z</published>
+    <updated>2026-07-20T09:17:22.255Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MATLAB中一些基本函数的用法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/categories/MATLAB/"/>
+    
+    
+      <category term="MATLAB" scheme="https://gkm0120.github.io/tags/MATLAB/"/>
+    
+      <category term="函数" scheme="https://gkm0120.github.io/tags/%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="入门" scheme="https://gkm0120.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git 教程</title>
+    <link href="https://gkm0120.github.io/p/24301.html"/>
+    <id>https://gkm0120.github.io/p/24301.html</id>
+    <published>2021-04-03T12:32:27.000Z</published>
+    <updated>2026-07-20T09:17:03.920Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于Git的简介、版本控制、远程仓库、创建分支、标签等用法介绍。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="版本控制" scheme="https://gkm0120.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="Git" scheme="https://gkm0120.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/Git/"/>
+    
+    
+      <category term="Git" scheme="https://gkm0120.github.io/tags/Git/"/>
+    
+      <category term="版本控制" scheme="https://gkm0120.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="教程" scheme="https://gkm0120.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—ResNet V1】Deep Residual Learning for Image Recognition</title>
+    <link href="https://gkm0120.github.io/p/63258.html"/>
+    <id>https://gkm0120.github.io/p/63258.html</id>
+    <published>2021-01-18T14:32:38.000Z</published>
+    <updated>2026-07-20T09:16:22.568Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;论文解决的主要问题是深层的神经网络很难训练；提出了一种残差学习框架来减轻网络训练。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="CNN" scheme="https://gkm0120.github.io/tags/CNN/"/>
+    
+      <category term="ResNet" scheme="https://gkm0120.github.io/tags/ResNet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—GoogLeNet Inception V3】Rethinking the Inception Architecture for Computer Vision</title>
+    <link href="https://gkm0120.github.io/p/19637.html"/>
+    <id>https://gkm0120.github.io/p/19637.html</id>
+    <published>2021-01-16T13:43:36.000Z</published>
+    <updated>2026-07-20T09:16:21.377Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分析了Inception优化的一些历史情况；提出了设计Inception的四个原则；提出分解卷积核的方式；辅助分类器的作用；提出缩小feature的结构。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="GoogLeNet" scheme="https://gkm0120.github.io/tags/GoogLeNet/"/>
+    
+      <category term="InceptionV3" scheme="https://gkm0120.github.io/tags/InceptionV3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—GoogLeNet Inception V2】Batch Normalization</title>
+    <link href="https://gkm0120.github.io/p/25484.html"/>
+    <id>https://gkm0120.github.io/p/25484.html</id>
+    <published>2021-01-13T05:57:05.000Z</published>
+    <updated>2026-07-20T09:16:20.715Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;BN的提出是为了克服深度神经网络难以训练的弊病，减轻了对参数初始化的依赖；训练更快，可以使用更高的学习率；BN一定程度上增加了泛化能力，dropout等技术可以去掉。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="GoogLeNet" scheme="https://gkm0120.github.io/tags/GoogLeNet/"/>
+    
+      <category term="InceptionV2" scheme="https://gkm0120.github.io/tags/InceptionV2/"/>
+    
+      <category term="BatchNormalization" scheme="https://gkm0120.github.io/tags/BatchNormalization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—NIN】Network in Network</title>
+    <link href="https://gkm0120.github.io/p/41470.html"/>
+    <id>https://gkm0120.github.io/p/41470.html</id>
+    <published>2020-12-18T02:11:52.000Z</published>
+    <updated>2026-07-20T09:16:22.149Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文章提出在每个局部感受野中进行更加复杂的运算，提出了对卷积层的改进算法：MLP卷积层。传统的卷积神经网络一般来说是由：线性卷积层、池化层、全连接层堆叠起来的网络，卷积层通过线性滤波器进行线性卷积运算，然后在接个非线性激活函数，最终生成特征图。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="NiN" scheme="https://gkm0120.github.io/tags/NiN/"/>
+    
+      <category term="NetworkInNetwork" scheme="https://gkm0120.github.io/tags/NetworkInNetwork/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—GoogLeNet Inception V1】Going Deeper With Convolutions</title>
+    <link href="https://gkm0120.github.io/p/19719.html"/>
+    <id>https://gkm0120.github.io/p/19719.html</id>
+    <published>2020-12-17T12:01:47.000Z</published>
+    <updated>2026-07-20T09:16:20.080Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Google Inception Net 首次出现在 ILSVRC 2014的比赛中（和VGGNet 同年），就以较大优势取得了第一名。它最大的特点就是控制了计算量和参数量的同时，获得了非常好的分类性能——top-5 错误率 6.67%。Inception V1 有22 层深，比 AlexNet的8层或者 VGGNet的19层还要更深。但其大小却比AlexNet和VGG小很多，计算量只有 15亿次浮点运算，同时只有500万的参数量，仅为 AlexNet 参数量（6000万）的 1/12。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="GoogLeNet" scheme="https://gkm0120.github.io/tags/GoogLeNet/"/>
+    
+      <category term="InceptionV1" scheme="https://gkm0120.github.io/tags/InceptionV1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【语义分割—FCN】Fully Convolutional Networks for Semantic Segmentation</title>
+    <link href="https://gkm0120.github.io/p/17422.html"/>
+    <id>https://gkm0120.github.io/p/17422.html</id>
+    <published>2020-12-11T12:31:40.000Z</published>
+    <updated>2026-07-20T09:16:19.825Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全连接层＋softmax输出）不同，FCN可以接受任意尺寸的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="语义分割" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="FCN" scheme="https://gkm0120.github.io/tags/FCN/"/>
+    
+      <category term="语义分割" scheme="https://gkm0120.github.io/tags/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—VGG】 Very Deep Convolutional Networks for Large-Scale Image Recognition</title>
+    <link href="https://gkm0120.github.io/p/88644.html"/>
+    <id>https://gkm0120.github.io/p/88644.html</id>
+    <published>2020-12-08T06:47:58.000Z</published>
+    <updated>2026-07-20T09:16:19.819Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;VGG对于Alexnet来说，改进并不是很大，主要改进就在于使用了小卷积核，网络是分段卷积网络，通过max pooling过度，同时网络更深更宽。分别在定位和分类问题中获得了第一和第二名。我们还表明，我们的方法很好地推广到了其他数据集上，在那里他们实现了最好的结果。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="CNN" scheme="https://gkm0120.github.io/tags/CNN/"/>
+    
+      <category term="VGG" scheme="https://gkm0120.github.io/tags/VGG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【图像分类—AlexNet】ImageNet Classification With Deep Convolutional Neural Networks</title>
+    <link href="https://gkm0120.github.io/p/57886.html"/>
+    <id>https://gkm0120.github.io/p/57886.html</id>
+    <published>2020-12-07T01:57:50.000Z</published>
+    <updated>2026-07-20T09:16:18.335Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在ImageNet LSVRC-2010 2012表现突出，top-1误差率37.5%，以及top-5误差率17.0%；网络有6000万个参数和650,000个神经元；网络结构五个卷积层，以及某些卷积层后的池化层，以及最后的三个全连接层；引入正则化方法dropout；引入ReLU修正线性单元。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="AlexNet" scheme="https://gkm0120.github.io/tags/AlexNet/"/>
+    
+      <category term="深度学习" scheme="https://gkm0120.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="图像分类" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="CNN" scheme="https://gkm0120.github.io/tags/CNN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DES数据加密标准</title>
+    <link href="https://gkm0120.github.io/p/42607.html"/>
+    <id>https://gkm0120.github.io/p/42607.html</id>
+    <published>2020-04-16T13:06:33.000Z</published>
+    <updated>2026-07-20T09:17:02.828Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一种对称公私钥加密算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="密码学" scheme="https://gkm0120.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+      <category term="DES" scheme="https://gkm0120.github.io/tags/DES/"/>
+    
+      <category term="对称加密" scheme="https://gkm0120.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    
+      <category term="分组密码" scheme="https://gkm0120.github.io/tags/%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/"/>
+    
+      <category term="密码学" scheme="https://gkm0120.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>热传导方程的 Cauchy 问题</title>
+    <link href="https://gkm0120.github.io/p/21593.html"/>
+    <id>https://gkm0120.github.io/p/21593.html</id>
+    <published>2020-04-13T08:31:08.000Z</published>
+    <updated>2026-07-20T09:17:23.443Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;偏微分的学习记录，持续更新中。。。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数学" scheme="https://gkm0120.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="偏微分方程" scheme="https://gkm0120.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+    
+    
+      <category term="热传导方程" scheme="https://gkm0120.github.io/tags/%E7%83%AD%E4%BC%A0%E5%AF%BC%E6%96%B9%E7%A8%8B/"/>
+    
+      <category term="Cauchy问题" scheme="https://gkm0120.github.io/tags/Cauchy%E9%97%AE%E9%A2%98/"/>
+    
+      <category term="偏微分方程" scheme="https://gkm0120.github.io/tags/%E5%81%8F%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+    
+      <category term="数学物理方程" scheme="https://gkm0120.github.io/tags/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown中LaTeX编写技巧</title>
+    <link href="https://gkm0120.github.io/p/12046.html"/>
+    <id>https://gkm0120.github.io/p/12046.html</id>
+    <published>2020-04-01T13:04:57.000Z</published>
+    <updated>2026-07-20T09:17:21.194Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdown中LaTeX使用方法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LaTeX" scheme="https://gkm0120.github.io/categories/LaTeX/"/>
+    
+    
+      <category term="Markdown" scheme="https://gkm0120.github.io/tags/Markdown/"/>
+    
+      <category term="LaTeX" scheme="https://gkm0120.github.io/tags/LaTeX/"/>
+    
+      <category term="数学公式" scheme="https://gkm0120.github.io/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/"/>
+    
+      <category term="排版" scheme="https://gkm0120.github.io/tags/%E6%8E%92%E7%89%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扫描转换算法</title>
+    <link href="https://gkm0120.github.io/p/09543.html"/>
+    <id>https://gkm0120.github.io/p/09543.html</id>
+    <published>2020-03-31T08:33:52.000Z</published>
+    <updated>2026-07-20T09:16:47.521Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;DDA、中点画线、Bresenham算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+      <category term="C++" scheme="https://gkm0120.github.io/tags/C/"/>
+    
+      <category term="扫描转换" scheme="https://gkm0120.github.io/tags/%E6%89%AB%E6%8F%8F%E8%BD%AC%E6%8D%A2/"/>
+    
+      <category term="直线绘制" scheme="https://gkm0120.github.io/tags/%E7%9B%B4%E7%BA%BF%E7%BB%98%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Liang-Barsky裁剪算法</title>
+    <link href="https://gkm0120.github.io/p/58428.html"/>
+    <id>https://gkm0120.github.io/p/58428.html</id>
+    <published>2020-03-29T13:38:16.000Z</published>
+    <updated>2026-07-20T09:16:46.360Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Liang-Barsky算法的原理与代码&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="裁剪算法" scheme="https://gkm0120.github.io/tags/%E8%A3%81%E5%89%AA%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+      <category term="Liang-Barsky" scheme="https://gkm0120.github.io/tags/Liang-Barsky/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Git批量上传图片</title>
+    <link href="https://gkm0120.github.io/p/86344.html"/>
+    <id>https://gkm0120.github.io/p/86344.html</id>
+    <published>2020-03-27T03:06:17.000Z</published>
+    <updated>2026-07-20T09:17:05.657Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用Git，构建GitHub图床，批量上传图片&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="版本控制" scheme="https://gkm0120.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="Git" scheme="https://gkm0120.github.io/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/Git/"/>
+    
+    
+      <category term="Git" scheme="https://gkm0120.github.io/tags/Git/"/>
+    
+      <category term="版本控制" scheme="https://gkm0120.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="图片上传" scheme="https://gkm0120.github.io/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cohen-Sutherland编码裁剪</title>
+    <link href="https://gkm0120.github.io/p/44546.html"/>
+    <id>https://gkm0120.github.io/p/44546.html</id>
+    <published>2020-03-25T13:35:08.000Z</published>
+    <updated>2026-07-20T09:16:45.793Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一类编码裁剪算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+      <category term="Cohen-Sutherland" scheme="https://gkm0120.github.io/tags/Cohen-Sutherland/"/>
+    
+      <category term="裁剪算法" scheme="https://gkm0120.github.io/tags/%E8%A3%81%E5%89%AA%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="计算机图形学" scheme="https://gkm0120.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+</feed>
