@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.github.io/"/>
-  <updated>2026-07-23T12:23:01.098Z</updated>
+  <updated>2026-07-23T12:32:34.022Z</updated>
   <id>https://gkm0120.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="https://gkm0120.github.io/p/77396.html"/>
     <id>https://gkm0120.github.io/p/77396.html</id>
     <published>2026-07-23T12:22:00.000Z</published>
-    <updated>2026-07-23T12:23:01.098Z</updated>
+    <updated>2026-07-23T12:32:34.022Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;vLLM-部署-Qwen3-235B-A22B-Instruct-2507&quot;&gt;&lt;a href=&quot;#vLLM-部署-Qwen3-235B-A22B-Instruct-2507&quot; class=&quot;headerlink&quot; title=&quot;vLLM 部署
-        
-      
+      &lt;p&gt;使用 vLLM 部署 Qwen3-235B-A22B 大语言模型，记录 Docker 启动参数、服务日志和推理配置。&lt;/p&gt;
     
     </summary>
     
