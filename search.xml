@@ -86,9 +86,9 @@
             
             <tag> 环境安装 </tag>
             
-            <tag> LaTeX </tag>
-            
             <tag> TeXLive </tag>
+            
+            <tag> LaTeX </tag>
             
         </tags>
       
@@ -528,9 +528,9 @@
       
         <tags>
             
-            <tag> Markdown </tag>
-            
             <tag> LaTeX </tag>
+            
+            <tag> Markdown </tag>
             
             <tag> 数学公式 </tag>
             
