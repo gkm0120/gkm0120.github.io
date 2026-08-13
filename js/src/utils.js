@@ -5,6 +5,16 @@ NexT.utils = NexT.$u = {
    * Wrap images with fancybox support.
    */
   wrapImageWithFancyBox: function () {
+    // Lazy-load the Fancybox stylesheet (it is only needed for the lightbox).
+    if (!document.getElementById('fancybox-css')) {
+      var fbCss = document.createElement('link');
+      fbCss.id = 'fancybox-css';
+      fbCss.rel = 'stylesheet';
+      fbCss.type = 'text/css';
+      fbCss.href = '{{ url_for(theme.vendors._internal) }}/fancybox/source/jquery.fancybox.css?v=2.1.5';
+      document.head.appendChild(fbCss);
+    }
+
     $('.content img')
       .not('[hidden]')
       .not('.group-picture img, .post-gallery img')
@@ -42,10 +52,15 @@ NexT.utils = NexT.$u = {
   },
 
   lazyLoadPostsImages: function () {
-    $('#posts').find('img').lazyload({
-      //placeholder: '/images/loading.gif',
-      effect: 'fadeIn',
-      threshold : 0
+    // Use native lazy loading instead of the jQuery.lazyload plugin.
+    $('#posts').find('img').each(function () {
+      var img = this;
+      if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+      }
+      if (!img.hasAttribute('decoding')) {
+        img.setAttribute('decoding', 'async');
+      }
     });
   },
 
