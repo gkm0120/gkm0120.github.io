@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gkm0120.cn/"/>
-  <updated>2026-09-09T02:01:56.456Z</updated>
+  <updated>2026-09-11T09:19:01.601Z</updated>
   <id>https://gkm0120.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DeepSeek-V4.1-Flash技术调研报告：CED编解码架构、CSA2跨层缓存压缩与KV Cache极致优化</title>
+    <link href="https://gkm0120.cn/p/68921.html"/>
+    <id>https://gkm0120.cn/p/68921.html</id>
+    <published>2026-09-11T08:00:00.000Z</published>
+    <updated>2026-09-11T09:19:01.601Z</updated>
+    
+    <summary type="html">
+    
+      DeepSeek-V4.1-Flash 技术调研报告，梳理 CED 因果编解码架构、CSA2 跨层 KV Cache 压缩、Hierarchical Sparse Indexer 分层稀疏索引器、Single-Pass mHC + Mega-mHC 内核等核心架构创新，以及 45T token 预训练、规模化 RL 后训练与 Agent 基准性能全景对比。
+    
+    </summary>
+    
+      <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
+    
+    
+      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="推理优化" scheme="https://gkm0120.cn/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="模型架构" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="KV Cache" scheme="https://gkm0120.cn/tags/KV-Cache/"/>
+    
+      <category term="技术调研" scheme="https://gkm0120.cn/tags/%E6%8A%80%E6%9C%AF%E8%B0%83%E7%A0%94/"/>
+    
+  </entry>
   
   <entry>
     <title>LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</title>
@@ -126,9 +156,9 @@
     
       <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
     
-      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
-    
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
       <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
@@ -306,9 +336,9 @@
       <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
     
     
-      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
-    
       <category term="开源模型" scheme="https://gkm0120.cn/tags/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -394,9 +424,9 @@
     
       <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
     
-      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
-    
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
       <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
@@ -469,32 +499,6 @@
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
       <category term="通信与硬件" scheme="https://gkm0120.cn/tags/%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%A1%AC%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>H20集群模型切换演进记录：从单台到跨机部署DeepSeek-V4与GLM5.1的时间线</title>
-    <link href="https://gkm0120.cn/p/41180.html"/>
-    <id>https://gkm0120.cn/p/41180.html</id>
-    <published>2026-06-14T22:37:53.000Z</published>
-    <updated>2026-09-09T02:01:56.181Z</updated>
-    
-    <summary type="html">
-    
-      H20 集群模型切换计划时间线：单台/跨机部署 DeepSeek-V4-Pro、DeepSeek-V4-Flash、GLM5.1 的演进记录与规划。
-    
-    </summary>
-    
-      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
-    
-    
-      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
-    
-      <category term="GLM" scheme="https://gkm0120.cn/tags/GLM/"/>
-    
-      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
-    
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
