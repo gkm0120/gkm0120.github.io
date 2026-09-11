@@ -1,0 +1,163 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。"><meta name="keywords" content="提示工程"><meta property="og:type" content="article"><meta property="og:title" content="思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT"><meta property="og:url" content="https://gkm0120.cn/p/20885.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:updated_time" content="2026-09-09T02:01:57.394Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT"><meta name="twitter:description" content="梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。"><meta name="twitter:image" content="https://gkm0120.cn/images/loading.gif"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/20885.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/20885.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/智能体与工作流/">智能体与工作流</a> <span class="separator">/</span> <a href="/categories/智能体与工作流/大模型推理优化/">大模型推理优化</a> <span class="separator">/</span> <span class="current">思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/llm/">LLM 大模型</a> <span class="pillar-badge-sub">· 模型架构 · 训练对齐 · 推理优化</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-04-22T10:51:37+08:00">2025-04-22 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:01:57+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/智能体与工作流/" itemprop="url" rel="index"><span itemprop="name">智能体与工作流</span> </a></span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/智能体与工作流/大模型推理优化/" itemprop="url" rel="index"><span itemprop="name">大模型推理优化</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">977 </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">3 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。</span></div><div class="post-body" itemprop="articleBody"><p>梳理生产落地中常用的提示编排策略：通过少样本或零样本思维链引导模型逐步推理、用自我一致性做多路投票降低幻觉，再到支持搜索与回溯的树状思维 ToT 和图状思维 GoT。</p><a id="more"></a><p>在实际生产落地中，会循序渐进的采用如下策略来提高准确性，降低幻觉：</p><table><thead><tr><th><strong>策略</strong></th><th><strong>难度</strong></th><th><strong>数据要求</strong></th><th><strong>准确性提升</strong></th></tr></thead><tbody><tr><td>Prompt engineering</td><td>低</td><td>无</td><td>26%</td></tr><tr><td>Self-reflection</td><td>低</td><td>无</td><td>26-40%</td></tr><tr><td>Few-shot learning (with RAG)</td><td>中</td><td>少量</td><td>50%</td></tr><tr><td>Instruction Fine-tuning</td><td>高</td><td>中等</td><td>40-60%</td></tr></tbody></table><p>Prompt engineering中有哪些方法可以提高准确性。</p><h2 id="COT-Chain-of-Thought"><a href="#COT-Chain-of-Thought" class="headerlink" title="COT: Chain of Thought"></a><strong>COT: Chain of Thought</strong></h2><p>COT通过提供一系列推理步骤来帮助模型更好地解决问题。<strong>CoT的核心思想是引导模型逐步展示其思考过程，从而提高模型在复杂任务上的表现</strong>，如数学推理、逻辑推理等。CoT可以是Few-shot CoT，其中包含几个逐步推理的示例，也可以是Zero-shot CoT，只包含引导模型进行逐步推理的文本指令。</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_fc9d4ddbd9.png" alt></p><h3 id="Auto-COT"><a href="#Auto-COT" class="headerlink" title="Auto COT"></a><strong>Auto COT</strong></h3><p><strong><em>let’s think not just step by step, but also one by one</em></strong></p><p>可以通过利用带有“let’s think step by step”提示的 LLM 来逐一生成演示的推理链，即:let’s think not just step by step, but also one by one，从而消除Few-shot CoT的手动工作。</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_34de6e3a04.png" alt></p><p>Auto-CoT 主要由两个阶段组成：</p><ul><li>阶段1：问题聚类：将给定问题划分为几个聚类;</li><li>阶段2：演示抽样：从每组数组中选择一个具有代表性的问题，并使用带有简单启发式的 Zero-Shot-CoT 生成其推理链.<h3 id="Self-Consistency-自我一致性"><a href="#Self-Consistency-自我一致性" class="headerlink" title="Self-Consistency: 自我一致性"></a><strong>Self-Consistency: 自我一致性</strong></h3></li></ul><p>人类的一个显著特点是人们的思维方式不同。在需要深思熟虑的任务中，可能有几种方法可以解决问题。自我一致性可以通过从语言模型的解码器中采样，在语言模型中模拟这样的过程。</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_f03a77fba3.png" alt></p><p>例如，如上图所示，一个模型可以对一个数学问题生成几个合理的答案，这些答案都得出相同的正确答案（输出 1 和 3）。由于语言模型不是完美的推理器，该模型也可能产生错误的推理路径或在推理步骤之一中犯错（例如，在输出 2 中），但这样的解决方案不太可能得出相同的答案。也就是说，我们假设正确的推理过程，即使它们是多种多样的，其最终答案往往比不正确的过程具有更大的一致性。</p><blockquote><p>自我一致指的是大模型的输出自我一致，即多次采样得到的输出结果一致。</p></blockquote><h2 id="TOT-Tree-of-Thoughts"><a href="#TOT-Tree-of-Thoughts" class="headerlink" title="TOT: Tree of Thoughts"></a><strong>TOT: Tree of Thoughts</strong></h2><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_a8b884aabc.png" alt></p><p>ToT 维护着一棵思维树，思维由连贯的语言序列表示，这个序列就是解决问题的中间步骤。使用这种方法，LM 能够自己对严谨推理过程的中间思维进行评估。LM 将生成及评估思维的能力与搜索算法（如广度优先搜索和深度优先搜索）相结合，在系统性探索思维的时候可以向前验证和回溯。</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_9ca3400998.png" alt></p><p>上图展示了一个简单的例子。</p><p>给定输入，LM 会抽样 5 个不同的方案，然后投票 5 次来决定哪个方案最好。然后使用多数选择，通过相同的抽样投票程序编写输出段落。</p><h2 id="GOT-Graph-of-Thoughts"><a href="#GOT-Graph-of-Thoughts" class="headerlink" title="GOT: Graph of Thoughts"></a><strong>GOT: Graph of Thoughts</strong></h2><p>GoT 的核心思想和主要优势在于能够将 LLM 生成的信息建模为任意图，其中信息单元（“LLM Thoughts”）是顶点，而边对应于这些顶点之间的依赖关系。这种方法可以将任意的 LLM Thoughts组合成协同结果，提炼整个思想网络的精髓，或使用反馈循环增强思想。</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_9347dd5412.png" alt></p></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/31381.html" rel="bookmark">上下文工程 Context Engineering 综述：超越提示词的信息负载优化</a> <span class="related-posts-meta"><time datetime="2025-10-28T13:41:07+08:00">2025-10-28</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/大模型推理优化/">大模型推理优化</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/38944.html" rel="bookmark">Inkling 技术报告解读：Thinking Machines Lab 的 975B 开源 MoE 模型</a> <span class="related-posts-meta"><time datetime="2025-07-11T11:44:19+08:00">2025-07-11</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/53423.html" rel="bookmark">MiMo-VL 技术报告解读：混合在线强化学习的多模态推理模型</a> <span class="related-posts-meta"><time datetime="2025-06-08T11:46:36+08:00">2025-06-08</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/56074.html" rel="bookmark">Hunyuan-TurboS 技术报告解读：Mamba-Transformer 协同与自适应长短思维链</a> <span class="related-posts-meta"><time datetime="2025-05-24T11:44:08+08:00">2025-05-24</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/43059.html" rel="bookmark">Qwen3 技术报告解读：三阶段预训练与思考模式统一</a> <span class="related-posts-meta"><time datetime="2025-04-20T11:49:01+08:00">2025-04-20</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/提示工程/" rel="tag"><i class="fa fa-tag"></i> 提示工程</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/41471.html" rel="next" title="探秘 Transformer 之（24）：KV Cache 优化的原理与方法分类"><i class="fa fa-chevron-left"></i> 探秘 Transformer 之（24）：KV Cache 优化的原理与方法分类</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/23121.html" rel="prev" title="手算 LLM 参数量：以 Qwen2.5-32B 为例逐层拆解">手算 LLM 参数量：以 Qwen2.5-32B 为例逐层拆解 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT",
+    "datePublished": "2025-04-22T10:51:37+08:00",
+    "dateModified": "2026-09-09T10:01:57+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/20885.html"
+    },
+    "url": "https://gkm0120.cn/p/20885.html"
+    
+    , "articleSection": "智能体与工作流"
+    
+    
+    , "keywords": ["提示工程"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "智能体与工作流",
+        "item": "https://gkm0120.cn/categories/智能体与工作流/"
+      }
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "大模型推理优化",
+        "item": "https://gkm0120.cn/categories/智能体与工作流/大模型推理优化/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "思维链与推理编排：从 CoT、自我一致性到 ToT 与 GoT",
+        "item": "https://gkm0120.cn/p/20885.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#COT-Chain-of-Thought"><span class="nav-text">COT: Chain of Thought</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-COT"><span class="nav-text">Auto COT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-Consistency-自我一致性"><span class="nav-text">Self-Consistency: 自我一致性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TOT-Tree-of-Thoughts"><span class="nav-text">TOT: Tree of Thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GOT-Graph-of-Thoughts"><span class="nav-text">GOT: Graph of Thoughts</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

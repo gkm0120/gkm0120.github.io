@@ -1,0 +1,196 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。"><meta name="keywords" content="GPU,通信与硬件"><meta property="og:type" content="article"><meta property="og:title" content="NVIDIA A100 GPU 服务器配置详解与三代显卡对比"><meta property="og:url" content="https://gkm0120.cn/p/63937.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2026-09-09T02:01:56.599Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="NVIDIA A100 GPU 服务器配置详解与三代显卡对比"><meta name="twitter:description" content="整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/63937.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>NVIDIA A100 GPU 服务器配置详解与三代显卡对比 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/63937.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/大模型训练与微调/">大模型训练与微调</a> <span class="separator">/</span> <a href="/categories/大模型训练与微调/硬件与通信/">硬件与通信</a> <span class="separator">/</span> <span class="current">NVIDIA A100 GPU 服务器配置详解与三代显卡对比</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/llm/">LLM 大模型</a> <span class="pillar-badge-sub">· 模型架构 · 训练对齐 · 推理优化</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">NVIDIA A100 GPU 服务器配置详解与三代显卡对比</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-11-18T11:51:46+08:00">2024-11-18 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:01:56+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大模型训练与微调/" itemprop="url" rel="index"><span itemprop="name">大模型训练与微调</span> </a></span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大模型训练与微调/硬件与通信/" itemprop="url" rel="index"><span itemprop="name">硬件与通信</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">1.6k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">6 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。</span></div><div class="post-body" itemprop="articleBody"><p>整理 NVIDIA A100 GPU 服务器的详细规格：7nm 工艺 542 亿晶体管、6912 个核心、40GB 或 80GB HBM2 显存与近 1.6TB/s 带宽、NVLink 600GB/s 互联、最多切分为 7 个 MIG 实例，并对比 V100 与 H100。</p><a id="more"></a><h2 id="规格参数"><a href="#规格参数" class="headerlink" title="规格参数"></a>规格参数</h2><p>NVIDIA A100 GPU服务器的详细配置：</p><ul><li>架构与工艺：NVIDIA A100采用了7nm工艺制造，具有542亿个晶体管。</li><li>核心数量：它拥有6912个核心。</li><li>显存：A100提供两种显存配置，分别为40GB和80GB HBM2显存。</li><li>显存带宽：其显存带宽接近1.6TB/s。</li><li>计算能力：</li><li>互联接口：支持PCIe 4.0和NVLink，其中NVLink提供600 GB/s的吞吐量。</li><li>多实例GPU (MIG)：一个A100 GPU最多可分割成7个GPU实例。</li><li>功耗：最大功耗为400瓦。</li><li>散热解决方案：被动式散热。</li><li>计算API：支持CUDA、DirectCompute、OpenCL、OpenACC。<table><thead><tr><th><strong>A100 40GB PCIE</strong></th><th><strong>A100 80GB PCIE</strong></th><th><strong>A100 40GB SXM</strong></th><th><strong>A100 80GB SXM</strong></th></tr></thead><tbody><tr><td>FP64</td><td>9.7 TFLOPS</td><td>9.7 TFLOPS</td><td>9.7 TFLOPS</td></tr><tr><td>FP64 Tensor Core</td><td>19.5 TFLOPS</td><td>19.5 TFLOPS</td><td>19.5 TFLOPS</td></tr><tr><td>FP32</td><td>19.5 TFLOPS</td><td>19.5 TFLOPS</td><td>19.5 TFLOPS</td></tr><tr><td>Tensor Float 32 (TF32)</td><td>156 TFLOPS</td><td>312 TFLOPS*</td><td>156 TFLOPS</td></tr><tr><td>BFLOAT16 Tensor Core</td><td>312 TFLOPS</td><td>624 TFLOPS*</td><td>312 TFLOPS</td></tr><tr><td>FP16 Tensor Core</td><td>312 TFLOPS</td><td>624 TFLOPS*</td><td>312 TFLOPS</td></tr><tr><td>INT8 Tensor Core</td><td>624 TOPS</td><td>1248 TOPS*</td><td>624 TOPS</td></tr><tr><td>GPU 显存</td><td>40GB HBM2</td><td>80GB HBM2e</td><td>40GB HBM2</td></tr><tr><td>GPU 显存带宽</td><td>1,555GB/s</td><td>1,935GB/s</td><td>1,555GB/s</td></tr><tr><td>最大热设计功耗 (TDP)</td><td>250W</td><td>300W</td><td>400W</td></tr><tr><td>多实例 GPU</td><td>最大为 7 MIG @ 5GB</td><td>最大为 7 MIG @ 10GB</td><td>最大为 7 MIG @ 5GB</td></tr><tr><td>外形规格</td><td>PCIe</td><td>PCIe</td><td>SXM</td></tr><tr><td>互联</td><td>NVIDIA® NVLink® 桥接器（可桥接 2 个 GPU）：</td><td></td><td></td></tr><tr><td>600GB/s **PCIe 4.0：64GB/s</td><td>NVIDIA® NVLink® 桥接器（可桥接 2 个 GPU）：</td><td></td><td></td></tr><tr><td>600GB/s **PCIe 4.0：64GB/s</td><td>NVLink: 600GB/sPCIe Gen4: 64GB/s</td><td></td><td></td></tr></tbody></table></li></ul><p>A100 提供 40GB 和 80GB 两种显存版本，80GB 版本将 GPU 显存增加了一倍，并提供超快速的显存带宽（超过 2TB/s），可处理超大型模型和数据集。它还具有强大的第三代 Tensor Core 技术，支持多种数据类型，包括 TF32、FP64、BF16 和 INT8 等。</p><p>A100 的多实例 GPU (MIG) 技术可以提高 GPU 的硬件利用率，为每个用户提供隔离的 GPU 资源。此外，A100 还具有新的 NVLink 技术，提供更高的多 GPU 拓展性和性能。</p><p>A100 的峰值性能包括双精度浮点运算（FP64）为 9.7 TFLOPS，单精度浮点运算（FP32）为 19.5 TFLOPS，Tensor Float 32 (TF32) 运算性能为 156 TFLOPS，整数运算性能为 INT8 624 TOPS。</p><h2 id="GPU-的核心架构及参数"><a href="#GPU-的核心架构及参数" class="headerlink" title="GPU 的核心架构及参数"></a><strong>GPU 的核心架构及参数</strong></h2><p>GPU 的差别和各自的优势</p><ul><li>CUDA Core：CUDA Core 是 NVIDIA GPU上的计算核心单元，用于执行通用的并行计算任务，是最常看到的核心类型。NVIDIA 通常用最小的运算单元表示自己的运算能力，CUDA Core 指的是一个执行基础运算的处理元件，我们所说的 CUDA Core 数量，通常对应的是 FP32 计算单元的数量。</li><li>Tensor Core：Tensor Core 是 NVIDIA Volta 架构及其后续架构（如Ampere架构）中引入的一种特殊计算单元。它们专门用于深度学习任务中的张量计算，如矩阵乘法和卷积运算。Tensor Core 核心特别大，通常与深度学习框架（如 TensorFlow 和 PyTorch）相结合使用，它可以把整个矩阵都载入寄存器中批量运算，实现十几倍的效率提升。</li><li>RT Core：RT Core 是 NVIDIA 的专用硬件单元，主要用于加速光线追踪计算。正常数据中心级的 GPU 核心是没有 RT Core 的，主要是消费级显卡才为光线追踪运算添加了 RTCores。RT Core 主要用于游戏开发、电影制作和虚拟现实等需要实时渲染的领域。<br>NVIDIA GPU 架构的演进</li></ul><table><thead><tr><th>架构名称</th><th>Volta-伏特</th><th>Turing-图灵</th><th>Ampere-安培</th><th>Hopper-赫柏</th></tr></thead><tbody><tr><td>发布时间</td><td>2017</td><td>2018</td><td>2020</td><td>2022</td></tr><tr><td>核心参数</td><td>80个SM, 每个SM包括32个FP64+64个Int32+64个FP32+8个Tensor Cores</td><td>102核心92个SM, SM重新设计每个SM包含64个Int32+64个FP32+8个Tensor Cores</td><td>108个SM, 每个SM包含64个FP32+64个INT32+32个FP64+4个Tensor Cores</td><td>132个SM, 每个SM包含128个FP32+64个INT32+64个FP64+4个Tensor Cores</td></tr><tr><td>特点</td><td>NVLink2.0, Tensor Cores第一代, 支持AI运算</td><td>Tensor Core2.0, RT Core第一代</td><td>Tensor Core3.0, RT Core2.0 NVLink3.0, 结构稀疏性矩阵MIG1.0</td><td>Tensor Core4.0, NVlink4.0结构稀疏性矩阵MIG2.0</td></tr><tr><td>纳米制程</td><td>12nm 211亿晶体管</td><td>12nm 186亿晶体管</td><td>7nm 283亿晶体管</td><td>4nm 800亿晶体管</td></tr><tr><td>代表产品</td><td>V100Titan V</td><td>T4, 2080TI RTX 5000</td><td>A100、A800 A30系列</td><td>H100、H800</td></tr></tbody></table><ul><li>Volta 架构：Volta 架构是 NVIDIA GPU 的第六代架构，发布于 2017 年。Volta 架构专注于深度学习和人工智能应用，并引入了 Tensor Core。</li><li>Turing 架构：Turing 架构是 NVIDIA GPU 的第七代架构，发布于 2018 年。Turing 架构引入了实时光线追踪（RTX）和深度学习超采样（DLSS）等重要功能。</li><li>Ampere 架构：Ampere 架构是 NVIDIA GPU 的第八代架构，2020 年发布。Ampere 架构在计算能力、能效和深度学习性能方面都有重大提升。Ampere 架构的 GPU 采用了多个流多处理器（SM）和更大的总线宽度，提供了更多的 CUDA Core 和更高的频率。它还引入了第三代 Tensor Core，提供更强大的深度学习计算性能。Ampere 架构的 GPU 还具有更高的内存容量和带宽，适用于大规模的数据处理和机器学习任务。</li><li>Hopper 架构：Hopper 架构是 NVIDIA GPU 的第九代架构，2022 年发布。相较于 Ampere，Hopper 架构支持第四代 Tensor Core，且采用新型流式处理器，每个 SM 能力更强。Hopper 架构在计算能力、深度学习加速和图形功能方面带来新的创新和改进。<h2 id="V100-vs-A100-vs-H100"><a href="#V100-vs-A100-vs-H100" class="headerlink" title="V100 vs A100 vs H100"></a><strong>V100 vs A100 vs H100</strong></h2></li></ul><table><thead><tr><th>性能参数</th><th>V100 PCle</th><th>A100 80GB PCIe</th><th>A800 80GB PCIe</th><th>H100 80GB PCIe</th></tr></thead><tbody><tr><td>微架构</td><td>Volta</td><td>Ampere</td><td>Ampere</td><td>Hopper</td></tr><tr><td>FP64</td><td>7TFLOPS</td><td>9.7TFLOPS</td><td>9.7TFLOPS</td><td>26 TFLOPS</td></tr><tr><td>FP32</td><td>14TFLOPS</td><td>19.5TFLOPS</td><td>19.5TFLOPS</td><td>51 TFLOPS</td></tr><tr><td>FP16 Tensor Core</td><td></td><td>312TFLOPS</td><td>312TFLOPS</td><td>756.5 TFLOPS</td></tr><tr><td>INT8 Tensor Core</td><td>62 TOPS</td><td>624 TOPS</td><td>624 TOPS</td><td>1513 TOPS</td></tr><tr><td>GPU显存</td><td>32/16GB HBM2</td><td>80GB HBM2e</td><td>80GB HBM2e</td><td>80GB</td></tr><tr><td>GPU显存带宽</td><td>900 GB/s</td><td>1935GB/s</td><td>1935GB/s</td><td>2TB/s</td></tr><tr><td>最大热设计功耗 (TDP)</td><td>250W</td><td>300W</td><td>300W</td><td>300-350W</td></tr><tr><td>多实例GPU</td><td></td><td>最多7个MIG 每个10GB</td><td>最多7个MIG 每个10GB</td><td>最多7个MIG 每个10GB</td></tr><tr><td>外形规格</td><td></td><td>PCle双插槽风冷式 或单插槽液冷式</td><td>PCle双插槽风冷式 或单插槽液冷式</td><td>PCle双插槽风冷式</td></tr><tr><td>互连技术</td><td>NVLink: 300 GB/s PCIE: 32 GB/s</td><td>搭载2个GPU的 NVIDIA” NVLink” 桥接器:600GB/s PCle 4.0: 64GB/s</td><td>搭载2个GPU的 NVIDIA” NVLink”桥接器:400GB/s PCle 4.0: 64GB/s</td><td>NVLink: 600GB/s PCle 5.0: 128GB/s</td></tr><tr><td>服务器选项</td><td></td><td>搭载1至8个GPU的合作伙伴认证系统和NVIDIA认证系统</td><td>搭载1至8个GPU的合作伙伴认证系统和NVIDIA认证系统</td><td>搭载1至8个GPU的合作伙伴认证系统和NVIDIA认证系统</td></tr></tbody></table></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/21871.html" rel="bookmark">NvLink多卡互联配置实战：GPU集群组网与带宽调优记录</a> <span class="related-posts-meta"><time datetime="2026-06-18T02:55:04+08:00">2026-06-18</time> <span class="related-posts-cat"><a href="/categories/模型部署/">模型部署</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/98765.html" rel="bookmark">H20服务器硬件配置排查：NVLink与PCIe带宽对比及拓扑链路瓶颈定位</a> <span class="related-posts-meta"><time datetime="2026-06-15T07:04:37+08:00">2026-06-15</time> <span class="related-posts-cat"><a href="/categories/硬件与通信/">硬件与通信</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/57217.html" rel="bookmark">常用 NVIDIA 运维指令速查：互联拓扑、NUMA 与 NVLink 查询</a> <span class="related-posts-meta"><time datetime="2025-04-08T11:51:34+08:00">2025-04-08</time> <span class="related-posts-cat"><a href="/categories/大模型训练与微调/">大模型训练与微调</a> · <a href="/categories/大模型训练与微调/硬件与通信/">硬件与通信</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/65273.html" rel="bookmark">高性能 GPU 服务器硬件拓扑与集群组网详解</a> <span class="related-posts-meta"><time datetime="2025-01-09T13:42:52+08:00">2025-01-09</time> <span class="related-posts-cat"><a href="/categories/大模型训练与微调/">大模型训练与微调</a> · <a href="/categories/大模型训练与微调/硬件与通信/">硬件与通信</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/69338.html" rel="bookmark">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a> <span class="related-posts-meta"><time datetime="2026-08-10T01:59:29+08:00">2026-08-10</time> <span class="related-posts-cat"><a href="/categories/模型部署/">模型部署</a> ·</span></span></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/GPU/" rel="tag"><i class="fa fa-tag"></i> GPU</a> <a href="/tags/通信与硬件/" rel="tag"><i class="fa fa-tag"></i> 通信与硬件</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/20910.html" rel="next" title="Hunyuan-Large 模型解读：3890 亿参数的开源 MoE 与 KV 缓存压缩"><i class="fa fa-chevron-left"></i> Hunyuan-Large 模型解读：3890 亿参数的开源 MoE 与 KV 缓存压缩</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/54027.html" rel="prev" title="混合专家模型 MoE 详解：稀疏性、负载均衡与 Transformer 结合">混合专家模型 MoE 详解：稀疏性、负载均衡与 Transformer 结合 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NVIDIA A100 GPU 服务器配置详解与三代显卡对比",
+    "datePublished": "2024-11-18T11:51:46+08:00",
+    "dateModified": "2026-09-09T10:01:56+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/63937.html"
+    },
+    "url": "https://gkm0120.cn/p/63937.html"
+    
+    , "articleSection": "大模型训练与微调"
+    
+    
+    , "keywords": ["GPU", "通信与硬件"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "大模型训练与微调",
+        "item": "https://gkm0120.cn/categories/大模型训练与微调/"
+      }
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "硬件与通信",
+        "item": "https://gkm0120.cn/categories/大模型训练与微调/硬件与通信/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "NVIDIA A100 GPU 服务器配置详解与三代显卡对比",
+        "item": "https://gkm0120.cn/p/63937.html"
+      }
+    ]
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    
+      {
+        "@type": "Question",
+        "name": "NVIDIA A100 GPU 服务器配置详解与三代显卡对比中各方案的核心差异是什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "本文从架构设计、性能表现、适用场景、资源需求和生态成熟度等维度，对NVIDIA A100 GPU 服务器配置详解与三代显卡对比涉及的各方案进行了系统性对比分析，帮助读者理解各方案的核心差异与取舍。"
+        }
+      },
+    
+      {
+        "@type": "Question",
+        "name": "如何根据实际需求选择合适的方案？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "选择时建议综合考量以下因素：业务场景对延迟和吞吐量的要求、可用硬件资源与预算、团队技术栈与运维能力、方案的社区活跃度与长期维护保障，以及与现有系统的集成成本。没有绝对最优的方案，只有最适合特定场景的方案。"
+        }
+      },
+    
+      {
+        "@type": "Question",
+        "name": "这些方案各自的优缺点和适用场景是什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "各方案在设计目标上各有侧重：有的追求极致性能，有的强调易用性和生态，有的专注特定场景优化。文章中对每个方案的优势、局限性和典型适用场景都有详细阐述，建议根据具体需求对照参考。"
+        }
+      }
+    
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#规格参数"><span class="nav-text">规格参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPU-的核心架构及参数"><span class="nav-text">GPU 的核心架构及参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V100-vs-A100-vs-H100"><span class="nav-text">V100 vs A100 vs H100</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。"><meta name="keywords" content="词嵌入"><meta property="og:type" content="article"><meta property="og:title" content="NNLM 神经概率语言模型详解：分布式词表示的开山之作"><meta property="og:url" content="https://gkm0120.cn/p/32911.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:updated_time" content="2026-09-09T02:01:56.589Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="NNLM 神经概率语言模型详解：分布式词表示的开山之作"><meta name="twitter:description" content="讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。"><meta name="twitter:image" content="https://gkm0120.cn/images/loading.gif"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/32911.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>NNLM 神经概率语言模型详解：分布式词表示的开山之作 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/32911.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/NLP技术全景/">NLP技术全景</a> <span class="separator">/</span> <a href="/categories/NLP技术全景/深度学习/">深度学习</a> <span class="separator">/</span> <span class="current">NNLM 神经概率语言模型详解：分布式词表示的开山之作</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/rag/">RAG 检索增强</a> <span class="pillar-badge-sub">· 向量检索 · 混合检索 · Rerank · 知识库治理</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">NNLM 神经概率语言模型详解：分布式词表示的开山之作</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-09-08T13:41:53+08:00">2025-09-08 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:01:56+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP技术全景/" itemprop="url" rel="index"><span itemprop="name">NLP技术全景</span> </a></span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP技术全景/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">1.5k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">6 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。</span></div><div class="post-body" itemprop="articleBody"><p>讲解 Bengio 等人提出的神经概率语言模型：通过学习单词的分布式表示与词序列概率函数缓解维度灾难，用神经网络改进 n-gram 模型以利用更长的上下文，是后续 word2vec 等词向量工作的起点。</p><a id="more"></a><p>A Neural Probabilistic Language Model</p><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文提出通过学习单词的分布式表示来解决维度问题。模型通过训练语句对指数级语义相关的句子进行建模。同时学习（1）每个单词的分布式表示（2）单词序列的概率函数。泛化（Generalization）是指从未出现的单词序列，可以通过类似的词的组成的已经出现的句子来获得较高的概率。本文介绍了使用神经网络的概率函数的实验，改进了n-gram模型，可以利用更长的上下文，并在两个文本预料上都显示了很好的效果。</p><p>• 利用神经网络对高维离散的分布进行建模，对于学习$Z_{1} \ldots Z_{n}$的联合概率分布有很大用处 (Bengio and Bengio, 2000a,b)。在该模型 中，联合概率分布被分解为条件概率的乘积:</p><p>$$<br>\hat{P}\left(Z_{t}=z_{1}, \ldots, Z_{n}=z_{n}\right)=\prod_{i} \hat{P}\left(Z_{i}=z_{i} \mid g_{i}\left(Z_{i-1}=z_{i-1}, Z_{i-2}=z_{i-2}, \ldots, Z_{1}=z_{1}\right)\right)<br>$$</p><ul><li><strong>使用神经网络进行语言建模</strong>: Miikkulainen and Dyer, 1991；基于字符的文本压缩，利用神经网络预测下一个字符的概率 (Schmidhuber, 1996)；模型由于没有隐藏单元和单个输入词而被限制为捕获单数据和二元数据统计 (Xu and Rudnicky, 2000)</li><li><strong>发现单词相似关系获得新序列的泛化</strong>: 基于学习词汇聚类的方法(Brown et al., 1992, Pereira et al., 1993, Niesler et al., 1998, Baker and McCallum, 1998)</li><li><strong>向量空间表示方法在文本中的使用</strong>：信息检索(Schutze, 1993)<h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a><strong>模型结构</strong></h2></li></ul><p>模型：$f\left(w_{t}, \ldots, w_{t-n+1}\right)=\hat{P}\left(w_{t} \mid w_{1}^{t-1}\right)$</p><p>其中，训练集由 $w_{1} \ldots w_{t}$ 序列组成，$w_{t} \in V$,单词 $V$ 是有限的集合。将模型分解为两个部分：</p><p>● 将词汇表 $V$ 中的元素 $i$ 映射到实向量 $C(i) \in \mathbb{R}$ 中，该向量表示词汇表中每个词的分布式特征向量。 $C(i)$ 是一个大小为 $|V| \times m$ 的自 由参数矩阵。<br>● 函数 $g$ 将上下文单词的特征向量 $\left(C\left(w_{t-n+1}\right), \ldots, C\left(w_{t-1}\right)\right)$作为输入序列，将它们映射为 $V$ 中下一个单词 $w_{t}$ 的条件概率分布。 $g$ 的输出是第 $i$ 个单词的估计概率向量 $\hat{P}\left(w_{t}=i \mid w_{1}^{t-1}\right)$ 。如下图所示</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_fd3522b374.png" alt></p><p>$$<br>f\left(i, w_{t-1}, \ldots, w_{t-n+1}\right)=g\left(i, C\left(w_{t-1}\right), \ldots, C\left(w_{t-n+1}\right)\right)<br>$$</p><p>函数 $f$ 是映射 $C$ 和 $g$ 的组合，$C$ 在上下文所有单词间共享。矩阵 $C$ 的第 $i$ 行对应第 $i$ 个单词的特征向量 $C(i)$ 。函数 $g$ 通过带有参数 $w$ 的前馈或递归神经网络或其他参数化函数来实现。整体参数集 $\theta=(C, w)$。<br>训练通过最大化训练语料库的惩罚似然估计 $\theta$ 来实现:</p><p>$$<br>L=\frac{1}{T} \sum_{t} \log f\left(w_{t}, w_{t-1}, \ldots, w_{t-n+1} ; \theta\right)+R(\theta)<br>$$</p><p>其中 $R(\theta)$ 是正则项。在模型中自由参数的数量至于单词数量 $V$ 线性相关<br>在本文的大部分实验中，神经网络具有一个隐藏层，单词特征到输出的直接连接是可选的。因此实际存在两层隐藏层：共享的单词特征层 $C$ ，和普通的双曲正切隐藏层。神经网络使用softmax输出层计算以下函数以保证正概率总和为1:</p><p>$$<br>\hat{P}\left(w_{t} \mid w_{t-1}, \ldots, w_{t-n+1}\right)=\frac{e^{y_{u_{t}}}}{\sum_{i} e^{y_{i}}}<br>$$</p><p>$y_{i}$ 是对于每个输出单词 $i$ 计算的末归一化对数概率:</p><p>$$<br>y=b+W x+\operatorname{Utanh}(d+H x)<br>$$</p><p>$$<br>\hat{P}\left(w_{t} \mid w_{t-1}, \ldots, w_{t-n+1}\right)=\frac{e^{y_{w_{t}}}}{\sum_{i} e^{y_{i}}}<br>$$</p><p>$y_{i}$ 是对于每个输出单词 $i$ 计算的末归一化对数概率:</p><p>$$<br>y=b+W x+U \tanh (d+H x)<br>$$</p><p>$W=0$ 时 $C$ 与输出层不直接连接， $x$ 是单词特征层激活向量(word features layer activation vector)</p><p>$$<br>x=\left(C\left(w_{t-1}\right), C\left(w_{t-2}\right), \ldots, C\left(w_{t-n+1}\right)\right)<br>$$</p><p>另 $h$ 为隐藏单元的数量， $m$ 是每个单词特征的数量。当单词特征向量与输出之间不直接连接时，$W$ 被设置为 0 。模型的自由参数有: 输出偏差 $b_{|V| \times 1}$ ，隐藏层偏差 $d_{h \times 1}$ ，隐藏层到输出层的权重 $U_{|V| \times h}$ ，单词特征到输出层的权重 $W_{|V| \times(n-1)}$ ，隐藏层权重 $H_{h \times(n-1)}$，和单词特征 $C_{|V| \times m}$:</p><p>$$<br>\theta=(b, d, W, U, H, C)<br>$$</p><p>自由参数的个数是 $|V|(1+n m+h)+h(1+(n-1) m)$ 。注意理论上来说，如果 $W$ 和 $H$ 存在权重衰减而 $C$ 没有，那么 $W$ 和 $H$ 可以向零收敛，而 $C$ 将会爆炸 (blow up) 。在实践中，当使用随机梯度上升来训练时，我们没有观察到这种现象。神经网络中的随机梯度上升执行以下迭代更新:</p><p>$$<br>\theta \leftarrow \theta+\epsilon \frac{\partial \log \hat{P}\left(w_{t} \mid w_{t-1}, \ldots, w_{t-n+1}\right)}{\partial \theta}<br>$$</p><p>其中 $\epsilon$ 是学习效率。<br><strong>混合模型</strong>: 实验发现将神经网络中的概率预测与揷值三元模型相结合可以获得提高的效果。</p></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/43940.html" rel="bookmark">GloVe 详解：基于全局词频统计的词向量与公式推导</a> <span class="related-posts-meta"><time datetime="2025-09-08T13:41:53+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/59579.html" rel="bookmark">Text-RCNN 详解：双向循环结构与最大池化的结合</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:43+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/42951.html" rel="bookmark">TextCNN 详解：用一维卷积抽取文本特征的经典模型</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:40+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/22675.html" rel="bookmark">FastText 详解：层次 Softmax 与 N-Gram 特征的高效文本分类</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:10+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/59825.html" rel="bookmark">Word2vec 详解：Skip-gram、CBOW 与训练技巧</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:03+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/词嵌入/" rel="tag"><i class="fa fa-tag"></i> 词嵌入</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/11271.html" rel="next" title="向量索引算法综述：四种度量方式与主流索引结构"><i class="fa fa-chevron-left"></i> 向量索引算法综述：四种度量方式与主流索引结构</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/43940.html" rel="prev" title="GloVe 详解：基于全局词频统计的词向量与公式推导">GloVe 详解：基于全局词频统计的词向量与公式推导 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NNLM 神经概率语言模型详解：分布式词表示的开山之作",
+    "datePublished": "2025-09-08T13:41:53+08:00",
+    "dateModified": "2026-09-09T10:01:56+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/32911.html"
+    },
+    "url": "https://gkm0120.cn/p/32911.html"
+    
+    , "articleSection": "NLP技术全景"
+    
+    
+    , "keywords": ["词嵌入"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "NLP技术全景",
+        "item": "https://gkm0120.cn/categories/NLP技术全景/"
+      }
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "深度学习",
+        "item": "https://gkm0120.cn/categories/NLP技术全景/深度学习/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "NNLM 神经概率语言模型详解：分布式词表示的开山之作",
+        "item": "https://gkm0120.cn/p/32911.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型结构"><span class="nav-text">模型结构</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });</script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

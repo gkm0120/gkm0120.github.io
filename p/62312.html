@@ -1,0 +1,156 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。"><meta name="keywords" content="长上下文,多模态,文档解析"><meta property="og:type" content="article"><meta property="og:title" content="Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案"><meta property="og:url" content="https://gkm0120.cn/p/62312.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:updated_time" content="2026-09-09T02:01:56.101Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案"><meta name="twitter:description" content="Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。"><meta name="twitter:image" content="https://gkm0120.cn/images/loading.gif"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/62312.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/62312.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/文档解析与知识抽取/">文档解析与知识抽取</a> <span class="separator">/</span> <span class="separator">/</span> <span class="current">Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/document-ai/">Document AI 文档理解</a> <span class="pillar-badge-sub">· 文档解析 · 版面分析 · OCR · 多模态理解</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-10-30T10:52:30+08:00">2025-10-30 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:01:56+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/文档解析与知识抽取/" itemprop="url" rel="index"><span itemprop="name">文档解析与知识抽取</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">1.3k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">4 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。</span></div><div class="post-body" itemprop="articleBody"><p>Glyph 不再把文本当作离散 token 序列直接输入 LLM，而是先渲染成紧凑图像再用视觉语言模型处理，用一个视觉 token 承载数十个文本 token。本文解读其研究背景、技术架构与性能评估。</p><a id="more"></a><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_b497425451.png" alt></p><p>核心思想是：<strong>不再将文本作为离散的 Token 序列直接输入 LLM，而是先将其渲染（Render）成紧凑的图像，再利用视觉语言模型（VLM）进行处理。</strong> 这种方法将文本的“字形”（Glyph）作为信息载体，通过视觉表征实现对原始文本信息的高密度压缩。一个视觉 Token 可以承载多个甚至数十个文本 Token 的信息，从而在不牺牲语义保真度的前提下，大幅降低输入模型的 Token 数量。</p><ul><li>论文地址：<a href="https://arxiv.org/abs/2510.17800" target="_blank" rel="noopener">https://arxiv.org/abs/2510.17800</a></li><li>GitHub地址：<strong>Glyph</strong><blockquote><p>deepseek ocr并没有做文本转为图像这一步，重点是对图像视觉压缩然后还原的逻辑验证，而glm的这个框架则是重点在做这个文本转为图像这一前置步骤。</p></blockquote></li></ul><h3 id="研究背景与核心思想"><a href="#研究背景与核心思想" class="headerlink" title="研究背景与核心思想"></a>研究背景与核心思想</h3><p>主流 LLM 依赖于 Transformer 架构，其核心是自注意力机制。该机制允许模型中的每个 Token 与序列中的所有其他 Token 进行交互，从而捕捉长距离依赖关系。然而，这种能力的代价是巨大的：</p><ul><li><strong>计算复杂度</strong>：自注意力计算量与序列长度 N 的平方（O(N²)）成正比。当 N 从 8K 增长到 128K 时，计算量会增长 256 倍。</li><li><strong>内存开销</strong>：存储注意力分数矩阵（KV Cache）需要 O(N²) 的内存空间。对于百万级上下文，这会轻易耗尽现有最高端硬件的显存。<br>现有的优化方案，如稀疏注意力、滑动窗口注意力等，通过限制每个 Token 的交互范围来降低复杂度至近线性（如 O(N log N) 或 O(N)），但这可能牺牲模型捕捉全局信息的能力。而像 YaRN 这样的位置编码扩展技术，虽然能让模型“接受”更长的输入，却无法降低推理成本，且在超长外推时性能会下降。检索增强（RAG）则通过外部检索来缩短输入，但面临着检索失败导致关键信息丢失的风险。这些方法都在<strong>性能、成本、信息完整性</strong>这个“不可能三角”中进行权衡。</li></ul><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_7b72bec4e3.png" alt></p><p>Glyph 的创新之处在于它彻底改变了模型与长文本交互的方式。它将长上下文处理从一维的序列建模问题，巧妙地转化为二维的视觉理解问题，从而绕开了传统方法的固有瓶颈。核心思想：通过将文本渲染为图像，利用 VLM 的视觉压缩能力，实现对原始文本信息的高密度压缩。</p><p>这种范式转移带来的直接优势包括：</p><ul><li><strong>显著降低计算与内存需求</strong>：由于输入序列的有效长度（Token 数量）被压缩了数倍（例如 3-4 倍），自注意力机制的二次方开销被显著削减，从而大幅降低推理时的计算和内存需求。</li><li><strong>扩展有效上下文窗口</strong>：对于一个固定上下文窗口（如 128K Token）的 VLM，若能实现 4 倍的视觉压缩，其能处理的原始文本长度就能达到 512K，极大地扩展了模型的应用范围。<br>注：与某些仅进行图像视觉压缩和还原的 OCR 模型不同，Glyph 的重点在于文本到图像的渲染这一前置步骤，并在此基础上构建 VLM 理解框架。</li></ul><h3 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h3><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_dada5bf8ae.png" alt></p><ol><li><strong>第一阶段：持续预训练 (Continual Pre-Training)</strong></li><li><strong>第二阶段：LLM 驱动的渲染配置搜索 (LLM-Driven Rendering Search)</strong></li><li><strong>第三阶段：后训练优化 (Post-Training)</strong><br>通过这三个阶段，Glyph 从一个通用的 VLM 基础模型，逐步演化为一个精通于在特定视觉压缩范式下执行长上下文任务的专家模型。</li></ol><h3 id="性能评估与效果评估"><a href="#性能评估与效果评估" class="headerlink" title="性能评估与效果评估"></a>性能评估与效果评估</h3><p>Glyph 的性能令人印象深刻，在多个长上下文基准测试（如 LongBench, MRCR）上，它取得了与同等规模的先进纯文本 LLM（如 Qwen3-8B）相当甚至更好的性能。</p><ul><li><strong>性能与压缩</strong>：实现了 <strong>3-4倍</strong> 的 Token 压缩率，同时保持了与 SOTA 模型的竞争力。这意味着在相同的 Token 预算下，Glyph 可以处理3-4倍的原始文本。</li><li><strong>效率提升</strong>：压缩带来了显著的速度提升。与纯文本的基线模型相比，Glyph 在128K长度的输入上实现了约 <strong>4.8倍</strong> 的预填充（Prefilling）加速和 <strong>4.4倍</strong> 的解码（Decoding）吞吐量提升，以及约 <strong>2倍</strong> 的 SFT 训练速度提升。</li><li><strong>扩展性</strong>：通过8倍的极限压缩，一个128K上下文的 VLM 甚至可以处理 <strong>1M</strong> 级别的文本任务，并保持相当的性能。<br><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_ff58e0151e.png" alt></li></ul><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://mp.weixin.qq.com/s/_TdyBmozqDeQWzRHzuU7UA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/_TdyBmozqDeQWzRHzuU7UA</a></p><p>2、<a href="https://mp.weixin.qq.com/s/MsYvL686R_Z67fS42UkP4w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/MsYvL686R_Z67fS42UkP4w</a></p><p>3、<a href="https://mp.weixin.qq.com/s/XJUE7udhvYjjv5YK4qEGhg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XJUE7udhvYjjv5YK4qEGhg</a></p></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/31269.html" rel="bookmark">DeepSeek-OCR 技术报告解读：用光学方式压缩文本上下文</a> <span class="related-posts-meta"><time datetime="2025-10-22T10:51:56+08:00">2025-10-22</time> <span class="related-posts-cat"><a href="/categories/文档解析与知识抽取/">文档解析与知识抽取</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/35623.html" rel="bookmark">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a> <span class="related-posts-meta"><time datetime="2026-08-25T06:42:26+08:00">2026-08-25</time> <span class="related-posts-cat"><a href="/categories/模型认知与生态/">模型认知与生态</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/35997.html" rel="bookmark">PaddleOCR-VL部署遗留问题排查：容器报错、API文档与vLLM部署配置参考</a> <span class="related-posts-meta"><time datetime="2026-07-30T06:29:04+08:00">2026-07-30</time> <span class="related-posts-cat"><a href="/categories/模型部署/">模型部署</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/11720.html" rel="bookmark">DeepSeek-V4预览版架构调研报告：CSA+HCA混合注意力、Manifold超连接与V3升级全景</a> <span class="related-posts-meta"><time datetime="2026-07-28T19:00:06+08:00">2026-07-28</time> <span class="related-posts-cat"><a href="/categories/大模型推理优化/">大模型推理优化</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/75241.html" rel="bookmark">主流开源大模型上下文长度对照表：Qwen、DeepSeek-V4、GLM5.2与MiniMax-M3等私有模型参数梳理</a> <span class="related-posts-meta"><time datetime="2026-07-14T01:58:00+08:00">2026-07-14</time> <span class="related-posts-cat"><a href="/categories/模型认知与生态/">模型认知与生态</a> ·</span></span></li></ul></div><div class="post-references"><div class="post-references-header"><i class="fa fa-external-link"></i>参考资料</div><ul class="post-references-list"><li class="post-references-item"><a href="https://arxiv.org/abs/2510.17800" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2510.17800</a></li><li class="post-references-item"><a href="https://mp.weixin.qq.com/s/_TdyBmozqDeQWzRHzuU7UA" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/_TdyBmozqDeQWzRHzuU7UA</a></li><li class="post-references-item"><a href="https://mp.weixin.qq.com/s/MsYvL686R_Z67fS42UkP4w" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/MsYvL686R_Z67fS42UkP4w</a></li><li class="post-references-item"><a href="https://mp.weixin.qq.com/s/XJUE7udhvYjjv5YK4qEGhg" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/XJUE7udhvYjjv5YK4qEGhg</a></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/长上下文/" rel="tag"><i class="fa fa-tag"></i> 长上下文</a> <a href="/tags/多模态/" rel="tag"><i class="fa fa-tag"></i> 多模态</a> <a href="/tags/文档解析/" rel="tag"><i class="fa fa-tag"></i> 文档解析</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/31381.html" rel="next" title="上下文工程 Context Engineering 综述：超越提示词的信息负载优化"><i class="fa fa-chevron-left"></i> 上下文工程 Context Engineering 综述：超越提示词的信息负载优化</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/40421.html" rel="prev" title="广铁集团AI需求分析记录：行业应用场景与需求梳理（2026-04-28）">广铁集团AI需求分析记录：行业应用场景与需求梳理（2026-04-28） <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案",
+    "datePublished": "2025-10-30T10:52:30+08:00",
+    "dateModified": "2026-09-09T10:01:56+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/62312.html"
+    },
+    "url": "https://gkm0120.cn/p/62312.html"
+    
+    , "articleSection": "文档解析与知识抽取"
+    
+    
+    , "keywords": ["长上下文", "多模态", "文档解析"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "文档解析与知识抽取",
+        "item": "https://gkm0120.cn/categories/文档解析与知识抽取/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Glyph 技术报告解读：把长文本渲染成图像的上下文压缩方案",
+        "item": "https://gkm0120.cn/p/62312.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究背景与核心思想"><span class="nav-text">研究背景与核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术架构"><span class="nav-text">技术架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能评估与效果评估"><span class="nav-text">性能评估与效果评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

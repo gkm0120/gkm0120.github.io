@@ -1,0 +1,163 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。"><meta name="keywords" content="注意力机制,词嵌入,MoE,通信与硬件,LongCat"><meta property="og:type" content="article"><meta property="og:title" content="LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参"><meta property="og:url" content="https://gkm0120.cn/p/12256.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2026-09-09T02:13:28.027Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参"><meta name="twitter:description" content="解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/12256.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/12256.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/大模型全栈知识/">大模型全栈知识</a> <span class="separator">/</span> <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a> <span class="separator">/</span> <span class="current">LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/rag/">RAG 检索增强</a> <span class="pillar-badge-sub">· 向量检索 · 混合检索 · Rerank · 知识库治理</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-06-29T11:45:28+08:00">2025-06-29 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:13:28+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大模型全栈知识/" itemprop="url" rel="index"><span itemprop="name">大模型全栈知识</span> </a></span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大模型全栈知识/模型认知与生态/" itemprop="url" rel="index"><span itemprop="name">模型认知与生态</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">650 </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">2 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。</span></div><div class="post-body" itemprop="articleBody"><p>解读美团 LongCat-2.0 的三大设计：从三个正交方向改进 DSA 的 LongCat 稀疏注意力、用 N-gram 嵌入在 MoE 之外开辟正交扩参维度以突破稀疏化收益递减，以及在非 GPU 的 ASIC 平台上完成 35T token 预训练的工程实践。</p><a id="more"></a><h2 id="LongCat-2-0-—技术报告摘要"><a href="#LongCat-2-0-—技术报告摘要" class="headerlink" title="LongCat-2.0 —技术报告摘要"></a>LongCat-2.0 —技术报告摘要</h2><blockquote><p>来源：GitHub README +技术博客（无独立arXiv）<br>团队：Meituan LongCat Team<br>发布时间：2026.06<br>许可证：MIT</p></blockquote><hr><h2 id="1-预训练-Recipe"><a href="#1-预训练-Recipe" class="headerlink" title="1. 预训练 Recipe"></a>1. 预训练 Recipe</h2><h3 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h3><table><thead><tr><th>项目</th><th>详情</th></tr></thead><tbody><tr><td>模型架构</td><td>MoE, 1.6T总参/ ~48B激活</td></tr><tr><td>N-gram Embedding</td><td>135B参数，在MoE正交的稀疏维度中扩展参数，提高参数利用效率</td></tr><tr><td>注意力</td><td>LongCat Sparse Attention (LSA)，改进DSA的Lightning Indexer</td></tr><tr><td>MTP</td><td>3步Multi-Token Prediction用于speculative decoding</td></tr><tr><td>上下文</td><td>1M tokens</td></tr><tr><td>训练Token</td><td>35T+</td></tr><tr><td>长上下文训练</td><td>数千亿token的1M上下文数据</td></tr><tr><td>硬件</td><td>AI ASIC超级计算集群（非GPU/NPU），证明替代硬件可行性</td></tr><tr><td>训练规模</td><td>数百万加速器天</td></tr><tr><td>训练稳定性</td><td>无回滚、无不可恢复loss尖峰</td></tr></tbody></table><h3 id="LSA-LongCat-Sparse-Attention-三个正交优化"><a href="#LSA-LongCat-Sparse-Attention-三个正交优化" class="headerlink" title="LSA (LongCat Sparse Attention) 三个正交优化"></a>LSA (LongCat Sparse Attention) 三个正交优化</h3><table><thead><tr><th>技术</th><th>详情</th></tr></thead><tbody><tr><td>Streaming-aware Indexing (SI)</td><td>重塑token选择预算，硬件对齐连续访问+动态随机选择，碎片化→可预测顺序读取，合并HBM访问</td></tr><tr><td>Cross-Layer Indexing (CLI)</td><td>利用相邻层间attention显著性经验稳定性，跨层蒸馏使单次索引服务多个连续层，摊销索引成本</td></tr><tr><td>Hierarchical Indexing (HI)</td><td>粗到细两阶段：块级近似评分粗筛→细粒度token选择，缩小候选空间</td></tr></tbody></table><h3 id="LSA与MTP协同"><a href="#LSA与MTP协同" class="headerlink" title="LSA与MTP协同"></a>LSA与MTP协同</h3><table><thead><tr><th>项目</th><th>详情</th></tr></thead><tbody><tr><td>CLI</td><td>目标模型每2层共享一个索引</td></tr><tr><td>MTP</td><td>所有3个draft步骤共享单次索引传递</td></tr></tbody></table><h3 id="N-gram-Embedding设计原则"><a href="#N-gram-Embedding设计原则" class="headerlink" title="N-gram Embedding设计原则"></a>N-gram Embedding设计原则</h3><table><thead><tr><th>原则</th><th>详情</th></tr></thead><tbody><tr><td>①MoE稀疏性已超最优点</td><td>继续增加MoE稀疏性收益递减</td></tr><tr><td>②N-gram比例约束</td><td>确保相对于等规模纯MoE的稳健优势</td></tr></tbody></table><h3 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h3><table><thead><tr><th>项目</th><th>详情</th></tr></thead><tbody><tr><td>总量</td><td>35T+ tokens</td></tr><tr><td>长上下文</td><td>数千亿token 1M上下文数据</td></tr><tr><td>具体数据构成</td><td>原文未详述</td></tr></tbody></table><hr><h2 id="2-后训练-Recipe"><a href="#2-后训练-Recipe" class="headerlink" title="2. 后训练 Recipe"></a>2. 后训练 Recipe</h2><table><thead><tr><th>项目</th><th>详情</th></tr></thead><tbody><tr><td>目标</td><td>编码和Agent任务能力增强</td></tr><tr><td>具体方法</td><td>原文未详述（博文+GitHub级信息）</td></tr></tbody></table><hr><h2 id="3-关键亮点"><a href="#3-关键亮点" class="headerlink" title="3. 关键亮点"></a>3. 关键亮点</h2><ol><li><strong>LongCat Sparse Attention (LSA)</strong>：SI+CLI+HI三重优化改进DSA，解决不连续性和二次方评分瓶颈</li><li><strong>N-gram Embedding (135B)</strong>：MoE正交维度扩参，突破MoE稀疏性收益递减</li><li><strong>1.6T / ~48B激活 + 35T预训练</strong>：开源最大规模MoE之一</li><li><strong>非GPU ASIC训练</strong>：证明替代硬件平台前沿规模训练可行性</li><li><strong>LSA-MTP协同</strong>：跨层索引共享+MTP共享，最大化推理效率</li><li><strong>稳定训练</strong>：数百万加速器天无回滚</li></ol></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/11336.html" rel="bookmark">LongCat-Flash 技术报告解读：零计算专家与 Shortcut 连接 MoE</a> <span class="related-posts-meta"><time datetime="2025-07-11T11:45:52+08:00">2025-07-11</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/63854.html" rel="bookmark">Qwen3.5 与 Qwen3 深度架构对比：混合 SSM-Transformer 的效率革命</a> <span class="related-posts-meta"><time datetime="2026-06-10T13:41:05+08:00">2026-06-10</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/58531.html" rel="bookmark">美团 LongCat-Flash 技术报告解读：5600 亿参数的智能体 MoE 模型</a> <span class="related-posts-meta"><time datetime="2025-09-02T11:56:51+08:00">2025-09-02</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/32010.html" rel="bookmark">开源大模型技术演进时间线：预训练、后训练与强化学习</a> <span class="related-posts-meta"><time datetime="2025-07-25T13:00:38+08:00">2025-07-25</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/60370.html" rel="bookmark">Kimi-K3 技术报告解读：2.8T 参数的混合线性注意力架构</a> <span class="related-posts-meta"><time datetime="2025-07-25T11:45:17+08:00">2025-07-25</time> <span class="related-posts-cat"><a href="/categories/大模型全栈知识/">大模型全栈知识</a> · <a href="/categories/大模型全栈知识/模型认知与生态/">模型认知与生态</a></span></span></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/注意力机制/" rel="tag"><i class="fa fa-tag"></i> 注意力机制</a> <a href="/tags/词嵌入/" rel="tag"><i class="fa fa-tag"></i> 词嵌入</a> <a href="/tags/MoE/" rel="tag"><i class="fa fa-tag"></i> MoE</a> <a href="/tags/通信与硬件/" rel="tag"><i class="fa fa-tag"></i> 通信与硬件</a> <a href="/tags/LongCat/" rel="tag"><i class="fa fa-tag"></i> LongCat</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/55525.html" rel="next" title="NVIDIA Nemotron 3 白皮书解读：混合 Mamba-Transformer MoE 家族"><i class="fa fa-chevron-left"></i> NVIDIA Nemotron 3 白皮书解读：混合 Mamba-Transformer MoE 家族</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/62200.html" rel="prev" title="MiniCPM-O 端侧全模态模型解读：端到端语音与视觉理解">MiniCPM-O 端侧全模态模型解读：端到端语音与视觉理解 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参",
+    "datePublished": "2025-06-29T11:45:28+08:00",
+    "dateModified": "2026-09-09T10:13:28+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/12256.html"
+    },
+    "url": "https://gkm0120.cn/p/12256.html"
+    
+    , "articleSection": "大模型全栈知识"
+    
+    
+    , "keywords": ["注意力机制", "词嵌入", "MoE", "通信与硬件", "LongCat"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "大模型全栈知识",
+        "item": "https://gkm0120.cn/categories/大模型全栈知识/"
+      }
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "模型认知与生态",
+        "item": "https://gkm0120.cn/categories/大模型全栈知识/模型认知与生态/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "LongCat-2.0 技术报告解读：稀疏注意力与 N-Gram 嵌入扩参",
+        "item": "https://gkm0120.cn/p/12256.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LongCat-2-0-—技术报告摘要"><span class="nav-text">LongCat-2.0 —技术报告摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-预训练-Recipe"><span class="nav-text">1. 预训练 Recipe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练策略"><span class="nav-text">训练策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSA-LongCat-Sparse-Attention-三个正交优化"><span class="nav-text">LSA (LongCat Sparse Attention) 三个正交优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSA与MTP协同"><span class="nav-text">LSA与MTP协同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram-Embedding设计原则"><span class="nav-text">N-gram Embedding设计原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练数据"><span class="nav-text">训练数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-后训练-Recipe"><span class="nav-text">2. 后训练 Recipe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关键亮点"><span class="nav-text">3. 关键亮点</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

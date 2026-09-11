@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>戈孔明</title>
+  
+  <subtitle>大模型工程实践者</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://gkm0120.cn/"/>
+  <updated>2026-09-09T02:01:56.456Z</updated>
+  <id>https://gkm0120.cn/</id>
+  
+  <author>
+    <name>戈孔明</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</title>
+    <link href="https://gkm0120.cn/p/74125.html"/>
+    <id>https://gkm0120.cn/p/74125.html</id>
+    <published>2026-08-27T22:24:39.000Z</published>
+    <updated>2026-09-09T02:01:56.456Z</updated>
+    
+    <summary type="html">
+    
+      在 GB10 上使用 LM Studio 部署 Qwen3.8-27B 的完整步骤：一键安装、启动守护进程、下载 GGUF 模型、加载、启动 OpenAI 兼容 API 服务器，以及本机与远程调用测试。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="量化" scheme="https://gkm0120.cn/tags/%E9%87%8F%E5%8C%96/"/>
+    
+      <category term="Ollama" scheme="https://gkm0120.cn/tags/Ollama/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</title>
+    <link href="https://gkm0120.cn/p/35623.html"/>
+    <id>https://gkm0120.cn/p/35623.html</id>
+    <published>2026-08-24T22:42:26.000Z</published>
+    <updated>2026-09-09T02:01:56.563Z</updated>
+    
+    <summary type="html">
+    
+      MiniCPM-o 4.5 CookBook 概览入口与配套文档截图。
+    
+    </summary>
+    
+      <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
+    
+    
+      <category term="多模态" scheme="https://gkm0120.cn/tags/%E5%A4%9A%E6%A8%A1%E6%80%81/"/>
+    
+      <category term="MiniCPM" scheme="https://gkm0120.cn/tags/MiniCPM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</title>
+    <link href="https://gkm0120.cn/p/12045.html"/>
+    <id>https://gkm0120.cn/p/12045.html</id>
+    <published>2026-08-24T18:55:00.000Z</published>
+    <updated>2026-09-09T06:10:08.927Z</updated>
+    
+    <summary type="html">
+    
+      Qwen3.6-27B与Qwen3.8-27B大模型部署实战指南，覆盖vLLM Docker镜像启动、FP8量化配置、FlashInfer后端优化与Chunked预填充参数调优。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</title>
+    <link href="https://gkm0120.cn/p/66920.html"/>
+    <id>https://gkm0120.cn/p/66920.html</id>
+    <published>2026-08-20T03:53:00.000Z</published>
+    <updated>2026-09-09T02:01:57.140Z</updated>
+    
+    <summary type="html">
+    
+      主机 DNS 解析排查记录（20260723）。
+    
+    </summary>
+    
+      <category term="问题排查" scheme="https://gkm0120.cn/categories/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+    
+    
+      <category term="问题排查" scheme="https://gkm0120.cn/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</title>
+    <link href="https://gkm0120.cn/p/69338.html"/>
+    <id>https://gkm0120.cn/p/69338.html</id>
+    <published>2026-08-09T17:59:29.000Z</published>
+    <updated>2026-09-09T02:01:56.148Z</updated>
+    
+    <summary type="html">
+    
+      H20 上部署 DeepSeek-V4-Flash-0731 的完整记录：硬件层面、模型权重、vLLM/SGLang 启动脚本与调优配置（FP8 KV Cache、DSpark 投机解码、专家并行等）。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="SGLang" scheme="https://gkm0120.cn/tags/SGLang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大模型推理加速三种草稿模型对比：DFlash纯并行、DSpark半自回归与Eagle3纯自回归架构选型</title>
+    <link href="https://gkm0120.cn/p/17463.html"/>
+    <id>https://gkm0120.cn/p/17463.html</id>
+    <published>2026-08-09T17:14:00.000Z</published>
+    <updated>2026-09-09T03:47:16.666Z</updated>
+    
+    <summary type="html">
+    
+      大模型推理加速三种草稿模型方案对比：DFlash（纯并行）、DSpark（半自回归）与 Eagle3（纯自回归）的核心架构、生成机制与选型建议。
+    
+    </summary>
+    
+      <category term="大模型推理优化" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="推理优化" scheme="https://gkm0120.cn/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="投机解码" scheme="https://gkm0120.cn/tags/%E6%8A%95%E6%9C%BA%E8%A7%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PaddleOCR-VL部署遗留问题排查：容器报错、API文档与vLLM部署配置参考</title>
+    <link href="https://gkm0120.cn/p/35997.html"/>
+    <id>https://gkm0120.cn/p/35997.html</id>
+    <published>2026-07-29T22:29:04.000Z</published>
+    <updated>2026-09-09T02:01:00.354Z</updated>
+    
+    <summary type="html">
+    
+      PaddleOCR-VL 部署遗留问题排查记录：容器报错 issue、PaddleOCR-VL-1.5 API 文档、vLLM 部署教程及配置参考链接。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="文档解析" scheme="https://gkm0120.cn/tags/%E6%96%87%E6%A1%A3%E8%A7%A3%E6%9E%90/"/>
+    
+      <category term="问题排查" scheme="https://gkm0120.cn/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DeepSeek-V4预览版架构调研报告：CSA+HCA混合注意力、Manifold超连接与V3升级全景</title>
+    <link href="https://gkm0120.cn/p/11720.html"/>
+    <id>https://gkm0120.cn/p/11720.html</id>
+    <published>2026-07-28T11:00:06.000Z</published>
+    <updated>2026-09-09T02:01:55.960Z</updated>
+    
+    <summary type="html">
+    
+      DeepSeek-V4 预览版调研报告，梳理 CSA+HCA 混合注意力、Manifold-Constrained Hyper-Connections、Muon 优化器等核心架构创新，以及 V3→V4 的升级点全景对比与 API 接入信息。
+    
+    </summary>
+    
+      <category term="大模型推理优化" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="开源模型" scheme="https://gkm0120.cn/tags/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
+    
+      <category term="长上下文" scheme="https://gkm0120.cn/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    
+      <category term="MoE" scheme="https://gkm0120.cn/tags/MoE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vLLM 推理框架部署 Qwen3-235B-A22B 大语言模型实践</title>
+    <link href="https://gkm0120.cn/p/77396.html"/>
+    <id>https://gkm0120.cn/p/77396.html</id>
+    <published>2026-07-23T12:22:00.000Z</published>
+    <updated>2026-09-09T06:06:48.552Z</updated>
+    
+    <summary type="html">
+    
+      Qwen3-235B-A22B大语言模型完整部署实践指南，覆盖vLLM与SGLang双框架启动参数、FP8量化优化、Kubernetes部署YAML、多机多卡分布式配置与推理性能调优。
+    
+    </summary>
+    
+      <category term="大模型全栈知识" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E6%A0%88%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="推理框架" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E6%A0%88%E7%9F%A5%E8%AF%86/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="推理框架" scheme="https://gkm0120.cn/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="SGLang" scheme="https://gkm0120.cn/tags/SGLang/"/>
+    
+      <category term="Docker" scheme="https://gkm0120.cn/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>H20部署GLM5.2-FP8实战：SGLang Docker命令与投机解码参数配置</title>
+    <link href="https://gkm0120.cn/p/60364.html"/>
+    <id>https://gkm0120.cn/p/60364.html</id>
+    <published>2026-07-14T19:54:15.000Z</published>
+    <updated>2026-09-09T02:01:56.172Z</updated>
+    
+    <summary type="html">
+    
+      在 H20 上用 SGLang 部署 GLM-5.2-FP8 的 docker 命令与投机解码参数说明。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="GLM" scheme="https://gkm0120.cn/tags/GLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="SGLang" scheme="https://gkm0120.cn/tags/SGLang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主流开源大模型上下文长度对照表：Qwen、DeepSeek-V4、GLM5.2与MiniMax-M3等私有模型参数梳理</title>
+    <link href="https://gkm0120.cn/p/75241.html"/>
+    <id>https://gkm0120.cn/p/75241.html</id>
+    <published>2026-07-13T17:58:00.000Z</published>
+    <updated>2026-09-09T02:01:57.165Z</updated>
+    
+    <summary type="html">
+    
+      主流开源大模型上下文长度与最大输出长度对照表（私有模型）：Qwen 系列、DeepSeek-V4、GLM5.2、MiniMax-M3、kimi-k2.7-code 等。
+    
+    </summary>
+    
+      <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
+    
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="长上下文" scheme="https://gkm0120.cn/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    
+      <category term="模型架构" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2026年6月大模型发布全景汇总：80+条开源与商业模型动态梳理</title>
+    <link href="https://gkm0120.cn/p/18687.html"/>
+    <id>https://gkm0120.cn/p/18687.html</id>
+    <published>2026-06-18T01:00:01.000Z</published>
+    <updated>2026-09-09T02:01:55.801Z</updated>
+    
+    <summary type="html">
+    
+      2026 年 6 月 1-18 日模型发布动态汇总：80+ 条开源与商业模型动态，覆盖 MiniMax M3、GLM-5.2、Kimi K2.7-Code、Grok 4.3、DFlash Spec V2 等。
+    
+    </summary>
+    
+      <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
+    
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="开源模型" scheme="https://gkm0120.cn/tags/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI Skills能力包深度思考：提示词、规则与工具调用的打包封装及description路由机制</title>
+    <link href="https://gkm0120.cn/p/76092.html"/>
+    <id>https://gkm0120.cn/p/76092.html</id>
+    <published>2026-06-18T00:36:39.000Z</published>
+    <updated>2026-09-09T02:01:55.830Z</updated>
+    
+    <summary type="html">
+    
+      关于 AI Skills 的整理与思考：Skill 把提示词、规则、示例、工具调用等打包成可安装、调用、迭代和传播的能力包；Skill 的 description 是路由触发器而非功能摘要。
+    
+    </summary>
+    
+      <category term="工具与工程实践" scheme="https://gkm0120.cn/categories/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    
+    
+      <category term="工具" scheme="https://gkm0120.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="智能体" scheme="https://gkm0120.cn/tags/%E6%99%BA%E8%83%BD%E4%BD%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NvLink多卡互联配置实战：GPU集群组网与带宽调优记录</title>
+    <link href="https://gkm0120.cn/p/21871.html"/>
+    <id>https://gkm0120.cn/p/21871.html</id>
+    <published>2026-06-17T18:55:04.000Z</published>
+    <updated>2026-09-09T02:01:56.653Z</updated>
+    
+    <summary type="html">
+    
+      NvLink 配置相关截图记录，涉及多卡互联与集群组网配置。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="通信与硬件" scheme="https://gkm0120.cn/tags/%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%A1%AC%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Stable Diffusion零基础学习指南：名词辨析、运行原理与文生图三大组件（CLIP/U-Net/VAE）详解</title>
+    <link href="https://gkm0120.cn/p/41823.html"/>
+    <id>https://gkm0120.cn/p/41823.html</id>
+    <published>2026-06-17T00:46:05.000Z</published>
+    <updated>2026-09-09T02:01:00.791Z</updated>
+    
+    <summary type="html">
+    
+      Stable Diffusion 零基础学习指南：名词辨析（Diffusion/Latent Diffusion/SD/SD WebUI）、运行原理、文生图三大组件（CLIP 文本编码器、U-Net 扩散模型、VAE 解码器）详解。
+    
+    </summary>
+    
+      <category term="AIGC" scheme="https://gkm0120.cn/categories/AIGC/"/>
+    
+    
+      <category term="AIGC" scheme="https://gkm0120.cn/tags/AIGC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A100八卡部署Qwen3.5-122B-A10B实战：Docker与裸机vLLM启动、FP8优化与Benchmark</title>
+    <link href="https://gkm0120.cn/p/31029.html"/>
+    <id>https://gkm0120.cn/p/31029.html</id>
+    <published>2026-06-15T22:23:08.000Z</published>
+    <updated>2026-09-09T03:47:16.581Z</updated>
+    
+    <summary type="html">
+    
+      A100 八卡部署 Qwen3.5-122B-A10B 与 Qwen3-235B-A22B 的完整实践：Docker/裸机 vLLM 启动命令、FP8 优化方案、benchmark 与服务调用示例。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+    
+      <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大语言模型基准测试全解：GLUE/HumanEval/MT-Bench等评测方法与主流公开榜单对比</title>
+    <link href="https://gkm0120.cn/p/58052.html"/>
+    <id>https://gkm0120.cn/p/58052.html</id>
+    <published>2026-06-15T16:00:00.000Z</published>
+    <updated>2026-09-09T02:01:57.354Z</updated>
+    
+    <summary type="html">
+    
+      大语言模型基准测试全解：GLUE、HumanEval、MBPP、IFEval、MT-Bench、AGIEval等评测方法解析与22个主流公开榜单对比。
+    
+    </summary>
+    
+      <category term="模型认知与生态" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%94%9F%E6%80%81/"/>
+    
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="评测数据集" scheme="https://gkm0120.cn/tags/%E8%AF%84%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/"/>
+    
+      <category term="性能测试" scheme="https://gkm0120.cn/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FlashInfer推理内核详解：陈天奇团队MLSys最佳论文，大模型推理注意力加速利器</title>
+    <link href="https://gkm0120.cn/p/10331.html"/>
+    <id>https://gkm0120.cn/p/10331.html</id>
+    <published>2026-06-15T00:03:08.000Z</published>
+    <updated>2026-09-09T02:01:56.020Z</updated>
+    
+    <summary type="html">
+    
+      FlashInfer 推理内核简介：由陈天奇团队开发、获 MLSys 最佳论文奖的高性能大模型推理注意力内核，在多 Batch、动态输入、长上下文场景下带宽利用率显著优于 FlashAttention 系列。
+    
+    </summary>
+    
+      <category term="大模型推理优化" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="大模型" scheme="https://gkm0120.cn/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="推理优化" scheme="https://gkm0120.cn/tags/%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="PagedAttention" scheme="https://gkm0120.cn/tags/PagedAttention/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>H20服务器硬件配置排查：NVLink与PCIe带宽对比及拓扑链路瓶颈定位</title>
+    <link href="https://gkm0120.cn/p/98765.html"/>
+    <id>https://gkm0120.cn/p/98765.html</id>
+    <published>2026-06-14T23:04:37.000Z</published>
+    <updated>2026-09-09T02:01:56.140Z</updated>
+    
+    <summary type="html">
+    
+      H20 服务器硬件配置排查记录：NVLink 与 PCIe 带宽对比、PCIe 拓扑链路瓶颈定位方法（nvidia-smi、lspci、dmesg）。
+    
+    </summary>
+    
+      <category term="硬件与通信" scheme="https://gkm0120.cn/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E9%80%9A%E4%BF%A1/"/>
+    
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="通信与硬件" scheme="https://gkm0120.cn/tags/%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%A1%AC%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>H20集群模型切换演进记录：从单台到跨机部署DeepSeek-V4与GLM5.1的时间线</title>
+    <link href="https://gkm0120.cn/p/41180.html"/>
+    <id>https://gkm0120.cn/p/41180.html</id>
+    <published>2026-06-14T22:37:53.000Z</published>
+    <updated>2026-09-09T02:01:56.181Z</updated>
+    
+    <summary type="html">
+    
+      H20 集群模型切换计划时间线：单台/跨机部署 DeepSeek-V4-Pro、DeepSeek-V4-Flash、GLM5.1 的演进记录与规划。
+    
+    </summary>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
+    
+      <category term="GLM" scheme="https://gkm0120.cn/tags/GLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
+  
+</feed>

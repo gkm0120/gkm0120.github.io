@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="gkm0120">
+  <meta name="robots" content="noindex,nofollow">
+  <title>404 - 页面走丢了 | 孔明の博客</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .error-code {
+      font-size: 120px;
+      font-weight: 700;
+      color: #378ADD;
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -4px;
+      text-shadow: 0 4px 20px rgba(55,138,221,0.2);
+    }
+    .error-message {
+      font-size: 22px;
+      color: #555;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .error-description {
+      font-size: 15px;
+      color: #999;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 28px;
+      border-radius: 24px;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: #378ADD;
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(55,138,221,0.3);
+    }
+    .btn-primary:hover {
+      background: #2c6da3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(55,138,221,0.4);
+    }
+    .btn-secondary {
+      background: #fff;
+      color: #378ADD;
+      border: 1px solid #378ADD;
+    }
+    .btn-secondary:hover {
+      background: rgba(55,138,221,0.06);
+      transform: translateY(-2px);
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @media (max-width: 600px) {
+      .error-code { font-size: 80px; }
+      .error-message { font-size: 18px; }
+      .actions { flex-direction: column; align-items: center; }
+      .btn { width: 80%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-code">404</div>
+    <div class="error-message">页面走丢了</div>
+    <div class="error-description">你访问的页面不存在或已被移除<br>不要担心，让我们带你回到正轨</div>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        返回首页
+      </a>
+      <a href="javascript:history.back()" class="btn btn-secondary">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        返回上一页
+      </a>
+    </div>
+  </div>
+</body>
+</html>

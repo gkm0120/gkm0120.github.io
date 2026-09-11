@@ -1,0 +1,174 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。"><meta name="keywords" content="词嵌入"><meta property="og:type" content="article"><meta property="og:title" content="GloVe 详解：基于全局词频统计的词向量与公式推导"><meta property="og:url" content="https://gkm0120.cn/p/43940.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:image" content="https://gkm0120.cn/images/loading.gif"><meta property="og:updated_time" content="2026-09-09T02:01:56.093Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="GloVe 详解：基于全局词频统计的词向量与公式推导"><meta name="twitter:description" content="讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。"><meta name="twitter:image" content="https://gkm0120.cn/images/loading.gif"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/43940.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>GloVe 详解：基于全局词频统计的词向量与公式推导 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/43940.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/NLP技术全景/">NLP技术全景</a> <span class="separator">/</span> <a href="/categories/NLP技术全景/深度学习/">深度学习</a> <span class="separator">/</span> <span class="current">GloVe 详解：基于全局词频统计的词向量与公式推导</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/rag/">RAG 检索增强</a> <span class="pillar-badge-sub">· 向量检索 · 混合检索 · Rerank · 知识库治理</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">GloVe 详解：基于全局词频统计的词向量与公式推导</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-09-08T13:41:53+08:00">2025-09-08 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:01:56+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP技术全景/" itemprop="url" rel="index"><span itemprop="name">NLP技术全景</span> </a></span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NLP技术全景/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">2.1k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">7 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。</span></div><div class="post-body" itemprop="articleBody"><p>讲解 GloVe（Global Vectors）词向量：基于全局词频统计构造共现矩阵并拟合词向量，使向量运算能表达词语的相似性与类比关系，并给出目标函数推导及与 LSA、word2vec 的对比。</p><a id="more"></a><p>GloVe: Global Vectors for Word Representation <a href="http://www.fanyeong.com/2018/02/19/glove-in-detail/" target="_blank" rel="noopener">http://www.fanyeong.com/2018/02/19/glove-in-detail/</a></p><h2 id="什么是GloVe？"><a href="#什么是GloVe？" class="headerlink" title="什么是GloVe？"></a>什么是GloVe？</h2><p>正如论文的标题而言，GloVe的全称叫Global Vectors for Word Representation，它是一个基于全局词频统计（count-based &amp; overall statistics）的词表征（word representation）工具，它可以把一个单词表达成一个由实数组成的向量，这些向量捕捉到了单词之间一些语义特性，比如相似性（similarity）、类比性（analogy）等。我们通过对向量的运算，比如欧几里得距离或者cosine相似度，可以计算出两个单词之间的语义相似性。</p><h2 id="GloVe是如何实现的？"><a href="#GloVe是如何实现的？" class="headerlink" title="GloVe是如何实现的？"></a>GloVe是如何实现的？</h2><p>GloVe的实现分为以下三步：</p><ul><li><p>根据语料库（corpus）构建一个共现矩阵（Co-ocurrence Matrix）X，<strong>矩阵中的每一个元素 X_ij 代表单词 i 和上下文单词 j 在特定大小的上下文窗口（context window）内共同出现的次数</strong>。一般而言，这个次数的最小单位是1，但是GloVe不这么认为：它根据两个单词在上下文窗口的距离 d，提出了一个衰减函数（decreasing weighting）：deacy = 1/d 用于计算权重，也就是说<strong>距离越远的两个单词所占总计数（total count）的权重越小</strong>。In all cases we use a decreasing weighting function, so that word pairs that are d words apart contribute 1/d to the total count.</p></li><li><p>构建词向量（Word Vector）和共现矩阵（Co-ocurrence Matrix）之间的近似关系，论文的作者提出以下的公式可以近似地表达两者之间的关系：<br><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_46fa2e9f33.png" alt></p></li><li><p>其中，$w_i^T$ 和 $\tilde {w_j}$ 是我们最终要求解的词向量；$b_i$ 和 $\tilde{b_j}$ 分别是两个词向量的bias term。</p></li><li><p>有了公式1之后我们就可以构造它的loss function了：这个loss function的基本形式就是最简单的mean square loss，只不过在此基础上加了一个权重函数 $f(X_{ij})$，那么这个函数起了什么作用，为什么要添加这个函数呢？我们知道在一个语料库中，肯定存在很多单词他们在一起出现的次数是很多的（frequent co-occurrences），那么我们希望：</p></li></ul><ol><li>这些单词的权重要大于那些很少在一起出现的单词（rare co-occurrences），所以这个函数要是非递减函数（non-decreasing）；</li><li>但我们也不希望这个权重过大（overweighted），当到达一定程度之后应该不再增加；</li><li>如果两个单词没有在一起出现，也就是 ，那么他们应该不参与到 loss function 的计算当中去，也就是 要满足 f(0) = 0。满足以上两个条件的函数有很多，作者采用了如下形式的分段函数：这个函数图像如下所示：这篇论文中的所有实验，\alpha 的取值都是0.75，而 x_max 取值都是100。<h2 id="GloVe是如何训练的？"><a href="#GloVe是如何训练的？" class="headerlink" title="GloVe是如何训练的？"></a>GloVe是如何训练的？</h2></li></ol><p>虽然很多人声称GloVe是一种无监督（unsupervised learing）的学习方式（因为它确实不需要人工标注label），但其实它还是有label的，这个label就是公式2中的 $log(X_{ij})$，而公式2中的向量 $w$ 和 $\tilde{w}$ 就是要不断更新/学习的参数，所以本质上它的训练方式跟监督学习的训练方法没什么不一样，都是基于梯度下降的。具体地，这篇论文里的实验是这么做的：</p><p><strong>采用了AdaGrad的梯度下降算法，对矩阵 X 中的所有非零元素进行随机采样，学习曲率（learning rate）设为0.05，在vector size小于300的情况下迭代了50次，其他大小的vectors上迭代了100次，直至收敛</strong>。最终学习得到的是两个vector是 $w$ 和$\tilde{w}$ ，因为是对称的（symmetric），所以从原理上讲 $w$ 和 $\tilde{w}$ 是也是对称的，他们唯一的区别是初始化的值不一样，而导致最终的值不一样。所以这两者其实是等价的，都可以当成最终的结果来使用。</p><p><strong>但是为了提高鲁棒性，我们最终会选择两者之和 **</strong>$w + \tilde{w}$<strong>** 作为最终的vector（两者的初始化不同相当于加了不同的随机噪声，所以能提高鲁棒性）</strong>。在训练了400亿个token组成的语料后，得到的实验结果如下图所示：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_cd1ce60b6d.png" alt></p><p>这个图一共采用了三个指标：语义准确度，语法准确度以及总体准确度。那么我们不难发现Vector Dimension在300时能达到最佳，而context Windows size大致在6到10之间。</p><h2 id="Glove与LSA、word2vec的比较"><a href="#Glove与LSA、word2vec的比较" class="headerlink" title="Glove与LSA、word2vec的比较"></a>Glove与LSA、word2vec的比较</h2><p>LSA（Latent Semantic Analysis）是一种比较早的count-based的词向量表征工具，它也是基于co-occurance matrix的，只不过采用了基于奇异值分解（SVD）的矩阵分解技术对大矩阵进行降维，而我们知道SVD的复杂度是很高的，所以它的计算代价比较大。还有一点是它对所有单词的统计权重都是一致的。而这些缺点在GloVe中被一一克服了。</p><p>而word2vec最大的缺点则是没有充分利用所有的语料，所以GloVe其实是把两者的优点结合了起来。从这篇论文给出的实验结果来看，GloVe的性能是远超LSA和word2vec的，但网上也有人说GloVe和word2vec实际表现其实差不多。</p><h2 id="公式推导"><a href="#公式推导" class="headerlink" title="公式推导"></a>公式推导</h2><p>写到这里GloVe的内容基本就讲完了，唯一的一个疑惑就是公式1到底是怎么来的？为了把这个问题说清楚，我们先定义一些变量：</p><p>● $X_{ij}$ 表示单词 $j$ 出现在单词 $i$ 的上下文中的次数；<br>● $X_i$ 表示单词 $i$ 的上下文中所有单词出现的总次数，即 $X_i = \sum_k X_{ik}$；<br>● $P_{ij} = P(j|i) = X_{ij} / X_{i}$ ，即表示单词 $j$ 出现在单词 $i$ 的上下文中的概率；</p><ul><li>有了这些定义之后，我们来看一个表格：<br><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_575cabc977.png" alt></li></ul><p>理解这个表格的重点在最后一行，它表示的是两个概率的比值（ratio），<strong>我们可以使用它观察出两个单词和相对于单词哪个更相关（relevant）</strong>。比如，ice和solid更相关，而stream和solid明显不相关，于是我们会发现 P(solid|ice)/P(solid|steam) 比1大更多。同样的gas和steam更相关，而 P(gas|ice)/P(gas|steam) 和ice不相关，那么就远小于1；当都有关（比如water）或者都没有关(fashion)的时候，两者的比例接近于1；这个是很直观的。因此，<strong>以上推断可以说明通过概率的比例而不是概率本身去学习词向量可能是一个更恰当的方法</strong>，因此下文所有内容都围绕这一点展开。于是为了捕捉上面提到的概率比例，我们可以构造如下函数：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_6c0f97e3cb.png" alt></p><p>其中，函数 F 的参数和具体形式未定，它有三个参数 $w_i$, $w_j$和 $\tilde{w_k}$，$w$ 和 $\tilde{w}$ 是不同的向量。<br>因为向量空间是线性结构的，所以要表达出两个概率的比例差，最简单的办法是作差，于是我们得到：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_cdb5bd9e42.png" alt></p><p>这时我们发现公式5的右侧是一个数量，而左侧则是一个向量，于是我们把左侧转换成两个向量的内积形式：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_4ed2c91c1a.png" alt></p><p>我们知道是个对称矩阵，单词和上下文单词其实是相对的，也就是如果我们做如下交换： ， 公式6应该保持不变，那么很显然，现在的公式是不满足的。为了满足这个条件，首先，我们要求函数 F 要满足同态特性（homomorphism）：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_8d110f8a64.png" alt></p><p>结合公式6，我们可以得到：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_a4e1f8d904.png" alt></p><p>然后，我们令$F=exp$，于是我们有：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_5c05ec9808.png" alt></p><p>此时，我们发现因为等号右侧的 $log(X_i)$ 的存在，公式9是不满足对称性（symmetry）的，而且这个 $log(X_i)$ 其实是跟独立的，它只跟有关，于是我们可以针对 $w_i $ 增加一个bias term $b_i$ 把它替换掉，于是我们有：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_f354a75333.png" alt></p><p>但是公式10还是不满足对称性，于是我们针对 $w_k$ 增加一个bias term $b_k$，从而得到公式1的形式：</p><p><img src="/images/loading.gif" data-original="https://cdn.jsdelivr.net/gh/gkm0120/CDN/img/notion_46fa2e9f33.png" alt></p><p>公式推导思路整理完毕。</p></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/32911.html" rel="bookmark">NNLM 神经概率语言模型详解：分布式词表示的开山之作</a> <span class="related-posts-meta"><time datetime="2025-09-08T13:41:53+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/59579.html" rel="bookmark">Text-RCNN 详解：双向循环结构与最大池化的结合</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:43+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/42951.html" rel="bookmark">TextCNN 详解：用一维卷积抽取文本特征的经典模型</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:40+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/22675.html" rel="bookmark">FastText 详解：层次 Softmax 与 N-Gram 特征的高效文本分类</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:10+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/59825.html" rel="bookmark">Word2vec 详解：Skip-gram、CBOW 与训练技巧</a> <span class="related-posts-meta"><time datetime="2025-09-08T11:55:03+08:00">2025-09-08</time> <span class="related-posts-cat"><a href="/categories/NLP技术全景/">NLP技术全景</a> · <a href="/categories/NLP技术全景/深度学习/">深度学习</a></span></span></li></ul></div><div class="post-references"><div class="post-references-header"><i class="fa fa-external-link"></i>参考资料</div><ul class="post-references-list"><li class="post-references-item"><a href="http://www.fanyeong.com/2018/02/19/glove-in-detail/" target="_blank" rel="noopener noreferrer">http://www.fanyeong.com/2018/02/19/glove-in-detail/</a></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/词嵌入/" rel="tag"><i class="fa fa-tag"></i> 词嵌入</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/32911.html" rel="next" title="NNLM 神经概率语言模型详解：分布式词表示的开山之作"><i class="fa fa-chevron-left"></i> NNLM 神经概率语言模型详解：分布式词表示的开山之作</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/31093.html" rel="prev" title="Qwen-VL 系列架构演进梳理：从固定分辨率到统一时空理解">Qwen-VL 系列架构演进梳理：从固定分辨率到统一时空理解 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GloVe 详解：基于全局词频统计的词向量与公式推导",
+    "datePublished": "2025-09-08T13:41:53+08:00",
+    "dateModified": "2026-09-09T10:01:56+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/43940.html"
+    },
+    "url": "https://gkm0120.cn/p/43940.html"
+    
+    , "articleSection": "NLP技术全景"
+    
+    
+    , "keywords": ["词嵌入"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "NLP技术全景",
+        "item": "https://gkm0120.cn/categories/NLP技术全景/"
+      }
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "深度学习",
+        "item": "https://gkm0120.cn/categories/NLP技术全景/深度学习/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "GloVe 详解：基于全局词频统计的词向量与公式推导",
+        "item": "https://gkm0120.cn/p/43940.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是GloVe？"><span class="nav-text">什么是GloVe？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GloVe是如何实现的？"><span class="nav-text">GloVe是如何实现的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GloVe是如何训练的？"><span class="nav-text">GloVe是如何训练的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Glove与LSA、word2vec的比较"><span class="nav-text">Glove与LSA、word2vec的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公式推导"><span class="nav-text">公式推导</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });</script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>

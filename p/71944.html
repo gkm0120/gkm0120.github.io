@@ -1,0 +1,156 @@
+<!DOCTYPE html><html class="theme-next pisces" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#222"><script>window.gkmRunWhenIdle = function (callback) {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(callback, { timeout: 2000 });
+    } else {
+      window.setTimeout(callback, 1000);
+    }
+  };
+  window.gkmLoadScript = function (src, callback) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    if (callback) script.onload = callback;
+    document.head.appendChild(script);
+  };</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="解析 ComfyUI 基于有向无环图（DAG）的节点化执行引擎：核心架构分层、节点化执行原理、类型系统、内存优化与数据流向。"><meta name="keywords" content="戈孔明, 大模型, LLM, 推理优化, vLLM, AI Agent, RAG, 大模型工程, AI Infra, NLP"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin><link rel="preconnect" href="//fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="//fonts.googleapis.com"><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="//fonts.googleapis.com/css?family=Noto+Sans+SC:400,700|Noto+Serif+SC:400,700|JetBrains+Mono:400,700&display=swap" rel="stylesheet"></noscript><link rel="preload" href="/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.2" as="font" type="font/woff2" crossorigin><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" media="print" onload="this.media='all'"><noscript><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"></noscript><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><link rel="alternate" href="/atom.xml" title="戈孔明" type="application/atom+xml"><meta name="description" content="解析 ComfyUI 基于有向无环图（DAG）的节点化执行引擎：核心架构分层、节点化执行原理、类型系统、内存优化与数据流向。"><meta name="keywords" content="AIGC"><meta property="og:type" content="article"><meta property="og:title" content="ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层"><meta property="og:url" content="https://gkm0120.cn/p/71944.html"><meta property="og:site_name" content="戈孔明"><meta property="og:description" content="解析 ComfyUI 基于有向无环图（DAG）的节点化执行引擎：核心架构分层、节点化执行原理、类型系统、内存优化与数据流向。"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2026-09-09T02:00:58.675Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层"><meta name="twitter:description" content="解析 ComfyUI 基于有向无环图（DAG）的节点化执行引擎：核心架构分层、节点化执行原理、类型系统、内存优化与数据流向。"><script type="text/javascript" id="hexo.configurations">var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"flipYIn","post_header":"perspectiveRightIn","post_body":"perspectiveLeftIn","coll_header":"perspectiveDownIn","sidebar":"perspectiveUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };</script><link rel="canonical" href="https://gkm0120.cn/p/71944.html"><link rel="preload" href="/images/gkm0120.webp" as="image" fetchpriority="high"><script>(function(){
+  document.documentElement.classList.add('fonts-loading');
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      document.documentElement.classList.remove('fonts-loading');
+      document.documentElement.classList.add('fonts-loaded');
+    });
+  }
+})();</script><script>(function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();</script><title>ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层 | 戈孔明</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><a href="#main" class="skip-link">跳到正文</a><div class="container sidebar-position-right page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" role="banner"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">戈孔明</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">大模型工程实践者</h1></div><div class="site-nav-toggle"><button type="button" aria-label="切换导航菜单" aria-controls="site-nav-menu" aria-expanded="false"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav-menu"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-navigate"><a href="/navigate/" rel="section"><i class="menu-item-icon fa fa-fw fa-compass"></i><br>导航</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger" role="button" aria-label="站内搜索" aria-haspopup="dialog"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup" role="dialog" aria-modal="true" aria-label="站内搜索"><div class="local-search-header clearfix"><span class="search-icon" aria-hidden="true"><i class="fa fa-search"></i> </span><span class="popup-btn-close" role="button" tabindex="0" aria-label="关闭搜索"><i class="fa fa-times-circle" aria-hidden="true"></i></span><div class="local-search-input-wrapper"><label for="local-search-input" class="sr-only">输入搜索关键词</label> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input" aria-label="搜索框"></div></div><div id="local-search-result" role="region" aria-live="polite" aria-label="搜索结果"></div></div></div></nav></div></header><main id="main" class="main" role="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://gkm0120.cn/p/71944.html"><nav class="post-breadcrumb" aria-label="Breadcrumb"><a href="/">首页</a> <span class="separator">/</span> <a href="/categories/AIGC/">AIGC</a> <span class="separator">/</span> <span class="separator">/</span> <span class="current">ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层</span></nav><div class="post-pillar-badge"><i class="fa fa-th-large"></i> <span class="pillar-badge-label">所属主题：</span> <a class="pillar-badge-link" href="/pillar/agent/">Agent 工程化</a> <span class="pillar-badge-sub">· 单 Agent · 多 Agent · MCP · Workflow</span></div><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="戈孔明"><meta itemprop="description" content><meta itemprop="image" content="/images/gkm0120.webp"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="戈孔明"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2026-06-01T08:03:26+08:00">2026-06-01 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2026-09-09T10:00:58+08:00">2026-09-09 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/AIGC/" itemprop="url" rel="index"><span itemprop="name">AIGC</span> </a></span></span><span class="post-wordcount"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span title="字数">1.2k </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span title="时长">4 分钟</span></span></div></header><div class="post-excerpt"><i class="fa fa-quote-left excerpt-icon"></i> <span class="excerpt-text">解析 ComfyUI 基于有向无环图（DAG）的节点化执行引擎：核心架构分层、节点化执行原理、类型系统、内存优化与数据流向。</span></div><div class="post-body" itemprop="articleBody"><p>ComfyUI 的底层框架核心是一个基于 <strong>有向无环图（DAG, Directed Acyclic Graph）</strong> 的节点化执行引擎。它通过将 AI 生成过程拆解为独立的计算单元（节点），并通过数据流连接这些单元，实现了极高的灵活性和模块化。</p><a id="more"></a><p>以下是 ComfyUI 工作流底层框架的核心架构解析：</p><h2 id="1-核心架构分层"><a href="#1-核心架构分层" class="headerlink" title="1. 核心架构分层"></a>1. 核心架构分层</h2><p>ComfyUI 采用前后端分离的架构设计，主要包含三个层级：</p><ul><li><strong>前端交互层 (Frontend)</strong>：<ul><li>基于 Web 技术构建，提供可视化的画布。</li><li>负责节点的拖拽、连线、参数调整以及实时预览图像/视频。</li><li>将用户的操作转化为 JSON 格式的工作流定义发送给后端。</li></ul></li><li><strong>后端执行引擎 (Backend / Python Core)</strong>：<ul><li><strong>节点调度器</strong>：解析前端传来的 JSON 工作流，构建执行图。</li><li><strong>类型系统</strong>：严格定义节点间的输入输出数据类型（如 <code>IMAGE</code>, <code>LATENT</code>, <code>CONDITIONING</code>），确保数据流的正确性。</li><li><strong>资源管理</strong>：负责模型加载、显存优化（如模型卸载、分块处理）和缓存机制。</li></ul></li><li><strong>计算与硬件层 (PyTorch Models &amp; Devices)</strong>：<ul><li>实际运行 AI 模型（如 Stable Diffusion, Flux, WanVideo 等）。</li><li>直接调用 GPU/CPU 进行张量运算。</li></ul></li></ul><h2 id="2-节点化执行原理-Node-Graph-Engine"><a href="#2-节点化执行原理-Node-Graph-Engine" class="headerlink" title="2. 节点化执行原理 (Node Graph Engine)"></a>2. 节点化执行原理 (Node Graph Engine)</h2><p>ComfyUI 的本质是一个可视化版的计算流水线。</p><ul><li><strong>节点 (Nodes)</strong>：每个节点代表一个单一的操作单元或功能模块。例如：<ul><li><strong>CheckpointLoaderSimple</strong>：仅负责加载模型权重。</li><li><strong>CLIPTextEncode</strong>：仅负责将文本转换为嵌入向量。</li><li><strong>KSampler</strong>：仅负责在潜空间进行去噪采样。</li><li><strong>VAEDecode</strong>：仅负责将潜变量解码为像素图像。</li></ul></li><li><strong>连线 (Links)</strong>：定义了数据流动的方向和依赖关系。只有当上游节点的数据准备就绪且类型匹配时，下游节点才会被触发执行。</li><li><strong>JSON 工作流定义</strong>：整个工作流在底层被序列化为 JSON 对象，包含节点 ID、类型、参数配置以及连接关系。这种结构使得工作流极易保存、分享和版本控制。</li></ul><h2 id="3-关键底层机制"><a href="#3-关键底层机制" class="headerlink" title="3. 关键底层机制"></a>3. 关键底层机制</h2><h3 id="3-1-类型系统与数据契约"><a href="#3-1-类型系统与数据契约" class="headerlink" title="3.1 类型系统与数据契约"></a>3.1 类型系统与数据契约</h3><p>ComfyUI 拥有严格的类型检查机制。每个节点通过 <strong>INPUT_TYPES</strong> 方法声明其所需的输入类型。系统在运行时会自动进行类型验证和转换，防止因数据类型不匹配导致的崩溃。常见的数据类型包括：</p><ul><li>IMAGE：像素图像数据。</li><li>LATENT：潜空间张量（压缩后的图像表示）。</li><li>CONDITIONING：文本编码后的条件向量。</li><li>MASK：遮罩数据。</li></ul><h3 id="3-2-内存管理与优化"><a href="#3-2-内存管理与优化" class="headerlink" title="3.2 内存管理与优化"></a>3.2 内存管理与优化</h3><p>为了在有限显存下运行大模型，ComfyUI 底层实现了多种优化策略：</p><ul><li><strong>模型卸载 (Model Offloading)</strong>：智能地在 GPU 和 CPU 之间移动模型权重，最大化 VRAM 利用率。</li><li><strong>分块处理 (Tiling)</strong>：对高分辨率图像或视频进行分块计算，降低单次内存需求。</li><li><strong>缓存机制 (Caching)</strong>：基于节点输入参数的哈希值实现智能缓存。如果输入未变化，系统会跳过重复计算，直接复用之前的结果，显著提升复杂工作流的效率。</li><li><strong>异步资产扫描</strong>：在 v0.17.0 及更高版本中，引入了异步双阶段扫描和后台资产播种器，将资源扫描与主线程分离，加快启动速度并支持大规模资源管理。</li></ul><h3 id="3-3-扩展性与自定义节点"><a href="#3-3-扩展性与自定义节点" class="headerlink" title="3.3 扩展性与自定义节点"></a>3.3 扩展性与自定义节点</h3><p>ComfyUI 允许开发者通过编写简单的 Python 类来创建自定义节点，无需修改前端代码。</p><ul><li><strong>标准化接口</strong>：自定义节点需遵循 INPUT_TYPES、FUNCTION 和返回值规范。</li><li><strong>生态丰富</strong>：社区提供了数百个第三方节点库（如 ControlNet, LoRA, ADetailer, Video 生成等），极大地扩展了框架的能力边界。</li></ul><h2 id="4-基础工作流的数据流向"><a href="#4-基础工作流的数据流向" class="headerlink" title="4. 基础工作流的数据流向"></a>4. 基础工作流的数据流向</h2><p>以标准的文生图（Text-to-Image）为例，底层数据流向如下：</p><blockquote><p><strong>CLIP负责看懂文本</strong>、<strong>UNet负责画图</strong>、<strong>VAE负责上色与高清还原</strong>。<strong>CLIP</strong>（文本编码器）：将你输入的文字（Prompt）翻译成AI能理解的数字特征。<strong>UNet</strong>（核心网络）：在潜空间（Latent Space）中不断运算、去噪，逐步拼凑出画面的主体结构。<strong>VAE</strong>（变分自编码器）：一个压缩/解压机，负责将抽象的潜空间特征还原为肉眼可见的完整像素图像。</p></blockquote><ol><li><strong>模型加载</strong>：CheckpointLoader 加载 UNet, CLIP, VAE 权重。</li><li><strong>文本编码</strong>：CLIPTextEncode 将提示词转换为 CONDITIONING 向量。</li><li><strong>潜空间初始化</strong>：EmptyLatentImage 创建指定分辨率的初始噪声张量 (LATENT)。</li><li><strong>去噪采样</strong>：KSampler 接收模型、条件向量和初始噪声，在潜空间进行迭代去噪，生成最终的高质量 LATENT。</li><li><strong>图像解码</strong>：VAEDecode 将 LATENT 还原为像素空间的 IMAGE。</li><li><strong>输出保存</strong>：SaveImage 将图像写入磁盘或返回给前端显示。</li></ol></div><div class="related-posts-section"><div class="related-posts-header"><i class="fa fa-graduation-cap"></i> 相关文章</div><ul class="related-posts-list"><li class="related-posts-item"><a class="related-posts-title" href="/p/41823.html" rel="bookmark">Stable Diffusion零基础学习指南：名词辨析、运行原理与文生图三大组件（CLIP/U-Net/VAE）详解</a> <span class="related-posts-meta"><time datetime="2026-06-17T08:46:05+08:00">2026-06-17</time> <span class="related-posts-cat"><a href="/categories/AIGC/">AIGC</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/81149.html" rel="bookmark">AIGC私有化大模型部署资源规划表：硬件、显存与存储资源清单</a> <span class="related-posts-meta"><time datetime="2026-05-28T09:29:06+08:00">2026-05-28</time> <span class="related-posts-cat"><a href="/categories/模型部署/">模型部署</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/53581.html" rel="bookmark">Agent 设计模式—记忆策略：八种 AI 记忆方案的原理与取舍</a> <span class="related-posts-meta"><time datetime="2025-08-12T17:10:05+08:00">2025-08-12</time> <span class="related-posts-cat"><a href="/categories/智能体与工作流/">智能体与工作流</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/63761.html" rel="bookmark">多智能体应用测试用例设计：意图识别与协同精度验证</a> <span class="related-posts-meta"><time datetime="2025-08-10T10:51:40+08:00">2025-08-10</time> <span class="related-posts-cat"><a href="/categories/智能体与工作流/">智能体与工作流</a> ·</span></span></li><li class="related-posts-item"><a class="related-posts-title" href="/p/64693.html" rel="bookmark">多智能体系统 MAS 详解：为什么需要以及怎么做</a> <span class="related-posts-meta"><time datetime="2025-07-29T10:51:33+08:00">2025-07-29</time> <span class="related-posts-cat"><a href="/categories/智能体与工作流/">智能体与工作流</a> ·</span></span></li></ul></div><div></div><div><div><div class="read-over"><span class="read-over-text">本文结束 <i class="fa fa-paw"></i> 感谢您的阅读</span></div></div></div><div><div class="share_reward"><div></div><button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"><span>打赏</span></button><div id="QR" style="display: none;"><div id="wechat" style="display: inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="戈孔明 微信支付" width="240" height="240" loading="lazy" decoding="async"><p>微信支付</p></div><div id="alipay" style="display: inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="戈孔明 支付宝" width="240" height="240" loading="lazy" decoding="async"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/AIGC/" rel="tag"><i class="fa fa-tag"></i> AIGC</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/p/51134.html" rel="next" title="2026年5月主流开源大模型横向对比：DeepSeek-V4、GLM-5.1、Kimi K2.6与Qwen3.5架构能力及vLLM部署"><i class="fa fa-chevron-left"></i> 2026年5月主流开源大模型横向对比：DeepSeek-V4、GLM-5.1、Kimi K2.6与Qwen3.5架构能力及vLLM部署</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/p/54666.html" rel="prev" title="联网搜索接入方式调研：公共搜索、学术搜索与私有搜索三类方案及国内主流服务商定价对比">联网搜索接入方式调研：公共搜索、学术搜索与私有搜索三类方案及国内主流服务商定价对比 <i class="fa fa-chevron-right"></i></a></div></div></footer></div><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层",
+    "datePublished": "2026-06-01T08:03:26+08:00",
+    "dateModified": "2026-09-09T10:00:58+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "戈孔明"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "戈孔明"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gkm0120.cn/p/71944.html"
+    },
+    "url": "https://gkm0120.cn/p/71944.html"
+    
+    , "articleSection": "AIGC"
+    
+    
+    , "keywords": ["AIGC"]
+    
+  }</script><script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首页",
+        "item": "https://gkm0120.cn/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AIGC",
+        "item": "https://gkm0120.cn/categories/AIGC/"
+      }
+      
+      
+      , {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ComfyUI底层框架深度解析：基于DAG的节点化执行引擎与架构分层",
+        "item": "https://gkm0120.cn/p/71944.html"
+      }
+    ]
+  }</script></article><div class="post-spread"><div data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣..."></div></div></div></div><div class="comments" id="comments"><script src="https://giscus.app/client.js" data-repo="gkm0120/gkm0120.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDczODE1MDA=" data-category="Announcements" data-category-id="DIC_kwDODr69_M4DFCkR" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div id="sidebar-dimmer"></div><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/gkm0120.webp" width="180" height="180" fetchpriority="high" alt="戈孔明" decoding="async"></a><p class="site-author-name" itemprop="name">戈孔明</p><p class="site-description motion-element" itemprop="description">戈孔明，大模型工程实践者。专注大模型推理优化、AI Agent、RAG 与企业级 AI 应用落地，沉淀 230+ 篇原创技术文章与工程实践笔记。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">236</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">36</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">83</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a rel="external nofollow" href="https://github.com/gkm0120" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a rel="external nofollow" href="mailto:gkm0120@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-history fa-" aria-hidden="true"></i> 近期文章</div><ul class="links-of-blogroll-list"><li class="my-links-of-blogroll-li"><a href="/p/74125.html" title="LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务">LM Studio部署Qwen3.8-27B实战（GB10）：一键安装、GGUF模型加载与OpenAI兼容API服务</a></li><li class="my-links-of-blogroll-li"><a href="/p/35623.html" title="MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口">MiniCPM-O 4.5 CookBook概览：多模态模型配套文档与使用指南入口</a></li><li class="my-links-of-blogroll-li"><a href="/p/12045.html" title="Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理">Qwen3.6-27B与Qwen3.8-27B部署实战：vLLM Docker镜像、FP8量化与单卡推理</a></li><li class="my-links-of-blogroll-li"><a href="/p/66920.html" title="主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）">主机DNS解析排查记录：网络连通性与域名解析故障定位（20260723）</a></li><li class="my-links-of-blogroll-li"><a href="/p/69338.html" title="H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优">H20部署DeepSeek-V4-Flash-0731实战：FP8 KV Cache、DSpark投机解码与专家并行调优</a></li></ul></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-tags" aria-hidden="true"></i> 热门标签</div><ul class="links-of-blogroll-list tag-list"><li class="tag-item"><a href="/tags/模型部署/" title="模型部署（33 篇）">模型部署</a></li><li class="tag-item"><a href="/tags/Qwen/" title="Qwen（31 篇）">Qwen</a></li><li class="tag-item"><a href="/tags/vLLM/" title="vLLM（31 篇）">vLLM</a></li><li class="tag-item"><a href="/tags/MoE/" title="MoE（27 篇）">MoE</a></li><li class="tag-item"><a href="/tags/注意力机制/" title="注意力机制（26 篇）">注意力机制</a></li><li class="tag-item"><a href="/tags/多模态/" title="多模态（24 篇）">多模态</a></li><li class="tag-item"><a href="/tags/GPU/" title="GPU（20 篇）">GPU</a></li><li class="tag-item"><a href="/tags/DeepSeek/" title="DeepSeek（19 篇）">DeepSeek</a></li><li class="tag-item"><a href="/tags/强化学习/" title="强化学习（19 篇）">强化学习</a></li><li class="tag-item"><a href="/tags/智能体/" title="智能体（18 篇）">智能体</a></li><li class="tag-item"><a href="/tags/推理框架/" title="推理框架（17 篇）">推理框架</a></li><li class="tag-item"><a href="/tags/预训练/" title="预训练（17 篇）">预训练</a></li><li class="tag-item"><a href="/tags/推理优化/" title="推理优化（17 篇）">推理优化</a></li><li class="tag-item"><a href="/tags/论文解读/" title="论文解读（16 篇）">论文解读</a></li><li class="tag-item"><a href="/tags/量化/" title="量化（16 篇）">量化</a></li><li class="tag-item"><a href="/tags/分布式训练/" title="分布式训练（16 篇）">分布式训练</a></li><li class="tag-item"><a href="/tags/长上下文/" title="长上下文（15 篇）">长上下文</a></li><li class="tag-item"><a href="/tags/KV-Cache/" title="KV Cache（15 篇）">KV Cache</a></li><li class="tag-item"><a href="/tags/大模型/" title="大模型（12 篇）">大模型</a></li><li class="tag-item"><a href="/tags/位置编码/" title="位置编码（11 篇）">位置编码</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-核心架构分层"><span class="nav-text">1. 核心架构分层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-节点化执行原理-Node-Graph-Engine"><span class="nav-text">2. 节点化执行原理 (Node Graph Engine)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关键底层机制"><span class="nav-text">3. 关键底层机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-类型系统与数据契约"><span class="nav-text">3.1 类型系统与数据契约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-内存管理与优化"><span class="nav-text">3.2 内存管理与优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-扩展性与自定义节点"><span class="nav-text">3.3 扩展性与自定义节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-基础工作流的数据流向"><span class="nav-text">4. 基础工作流的数据流向</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer" role="contentinfo"><div class="footer-inner"><div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2026</span> <span class="with-love"><i class="fa fa-heartbeat"></i> </span><span class="author" itemprop="copyrightHolder">戈孔明</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-area-chart"></i> </span><span title="Site words total count">658.2k</span> <a href="https://beian.miit.gov.cn">赣ICP备20004005号</a> <span class="runtime-footer"><span id="days"></span></span></div><script language="javascript">function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("03/15/2020 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();</script></div></footer><div class="back-to-top" role="button" tabindex="0" aria-label="回到顶部"><svg class="progress-ring" viewbox="0 0 44 44"><circle class="progress-ring-bg" cx="22" cy="22" r="20"/><circle class="progress-ring-fill" cx="22" cy="22" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/></svg> <i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3" defer></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5" defer></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4" defer></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4" defer></script><script type="text/javascript">window.__LOCAL_SEARCH__ = {
+      path: "search.xml",
+      root: "/",
+      top_n: "1",
+      trigger: "auto"
+    };</script><script type="text/javascript">(function () {
+      var loaded = false;
+      var src = "/js/src/localsearch.js?v=5.1.4";
+      function loadSearch(cb) {
+        if (loaded) { cb(); return; }
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = cb;
+        document.head.appendChild(s);
+      }
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.popup-trigger, .search-icon');
+        if (trigger && !loaded) {
+          e.preventDefault();
+          e.stopPropagation();
+          loadSearch(function () {
+            trigger.click();
+          });
+        }
+      });
+    })();</script><script>gkmRunWhenIdle(function () {
+    var bp = document.createElement('script');
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    bp.async = true;
+    document.head.appendChild(bp);
+  });</script><script type="text/javascript" src="/js/src/clipboard.min.js"></script><script type="text/javascript" src="/js/src/clipboard-use.js"></script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body></html>
