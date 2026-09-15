@@ -156,9 +156,9 @@
     
       <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
     
-      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
-    
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
       <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
@@ -424,9 +424,9 @@
     
       <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
     
-      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
-    
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
+    
+      <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
       <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
