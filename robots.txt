@@ -1,0 +1,58 @@
+# robots.txt — gkm0120.cn
+# 通用爬虫规则：普通搜索引擎（Googlebot/Bingbot/百度等）默认放行全站
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+
+# ---------- AI 爬虫混合策略 ----------
+# 原则：训练型爬虫（抓取内容用于模型训练）一律 Disallow；
+#       检索/引用型爬虫（抓取内容用于搜索回答并标注来源）放行。
+# 修改策略时只需调整各 User-agent 段下的 Allow / Disallow 行。
+
+# --- 检索 / 引用型（放行：AI 搜索会带来引用流量） ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# --- 训练型（禁止：不授权用于模型训练抓取） ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# ---------- Sitemap ----------
+Sitemap: https://gkm0120.cn/sitemap.xml
+Sitemap: https://gkm0120.cn/baidusitemap.xml
