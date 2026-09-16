@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> 大模型 </tag>
-            
             <tag> DeepSeek </tag>
+            
+            <tag> 大模型 </tag>
             
             <tag> 推理优化 </tag>
             
@@ -384,9 +384,9 @@
       
         <tags>
             
-            <tag> 大模型 </tag>
-            
             <tag> 开源模型 </tag>
+            
+            <tag> 大模型 </tag>
             
         </tags>
       
@@ -747,9 +747,9 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 注意力机制 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> MoE </tag>
             
@@ -975,6 +975,35 @@
     
     
     <entry>
+      <title>PDF文档解析技术全解：文本提取、结构化信息处理与LLM文档问答系统中的信息检索</title>
+      <link href="/p/35645.html"/>
+      <url>/p/35645.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、为什么需要对-PDF-进行解析？"><a href="#一、为什么需要对-PDF-进行解析？" class="headerlink" title="一、为什么需要对 PDF 进行解析？"></a>一、为什么需要对 PDF 进行解析？</h2><a id="more"></a><p>在基于大型语言模型（LLM）的文档问答系统中，解析PDF的必要性主要体现在以下几个方面：</p><ol><li><strong>文本提取</strong>：PDF文件常常包含文本、图像以及其他多媒体元素。通过解析PDF，我们可以提取其中的文本信息，从而让语言模型更好地理解并答复与文档相关的问题。</li><li><strong>结构化信息</strong>：PDF文档可能具有复杂的排版结构，例如表格和多列布局等。解析PDF可以将这些信息转换为结构化的文本数据，从而使模型能更深入地理解文档的内容。</li><li><strong>信息检索</strong>：通过解析PDF，我们可以将文档的内容转换为可搜索和检索的格式，这对于文档问答系统能更有效地定位和提取相关信息以回答用户的问题至关重要。</li><li><strong>数据预处理</strong>：解析PDF可以清理和预处理文本数据，去除无关的格式、标记和其他干扰，从而提升模型的理解和推理能力。</li><li><strong>支持多种文档类型</strong>：PDF解析能够处理各类类型的文档，包括科学论文、报告、合同等，进而扩大了文档问答系统的适用范围。<br>总的来说，解析PDF的目的是为了让基于LLM的文档问答系统能更充分地利用PDF文档中的信息，以便更准确地回答用户的问题。<h2 id="二、pdf解析有哪些方法，对应的区别是什么？"><a href="#二、pdf解析有哪些方法，对应的区别是什么？" class="headerlink" title="二、pdf解析有哪些方法，对应的区别是什么？"></a>二、pdf解析有哪些方法，对应的区别是什么？</h2>在基于大型语言模型（LLM）的文档问答系统中，进行PDF解析的方法主要包括以下几种，每种方法都有其特点和适用场景：</li><li><strong>基于OCR的文本提取</strong>：<ul><li><strong>方法描述</strong>：使用光学字符识别（OCR）技术，将PDF中的图像转换为可识别的文本。这种方法适用于包含扫描或图片的PDF文档。</li><li><strong>区别</strong>：与其他方法相比，OCR能够提取PDF中的图像文本，但对于复杂的排版结构和表格可能处理效果不佳。</li></ul></li><li><strong>基于PDF解析库的结构化解析</strong>：<ul><li><strong>方法描述</strong>：利用PDF解析库（如PyMuPDF、PDFMiner等）对PDF文档进行解析，提取其中的文本、布局信息和元数据。</li><li><strong>区别</strong>：这种方法能够较好地保留文档的结构信息，包括段落、标题、列表等，但对于图像文本的处理能力有限。</li></ul></li><li><strong>基于自然语言处理模型的直接解析</strong>：<ul><li><strong>方法描述</strong>：利用预训练的自然语言处理模型（如BERT、GPT等）直接对PDF文档进行解析，提取其中的文本信息。</li><li><strong>区别</strong>：这种方法可以结合模型对文本进行语义理解，但对于复杂的排版结构和图像文本的处理能力相对较弱。</li></ul></li><li><strong>基于深度学习的PDF解析</strong>：<ul><li><strong>方法描述</strong>：利用深度学习模型，如卷积神经网络（CNN）或循环神经网络（RNN），对PDF文档进行解析和文本提取。</li><li><strong>区别</strong>：这种方法可以结合深度学习模型对文本和图像进行端到端的处理，适用于处理复杂的PDF文档。<br>每种方法都有自己的优势和局限性，选择合适的PDF解析方法通常取决于文档的特点、所需的文本信息类型以及系统的具体需求。<h2 id="三、pdf解析存在哪些问题？"><a href="#三、pdf解析存在哪些问题？" class="headerlink" title="三、pdf解析存在哪些问题？"></a>三、pdf解析存在哪些问题？</h2>在基于大型语言模型（LLM）的文档问答系统中，PDF解析可能会面临以下一些问题：</li></ul></li><li><strong>排版复杂性</strong>：PDF文档通常具有复杂的排版结构，包括多列布局、嵌套表格等，这可能导致解析过程中文本提取的困难，特别是对于一些基于规则的解析方法而言。</li><li><strong>图像文本处理</strong>：PDF中可能包含嵌入的图像文本，这对于一些基于文本提取的解析方法（如基于OCR的解析）会带来挑战，因为这些方法可能无法直接处理图像文本。</li><li><strong>元数据提取</strong>：PDF文档中除了文本内容外，还包含丰富的元数据信息（如作者、创建日期、关键词等），提取和利用这些元数据可能需要额外的处理和解析步骤。</li><li><strong>文档结构损失</strong>：在解析PDF时，有可能会丢失一些文档的结构信息，如标题、段落、列表等，这可能影响到文档问答系统对文档内容的理解。</li><li><strong>文本准确性</strong>：在PDF解析过程中，可能会出现文本识别错误或者排版错误，特别是对于一些扫描或低质量的PDF文档，这可能会影响到文档问答系统对文本的理解和回答准确性。</li><li><strong>处理效率</strong>：PDF解析可能会消耗大量的计算资源和时间，特别是对于大型或包含大量图像的PDF文档，解析过程可能会变得非常耗时。<br>解决这些问题通常需要结合多种技术手段，包括基于规则的文本处理、深度学习模型的应用、元数据提取以及后处理技术等，以确保对PDF文档的高效、准确的解析。<h2 id="四、如何提取长文档（书籍）中关键信息？"><a href="#四、如何提取长文档（书籍）中关键信息？" class="headerlink" title="四、如何提取长文档（书籍）中关键信息？"></a>四、如何提取长文档（书籍）中关键信息？</h2>在基于大型语言模型（LLM）的文档问答系统中提取长文档（如书籍）中的关键信息通常需要结合多种技术和方法。以下是一些常见的方法：</li><li><strong>章节划分和结构化信息提取</strong>：<ul><li>首先，对长文档进行章节划分，提取章节标题和结构化信息。这可以通过基于规则的方法或者基于自然语言处理模型的段落分类来实现。</li><li>结构化信息可以帮助文档问答系统理解长文档的组织结构，有助于定位和提取关键信息。</li></ul></li><li><strong>关键词提取</strong>：<ul><li>使用自然语言处理技术（如TF-IDF、TextRank等）来提取长文档中的关键词和短语。这些关键词可以帮助系统理解文档的主题和重点内容。</li></ul></li><li><strong>摘要生成</strong>：<ul><li>利用文本摘要生成技术（如抽取式摘要或生成式摘要）来自动提取长文档的摘要，其中包含了文档的关键信息和主要内容。</li></ul></li><li><strong>语义理解</strong>：<ul><li>基于预训练的语言模型（如BERT、GPT等）进行语义理解，以识别长文档中的重要段落、句子或信息片段。</li></ul></li><li><strong>实体识别</strong>：<ul><li>使用命名实体识别技术来提取长文档中涉及的重要实体（如人物、地点、日期等），这些实体通常与文档的关键信息和主题密切相关。</li></ul></li><li><strong>主题建模</strong>：<ul><li>应用主题建模技术（如LDA、LSA等）来识别长文档中的主题和话题，从而帮助系统理解文档的重点内容。</li></ul></li><li><strong>深度阅读和理解</strong>：<ul><li>结合深度学习模型进行长文档的深度阅读和理解，以识别文档中的重要信息和内容关联。<br>综合运用上述方法，可以有效地从长文档中提取关键信息，为基于LLM的文档问答系统提供更全面和准确的信息支持。<h2 id="五、为什么要提取标题甚至是多级标题？"><a href="#五、为什么要提取标题甚至是多级标题？" class="headerlink" title="五、为什么要提取标题甚至是多级标题？"></a>五、为什么要提取标题甚至是多级标题？</h2>在基于大型语言模型（LLM）的文档问答系统中，提取PDF文档的标题和多级标题具有以下重要作用：</li></ul></li><li><strong>文档结构理解</strong>：标题和多级标题提供了文档的层次结构信息，有助于理解文档的组织结构和内容框架。这有助于问答系统更好地理解文档的逻辑组织，从而更准确地回答相关问题。</li><li><strong>定位信息</strong>：标题和多级标题可以帮助用户和系统快速定位到文档的特定部分。在回答问题或者进行信息检索时，标题和多级标题可以作为定位和导航的关键信息。</li><li><strong>问题归因</strong>：在问答系统中，提取标题和多级标题有助于将问题与文档的特定部分进行关联，从而更准确地定位问题涉及的内容范围。</li><li><strong>内容摘要</strong>：标题和多级标题通常概括了文档各个部分的主题和内容，可以用于生成文档摘要或者帮助用户快速了解文档的主要内容。</li><li><strong>上下文理解</strong>：标题和多级标题提供了文档中不同部分的上下文信息，有助于问答系统更好地理解问题所涉及的上下文环境。<br>通过提取PDF文档的标题和多级标题，文档问答系统可以更全面地理解文档的内容结构，提高问题回答的准确性和效率。<h2 id="六、如何提取文章标题？"><a href="#六、如何提取文章标题？" class="headerlink" title="六、如何提取文章标题？"></a>六、如何提取文章标题？</h2>要提取PDF文章的标题，可以使用以下方法：</li><li><strong>使用PDF处理库</strong>：<ul><li>使用PDF处理库（如PyPDF2、pdfplumber等）来提取PDF文档中的文本内容。这些库可以帮助你将PDF文档转换为文本格式，并且提供了方法来获取文档中的标题信息。</li></ul></li><li><strong>文本匹配</strong>：<ul><li>一旦将PDF文档转换为文本格式，可以使用文本匹配技术（如正则表达式或者基于关键词的匹配）来识别和提取文档中的标题。标题通常位于文档的开头或者特定格式的文本块中，因此可以通过匹配特定的文本模式来提取标题信息。</li></ul></li><li><strong>自然语言处理模型</strong>：<ul><li>使用自然语言处理模型（如基于预训练的语言模型）来识别文档中的标题。这可以通过模型对文档内容进行分析，识别文档中的标题或标题候选项。</li></ul></li><li><strong>布局分析</strong>：<ul><li>通过对PDF文档进行布局分析，识别文档中的标题位置和格式。这可以通过PDF处理库中的布局分析功能或者其他专门的布局分析工具来实现。</li></ul></li><li><strong>元数据提取</strong>：<ul><li>有些PDF文档包含元数据，其中可能包含了标题信息。可以使用相应的工具或库来提取PDF文档的元数据，并从中获取标题信息。<br>综合运用上述方法，可以提取PDF文章的标题，为基于LLM的文档问答系统提供文档结构化信息的支持。<h2 id="七、如何区分单栏还是双栏pdf？如何重新排序？"><a href="#七、如何区分单栏还是双栏pdf？如何重新排序？" class="headerlink" title="七、如何区分单栏还是双栏pdf？如何重新排序？"></a>七、如何区分单栏还是双栏pdf？如何重新排序？</h2>在基于LLM的文档问答系统中，要区分单栏和双栏PDF，并重新排序页面，可以采取以下方法：<h3 id="区分单栏和双栏PDF："><a href="#区分单栏和双栏PDF：" class="headerlink" title="区分单栏和双栏PDF："></a>区分单栏和双栏PDF：</h3></li></ul></li><li><strong>布局分析</strong>：<ul><li>使用PDF处理库中的布局分析功能，识别页面的布局结构。单栏和双栏PDF在页面布局上通常有明显的区别，可以通过分析页面中文本框的位置和大小来进行判断。</li></ul></li><li><strong>文本块识别</strong>：<ul><li>通过识别文本块的位置和排列方式，可以推断PDF是单栏还是双栏排版。双栏PDF通常会有两列文本块，而单栏PDF只有一列。</li></ul></li><li><strong>页面分析</strong>：<ul><li>分析页面的宽度和排列方式，通常单栏PDF页面的宽度会比较宽，而双栏PDF会将页面宽度一分为二。<h3 id="重新排序页面："><a href="#重新排序页面：" class="headerlink" title="重新排序页面："></a>重新排序页面：</h3>一旦确定了PDF的单栏或双栏排版，可以考虑以下方法重新排序页面：</li></ul></li><li><strong>拆分与合并</strong>：<ul><li>对于双栏PDF，可以将每一页按照两栏的内容拆分成两页，形成单栏的页面。相反地，对于单栏PDF，可以将连续的两页合并为一张双栏页面。</li></ul></li><li><strong>重新布局</strong>：<ul><li>通过PDF处理库，可以重新排列PDF页面的内容，将双栏内容转换为单栏，或者将单栏内容转换为双栏。</li></ul></li><li><strong>页面标记</strong>：<ul><li>可以通过添加页面标记或者元数据信息来指示页面的原始排版方式，以便在文档问答系统中正确处理不同排版方式的页面。</li></ul></li><li><strong>内容调整</strong>：<ul><li>在重新排序页面时，需要注意调整页面的页码和引用内容，确保文档的整体逻辑和引用关系不受影响。<br>综合运用上述方法，可以在基于LLM的文档问答系统中区分单栏和双栏PDF，并重新排序页面，以便更好地支持文档的结构化处理和问答功能。<h2 id="八、如何提取表格和图片中的数据？"><a href="#八、如何提取表格和图片中的数据？" class="headerlink" title="八、如何提取表格和图片中的数据？"></a>八、如何提取表格和图片中的数据？</h2>在基于LLM的文档问答系统中，提取表格和图片中的数据需要使用不同的技术和方法。以下是针对表格和图片的数据提取方法：<h3 id="提取表格中的数据："><a href="#提取表格中的数据：" class="headerlink" title="提取表格中的数据："></a>提取表格中的数据：</h3></li></ul></li><li><strong>表格识别</strong>：<ul><li>使用表格识别技术（如OCR技术或专门的表格识别工具），将PDF中的表格内容提取为结构化数据。这可以通过现有的OCR库（如Tesseract<br>OCR）或者专门的表格识别工具（如Tabula）来实现。</li></ul></li><li><strong>表格分析</strong>：<ul><li>使用表格分析工具，对提取的表格内容进行分析和结构化。这可以通过表格识别库中的功能或者自定义的表格分析算法来实现，以便将表格数据转换为易于处理的结构化数据格式。</li></ul></li><li><strong>数据提取</strong>：<ul><li>一旦表格被识别和结构化，可以使用数据提取技术（如文本匹配、关键词提取、自然语言处理模型等）来从表格中提取具体的数据内容，例如数字、文本或者特定格式的信息。<h3 id="提取图片中的数据："><a href="#提取图片中的数据：" class="headerlink" title="提取图片中的数据："></a>提取图片中的数据：</h3></li></ul></li><li><strong>OCR技术</strong>：<ul><li>使用OCR技术（光学字符识别）来提取图片中的文本信息。现有的OCR库（如Tesseract<br>OCR）可以用于从图片中提取文本内容，并将其转换为可处理的文本数据。</li></ul></li><li><strong>图像处理和分析</strong>：<ul><li>对于包含结构化数据的图片，可以使用图像处理和分析技术（如边缘检测、形状识别、颜色识别等）来提取图片中的特定信息。这可以通过计算机视觉技术和图像处理库（如OpenCV）来实现。</li></ul></li><li><strong>结构化数据提取</strong>：<ul><li>对于包含结构化数据的图片（如条形码、二维码等），可以使用专门的识别库或API来提取其中的数据内容。<h3 id="结合LLM进行数据提取："><a href="#结合LLM进行数据提取：" class="headerlink" title="结合LLM进行数据提取："></a>结合LLM进行数据提取：</h3>一旦表格和图片中的数据被提取为结构化的格式，可以将这些数据提供给LLM模型进行进一步的理解和处理。LLM可以用于理解和回答关于提取的数据内容的问题，从而支持文档问答系统对表格和图片中的数据进行分析和回答相关问题。<br>综合运用上述方法，可以在基于LLM的文档问答系统中提取表格和图片中的数据，并支持对这些数据内容的理解和回答。<h2 id="九、基于AI的文档解析有什么优缺点？"><a href="#九、基于AI的文档解析有什么优缺点？" class="headerlink" title="九、基于AI的文档解析有什么优缺点？"></a>九、基于AI的文档解析有什么优缺点？</h2>基于AI的文档解析在基于LLM的文档问答系统中具有一些优点和挑战：<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3></li></ul></li><li><strong>语义理解</strong>：基于AI的文档解析可以实现对文档内容的语义理解，使得系统能够更好地理解文档中的信息，并回答用户提出的问题。</li><li><strong>自动化</strong>：AI文档解析可以自动化文档内容的处理和分析，减轻人工处理的负担，提高效率并降低成本。</li><li><strong>多样性处理</strong>：AI文档解析可以处理多种类型的文档，包括文本、表格、图片等，从而支持更广泛的信息提取和问答需求。</li><li><strong>实时更新</strong>：基于AI的文档解析可以随着新信息的出现而更新，从而保持对信息的实时理解和处理能力。<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li><li><strong>准确性挑战</strong>：尽管AI在理解文档内容方面取得了很大进展，但在复杂语境或专业领域中，准确理解文档内容仍然存在挑战。</li><li><strong>多样性处理</strong>：处理多样性文档类型和排版格式的挑战。不同类型的文档（如单栏、双栏、图片、表格等）需要不同的处理方法，这增加了系统设计和实现的复杂性。</li><li><strong>隐私和安全</strong>：处理敏感信息时需要特别注意隐私和安全问题，确保文档内容的安全性和保密性。</li><li><strong>解释性</strong>：AI模型的决策过程可能缺乏解释性，这使得难以理解模型为何做出特定的推断或回答。</li><li><strong>数据质量</strong>：AI文档解析的准确性和效果受到训练数据质量和多样性的影响，需要不断优化和更新训练数据。<br>综合考虑这些优点和挑战，基于AI的文档解析在基于LLM的文档问答系统中提供了强大的信息处理和理解能力，但同时也需要应对技术和实施上的挑战。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> NLP技术全景 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大模型 </tag>
+            
+            <tag> RAG </tag>
+            
+            <tag> 文档解析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ollama部署Qwen2-7B-Instruct实战：本地大模型工具、自定义GGUF文件运行与API调用</title>
       <link href="/p/66991.html"/>
       <url>/p/66991.html</url>
@@ -998,35 +1027,6 @@
             <tag> 量化 </tag>
             
             <tag> Ollama </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>PDF文档解析技术全解：文本提取、结构化信息处理与LLM文档问答系统中的信息检索</title>
-      <link href="/p/35645.html"/>
-      <url>/p/35645.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、为什么需要对-PDF-进行解析？"><a href="#一、为什么需要对-PDF-进行解析？" class="headerlink" title="一、为什么需要对 PDF 进行解析？"></a>一、为什么需要对 PDF 进行解析？</h2><a id="more"></a><p>在基于大型语言模型（LLM）的文档问答系统中，解析PDF的必要性主要体现在以下几个方面：</p><ol><li><strong>文本提取</strong>：PDF文件常常包含文本、图像以及其他多媒体元素。通过解析PDF，我们可以提取其中的文本信息，从而让语言模型更好地理解并答复与文档相关的问题。</li><li><strong>结构化信息</strong>：PDF文档可能具有复杂的排版结构，例如表格和多列布局等。解析PDF可以将这些信息转换为结构化的文本数据，从而使模型能更深入地理解文档的内容。</li><li><strong>信息检索</strong>：通过解析PDF，我们可以将文档的内容转换为可搜索和检索的格式，这对于文档问答系统能更有效地定位和提取相关信息以回答用户的问题至关重要。</li><li><strong>数据预处理</strong>：解析PDF可以清理和预处理文本数据，去除无关的格式、标记和其他干扰，从而提升模型的理解和推理能力。</li><li><strong>支持多种文档类型</strong>：PDF解析能够处理各类类型的文档，包括科学论文、报告、合同等，进而扩大了文档问答系统的适用范围。<br>总的来说，解析PDF的目的是为了让基于LLM的文档问答系统能更充分地利用PDF文档中的信息，以便更准确地回答用户的问题。<h2 id="二、pdf解析有哪些方法，对应的区别是什么？"><a href="#二、pdf解析有哪些方法，对应的区别是什么？" class="headerlink" title="二、pdf解析有哪些方法，对应的区别是什么？"></a>二、pdf解析有哪些方法，对应的区别是什么？</h2>在基于大型语言模型（LLM）的文档问答系统中，进行PDF解析的方法主要包括以下几种，每种方法都有其特点和适用场景：</li><li><strong>基于OCR的文本提取</strong>：<ul><li><strong>方法描述</strong>：使用光学字符识别（OCR）技术，将PDF中的图像转换为可识别的文本。这种方法适用于包含扫描或图片的PDF文档。</li><li><strong>区别</strong>：与其他方法相比，OCR能够提取PDF中的图像文本，但对于复杂的排版结构和表格可能处理效果不佳。</li></ul></li><li><strong>基于PDF解析库的结构化解析</strong>：<ul><li><strong>方法描述</strong>：利用PDF解析库（如PyMuPDF、PDFMiner等）对PDF文档进行解析，提取其中的文本、布局信息和元数据。</li><li><strong>区别</strong>：这种方法能够较好地保留文档的结构信息，包括段落、标题、列表等，但对于图像文本的处理能力有限。</li></ul></li><li><strong>基于自然语言处理模型的直接解析</strong>：<ul><li><strong>方法描述</strong>：利用预训练的自然语言处理模型（如BERT、GPT等）直接对PDF文档进行解析，提取其中的文本信息。</li><li><strong>区别</strong>：这种方法可以结合模型对文本进行语义理解，但对于复杂的排版结构和图像文本的处理能力相对较弱。</li></ul></li><li><strong>基于深度学习的PDF解析</strong>：<ul><li><strong>方法描述</strong>：利用深度学习模型，如卷积神经网络（CNN）或循环神经网络（RNN），对PDF文档进行解析和文本提取。</li><li><strong>区别</strong>：这种方法可以结合深度学习模型对文本和图像进行端到端的处理，适用于处理复杂的PDF文档。<br>每种方法都有自己的优势和局限性，选择合适的PDF解析方法通常取决于文档的特点、所需的文本信息类型以及系统的具体需求。<h2 id="三、pdf解析存在哪些问题？"><a href="#三、pdf解析存在哪些问题？" class="headerlink" title="三、pdf解析存在哪些问题？"></a>三、pdf解析存在哪些问题？</h2>在基于大型语言模型（LLM）的文档问答系统中，PDF解析可能会面临以下一些问题：</li></ul></li><li><strong>排版复杂性</strong>：PDF文档通常具有复杂的排版结构，包括多列布局、嵌套表格等，这可能导致解析过程中文本提取的困难，特别是对于一些基于规则的解析方法而言。</li><li><strong>图像文本处理</strong>：PDF中可能包含嵌入的图像文本，这对于一些基于文本提取的解析方法（如基于OCR的解析）会带来挑战，因为这些方法可能无法直接处理图像文本。</li><li><strong>元数据提取</strong>：PDF文档中除了文本内容外，还包含丰富的元数据信息（如作者、创建日期、关键词等），提取和利用这些元数据可能需要额外的处理和解析步骤。</li><li><strong>文档结构损失</strong>：在解析PDF时，有可能会丢失一些文档的结构信息，如标题、段落、列表等，这可能影响到文档问答系统对文档内容的理解。</li><li><strong>文本准确性</strong>：在PDF解析过程中，可能会出现文本识别错误或者排版错误，特别是对于一些扫描或低质量的PDF文档，这可能会影响到文档问答系统对文本的理解和回答准确性。</li><li><strong>处理效率</strong>：PDF解析可能会消耗大量的计算资源和时间，特别是对于大型或包含大量图像的PDF文档，解析过程可能会变得非常耗时。<br>解决这些问题通常需要结合多种技术手段，包括基于规则的文本处理、深度学习模型的应用、元数据提取以及后处理技术等，以确保对PDF文档的高效、准确的解析。<h2 id="四、如何提取长文档（书籍）中关键信息？"><a href="#四、如何提取长文档（书籍）中关键信息？" class="headerlink" title="四、如何提取长文档（书籍）中关键信息？"></a>四、如何提取长文档（书籍）中关键信息？</h2>在基于大型语言模型（LLM）的文档问答系统中提取长文档（如书籍）中的关键信息通常需要结合多种技术和方法。以下是一些常见的方法：</li><li><strong>章节划分和结构化信息提取</strong>：<ul><li>首先，对长文档进行章节划分，提取章节标题和结构化信息。这可以通过基于规则的方法或者基于自然语言处理模型的段落分类来实现。</li><li>结构化信息可以帮助文档问答系统理解长文档的组织结构，有助于定位和提取关键信息。</li></ul></li><li><strong>关键词提取</strong>：<ul><li>使用自然语言处理技术（如TF-IDF、TextRank等）来提取长文档中的关键词和短语。这些关键词可以帮助系统理解文档的主题和重点内容。</li></ul></li><li><strong>摘要生成</strong>：<ul><li>利用文本摘要生成技术（如抽取式摘要或生成式摘要）来自动提取长文档的摘要，其中包含了文档的关键信息和主要内容。</li></ul></li><li><strong>语义理解</strong>：<ul><li>基于预训练的语言模型（如BERT、GPT等）进行语义理解，以识别长文档中的重要段落、句子或信息片段。</li></ul></li><li><strong>实体识别</strong>：<ul><li>使用命名实体识别技术来提取长文档中涉及的重要实体（如人物、地点、日期等），这些实体通常与文档的关键信息和主题密切相关。</li></ul></li><li><strong>主题建模</strong>：<ul><li>应用主题建模技术（如LDA、LSA等）来识别长文档中的主题和话题，从而帮助系统理解文档的重点内容。</li></ul></li><li><strong>深度阅读和理解</strong>：<ul><li>结合深度学习模型进行长文档的深度阅读和理解，以识别文档中的重要信息和内容关联。<br>综合运用上述方法，可以有效地从长文档中提取关键信息，为基于LLM的文档问答系统提供更全面和准确的信息支持。<h2 id="五、为什么要提取标题甚至是多级标题？"><a href="#五、为什么要提取标题甚至是多级标题？" class="headerlink" title="五、为什么要提取标题甚至是多级标题？"></a>五、为什么要提取标题甚至是多级标题？</h2>在基于大型语言模型（LLM）的文档问答系统中，提取PDF文档的标题和多级标题具有以下重要作用：</li></ul></li><li><strong>文档结构理解</strong>：标题和多级标题提供了文档的层次结构信息，有助于理解文档的组织结构和内容框架。这有助于问答系统更好地理解文档的逻辑组织，从而更准确地回答相关问题。</li><li><strong>定位信息</strong>：标题和多级标题可以帮助用户和系统快速定位到文档的特定部分。在回答问题或者进行信息检索时，标题和多级标题可以作为定位和导航的关键信息。</li><li><strong>问题归因</strong>：在问答系统中，提取标题和多级标题有助于将问题与文档的特定部分进行关联，从而更准确地定位问题涉及的内容范围。</li><li><strong>内容摘要</strong>：标题和多级标题通常概括了文档各个部分的主题和内容，可以用于生成文档摘要或者帮助用户快速了解文档的主要内容。</li><li><strong>上下文理解</strong>：标题和多级标题提供了文档中不同部分的上下文信息，有助于问答系统更好地理解问题所涉及的上下文环境。<br>通过提取PDF文档的标题和多级标题，文档问答系统可以更全面地理解文档的内容结构，提高问题回答的准确性和效率。<h2 id="六、如何提取文章标题？"><a href="#六、如何提取文章标题？" class="headerlink" title="六、如何提取文章标题？"></a>六、如何提取文章标题？</h2>要提取PDF文章的标题，可以使用以下方法：</li><li><strong>使用PDF处理库</strong>：<ul><li>使用PDF处理库（如PyPDF2、pdfplumber等）来提取PDF文档中的文本内容。这些库可以帮助你将PDF文档转换为文本格式，并且提供了方法来获取文档中的标题信息。</li></ul></li><li><strong>文本匹配</strong>：<ul><li>一旦将PDF文档转换为文本格式，可以使用文本匹配技术（如正则表达式或者基于关键词的匹配）来识别和提取文档中的标题。标题通常位于文档的开头或者特定格式的文本块中，因此可以通过匹配特定的文本模式来提取标题信息。</li></ul></li><li><strong>自然语言处理模型</strong>：<ul><li>使用自然语言处理模型（如基于预训练的语言模型）来识别文档中的标题。这可以通过模型对文档内容进行分析，识别文档中的标题或标题候选项。</li></ul></li><li><strong>布局分析</strong>：<ul><li>通过对PDF文档进行布局分析，识别文档中的标题位置和格式。这可以通过PDF处理库中的布局分析功能或者其他专门的布局分析工具来实现。</li></ul></li><li><strong>元数据提取</strong>：<ul><li>有些PDF文档包含元数据，其中可能包含了标题信息。可以使用相应的工具或库来提取PDF文档的元数据，并从中获取标题信息。<br>综合运用上述方法，可以提取PDF文章的标题，为基于LLM的文档问答系统提供文档结构化信息的支持。<h2 id="七、如何区分单栏还是双栏pdf？如何重新排序？"><a href="#七、如何区分单栏还是双栏pdf？如何重新排序？" class="headerlink" title="七、如何区分单栏还是双栏pdf？如何重新排序？"></a>七、如何区分单栏还是双栏pdf？如何重新排序？</h2>在基于LLM的文档问答系统中，要区分单栏和双栏PDF，并重新排序页面，可以采取以下方法：<h3 id="区分单栏和双栏PDF："><a href="#区分单栏和双栏PDF：" class="headerlink" title="区分单栏和双栏PDF："></a>区分单栏和双栏PDF：</h3></li></ul></li><li><strong>布局分析</strong>：<ul><li>使用PDF处理库中的布局分析功能，识别页面的布局结构。单栏和双栏PDF在页面布局上通常有明显的区别，可以通过分析页面中文本框的位置和大小来进行判断。</li></ul></li><li><strong>文本块识别</strong>：<ul><li>通过识别文本块的位置和排列方式，可以推断PDF是单栏还是双栏排版。双栏PDF通常会有两列文本块，而单栏PDF只有一列。</li></ul></li><li><strong>页面分析</strong>：<ul><li>分析页面的宽度和排列方式，通常单栏PDF页面的宽度会比较宽，而双栏PDF会将页面宽度一分为二。<h3 id="重新排序页面："><a href="#重新排序页面：" class="headerlink" title="重新排序页面："></a>重新排序页面：</h3>一旦确定了PDF的单栏或双栏排版，可以考虑以下方法重新排序页面：</li></ul></li><li><strong>拆分与合并</strong>：<ul><li>对于双栏PDF，可以将每一页按照两栏的内容拆分成两页，形成单栏的页面。相反地，对于单栏PDF，可以将连续的两页合并为一张双栏页面。</li></ul></li><li><strong>重新布局</strong>：<ul><li>通过PDF处理库，可以重新排列PDF页面的内容，将双栏内容转换为单栏，或者将单栏内容转换为双栏。</li></ul></li><li><strong>页面标记</strong>：<ul><li>可以通过添加页面标记或者元数据信息来指示页面的原始排版方式，以便在文档问答系统中正确处理不同排版方式的页面。</li></ul></li><li><strong>内容调整</strong>：<ul><li>在重新排序页面时，需要注意调整页面的页码和引用内容，确保文档的整体逻辑和引用关系不受影响。<br>综合运用上述方法，可以在基于LLM的文档问答系统中区分单栏和双栏PDF，并重新排序页面，以便更好地支持文档的结构化处理和问答功能。<h2 id="八、如何提取表格和图片中的数据？"><a href="#八、如何提取表格和图片中的数据？" class="headerlink" title="八、如何提取表格和图片中的数据？"></a>八、如何提取表格和图片中的数据？</h2>在基于LLM的文档问答系统中，提取表格和图片中的数据需要使用不同的技术和方法。以下是针对表格和图片的数据提取方法：<h3 id="提取表格中的数据："><a href="#提取表格中的数据：" class="headerlink" title="提取表格中的数据："></a>提取表格中的数据：</h3></li></ul></li><li><strong>表格识别</strong>：<ul><li>使用表格识别技术（如OCR技术或专门的表格识别工具），将PDF中的表格内容提取为结构化数据。这可以通过现有的OCR库（如Tesseract<br>OCR）或者专门的表格识别工具（如Tabula）来实现。</li></ul></li><li><strong>表格分析</strong>：<ul><li>使用表格分析工具，对提取的表格内容进行分析和结构化。这可以通过表格识别库中的功能或者自定义的表格分析算法来实现，以便将表格数据转换为易于处理的结构化数据格式。</li></ul></li><li><strong>数据提取</strong>：<ul><li>一旦表格被识别和结构化，可以使用数据提取技术（如文本匹配、关键词提取、自然语言处理模型等）来从表格中提取具体的数据内容，例如数字、文本或者特定格式的信息。<h3 id="提取图片中的数据："><a href="#提取图片中的数据：" class="headerlink" title="提取图片中的数据："></a>提取图片中的数据：</h3></li></ul></li><li><strong>OCR技术</strong>：<ul><li>使用OCR技术（光学字符识别）来提取图片中的文本信息。现有的OCR库（如Tesseract<br>OCR）可以用于从图片中提取文本内容，并将其转换为可处理的文本数据。</li></ul></li><li><strong>图像处理和分析</strong>：<ul><li>对于包含结构化数据的图片，可以使用图像处理和分析技术（如边缘检测、形状识别、颜色识别等）来提取图片中的特定信息。这可以通过计算机视觉技术和图像处理库（如OpenCV）来实现。</li></ul></li><li><strong>结构化数据提取</strong>：<ul><li>对于包含结构化数据的图片（如条形码、二维码等），可以使用专门的识别库或API来提取其中的数据内容。<h3 id="结合LLM进行数据提取："><a href="#结合LLM进行数据提取：" class="headerlink" title="结合LLM进行数据提取："></a>结合LLM进行数据提取：</h3>一旦表格和图片中的数据被提取为结构化的格式，可以将这些数据提供给LLM模型进行进一步的理解和处理。LLM可以用于理解和回答关于提取的数据内容的问题，从而支持文档问答系统对表格和图片中的数据进行分析和回答相关问题。<br>综合运用上述方法，可以在基于LLM的文档问答系统中提取表格和图片中的数据，并支持对这些数据内容的理解和回答。<h2 id="九、基于AI的文档解析有什么优缺点？"><a href="#九、基于AI的文档解析有什么优缺点？" class="headerlink" title="九、基于AI的文档解析有什么优缺点？"></a>九、基于AI的文档解析有什么优缺点？</h2>基于AI的文档解析在基于LLM的文档问答系统中具有一些优点和挑战：<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3></li></ul></li><li><strong>语义理解</strong>：基于AI的文档解析可以实现对文档内容的语义理解，使得系统能够更好地理解文档中的信息，并回答用户提出的问题。</li><li><strong>自动化</strong>：AI文档解析可以自动化文档内容的处理和分析，减轻人工处理的负担，提高效率并降低成本。</li><li><strong>多样性处理</strong>：AI文档解析可以处理多种类型的文档，包括文本、表格、图片等，从而支持更广泛的信息提取和问答需求。</li><li><strong>实时更新</strong>：基于AI的文档解析可以随着新信息的出现而更新，从而保持对信息的实时理解和处理能力。<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li><li><strong>准确性挑战</strong>：尽管AI在理解文档内容方面取得了很大进展，但在复杂语境或专业领域中，准确理解文档内容仍然存在挑战。</li><li><strong>多样性处理</strong>：处理多样性文档类型和排版格式的挑战。不同类型的文档（如单栏、双栏、图片、表格等）需要不同的处理方法，这增加了系统设计和实现的复杂性。</li><li><strong>隐私和安全</strong>：处理敏感信息时需要特别注意隐私和安全问题，确保文档内容的安全性和保密性。</li><li><strong>解释性</strong>：AI模型的决策过程可能缺乏解释性，这使得难以理解模型为何做出特定的推断或回答。</li><li><strong>数据质量</strong>：AI文档解析的准确性和效果受到训练数据质量和多样性的影响，需要不断优化和更新训练数据。<br>综合考虑这些优点和挑战，基于AI的文档解析在基于LLM的文档问答系统中提供了强大的信息处理和理解能力，但同时也需要应对技术和实施上的挑战。</li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> NLP技术全景 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 大模型 </tag>
-            
-            <tag> RAG </tag>
-            
-            <tag> 文档解析 </tag>
             
         </tags>
       
@@ -1099,6 +1099,33 @@
     
     
     <entry>
+      <title>Transformers部署sqlcoder-70b-alpha实战：环境搭建、模型下载与文本到SQL推理测试</title>
+      <link href="/p/80380.html"/>
+      <url>/p/80380.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、sqlcoder-70b-alpha测试"><a href="#一、sqlcoder-70b-alpha测试" class="headerlink" title="一、sqlcoder-70b-alpha测试"></a>一、sqlcoder-70b-alpha测试</h2><a id="more"></a><h2 id="sqlcoder环境安装"><a href="#sqlcoder环境安装" class="headerlink" title="sqlcoder环境安装"></a>sqlcoder环境安装</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/defog-ai/sqlcoder.git</span><br><span class="line">conda create -n sqlcoder_py311 python=3.11</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line"></span><br><span class="line">pip install accelerate</span><br><span class="line">pip install bitsandbytes</span><br></pre></td></tr></table></figure></div><h3 id="模型下载"><a href="#模型下载" class="headerlink" title="模型下载"></a>模型下载</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://hf-mirror.com/defog/sqlcoder-70b-alpha</span><br><span class="line">https://huggingface.co/defog/sqlcoder-70b-alpha</span><br></pre></td></tr></table></figure></div><p><strong>修改inference.py文件</strong></p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForCausalLM, pipeline</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_prompt</span><span class="params">(question, prompt_file=<span class="string">"prompt.md"</span>, metadata_file=<span class="string">"metadata.sql"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(prompt_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        prompt = f.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(metadata_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        table_metadata_string = f.read()</span><br><span class="line"></span><br><span class="line">    prompt = prompt.format(</span><br><span class="line">        user_question=question, table_metadata_string=table_metadata_string</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> prompt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tokenizer_model</span><span class="params">(model_name)</span>:</span></span><br><span class="line">    tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line">    model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">        model_name,</span><br><span class="line">        trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">        <span class="comment"># torch_dtype=torch.float16,</span></span><br><span class="line">        load_in_8bits=<span class="literal">True</span>,</span><br><span class="line">        device_map=<span class="string">"auto"</span>,</span><br><span class="line">        use_cache=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> tokenizer, model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_inference</span><span class="params">(question, prompt_file=<span class="string">"prompt.md"</span>, metadata_file=<span class="string">"metadata.sql"</span>)</span>:</span></span><br><span class="line">    tokenizer, model = get_tokenizer_model(<span class="string">"/mnt/lustre/data/sqlcoder-70b-alpha"</span>)</span><br><span class="line">    prompt = generate_prompt(question, prompt_file, metadata_file)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># make sure the model stops generating at triple ticks</span></span><br><span class="line">    <span class="comment"># eos_token_id = tokenizer.convert_tokens_to_ids(["```"])[0]</span></span><br><span class="line">    eos_token_id = tokenizer.eos_token_id</span><br><span class="line">    pipe = pipeline(</span><br><span class="line">        <span class="string">"text-generation"</span>,</span><br><span class="line">        model=model,</span><br><span class="line">        tokenizer=tokenizer,</span><br><span class="line">        max_new_tokens=<span class="number">300</span>,</span><br><span class="line">        do_sample=<span class="literal">False</span>,</span><br><span class="line">        return_full_text=<span class="literal">False</span>,  <span class="comment"># added return_full_text parameter to prevent splitting issues with prompt</span></span><br><span class="line">        num_beams=<span class="number">5</span>,  <span class="comment"># do beam search with 5 beams for high quality results</span></span><br><span class="line">    )</span><br><span class="line">    generated_query = (</span><br><span class="line">            pipe(</span><br><span class="line">                prompt,</span><br><span class="line">                num_return_sequences=<span class="number">1</span>,</span><br><span class="line">                eos_token_id=eos_token_id,</span><br><span class="line">                pad_token_id=eos_token_id,</span><br><span class="line">            )[<span class="number">0</span>][<span class="string">"generated_text"</span>]</span><br><span class="line">            .split(<span class="string">";"</span>)[<span class="number">0</span>]</span><br><span class="line">            .split(<span class="string">"```"</span>)[<span class="number">0</span>]</span><br><span class="line">            .strip()</span><br><span class="line">            + <span class="string">";"</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> generated_query</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># Parse arguments</span></span><br><span class="line">    _default_question = <span class="string">"Do we get more sales from customers in New York compared to customers in San Francisco? Give me the total sales for each city, and the difference between the two."</span></span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">"Run inference on a question"</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"-q"</span>, <span class="string">"--question"</span>, type=str, default=_default_question, help=<span class="string">"Question to run inference on"</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    question = args.question</span><br><span class="line">    print(<span class="string">"Loading a model and generating a SQL query for answering your question..."</span>)</span><br><span class="line">    print(<span class="string">f"Answer:<span class="subst">&#123;run_inference(question)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure></div><h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a><strong>执行脚本</strong></h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python inference.py -q &quot;Question about the sample database goes here&quot;</span><br></pre></td></tr></table></figure></div><p>模型部署返回结果<br><img style="aspect-ratio:2547/671" width="2547" height="671" src="/images/loading.gif" data-original="/images/notion_8c398e7c.png" alt><br>按照官网示例，部署（4卡）的int8量化后的，显存占用81.28GB，进行一次问答需要15分钟（70b效果个人感觉还行，但耗时过长）</p><h2 id="sqlcoder接口部署"><a href="#sqlcoder接口部署" class="headerlink" title="sqlcoder接口部署"></a>sqlcoder接口部署</h2><p>修改sqlcoder_70b_alpha.py</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> transformers</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForCausalLM</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">"2,3,4,5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> loguru <span class="keyword">import</span> logger</span><br><span class="line"></span><br><span class="line">project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), <span class="string">"../.."</span>))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, project_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> config.message <span class="keyword">import</span> SqlCoderRequest</span><br><span class="line"><span class="keyword">from</span> config.paths <span class="keyword">import</span> metadata_sql_path</span><br><span class="line"><span class="keyword">from</span> utils.time_util <span class="keyword">import</span> time_it</span><br><span class="line"></span><br><span class="line">system_prompt = <span class="string">"""</span></span><br><span class="line"><span class="string">### Task</span></span><br><span class="line"><span class="string">Generate a SQL query to answer [QUESTION]&#123;user_question&#125;[/QUESTION]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Instructions</span></span><br><span class="line"><span class="string">- If you cannot answer the question with the available database schema, return 'I do not know'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Database Schema</span></span><br><span class="line"><span class="string">The query will run on a database with the following schema:</span></span><br><span class="line"><span class="string">&#123;table_metadata_string&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Answer</span></span><br><span class="line"><span class="string">Given the database schema, here is the SQL query that answers [QUESTION]&#123;user_question&#125;[/QUESTION]</span></span><br><span class="line"><span class="string">[SQL]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_prompt</span><span class="params">(question, metadata_file=metadata_sql_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(metadata_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        table_metadata_string = f.read()</span><br><span class="line"></span><br><span class="line">    prompt = system_prompt.format(</span><br><span class="line">        user_question=question, table_metadata_string=table_metadata_string</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> prompt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_llm_service</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    启动服务</span></span><br><span class="line"><span class="string">    :param args:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    chat_app = FastAPI()</span><br><span class="line"></span><br><span class="line">    model_path = <span class="string">"/mnt/lustre/data/sqlcoder-70b-alpha/"</span></span><br><span class="line">    model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">        model_path,</span><br><span class="line">        trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">        <span class="comment"># torch_dtype=torch.float16,</span></span><br><span class="line">        load_in_8bit=<span class="literal">True</span>,</span><br><span class="line">        device_map=<span class="string">"auto"</span>,</span><br><span class="line">        use_cache=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    tokenizer = AutoTokenizer.from_pretrained(model_path)</span><br><span class="line">    eos_token_id = tokenizer.eos_token_id</span><br><span class="line">    pipeline = transformers.pipeline(</span><br><span class="line">        <span class="string">"text-generation"</span>,</span><br><span class="line">        model=model,</span><br><span class="line">        tokenizer=tokenizer,</span><br><span class="line">        max_new_tokens=<span class="number">300</span>,</span><br><span class="line">        do_sample=<span class="literal">False</span>,</span><br><span class="line">        return_full_text=<span class="literal">False</span>,  <span class="comment"># added return_full_text parameter to prevent splitting issues with prompt</span></span><br><span class="line">        num_beams=<span class="number">3</span>,  <span class="comment"># do beam search with 5 beams for high quality results</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="meta">    @time_it</span></span><br><span class="line"><span class="meta">    @chat_app.post("/chat")</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">chat</span><span class="params">(request: SqlCoderRequest)</span>:</span></span><br><span class="line">        ans = <span class="literal">None</span></span><br><span class="line">        state = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            request = json.loads(request.json())</span><br><span class="line">            prompt = generate_prompt(request.get(<span class="string">"prompt"</span>), metadata_sql_path)</span><br><span class="line">            logger.info(<span class="string">"Receive message: &#123;&#125; "</span>.format(prompt))</span><br><span class="line">            ans = (</span><br><span class="line">                    pipeline(</span><br><span class="line">                        prompt,</span><br><span class="line">                        num_return_sequences=<span class="number">1</span>,</span><br><span class="line">                        eos_token_id=eos_token_id,</span><br><span class="line">                        pad_token_id=eos_token_id,</span><br><span class="line">                    )[<span class="number">0</span>][<span class="string">"generated_text"</span>]</span><br><span class="line">                    .split(<span class="string">";"</span>)[<span class="number">0</span>]</span><br><span class="line">                    .split(<span class="string">"```"</span>)[<span class="number">0</span>]</span><br><span class="line">                    .strip()</span><br><span class="line">                    + <span class="string">";"</span></span><br><span class="line">            )</span><br><span class="line">            logger.info(<span class="string">"Sending message: &#123;&#125;"</span>.format(ans))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            state = <span class="literal">False</span></span><br><span class="line">            logger.error(e)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">"state"</span>: state,</span><br><span class="line">            <span class="string">"response"</span>: ans</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    uvicorn.run(chat_app,</span><br><span class="line">                host=args.host,</span><br><span class="line">                port=int(args.port))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">"sqlcoder_70b_alpha server."</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"--host"</span>, default=<span class="string">"0.0.0.0"</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"--port"</span>, type=int, required=<span class="literal">True</span>)</span><br><span class="line">    start_llm_service(parser.parse_args())</span><br></pre></td></tr></table></figure></div><h3 id="执行脚本-1"><a href="#执行脚本-1" class="headerlink" title="执行脚本"></a>执行脚本</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlcoder_70b_alpha.py --port 9002</span><br></pre></td></tr></table></figure></div><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p><img style="aspect-ratio:2560/1238" width="2560" height="1238" src="/images/loading.gif" data-original="/images/notion_6fb5f9e4.png" alt></p><h3 id="模型服务调用"><a href="#模型服务调用" class="headerlink" title="模型服务调用"></a>模型服务调用</h3><p>服务地址：<a href="https://10.103.190.9:9002/chat" target="_blank" rel="noopener">https://10.103.190.9:9002/chat</a><br>入参：</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"prompt"</span>: <span class="string">"What was our revenue by product in the New York region last month?"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p><strong>postman方式调用</strong><br><img style="aspect-ratio:1692/1023" width="1692" height="1023" src="/images/loading.gif" data-original="/images/notion_e507ce86.png" alt><br><strong>日志返回</strong><br><img style="aspect-ratio:2552/1238" width="2552" height="1238" src="/images/loading.gif" data-original="/images/notion_1279da75.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 推理框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 模型部署 </tag>
+            
+            <tag> Transformers </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Transformers部署Qwen-14B-Chat实战：环境安装、OpenAI兼容API服务启动与Function Call测试</title>
       <link href="/p/71893.html"/>
       <url>/p/71893.html</url>
@@ -1122,33 +1149,6 @@
             <tag> 工具 </tag>
             
             <tag> 智能体 </tag>
-            
-            <tag> Transformers </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Transformers部署sqlcoder-70b-alpha实战：环境搭建、模型下载与文本到SQL推理测试</title>
-      <link href="/p/80380.html"/>
-      <url>/p/80380.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、sqlcoder-70b-alpha测试"><a href="#一、sqlcoder-70b-alpha测试" class="headerlink" title="一、sqlcoder-70b-alpha测试"></a>一、sqlcoder-70b-alpha测试</h2><a id="more"></a><h2 id="sqlcoder环境安装"><a href="#sqlcoder环境安装" class="headerlink" title="sqlcoder环境安装"></a>sqlcoder环境安装</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/defog-ai/sqlcoder.git</span><br><span class="line">conda create -n sqlcoder_py311 python=3.11</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line"></span><br><span class="line">pip install accelerate</span><br><span class="line">pip install bitsandbytes</span><br></pre></td></tr></table></figure></div><h3 id="模型下载"><a href="#模型下载" class="headerlink" title="模型下载"></a>模型下载</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://hf-mirror.com/defog/sqlcoder-70b-alpha</span><br><span class="line">https://huggingface.co/defog/sqlcoder-70b-alpha</span><br></pre></td></tr></table></figure></div><p><strong>修改inference.py文件</strong></p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForCausalLM, pipeline</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_prompt</span><span class="params">(question, prompt_file=<span class="string">"prompt.md"</span>, metadata_file=<span class="string">"metadata.sql"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(prompt_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        prompt = f.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(metadata_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        table_metadata_string = f.read()</span><br><span class="line"></span><br><span class="line">    prompt = prompt.format(</span><br><span class="line">        user_question=question, table_metadata_string=table_metadata_string</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> prompt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_tokenizer_model</span><span class="params">(model_name)</span>:</span></span><br><span class="line">    tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line">    model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">        model_name,</span><br><span class="line">        trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">        <span class="comment"># torch_dtype=torch.float16,</span></span><br><span class="line">        load_in_8bits=<span class="literal">True</span>,</span><br><span class="line">        device_map=<span class="string">"auto"</span>,</span><br><span class="line">        use_cache=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> tokenizer, model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_inference</span><span class="params">(question, prompt_file=<span class="string">"prompt.md"</span>, metadata_file=<span class="string">"metadata.sql"</span>)</span>:</span></span><br><span class="line">    tokenizer, model = get_tokenizer_model(<span class="string">"/mnt/lustre/data/sqlcoder-70b-alpha"</span>)</span><br><span class="line">    prompt = generate_prompt(question, prompt_file, metadata_file)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># make sure the model stops generating at triple ticks</span></span><br><span class="line">    <span class="comment"># eos_token_id = tokenizer.convert_tokens_to_ids(["```"])[0]</span></span><br><span class="line">    eos_token_id = tokenizer.eos_token_id</span><br><span class="line">    pipe = pipeline(</span><br><span class="line">        <span class="string">"text-generation"</span>,</span><br><span class="line">        model=model,</span><br><span class="line">        tokenizer=tokenizer,</span><br><span class="line">        max_new_tokens=<span class="number">300</span>,</span><br><span class="line">        do_sample=<span class="literal">False</span>,</span><br><span class="line">        return_full_text=<span class="literal">False</span>,  <span class="comment"># added return_full_text parameter to prevent splitting issues with prompt</span></span><br><span class="line">        num_beams=<span class="number">5</span>,  <span class="comment"># do beam search with 5 beams for high quality results</span></span><br><span class="line">    )</span><br><span class="line">    generated_query = (</span><br><span class="line">            pipe(</span><br><span class="line">                prompt,</span><br><span class="line">                num_return_sequences=<span class="number">1</span>,</span><br><span class="line">                eos_token_id=eos_token_id,</span><br><span class="line">                pad_token_id=eos_token_id,</span><br><span class="line">            )[<span class="number">0</span>][<span class="string">"generated_text"</span>]</span><br><span class="line">            .split(<span class="string">";"</span>)[<span class="number">0</span>]</span><br><span class="line">            .split(<span class="string">"```"</span>)[<span class="number">0</span>]</span><br><span class="line">            .strip()</span><br><span class="line">            + <span class="string">";"</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> generated_query</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># Parse arguments</span></span><br><span class="line">    _default_question = <span class="string">"Do we get more sales from customers in New York compared to customers in San Francisco? Give me the total sales for each city, and the difference between the two."</span></span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">"Run inference on a question"</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"-q"</span>, <span class="string">"--question"</span>, type=str, default=_default_question, help=<span class="string">"Question to run inference on"</span>)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    question = args.question</span><br><span class="line">    print(<span class="string">"Loading a model and generating a SQL query for answering your question..."</span>)</span><br><span class="line">    print(<span class="string">f"Answer:<span class="subst">&#123;run_inference(question)&#125;</span>"</span>)</span><br></pre></td></tr></table></figure></div><h3 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a><strong>执行脚本</strong></h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python inference.py -q &quot;Question about the sample database goes here&quot;</span><br></pre></td></tr></table></figure></div><p>模型部署返回结果<br><img style="aspect-ratio:2547/671" width="2547" height="671" src="/images/loading.gif" data-original="/images/notion_8c398e7c.png" alt><br>按照官网示例，部署（4卡）的int8量化后的，显存占用81.28GB，进行一次问答需要15分钟（70b效果个人感觉还行，但耗时过长）</p><h2 id="sqlcoder接口部署"><a href="#sqlcoder接口部署" class="headerlink" title="sqlcoder接口部署"></a>sqlcoder接口部署</h2><p>修改sqlcoder_70b_alpha.py</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> transformers</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModelForCausalLM</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">"2,3,4,5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> loguru <span class="keyword">import</span> logger</span><br><span class="line"></span><br><span class="line">project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), <span class="string">"../.."</span>))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, project_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> config.message <span class="keyword">import</span> SqlCoderRequest</span><br><span class="line"><span class="keyword">from</span> config.paths <span class="keyword">import</span> metadata_sql_path</span><br><span class="line"><span class="keyword">from</span> utils.time_util <span class="keyword">import</span> time_it</span><br><span class="line"></span><br><span class="line">system_prompt = <span class="string">"""</span></span><br><span class="line"><span class="string">### Task</span></span><br><span class="line"><span class="string">Generate a SQL query to answer [QUESTION]&#123;user_question&#125;[/QUESTION]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Instructions</span></span><br><span class="line"><span class="string">- If you cannot answer the question with the available database schema, return 'I do not know'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Database Schema</span></span><br><span class="line"><span class="string">The query will run on a database with the following schema:</span></span><br><span class="line"><span class="string">&#123;table_metadata_string&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### Answer</span></span><br><span class="line"><span class="string">Given the database schema, here is the SQL query that answers [QUESTION]&#123;user_question&#125;[/QUESTION]</span></span><br><span class="line"><span class="string">[SQL]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_prompt</span><span class="params">(question, metadata_file=metadata_sql_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(metadata_file, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        table_metadata_string = f.read()</span><br><span class="line"></span><br><span class="line">    prompt = system_prompt.format(</span><br><span class="line">        user_question=question, table_metadata_string=table_metadata_string</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> prompt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_llm_service</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    启动服务</span></span><br><span class="line"><span class="string">    :param args:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    chat_app = FastAPI()</span><br><span class="line"></span><br><span class="line">    model_path = <span class="string">"/mnt/lustre/data/sqlcoder-70b-alpha/"</span></span><br><span class="line">    model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">        model_path,</span><br><span class="line">        trust_remote_code=<span class="literal">True</span>,</span><br><span class="line">        <span class="comment"># torch_dtype=torch.float16,</span></span><br><span class="line">        load_in_8bit=<span class="literal">True</span>,</span><br><span class="line">        device_map=<span class="string">"auto"</span>,</span><br><span class="line">        use_cache=<span class="literal">True</span>,</span><br><span class="line">    )</span><br><span class="line">    tokenizer = AutoTokenizer.from_pretrained(model_path)</span><br><span class="line">    eos_token_id = tokenizer.eos_token_id</span><br><span class="line">    pipeline = transformers.pipeline(</span><br><span class="line">        <span class="string">"text-generation"</span>,</span><br><span class="line">        model=model,</span><br><span class="line">        tokenizer=tokenizer,</span><br><span class="line">        max_new_tokens=<span class="number">300</span>,</span><br><span class="line">        do_sample=<span class="literal">False</span>,</span><br><span class="line">        return_full_text=<span class="literal">False</span>,  <span class="comment"># added return_full_text parameter to prevent splitting issues with prompt</span></span><br><span class="line">        num_beams=<span class="number">3</span>,  <span class="comment"># do beam search with 5 beams for high quality results</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="meta">    @time_it</span></span><br><span class="line"><span class="meta">    @chat_app.post("/chat")</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">chat</span><span class="params">(request: SqlCoderRequest)</span>:</span></span><br><span class="line">        ans = <span class="literal">None</span></span><br><span class="line">        state = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            request = json.loads(request.json())</span><br><span class="line">            prompt = generate_prompt(request.get(<span class="string">"prompt"</span>), metadata_sql_path)</span><br><span class="line">            logger.info(<span class="string">"Receive message: &#123;&#125; "</span>.format(prompt))</span><br><span class="line">            ans = (</span><br><span class="line">                    pipeline(</span><br><span class="line">                        prompt,</span><br><span class="line">                        num_return_sequences=<span class="number">1</span>,</span><br><span class="line">                        eos_token_id=eos_token_id,</span><br><span class="line">                        pad_token_id=eos_token_id,</span><br><span class="line">                    )[<span class="number">0</span>][<span class="string">"generated_text"</span>]</span><br><span class="line">                    .split(<span class="string">";"</span>)[<span class="number">0</span>]</span><br><span class="line">                    .split(<span class="string">"```"</span>)[<span class="number">0</span>]</span><br><span class="line">                    .strip()</span><br><span class="line">                    + <span class="string">";"</span></span><br><span class="line">            )</span><br><span class="line">            logger.info(<span class="string">"Sending message: &#123;&#125;"</span>.format(ans))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            state = <span class="literal">False</span></span><br><span class="line">            logger.error(e)</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">"state"</span>: state,</span><br><span class="line">            <span class="string">"response"</span>: ans</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    uvicorn.run(chat_app,</span><br><span class="line">                host=args.host,</span><br><span class="line">                port=int(args.port))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">"sqlcoder_70b_alpha server."</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"--host"</span>, default=<span class="string">"0.0.0.0"</span>)</span><br><span class="line">    parser.add_argument(<span class="string">"--port"</span>, type=int, required=<span class="literal">True</span>)</span><br><span class="line">    start_llm_service(parser.parse_args())</span><br></pre></td></tr></table></figure></div><h3 id="执行脚本-1"><a href="#执行脚本-1" class="headerlink" title="执行脚本"></a>执行脚本</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="Text"><figure class="iseeu highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlcoder_70b_alpha.py --port 9002</span><br></pre></td></tr></table></figure></div><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p><img style="aspect-ratio:2560/1238" width="2560" height="1238" src="/images/loading.gif" data-original="/images/notion_6fb5f9e4.png" alt></p><h3 id="模型服务调用"><a href="#模型服务调用" class="headerlink" title="模型服务调用"></a>模型服务调用</h3><p>服务地址：<a href="https://10.103.190.9:9002/chat" target="_blank" rel="noopener">https://10.103.190.9:9002/chat</a><br>入参：</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"prompt"</span>: <span class="string">"What was our revenue by product in the New York region last month?"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p><strong>postman方式调用</strong><br><img style="aspect-ratio:1692/1023" width="1692" height="1023" src="/images/loading.gif" data-original="/images/notion_e507ce86.png" alt><br><strong>日志返回</strong><br><img style="aspect-ratio:2552/1238" width="2552" height="1238" src="/images/loading.gif" data-original="/images/notion_1279da75.png" alt></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 推理框架 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 模型部署 </tag>
             
             <tag> Transformers </tag>
             
@@ -1206,40 +1206,13 @@
       
         <tags>
             
-            <tag> 大模型 </tag>
-            
             <tag> 开源模型 </tag>
             
             <tag> GLM </tag>
             
             <tag> Qwen </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>联网搜索接入方式调研：公共搜索、学术搜索与私有搜索三类方案及国内主流服务商定价对比</title>
-      <link href="/p/54666.html"/>
-      <url>/p/54666.html</url>
-      
-        <content type="html"><![CDATA[<p>当前主流的搜索接入方式可分为三类：<strong>公共搜索、学术搜索与私有搜索</strong>。</p><a id="more"></a><ul><li><strong>公共搜索</strong>：如 Google、Bing、夸克（Quark）等，适用于实时资讯检索与通用知识查询。</li><li><strong>学术搜索</strong>：如 Arxiv，主要对接科研类文献与学术内容检索需求。</li><li><strong>私有搜索</strong>：如 Elasticsearch，可与企业内部知识库或个人文档系统集成，实现私有语义检索。</li></ul><hr><h3 id="典型费用案例（国内主流）"><a href="#典型费用案例（国内主流）" class="headerlink" title="典型费用案例（国内主流）"></a>典型费用案例（国内主流）</h3><table><thead><tr><th>提供方</th><th>搜索服务特点</th><th>计费方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>百度智能云</strong></td><td>百度搜索（智能搜索 + 原生搜索）支持 AI 场景</td><td>联网搜索约 0.004元/次，或购买流量包</td><td>可与文心模型生态深度集成</td></tr><tr><td><strong>阿里云</strong></td><td>夸克搜索 API</td><td>0.0048 元/次（约 1 万元 ≈ 208 万次调用）</td><td>也可随内容生成服务启用联网增强</td></tr><tr><td><strong>腾讯云</strong></td><td>搜狗搜索</td><td>标准版 46 元/千次，尊享版 80 元/千次（含动态摘要）</td><td>强制绑定腾讯模型调用</td></tr><tr><td><strong>字节跳动</strong></td><td>——</td><td>——</td><td>官方暂无联网搜索 API，仅提供联网问答 Agent</td></tr><tr><td><strong>Microsoft Bing</strong></td><td>通用搜索 + AI 摘要</td><td>需付费升级</td><td>支持多语言和学术资源获取</td></tr><tr><td><strong>Google Cloud Search</strong></td><td>企业级搜索</td><td>需企业授权</td><td>面向内部知识系统</td></tr></tbody></table><h3 id="专注-AI-应用的第三方搜索-API"><a href="#专注-AI-应用的第三方搜索-API" class="headerlink" title="专注 AI 应用的第三方搜索 API"></a>专注 AI 应用的第三方搜索 API</h3><table><thead><tr><th>提供方</th><th>搜索服务特点</th><th>计费方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>Tavily AI</strong></td><td>面向 LLM/AI Agent 的结构化搜索 API</td><td>按调用计费</td><td>支持推理型搜索</td></tr><tr><td><strong>Serper API</strong></td><td>Google 搜索结果解析 API</td><td>低成本</td><td>返回结构化 SERP JSON 数据</td></tr></tbody></table><p>在云厂商与第三方 AI 搜索 API 方面，主要方案如下：</p><blockquote><p>Microsoft Bing、Google Cloud Search 和 Serper 等海外服务需通过代理接入。<br><img style="aspect-ratio:1209/323" width="1209" height="323" src="/images/loading.gif" data-original="/images/notion_3d846866.png" alt="**阿里云**（夸克搜索）[https://help.aliyun.com/zh/open-search/search-platform/product-overview/billing-methods-and-billing-items](/images/notion_87537a5452.png)"><br><img style="aspect-ratio:2181/1025" width="2181" height="1025" src="/images/loading.gif" data-original="/images/notion_0cabbb0e.png" alt="**腾讯**（搜狗搜索）：[https://cloud.tencent.com/product/wsa](/images/notion_5a2097072f.png)"><br><img style="aspect-ratio:1291/589" width="1291" height="589" src="/images/loading.gif" data-original="/images/notion_b931a5bb.png" alt="[https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Qm9cw2s7m#联网搜索](/images/notion_5718948ecb.png)"></p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> NLP技术全景 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> RAG </tag>
-            
-            <tag> 信息检索 </tag>
+            <tag> 大模型 </tag>
             
         </tags>
       
@@ -1267,6 +1240,33 @@
             <tag> 论文解读 </tag>
             
             <tag> 知识图谱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>联网搜索接入方式调研：公共搜索、学术搜索与私有搜索三类方案及国内主流服务商定价对比</title>
+      <link href="/p/54666.html"/>
+      <url>/p/54666.html</url>
+      
+        <content type="html"><![CDATA[<p>当前主流的搜索接入方式可分为三类：<strong>公共搜索、学术搜索与私有搜索</strong>。</p><a id="more"></a><ul><li><strong>公共搜索</strong>：如 Google、Bing、夸克（Quark）等，适用于实时资讯检索与通用知识查询。</li><li><strong>学术搜索</strong>：如 Arxiv，主要对接科研类文献与学术内容检索需求。</li><li><strong>私有搜索</strong>：如 Elasticsearch，可与企业内部知识库或个人文档系统集成，实现私有语义检索。</li></ul><hr><h3 id="典型费用案例（国内主流）"><a href="#典型费用案例（国内主流）" class="headerlink" title="典型费用案例（国内主流）"></a>典型费用案例（国内主流）</h3><table><thead><tr><th>提供方</th><th>搜索服务特点</th><th>计费方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>百度智能云</strong></td><td>百度搜索（智能搜索 + 原生搜索）支持 AI 场景</td><td>联网搜索约 0.004元/次，或购买流量包</td><td>可与文心模型生态深度集成</td></tr><tr><td><strong>阿里云</strong></td><td>夸克搜索 API</td><td>0.0048 元/次（约 1 万元 ≈ 208 万次调用）</td><td>也可随内容生成服务启用联网增强</td></tr><tr><td><strong>腾讯云</strong></td><td>搜狗搜索</td><td>标准版 46 元/千次，尊享版 80 元/千次（含动态摘要）</td><td>强制绑定腾讯模型调用</td></tr><tr><td><strong>字节跳动</strong></td><td>——</td><td>——</td><td>官方暂无联网搜索 API，仅提供联网问答 Agent</td></tr><tr><td><strong>Microsoft Bing</strong></td><td>通用搜索 + AI 摘要</td><td>需付费升级</td><td>支持多语言和学术资源获取</td></tr><tr><td><strong>Google Cloud Search</strong></td><td>企业级搜索</td><td>需企业授权</td><td>面向内部知识系统</td></tr></tbody></table><h3 id="专注-AI-应用的第三方搜索-API"><a href="#专注-AI-应用的第三方搜索-API" class="headerlink" title="专注 AI 应用的第三方搜索 API"></a>专注 AI 应用的第三方搜索 API</h3><table><thead><tr><th>提供方</th><th>搜索服务特点</th><th>计费方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>Tavily AI</strong></td><td>面向 LLM/AI Agent 的结构化搜索 API</td><td>按调用计费</td><td>支持推理型搜索</td></tr><tr><td><strong>Serper API</strong></td><td>Google 搜索结果解析 API</td><td>低成本</td><td>返回结构化 SERP JSON 数据</td></tr></tbody></table><p>在云厂商与第三方 AI 搜索 API 方面，主要方案如下：</p><blockquote><p>Microsoft Bing、Google Cloud Search 和 Serper 等海外服务需通过代理接入。<br><img style="aspect-ratio:1209/323" width="1209" height="323" src="/images/loading.gif" data-original="/images/notion_3d846866.png" alt="**阿里云**（夸克搜索）[https://help.aliyun.com/zh/open-search/search-platform/product-overview/billing-methods-and-billing-items](/images/notion_87537a5452.png)"><br><img style="aspect-ratio:2181/1025" width="2181" height="1025" src="/images/loading.gif" data-original="/images/notion_0cabbb0e.png" alt="**腾讯**（搜狗搜索）：[https://cloud.tencent.com/product/wsa](/images/notion_5a2097072f.png)"><br><img style="aspect-ratio:1291/589" width="1291" height="589" src="/images/loading.gif" data-original="/images/notion_b931a5bb.png" alt="[https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Qm9cw2s7m#联网搜索](/images/notion_5718948ecb.png)"></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> NLP技术全景 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RAG </tag>
+            
+            <tag> 信息检索 </tag>
             
         </tags>
       
@@ -1351,9 +1351,9 @@
             
             <tag> 模型部署 </tag>
             
-            <tag> 工具 </tag>
-            
             <tag> AIGC </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -1480,9 +1480,9 @@
       
         <tags>
             
-            <tag> 多模态 </tag>
-            
             <tag> 长上下文 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 文档解析 </tag>
             
@@ -1513,9 +1513,9 @@
             
             <tag> 智能体 </tag>
             
-            <tag> RAG </tag>
-            
             <tag> 长上下文 </tag>
+            
+            <tag> RAG </tag>
             
             <tag> 论文解读 </tag>
             
@@ -1656,9 +1656,9 @@
             
             <tag> DeepSeek </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 长上下文 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 文档解析 </tag>
             
@@ -1902,9 +1902,9 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 计算机视觉 </tag>
             
@@ -2650,9 +2650,9 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 注意力机制 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 蒸馏 </tag>
             
@@ -2747,9 +2747,9 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 注意力机制 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 预训练 </tag>
             
@@ -3065,9 +3065,9 @@
       
         <tags>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 预训练 </tag>
             
@@ -3442,11 +3442,11 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
             
             <tag> 推理框架 </tag>
+            
+            <tag> 多模态 </tag>
             
         </tags>
       
@@ -3506,9 +3506,9 @@
       
         <tags>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 模型架构 </tag>
             
@@ -4544,9 +4544,9 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
+            
+            <tag> 多模态 </tag>
             
         </tags>
       
@@ -5060,9 +5060,9 @@
       
         <tags>
             
-            <tag> 多模态 </tag>
-            
             <tag> 注意力机制 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> KV Cache </tag>
             
@@ -5095,9 +5095,9 @@
       
         <tags>
             
-            <tag> 大模型 </tag>
-            
             <tag> DeepSeek </tag>
+            
+            <tag> 大模型 </tag>
             
             <tag> 注意力机制 </tag>
             
@@ -5200,11 +5200,11 @@
             
             <tag> Qwen </tag>
             
-            <tag> 多模态 </tag>
-            
             <tag> 位置编码 </tag>
             
             <tag> 注意力机制 </tag>
+            
+            <tag> 多模态 </tag>
             
             <tag> 计算机视觉 </tag>
             
@@ -6090,9 +6090,9 @@
             
             <tag> 模型部署 </tag>
             
-            <tag> RAG </tag>
-            
             <tag> 推理框架 </tag>
+            
+            <tag> RAG </tag>
             
         </tags>
       
