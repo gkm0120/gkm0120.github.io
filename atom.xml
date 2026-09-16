@@ -62,9 +62,9 @@
       <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
-    
       <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+    
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
       <category term="量化" scheme="https://gkm0120.cn/tags/%E9%87%8F%E5%8C%96/"/>
     
@@ -110,11 +110,11 @@
       <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
     
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
-      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
@@ -154,13 +154,13 @@
       <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
     
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
-      <category term="DeepSeek" scheme="https://gkm0120.cn/tags/DeepSeek/"/>
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
       <category term="SGLang" scheme="https://gkm0120.cn/tags/SGLang/"/>
     
@@ -256,11 +256,11 @@
       <category term="推理框架" scheme="https://gkm0120.cn/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E6%A0%88%E7%9F%A5%E8%AF%86/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
     
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
-      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
       <category term="推理框架" scheme="https://gkm0120.cn/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/"/>
     
@@ -286,11 +286,11 @@
       <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+      <category term="GLM" scheme="https://gkm0120.cn/tags/GLM/"/>
     
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
-      <category term="GLM" scheme="https://gkm0120.cn/tags/GLM/"/>
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
       <category term="SGLang" scheme="https://gkm0120.cn/tags/SGLang/"/>
     
@@ -422,13 +422,13 @@
       <category term="模型部署" scheme="https://gkm0120.cn/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
     
-      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
+      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
     
       <category term="vLLM" scheme="https://gkm0120.cn/tags/vLLM/"/>
     
       <category term="GPU" scheme="https://gkm0120.cn/tags/GPU/"/>
     
-      <category term="Qwen" scheme="https://gkm0120.cn/tags/Qwen/"/>
+      <category term="模型部署" scheme="https://gkm0120.cn/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
