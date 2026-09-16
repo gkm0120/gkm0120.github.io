@@ -593,15 +593,7 @@
     <lastmod>2026-09-10T06:25:57Z</lastmod>
   </url>
   <url>
-    <loc>https://gkm0120.cn/pillar/document-ai/index.html</loc>
-    <lastmod>2026-09-10T06:25:57Z</lastmod>
-  </url>
-  <url>
     <loc>https://gkm0120.cn/pillar/agent/index.html</loc>
-    <lastmod>2026-09-10T06:25:57Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gkm0120.cn/pillar/ai-infra/index.html</loc>
     <lastmod>2026-09-10T06:25:57Z</lastmod>
   </url>
   <url>
@@ -609,11 +601,19 @@
     <lastmod>2026-09-10T06:25:57Z</lastmod>
   </url>
   <url>
-    <loc>https://gkm0120.cn/pillar/llm/index.html</loc>
+    <loc>https://gkm0120.cn/pillar/document-ai/index.html</loc>
+    <lastmod>2026-09-10T06:25:57Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gkm0120.cn/pillar/ai-infra/index.html</loc>
     <lastmod>2026-09-10T06:25:57Z</lastmod>
   </url>
   <url>
     <loc>https://gkm0120.cn/pillar/rag/index.html</loc>
+    <lastmod>2026-09-10T06:25:57Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gkm0120.cn/pillar/llm/index.html</loc>
     <lastmod>2026-09-10T06:25:57Z</lastmod>
   </url>
   <url>
@@ -993,11 +993,11 @@
     <lastmod>2026-09-09T02:01:10Z</lastmod>
   </url>
   <url>
-    <loc>https://gkm0120.cn/categories/index.html</loc>
+    <loc>https://gkm0120.cn/tags/index.html</loc>
     <lastmod>2026-09-07T08:20:13Z</lastmod>
   </url>
   <url>
-    <loc>https://gkm0120.cn/tags/index.html</loc>
+    <loc>https://gkm0120.cn/categories/index.html</loc>
     <lastmod>2026-09-07T08:20:13Z</lastmod>
   </url>
   <url>
